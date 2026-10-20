@@ -5,7 +5,7 @@ import json
 import math
 import re
 import unicodedata
-from decimal import Decimal, DecimalException
+from decimal import Decimal, DecimalException, Inexact, localcontext
 from typing import Any, Dict, List
 
 
@@ -68,18 +68,32 @@ def _check_evidence(observation: Dict, candidate: Dict, sources: Dict, reviews: 
         pattern = r"(?<![\w.+−-])" + re.escape(raw) + r"(?![\w.])"
         if not any(re.search(pattern, _text(e["quote"])) for e in evidence):
             return fail("raw_value_not_in_quote")
-        # shortcut: decimal/e notation with unchanged units; review other notation before extending normalization.
-        numeric = re.fullmatch(r"([+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?)\s*(.*)", raw)
+        # shortcut: decimal/e mean and optional deviation with unchanged units; review other notation.
+        number = r"(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?"
+        numeric = re.fullmatch(r"([+-]?" + number + r")\s*(?:(?:±|\+/-)\s*(" + number
+                               + r"))?\s*((?!.*(?:±|\+/-)).*)", raw)
         if not numeric:
             return fail("raw_value_format_requires_reviewed_normalization")
         try:
-            consistent = Decimal(numeric[1]) == Decimal(str(observation["value"]))
+            mean = Decimal(numeric[1])
+            if mean != Decimal(str(observation["value"])):
+                return fail("numeric_and_raw_value_mismatch")
+            if numeric[3] != observation.get("unit"):
+                return fail("raw_unit_mismatch")
+            if numeric[2] is not None:
+                interval = observation.get("uncertainty")
+                if (not isinstance(interval, dict)
+                        or not _number(interval.get("lower")) or not _number(interval.get("upper"))
+                        or interval.get("unit") != observation.get("unit")):
+                    return fail("raw_deviation_requires_matching_uncertainty")
+                with localcontext() as context:
+                    context.traps[Inexact] = True
+                    deviation = Decimal(numeric[2])
+                    if (Decimal(str(interval["lower"])) != mean - deviation
+                            or Decimal(str(interval["upper"])) != mean + deviation):
+                        return fail("raw_deviation_requires_matching_uncertainty")
         except DecimalException:
             return fail("raw_value_format_requires_reviewed_normalization")
-        if not consistent:
-            return fail("numeric_and_raw_value_mismatch")
-        if numeric[2] != observation.get("unit"):
-            return fail("raw_unit_mismatch")
     matches = [r for r in reviews if all(r.get(key) == observation.get(key)
                for key in ("paper_id", "sample_id", "observation_id"))]
     if len(matches) != 1:

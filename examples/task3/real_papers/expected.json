@@ -1,0 +1,39 @@
+{
+  "declared_before_suite_execution": true,
+  "expectation_kind": "assistant_reasoned_policy_expectations_not_human_ground_truth",
+  "selection": "Purposive four-paper teaching sample; profile chosen with prior knowledge of the papers, not blinded validation.",
+  "shared": {
+    "cornella2024-50DA": {
+      "decision": "retrieve_more",
+      "criteria": {"strength-recovery": "keep_for_followup", "healed-strength": "retrieve_more"},
+      "reason": "Relevant relative UTS recovery; absolute healed UTS not extracted."
+    },
+    "li2016-1to2": {
+      "decision": "retrieve_more",
+      "criteria": {"strength-recovery": "retrieve_more", "healed-strength": "retrieve_more"},
+      "reason": "Reported healing efficiency is fracture-strain recovery under a different repair protocol."
+    },
+    "terryn2017-J4000": {
+      "decision": "retrieve_more",
+      "criteria": {"strength-recovery": "retrieve_more", "healed-strength": "retrieve_more"},
+      "reason": "Device tests and projected storage-modulus recovery do not supply matched coupon UTS measurements."
+    },
+    "montarnal2011-hard": {
+      "decision": "retrieve_more",
+      "criteria": {"strength-recovery": "retrieve_more", "healed-strength": "retrieve_more"},
+      "reason": "Pristine strength and powder remolding do not establish partial-cut repair."
+    }
+  },
+  "diagnostics": {
+    "li-ambient-fracture-strain": {
+      "decision": "manual_review",
+      "criterion_reason": "uncertainty_crosses_requirement",
+      "reason": "Mean 90% meets the inclusive bound; reported SD spans it. Conservative policy, not a confidence test."
+    },
+    "li-cold-fracture-strain": {
+      "decision": "exclude_for_use",
+      "criterion_reason": "supported_comparable_observations_agree",
+      "reason": "Reported 68 plus/minus 2% is below 90% at the matching -20 C, 72 h protocol only."
+    }
+  }
+}

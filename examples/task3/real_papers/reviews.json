@@ -1,0 +1,92 @@
+[
+  {
+    "observation_id": "cornella-modulus",
+    "paper_id": "doi:10.1002/adma.202407663",
+    "sample_id": "50pct-DA-dual-dynamic-network",
+    "record_digest": "d45eccb37abbef5fdec74a04178247a12ac3f5b966a975b586b0fe045cbdd832",
+    "status": "supported",
+    "reviewer": "assistant_primary_source_reading_not_human_ground_truth",
+    "review_scope": "Short excerpt and source-context review of sample, property, baseline, protocol and claim category. No independent experiment or automated extraction accuracy assessment."
+  },
+  {
+    "observation_id": "cornella-elongation",
+    "paper_id": "doi:10.1002/adma.202407663",
+    "sample_id": "50pct-DA-dual-dynamic-network",
+    "record_digest": "5c4f22704b9481e9ebe0ff12fca5646c9a688ef63496712cb0a856c79dd298fc",
+    "status": "supported",
+    "reviewer": "assistant_primary_source_reading_not_human_ground_truth",
+    "review_scope": "Short excerpt and source-context review of sample, property, baseline, protocol and claim category. No independent experiment or automated extraction accuracy assessment."
+  },
+  {
+    "observation_id": "cornella-UTS",
+    "paper_id": "doi:10.1002/adma.202407663",
+    "sample_id": "50pct-DA-dual-dynamic-network",
+    "record_digest": "be442c2865e00c2f72addfa485760bb090ccd1255ac088df793126d49cd8ed81",
+    "status": "supported",
+    "reviewer": "assistant_primary_source_reading_not_human_ground_truth",
+    "review_scope": "Short excerpt and source-context review of sample, property, baseline, protocol and claim category. No independent experiment or automated extraction accuracy assessment."
+  },
+  {
+    "observation_id": "li-ambient-eta",
+    "paper_id": "doi:10.1038/nchem.2492",
+    "sample_id": "Fe-Hpdca-PDMS_Fe-ligand-1to2_Mn5000-7000",
+    "record_digest": "a667e29a0fc0ab4465d59c3f8a8fe8847c3dc216d3ac42ea3652afd076fa4b83",
+    "status": "supported",
+    "reviewer": "assistant_primary_source_reading_not_human_ground_truth",
+    "review_scope": "Short excerpt and source-context review of sample, property, baseline, protocol and claim category. No independent experiment or automated extraction accuracy assessment."
+  },
+  {
+    "observation_id": "li-cold-eta",
+    "paper_id": "doi:10.1038/nchem.2492",
+    "sample_id": "Fe-Hpdca-PDMS_Fe-ligand-1to2_Mn5000-7000",
+    "record_digest": "4d2ba23a07bb6ee4f41447cfca041fabe450d9e000583fbbe745a08d31bd59cb",
+    "status": "supported",
+    "reviewer": "assistant_primary_source_reading_not_human_ground_truth",
+    "review_scope": "Short excerpt and source-context review of sample, property, baseline, protocol and claim category. No independent experiment or automated extraction accuracy assessment."
+  },
+  {
+    "observation_id": "terryn-modulus",
+    "paper_id": "doi:10.1126/scirobotics.aan4268",
+    "sample_id": "DPBM-FGE-J4000",
+    "record_digest": "3724aca69701321a59cd4bd272e270197f7de17e54b48d31ee85433059d7369a",
+    "status": "supported",
+    "reviewer": "assistant_primary_source_reading_not_human_ground_truth",
+    "review_scope": "Short excerpt and source-context review of sample, property, baseline, protocol and claim category. No independent experiment or automated extraction accuracy assessment."
+  },
+  {
+    "observation_id": "terryn-PPAM-demonstration",
+    "paper_id": "doi:10.1126/scirobotics.aan4268",
+    "sample_id": "DPBM-FGE-J4000",
+    "record_digest": "dc88f115e5ccda54f2c0ae25089af9bf5124f62953ee199401c7087640fa9654",
+    "status": "supported",
+    "reviewer": "assistant_primary_source_reading_not_human_ground_truth",
+    "review_scope": "Short excerpt and source-context review of sample, property, baseline, protocol and claim category. No independent experiment or automated extraction accuracy assessment."
+  },
+  {
+    "observation_id": "terryn-projection",
+    "paper_id": "doi:10.1126/scirobotics.aan4268",
+    "sample_id": "DPBM-FGE-J4000",
+    "record_digest": "338fd470dc6874ffaffd9bffc33e2a6a15d68abb0b3d93e0f66f9b942f7a59d8",
+    "status": "supported",
+    "reviewer": "assistant_primary_source_reading_not_human_ground_truth",
+    "review_scope": "Short excerpt and source-context review of sample, property, baseline, protocol and claim category. No independent experiment or automated extraction accuracy assessment."
+  },
+  {
+    "observation_id": "montarnal-pristine-strength",
+    "paper_id": "doi:10.1126/science.1212648",
+    "sample_id": "DGEBA-glutaric-anhydride_10molpct-Zn-acac2",
+    "record_digest": "b785041525f84c303dde909d9c9bd3d73f9e45c478bb142c2bfd1cc5be227e16",
+    "status": "supported",
+    "reviewer": "assistant_primary_source_reading_not_human_ground_truth",
+    "review_scope": "Short excerpt and source-context review of sample, property, baseline, protocol and claim category. No independent experiment or automated extraction accuracy assessment."
+  },
+  {
+    "observation_id": "montarnal-remolding",
+    "paper_id": "doi:10.1126/science.1212648",
+    "sample_id": "DGEBA-glutaric-anhydride_10molpct-Zn-acac2",
+    "record_digest": "b5bebe0b0c3e7e48cf2e3e1f8a19d162a7a2c78d481441dbb06cf7506eecad23",
+    "status": "supported",
+    "reviewer": "assistant_primary_source_reading_not_human_ground_truth",
+    "review_scope": "Short excerpt and source-context review of sample, property, baseline, protocol and claim category. No independent experiment or automated extraction accuracy assessment."
+  }
+]

@@ -337,6 +337,8 @@ python select_candidates.py --input examples/task3/input.json --reviews examples
 
 See [Task 3 inputs, evidence reviews and decision rules](docs/task3-selection.md). Run its focused checks with `python -m unittest -v test_task3_selection`.
 
+For a reproducible four-paper curated replay, run `python run_task3_real_papers.py`. See [real polymer evidence, screening decisions and remaining gaps](docs/task3-real-paper-results.md). The replay uses supplied source-reading reviews, not live model extraction or an extraction-accuracy benchmark. Check it with `python -m unittest -q test_task3_selection test_task3_real_papers`.
+
 ## What not to commit
 
 Do not commit:

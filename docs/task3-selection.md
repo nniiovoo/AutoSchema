@@ -56,7 +56,7 @@ After adjudicating an observation, compute its digest using `selection_lib.scree
 
 The selector checks identity, evidence, review binding, claim type, unit and conditions before comparing numeric bounds. Units must match exactly; this version performs no automatic conversion. A different metric or incompatible protocol cannot substitute for the required measurement.
 
-Raw values must contain a decimal or e-notation number followed by the unchanged unit, for example `95%`, `0.40 MPa`, or `1.34e-5 %/s`, and occur literally in the evidence quote. The numeric value must agree with that raw number. Other scientific notation or converted units require a reviewed normalization extension; they are sent to review rather than guessed.
+Raw values must contain a decimal or e-notation number followed by the unchanged unit, for example `95%`, `0.40 MPa`, or `1.34e-5 %/s`, and occur literally in the evidence quote. The numeric value must agree with that raw number. A reported mean ± deviation, such as `90 ± 3%` (also `+/-`), additionally requires finite `uncertainty.lower` and `uncertainty.upper` bounds equal to the raw mean minus/plus the nonnegative deviation, with the same unit. Preserve the reported uncertainty kind; SD is not a confidence interval. Other notation, table-header unit linkage or converted units require a reviewed normalization extension; they are sent to review rather than guessed.
 
 Missing information is distinct from failure. A comparable supported measurement below a minimum or above a maximum can fail a criterion. An inaccessible supplement, absent condition, missing absolute strength or untested application instead needs further evidence. The `missing` entries and `source_coverage` preserve the reason for the gap; “not extracted” must not become “not reported.”
 
@@ -78,5 +78,7 @@ Aggregation uses mandatory criteria only, in this order: `manual_review`, then `
 “Keep” means a research candidate worth investigating for this profile. It does not demonstrate the complete application. After retrieval or review, update the observations and receipts and rerun selection; the stage produces follow-up requests but does not automatically download papers or alter existing extraction outputs.
 
 ## Validation boundary
+
+Run the separate four-paper curated replay with `python run_task3_real_papers.py`. See its [real-paper evidence, decisions and missing checks](task3-real-paper-results.md). This uses actual paper evidence with supplied assistant reviews; it does not run the model extractor.
 
 The synthetic example verifies intended rule behavior on explicit inputs. It does not measure real-paper extraction accuracy, scientific review quality, general polymer-screening performance or time saved. A real evaluation needs independently annotated paper/sample/property/condition/evidence relationships and stated application criteria, including missing evidence and challenging negative cases.

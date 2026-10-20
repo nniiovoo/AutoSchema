@@ -268,6 +268,69 @@ class Task3SelectionTests(unittest.TestCase):
         self.observation["evidence"][0]["quote"] = text
         self.assertDecision("manual_review", self.screen())
 
+    def reported_deviation(self, raw, value, uncertainty):
+        self.observation.update(value_raw=raw, value=value)
+        if uncertainty is None:
+            self.observation.pop("uncertainty", None)
+        else:
+            self.observation["uncertainty"] = uncertainty
+        text = "Synthetic source reports " + raw + " for this observation."
+        self.sources["source-strength"]["text"] = text
+        self.observation["evidence"][0]["quote"] = text
+
+    def test_reported_deviation_preserves_threshold_crossing(self):
+        # Li et al. report this number for fracture-strain recovery, not UTS.
+        self.observation["property"] = "fracture_strain_recovery"
+        self.profile["criteria"][0]["property"] = "fracture_strain_recovery"
+        self.reported_deviation("90 ± 3%", 90, {"lower": 87, "upper": 93, "unit": "%",
+                                               "kind": "standard_deviation"})
+        result = self.screen()
+        self.assertDecision("manual_review", result)
+        self.assertEqual("supported_as_reported", result["evidence"]["status"])
+        self.assertEqual("uncertainty_crosses_requirement", result["criteria"][0]["reason"])
+        self.assertEqual("90 ± 3%", self.observation["value_raw"])
+        self.assertEqual("standard_deviation", self.observation["uncertainty"]["kind"])
+
+    def test_reported_deviation_below_threshold_excludes(self):
+        self.reported_deviation("68 ± 2%", 68, {"lower": 66, "upper": 70, "unit": "%"})
+        result = self.screen()
+        self.assertDecision("exclude_for_use", result)
+        self.assertEqual("supported_as_reported", result["evidence"]["status"])
+
+    def test_ascii_deviation_with_decimal_and_exponent_notation(self):
+        self.reported_deviation("9.0e1 +/- 3e0%", 90,
+                                {"lower": 87, "upper": 93, "unit": "%"})
+        result = self.screen()
+        self.assertEqual("supported_as_reported", result["evidence"]["status"])
+        self.assertDecision("manual_review", result)
+
+    def test_reported_deviation_requires_matching_finite_uncertainty(self):
+        intervals = [None, {}, {"lower": 87, "unit": "%"},
+                     {"lower": 86, "upper": 93, "unit": "%"},
+                     {"lower": 87, "upper": 94, "unit": "%"},
+                     {"lower": 87, "upper": 93, "unit": "MPa"},
+                     {"lower": float("-inf"), "upper": 93, "unit": "%"}]
+        for interval in intervals:
+            with self.subTest(interval=interval):
+                self.reported_deviation("90 ± 3%", 90, interval)
+                # Invalid numeric evidence must fail before a review digest is used.
+                result = self.screen(reviews=[])
+                self.assertDecision("manual_review", result)
+                self.assertEqual("raw_deviation_requires_matching_uncertainty",
+                                 result["evidence"]["observations"][0]["reason"])
+
+    def test_reported_deviation_rejects_negative_unit_and_value_mismatches(self):
+        for raw, value, reason in [
+                ("90 ± -3%", 90, "raw_value_format_requires_reviewed_normalization"),
+                ("90 +/- -3%", 90, "raw_value_format_requires_reviewed_normalization"),
+                ("90 ± 3 MPa", 90, "raw_unit_mismatch"),
+                ("90 ± 3%", 91, "numeric_and_raw_value_mismatch")]:
+            with self.subTest(raw=raw, value=value):
+                self.reported_deviation(raw, value, {"lower": 87, "upper": 93, "unit": "%"})
+                result = self.screen()
+                self.assertDecision("manual_review", result)
+                self.assertEqual(reason, result["evidence"]["observations"][0]["reason"])
+
 
 class Task3CommandLineTests(unittest.TestCase):
     """Exercise the public CLI with disposable copies of its documented example."""
