@@ -1,0 +1,42 @@
+[
+  {
+    "observation_id": "A-recovery",
+    "paper_id": "synthetic-paper-A",
+    "sample_id": "A-50",
+    "record_digest": "d982e869a876e96b4b63e0e6502321b5561a11eaabb16b0f4a138904bcd6b81d",
+    "status": "supported",
+    "reviewer": "synthetic_example_review"
+  },
+  {
+    "observation_id": "A-strength",
+    "paper_id": "synthetic-paper-A",
+    "sample_id": "A-50",
+    "record_digest": "0b5b8fd8258892c2831eae6a19826bd0777d83ac6e8f97b204072bab3f1301d3",
+    "status": "supported",
+    "reviewer": "synthetic_example_review"
+  },
+  {
+    "observation_id": "B-recovery",
+    "paper_id": "synthetic-paper-B",
+    "sample_id": "B-30",
+    "record_digest": "5f633886782ef8aa86e6bee2c6c4aa0d292d527765cd12ded697da92158b04b2",
+    "status": "supported",
+    "reviewer": "synthetic_example_review"
+  },
+  {
+    "observation_id": "B-strength",
+    "paper_id": "synthetic-paper-B",
+    "sample_id": "B-30",
+    "record_digest": "efa998b7900a4cd35f78fb186aa390a731b004de71c8cc0ee00440c491c6091d",
+    "status": "supported",
+    "reviewer": "synthetic_example_review"
+  },
+  {
+    "observation_id": "C-recovery",
+    "paper_id": "synthetic-paper-C",
+    "sample_id": "C-70",
+    "record_digest": "874a50b7a1f4668c1465a44b6d2f2a06b1cde07312b58e02e0581a9915a9cb93",
+    "status": "supported",
+    "reviewer": "synthetic_example_review"
+  }
+]

@@ -1,0 +1,215 @@
+{
+  "example_kind": "synthetic_polymer_task3_example",
+  "description": "Invented materials, papers, passages and observations for demonstrating selection rules. These are not published polymer measurements or real-paper extraction results.",
+  "profile": {
+    "profile_id": "illustrative_heat_repairable_connector_v1",
+    "application": "Research follow-up for a heat-repairable laboratory connector",
+    "description": "Illustrative requirements chosen for this example, not an industry standard or a complete device qualification.",
+    "criteria": [
+      {
+        "criterion_id": "strength_recovery_after_partial_cut",
+        "property": "ultimate_tensile_strength_recovery",
+        "unit": "%",
+        "minimum": 90,
+        "required": true,
+        "required_claim_type": "property_test",
+        "conditions": {
+          "repair_temperature_C": {"maximum": 90},
+          "repair_duration_min": {"maximum": 60},
+          "damage_type": {"equals": "partial_cut"}
+        }
+      },
+      {
+        "criterion_id": "absolute_tensile_strength_at_room_temperature",
+        "property": "ultimate_tensile_strength",
+        "unit": "MPa",
+        "minimum": 0.3,
+        "required": true,
+        "required_claim_type": "property_test",
+        "conditions": {
+          "measurement_temperature": {"equals": "room_temperature"}
+        }
+      }
+    ]
+  },
+  "sources": {
+    "source-A-recovery": {
+      "paper_id": "synthetic-paper-A",
+      "locator": "Synthetic Results, paragraph 1",
+      "text": "Synthetic polymer A-50 recovered 95% of its original ultimate tensile strength after a partial cut. The contacting surfaces were repaired at 90 degrees C for 60 minutes."
+    },
+    "source-A-strength": {
+      "paper_id": "synthetic-paper-A",
+      "locator": "Synthetic Results, paragraph 2",
+      "text": "The ultimate tensile strength of synthetic polymer A-50 was 0.40 MPa at room temperature."
+    },
+    "source-B-recovery": {
+      "paper_id": "synthetic-paper-B",
+      "locator": "Synthetic Results, paragraph 1",
+      "text": "Synthetic polymer B-30 recovered 84% of its original ultimate tensile strength after a partial cut. The contacting surfaces were repaired at 90 degrees C for 60 minutes."
+    },
+    "source-B-strength": {
+      "paper_id": "synthetic-paper-B",
+      "locator": "Synthetic Results, paragraph 2",
+      "text": "The ultimate tensile strength of synthetic polymer B-30 was 0.45 MPa at room temperature."
+    },
+    "source-C-recovery": {
+      "paper_id": "synthetic-paper-C",
+      "locator": "Synthetic Results, paragraph 1",
+      "text": "Synthetic polymer C-70 recovered 96% of its original ultimate tensile strength after a partial cut. The contacting surfaces were repaired at 90 degrees C for 60 minutes. Absolute tensile-strength data are located in the supplementary information."
+    }
+  },
+  "candidates": [
+    {
+      "candidate_id": "candidate-A",
+      "paper_id": "synthetic-paper-A",
+      "sample_id": "A-50",
+      "observations": [
+        {
+          "observation_id": "A-recovery",
+          "paper_id": "synthetic-paper-A",
+          "sample_id": "A-50",
+          "role": "current_work",
+          "property": "ultimate_tensile_strength_recovery",
+          "value": 95,
+          "value_raw": "95%",
+          "unit": "%",
+          "baseline": "Original ultimate tensile strength of the same formulation",
+          "claim_type": "property_test",
+          "conditions": {
+            "repair_temperature_C": 90,
+            "repair_duration_min": 60,
+            "damage_type": "partial_cut"
+          },
+          "evidence": [
+            {
+              "source_id": "source-A-recovery",
+              "quote": "Synthetic polymer A-50 recovered 95% of its original ultimate tensile strength after a partial cut. The contacting surfaces were repaired at 90 degrees C for 60 minutes."
+            }
+          ]
+        },
+        {
+          "observation_id": "A-strength",
+          "paper_id": "synthetic-paper-A",
+          "sample_id": "A-50",
+          "role": "current_work",
+          "property": "ultimate_tensile_strength",
+          "value": 0.4,
+          "value_raw": "0.40 MPa",
+          "unit": "MPa",
+          "baseline": "Not applicable: absolute tensile strength",
+          "claim_type": "property_test",
+          "conditions": {"measurement_temperature": "room_temperature"},
+          "evidence": [
+            {
+              "source_id": "source-A-strength",
+              "quote": "The ultimate tensile strength of synthetic polymer A-50 was 0.40 MPa at room temperature."
+            }
+          ]
+        }
+      ],
+      "missing": [],
+      "source_coverage": {
+        "main_text": "available",
+        "supplementary_information": "not_needed_for_example_criteria",
+        "figures": "not_checked"
+      }
+    },
+    {
+      "candidate_id": "candidate-B",
+      "paper_id": "synthetic-paper-B",
+      "sample_id": "B-30",
+      "observations": [
+        {
+          "observation_id": "B-recovery",
+          "paper_id": "synthetic-paper-B",
+          "sample_id": "B-30",
+          "role": "current_work",
+          "property": "ultimate_tensile_strength_recovery",
+          "value": 84,
+          "value_raw": "84%",
+          "unit": "%",
+          "baseline": "Original ultimate tensile strength of the same formulation",
+          "claim_type": "property_test",
+          "conditions": {
+            "repair_temperature_C": 90,
+            "repair_duration_min": 60,
+            "damage_type": "partial_cut"
+          },
+          "evidence": [
+            {
+              "source_id": "source-B-recovery",
+              "quote": "Synthetic polymer B-30 recovered 84% of its original ultimate tensile strength after a partial cut. The contacting surfaces were repaired at 90 degrees C for 60 minutes."
+            }
+          ]
+        },
+        {
+          "observation_id": "B-strength",
+          "paper_id": "synthetic-paper-B",
+          "sample_id": "B-30",
+          "role": "current_work",
+          "property": "ultimate_tensile_strength",
+          "value": 0.45,
+          "value_raw": "0.45 MPa",
+          "unit": "MPa",
+          "baseline": "Not applicable: absolute tensile strength",
+          "claim_type": "property_test",
+          "conditions": {"measurement_temperature": "room_temperature"},
+          "evidence": [
+            {
+              "source_id": "source-B-strength",
+              "quote": "The ultimate tensile strength of synthetic polymer B-30 was 0.45 MPa at room temperature."
+            }
+          ]
+        }
+      ],
+      "missing": [],
+      "source_coverage": {
+        "main_text": "available",
+        "supplementary_information": "not_needed_for_example_criteria",
+        "figures": "not_checked"
+      }
+    },
+    {
+      "candidate_id": "candidate-C",
+      "paper_id": "synthetic-paper-C",
+      "sample_id": "C-70",
+      "observations": [
+        {
+          "observation_id": "C-recovery",
+          "paper_id": "synthetic-paper-C",
+          "sample_id": "C-70",
+          "role": "current_work",
+          "property": "ultimate_tensile_strength_recovery",
+          "value": 96,
+          "value_raw": "96%",
+          "unit": "%",
+          "baseline": "Original ultimate tensile strength of the same formulation",
+          "claim_type": "property_test",
+          "conditions": {
+            "repair_temperature_C": 90,
+            "repair_duration_min": 60,
+            "damage_type": "partial_cut"
+          },
+          "evidence": [
+            {
+              "source_id": "source-C-recovery",
+              "quote": "Synthetic polymer C-70 recovered 96% of its original ultimate tensile strength after a partial cut. The contacting surfaces were repaired at 90 degrees C for 60 minutes."
+            }
+          ]
+        }
+      ],
+      "missing": [
+        {
+          "property": "ultimate_tensile_strength",
+          "reason": "Supplementary_information_unavailable"
+        }
+      ],
+      "source_coverage": {
+        "main_text": "available",
+        "supplementary_information": "unavailable",
+        "figures": "not_checked"
+      }
+    }
+  ]
+}

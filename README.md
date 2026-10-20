@@ -325,6 +325,18 @@ schema_values.csv
 paper_ranking.csv   # only when --top_n is used
 ```
 
+## Task 3: application-specific candidate selection
+
+Task 3 checks source-linked observations against explicit application requirements and records evidence gaps, without a combined material score. It is a separate stage; Phase I and Phase II behavior are unchanged. Flat extraction arrays need reviewed sample/property/condition links before selection.
+
+Run the synthetic example without API calls:
+
+```bash
+python select_candidates.py --input examples/task3/input.json --reviews examples/task3/reviews.json --out-dir outputs/task3_demo
+```
+
+See [Task 3 inputs, evidence reviews and decision rules](docs/task3-selection.md). Run its focused checks with `python -m unittest -v test_task3_selection`.
+
 ## What not to commit
 
 Do not commit:
