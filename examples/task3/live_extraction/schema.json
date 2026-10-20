@@ -1,0 +1,102 @@
+{
+  "schema_origin": "Manually specified polymer evaluation fields; not a Phase I induced schema",
+  "evaluation_scope": "Unmodified Phase II extractor with its default system prompt; no reference values or example evidence supplied",
+  "fields": [
+    {
+      "name": "material_name",
+      "description": "Polymer or polymer-network names and paper-local material identifiers. Preserve distinctions between materials.",
+      "value_type": "array",
+      "aliases": ["polymer", "elastomer", "network", "material", "sample"]
+    },
+    {
+      "name": "formulation",
+      "description": "Reported composition, precursor ratios, crosslink fractions and catalyst loadings that identify a formulation. Do not merge distinct formulations.",
+      "value_type": "array",
+      "aliases": ["composition", "formulation", "stoichiometry", "crosslink", "catalyst", "molar ratio"]
+    },
+    {
+      "name": "ultimate_tensile_strength_recovery",
+      "description": "Reported recovery of ultimate tensile strength after repair relative to an identified original state. Retain source units and uncertainty. This property is distinct from strain, modulus, energy and device response recovery.",
+      "value_type": "array",
+      "aliases": ["ultimate tensile strength", "tensile strength recovery", "strength recovery", "healing efficiency"]
+    },
+    {
+      "name": "healed_ultimate_tensile_strength",
+      "description": "Absolute ultimate tensile strength of a repaired specimen. Retain source units and uncertainty; distinguish repaired from pristine material.",
+      "value_type": "array",
+      "aliases": ["healed", "repaired", "tensile strength", "stress at break", "ultimate strength"]
+    },
+    {
+      "name": "fracture_strain_recovery",
+      "description": "Reported recovery of strain at fracture after repair relative to the original specimen. Retain units and uncertainty; use the paper's definition of healing efficiency.",
+      "value_type": "array",
+      "aliases": ["fracture strain", "strain at break", "elongation", "healing efficiency"]
+    },
+    {
+      "name": "youngs_modulus_recovery",
+      "description": "Reported relative recovery of tensile Young's modulus after repair, preserving units and uncertainty.",
+      "value_type": "array",
+      "aliases": ["Young's modulus", "Young’s modulus", "modulus recovery", "mechanical recovery"]
+    },
+    {
+      "name": "elongation_at_break_recovery",
+      "description": "Reported relative recovery of elongation at break after repair, preserving units and uncertainty.",
+      "value_type": "array",
+      "aliases": ["elongation at break", "elongation recovery", "strain recovery"]
+    },
+    {
+      "name": "youngs_modulus",
+      "description": "Absolute measured tensile Young's modulus, retaining units, uncertainty and any stated material state.",
+      "value_type": "array",
+      "aliases": ["Young's modulus", "Young’s modulus", "elastic modulus", "tensile modulus"]
+    },
+    {
+      "name": "pristine_stress_at_break",
+      "description": "Absolute tensile stress at break or ultimate tensile strength of the original, pristine or as-synthesized specimen. Retain units, approximation and uncertainty.",
+      "value_type": "array",
+      "aliases": ["stress at break", "breaking strength", "maximal strength", "tensile strength", "pristine", "as-synthesized"]
+    },
+    {
+      "name": "storage_modulus_recovery",
+      "description": "Reported relative recovery of storage modulus. Preserve whether the result is measured, calculated or projected, and whether it is a range.",
+      "value_type": "array",
+      "aliases": ["storage modulus", "recovery efficiency", "projecting", "projection"]
+    },
+    {
+      "name": "device_response_recovery",
+      "description": "Reported recovery of an actual device response after damage and repair, including measured response, qualitative outcome or tested repair-cycle count. A proposed application alone is not a tested device result.",
+      "value_type": "array",
+      "aliases": ["actuator", "device", "robot", "contraction", "bending", "damage", "cycle"]
+    },
+    {
+      "name": "reprocessing_demonstration",
+      "description": "Reported material reprocessing experiments, operation and qualitative or quantitative retention of properties, keeping reprocessing distinct from repair of a cut specimen.",
+      "value_type": "array",
+      "aliases": ["reprocessing", "remolding", "molding", "recycled", "powder", "compression"]
+    },
+    {
+      "name": "repair_conditions",
+      "description": "Reported damage geometry, surface contact, repair temperature and duration. Keep active heating, cooling and subsequent recovery or aging durations distinct; do not invent total downtime.",
+      "value_type": "array",
+      "aliases": ["healing", "repair", "cut", "contact", "temperature", "cooling", "recovery"]
+    },
+    {
+      "name": "measurement_conditions",
+      "description": "Reported mechanical measurement temperature, specimen geometry, strain or crosshead rate, replicate count and uncertainty convention, without assuming unspecified conditions.",
+      "value_type": "array",
+      "aliases": ["tensile", "strain rate", "room temperature", "gauge", "standard deviation", "replicate"]
+    },
+    {
+      "name": "comparison_baseline",
+      "description": "Explicit comparison state or specimen used to define a reported recovery or retention result, preserving the original terminology.",
+      "value_type": "array",
+      "aliases": ["original", "pristine", "healed", "as-synthesized", "relative", "ratio"]
+    },
+    {
+      "name": "claim_status",
+      "description": "Explicit status of a property or application claim as measured experiment, device demonstration, simulation, calculation, projection or proposed application. Do not promote a proposal to a demonstrated result.",
+      "value_type": "array",
+      "aliases": ["measured", "tested", "simulation", "calculated", "projecting", "potential", "application"]
+    }
+  ]
+}
