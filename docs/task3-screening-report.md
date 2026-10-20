@@ -119,3 +119,5 @@ The existing Task 3 selector can compare reviewed atomic material observations a
 This pack completes the DPAL-only research deliverable: criteria, one concrete application example, five checked lead decisions, rejected inference examples and actionable gaps. It does not claim extraction accuracy, validated material-selection performance or an autonomous literature search.
 
 For a later authorized material evaluation, assess source/sample alignment, comparable criterion outcomes, unsafe retentions, incorrect exclusions and decision reasons separately. Returning “need more evidence” everywhere is not proof that the selector recovered useful evidence. No unified score or universal material ranking is needed.
+
+The [practical AutoSchema preparation plan](task3-autoschema-plan.md) separates completed work from the remaining application requirements, source evidence, schema/alignment prerequisites and evaluation steps. It includes the verified synthetic software checks and makes no claim that automatic extraction-to-screening integration is complete.

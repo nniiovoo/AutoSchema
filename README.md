@@ -339,6 +339,8 @@ See [Task 3 inputs, evidence reviews and decision rules](docs/task3-selection.md
 
 Task 3 research uses the [DPAL article](https://doi.org/10.1016/j.matt.2025.102624) as its sole literature starting point. The [completed DPAL research pack](docs/task3-screening-report.md) contains screening criteria, a concrete application example, five checked reading-lead decisions and evidence gaps. Its [CSV worksheet](examples/task3/dpal_screening.csv) and [evidence register](examples/task3/dpal_evidence.json) describe literature families, not measured material candidates, and must not be passed to the numeric selector. See the [assignment notes](docs/task3-assignment-reassessment.md) for the scope and code boundaries.
 
+Follow the [Task 3 preparation plan](docs/task3-autoschema-plan.md) for application requirements, reviewed inputs, schema/value-evidence handoff prerequisites and an evaluation checklist.
+
 ## What not to commit
 
 Do not commit:
