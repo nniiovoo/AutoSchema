@@ -79,6 +79,6 @@ Aggregation uses mandatory criteria only, in this order: `manual_review`, then `
 
 ## Validation boundary
 
-Run the separate four-paper curated replay with `python run_task3_real_papers.py`. See its [real-paper evidence, decisions and missing checks](task3-real-paper-results.md). This uses actual paper evidence with supplied assistant reviews; it does not run the model extractor.
+The current research scope uses the [DPAL article](https://doi.org/10.1016/j.matt.2025.102624). Its paper-level tags can guide discovery and terminology; they do not establish a candidate's numerical performance or application suitability. See the [assignment and DPAL research notes](task3-assignment-reassessment.md). Manually curated, source-linked inputs can test this selection stage without running Phase II or using a model API.
 
 The synthetic example verifies intended rule behavior on explicit inputs. It does not measure real-paper extraction accuracy, scientific review quality, general polymer-screening performance or time saved. A real evaluation needs independently annotated paper/sample/property/condition/evidence relationships and stated application criteria, including missing evidence and challenging negative cases.

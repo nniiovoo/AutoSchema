@@ -279,7 +279,7 @@ class Task3SelectionTests(unittest.TestCase):
         self.observation["evidence"][0]["quote"] = text
 
     def test_reported_deviation_preserves_threshold_crossing(self):
-        # Li et al. report this number for fracture-strain recovery, not UTS.
+        # Keep the synthetic metric and reported uncertainty distinct from strength recovery.
         self.observation["property"] = "fracture_strain_recovery"
         self.profile["criteria"][0]["property"] = "fracture_strain_recovery"
         self.reported_deviation("90 ± 3%", 90, {"lower": 87, "upper": 93, "unit": "%",
