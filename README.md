@@ -337,7 +337,7 @@ python select_candidates.py --input examples/task3/input.json --reviews examples
 
 See [Task 3 inputs, evidence reviews and decision rules](docs/task3-selection.md). Run its focused checks with `python -m unittest -v test_task3_selection`.
 
-Task 3 research uses the [DPAL article](https://doi.org/10.1016/j.matt.2025.102624) as its sole literature starting point. See the [assignment and DPAL research notes](docs/task3-assignment-reassessment.md) for the distinction between paper discovery, evidence reliability and application-specific screening.
+Task 3 research uses the [DPAL article](https://doi.org/10.1016/j.matt.2025.102624) as its sole literature starting point. The [completed DPAL research pack](docs/task3-screening-report.md) contains screening criteria, a concrete application example, five checked reading-lead decisions and evidence gaps. Its [CSV worksheet](examples/task3/dpal_screening.csv) and [evidence register](examples/task3/dpal_evidence.json) describe literature families, not measured material candidates, and must not be passed to the numeric selector. See the [assignment notes](docs/task3-assignment-reassessment.md) for the scope and code boundaries.
 
 ## What not to commit
 

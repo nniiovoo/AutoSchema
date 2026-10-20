@@ -2,6 +2,8 @@
 
 Research date: 20 October 2026. Scope: the assignment supplied by the user, the linked DPAL article and its supplemental methods, and the existing generic Task 3 implementation. This is a research/design note, not an executed material benchmark or a live extraction result.
 
+The [completed DPAL screening research pack](task3-screening-report.md) now supplies operational criteria, an analyst-proposed application context, a checked five-lead worksheet and a gap ledger. This note records the assignment and implementation boundaries behind that deliverable.
+
 ## What we are trying to deliver
 
 **Task 3 needs two separate judgments: whether each material observation is supported by its source, and whether supported evidence meets the needs of a stated application.** The user-supplied clarification permits hand-curating a few real candidate inputs instead of waiting for an upstream dataset. It asks for executable rules, retained/excluded candidates with reasons, and explicit handling of different conditions or missing information. The original assignment also asks about relevant metrics, experimental versus potential applications, and further literature searches, without requiring a unified score.
@@ -51,7 +53,7 @@ A usable application profile needs the function, service environment, relevant g
 
 Separate three condition types: how a material is processed/repaired, how the property is measured, and how the intended component will operate. Decide which differences prevent comparison and whether any reported process violates a separately declared hard feasibility constraint. The present code treats unmatched conditions as missing evidence for the requested protocol; it does not automatically declare permanent material failure. [Profile/rule validation](../selection_lib/screening.py#L205-L214), [condition comparison](../selection_lib/screening.py#L164-L171).
 
-At this research stage no application-specific numeric profile or material-performance case is established from DPAL alone. That is an explicit remaining requirement, not a reason to fabricate a worked benchmark.
+The research pack proposes a concrete gripper use context, while numerical acceptance limits and formulation-level evidence remain undefined. No application-specific numeric performance profile or material benchmark is established from DPAL alone. That boundary is explicit rather than filled with invented measurements.
 
 ## Step 4: make claim categories and decisions explicit
 
@@ -76,7 +78,7 @@ The current queue records reason, owner, coverage and a next action, but does no
 
 The generic selector runs independently of model APIs: it accepts source-linked observations, supplied semantic reviews and an application profile, then writes evidence checks, criterion decisions and follow-ups. [Public entry point](../select_candidates.py#L1-L11), [input and output](../select_candidates.py#L39-L68).
 
-DPAL research now provides a defensible discovery-versus-selection boundary. It does not yet provide an application-qualified candidate dataset. The remaining deliverables are a justified concrete use, a reviewed observation table with adequate experimental detail, and an actual run with independently reasoned decisions. These require material evidence beyond library-level tag relationships; they are not represented as completed in this note.
+The research pack supplies the discovery-versus-selection boundary, proposed use, screening criteria and five source-checked family-level decisions. It does not provide an application-qualified candidate dataset. Numerical acceptance limits, formulation-specific experimental observations and a material-selector evaluation with independently reasoned outcomes remain outstanding. Those require evidence beyond library-level tag relationships and are not represented as completed.
 
 Live AutoSchema extraction is an additional upstream evaluation. Its normalizer deduplicates values and collects evidence independently, so matching array positions alone cannot establish the atomic relationships Task 3 requires. [Value normalization](../extract_lib/postprocess.py#L33-L65), [evidence normalization/output](../extract_lib/postprocess.py#L67-L115). The assignment's permission to hand-curate inputs means model credentials do not block the research/design phase.
 
