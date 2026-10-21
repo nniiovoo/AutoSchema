@@ -337,9 +337,16 @@ python select_candidates.py --input examples/task3/input.json --reviews examples
 
 See [Task 3 inputs, evidence reviews and decision rules](docs/task3-selection.md). Run its focused checks with `python -m unittest -v test_task3_selection`.
 
-Task 3 research uses the [DPAL article](https://doi.org/10.1016/j.matt.2025.102624) as its sole literature starting point. The [completed DPAL research pack](docs/task3-screening-report.md) contains screening criteria, a concrete application example, five checked reading-lead decisions and evidence gaps. Its [CSV worksheet](examples/task3/dpal_screening.csv) and [evidence register](examples/task3/dpal_evidence.json) describe literature families, not measured material candidates, and must not be passed to the numeric selector. See the [assignment notes](docs/task3-assignment-reassessment.md) for the scope and code boundaries.
+The [completed Task 3 case study](docs/task3-screening-report.md) checks four formulations from three experimental papers verified in the original DPAL release. Its application is a research entry screen for stiff UV-repairable wood coatings. The independently checked reference contains one keep, one exclusion and two evidence gaps. The unchanged selector agrees on two of four candidate decisions, sending the table-unit and thousands-comma cases to review; these are reported limitations, not hidden successes.
 
-Follow the [Task 3 preparation plan](docs/task3-autoschema-plan.md) for application requirements, reviewed inputs, schema/value-evidence handoff prerequisites and an evaluation checklist.
+Run the real-paper replay without model calls:
+
+```bash
+python select_candidates.py --input examples/task3/dpal_experiments/input.json --reviews examples/task3/dpal_experiments/reviews.json --out-dir outputs/task3_dpal_experiments
+python -m unittest -v test_task3_selection test_task3_dpal_case
+```
+
+See the [checked evaluation](examples/task3/dpal_experiments/evaluation.json), [decision worksheet](examples/task3/dpal_experiments/decisions.csv), [DPAL/source provenance](examples/task3/dpal_experiments/provenance.json) and [integration status](docs/task3-autoschema-plan.md). Inputs are manually source-reviewed; this is not a live extraction benchmark. The earlier [discovery worksheet](examples/task3/dpal_screening.csv) and [register](examples/task3/dpal_evidence.json) remain paper-family records and are not numeric-selector inputs.
 
 ## What not to commit
 

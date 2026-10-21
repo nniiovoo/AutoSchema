@@ -1,0 +1,5 @@
+candidate_id,reference_decision,selector_decision,decision_agrees,why
+Balkenende2016-neat,keep_for_followup,keep_for_followup,True,"Reported stiffness band is above 3 GPa and first-step visible cut closure is 12 s under matching wood/UV conditions, with shallow scar explicitly allowed."
+Balkenende2016-chainstopper1.5,exclude_for_use,manual_review,False,"Reported stiffness band is entirely below 3 GPa under matching DMA; unknown repair is retained as a gap, not treated as a failure."
+Wang2020-RHP1,retrieve_more,manual_review,False,"Main reports modulus at 25 C, but required DMA protocol is unverified and target wood/UV closure is not established."
+Tzoumani2023-WPU1-20-DMAM80,retrieve_more,retrieve_more,True,Qualitative water-triggered scratch result is supported; selected-formulation 1 Hz DMA and timed UV-on-wood experiment are not established.

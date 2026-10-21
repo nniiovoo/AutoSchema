@@ -1,0 +1,109 @@
+{
+  "source_url": "https://github.com/kmiller621/DPAL/releases/download/July2025/Dynamic-Polymer-Annotated-Library-DPAL.csv",
+  "release_url": "https://github.com/kmiller621/DPAL/releases/tag/July2025",
+  "release_published_at": "2025-07-24T17:22:27Z",
+  "accessed_on": "2026-10-21",
+  "csv_sha256": "33d3d63d837e5687ad80001aef1a3103180d011831f925a1a66007fbbcc4fca8",
+  "parsed_data_record_count": 15460,
+  "ordinal_definition": "1-based CSV data-record ordinal excluding header; not physical line number",
+  "records": [
+    {
+      "record_ordinal": 11970,
+      "zotero_key": "YW8WL95T",
+      "doi_in_snapshot": "10.1073/pnas.2000001117",
+      "title": "Room-temperature autonomous self-healing glassy polymers with hyperbranched structure",
+      "publication_year": "2020",
+      "authors": "Wang, H; Liu, HC; Cao, ZX; Li, WH; Huang, X; Zhu, Y; Ling, FW; Xu, H; Wu, Q; Peng, Y; Yang, B; Zhang, R; Kessler, O; Huang, GS; Wu, JR",
+      "url_in_snapshot": "",
+      "manual_tags": [
+        "Source: General",
+        "Property: Glass Transition",
+        "Property: Mechanical",
+        "Property: Rheology",
+        "Property: Self-healing"
+      ],
+      "membership_basis": "exact DOI and title in original released CSV"
+    },
+    {
+      "record_ordinal": 12814,
+      "zotero_key": "NIAFVEMT",
+      "doi_in_snapshot": "10.3390/ijms24032575",
+      "title": "Room-Temperature Self-Healable Blends of Waterborne Polyurethanes with 2-Hydroxyethyl Methacrylate-Based Polymers",
+      "publication_year": "2023",
+      "authors": "Tzoumani, I; Iatridi, Z; Fidelli, AM; Krassa, P; Kallitsis, JK; Bokias, G",
+      "url_in_snapshot": "",
+      "manual_tags": [
+        "Source: General",
+        "Application: Coating and Adhesives",
+        "Bond: Urethane",
+        "Property: Self-healing",
+        "Class: Hydrogen Bond",
+        "Backbone: Poly(methacrylate)",
+        "Backbone: Poly(acrylamide)",
+        "Backbone: Poly(N,N-dimethylacrylamide)"
+      ],
+      "membership_basis": "exact DOI and title in original released CSV"
+    },
+    {
+      "record_ordinal": 13072,
+      "zotero_key": "YQL784D6",
+      "doi_in_snapshot": "10.1038/ncomms10995",
+      "title": "Optically responsive supramolecular polymer glasses",
+      "publication_year": "2016",
+      "authors": "Balkenende, DWR; Monnier, CA; Fiore, GL; Weder, C",
+      "url_in_snapshot": "",
+      "manual_tags": [
+        "Source: General",
+        "Property: Glass Transition",
+        "Property: Optical",
+        "Application: Coating and Adhesives",
+        "Property: Self-healing",
+        "Class: Hydrogen Bond",
+        "Bond: Ureidopyrimidinone"
+      ],
+      "membership_basis": "exact DOI and title in original released CSV"
+    }
+  ],
+  "original_source_files": [
+    {
+      "file_name": "balkenende2016.pdf",
+      "sha256": "e42e6b86984716c2dc238cd2a0ac5634d958c0141c0aac744a0e8e1fda53b572",
+      "url": "https://www.nature.com/articles/ncomms10995.pdf"
+    },
+    {
+      "file_name": "balkenende2016-si.pdf",
+      "sha256": "b906b72e6d50ddb7340f19a1d6358c7d22c7be1d8473e311607b15020c703664",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fncomms10995/MediaObjects/41467_2016_BFncomms10995_MOESM1712_ESM.pdf"
+    },
+    {
+      "file_name": "wang2020.html",
+      "sha256": "2576b4a9ec157f70daee647c9b6a1995e3aeb27896a0e3c5f04630d414b6b155",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7260978/"
+    },
+    {
+      "file_name": "tzoumani-primary.pdf",
+      "sha256": "81ab61032144d39161404ea78c7ff3c867598f2ed2671c81cbdfb5460a66a79d",
+      "url": "https://www.mdpi.com/1422-0067/24/3/2575",
+      "download_url": "https://pdfs.semanticscholar.org/dd9f/9cb9317c703ee826b1f5b97cbf68e8034683.pdf",
+      "original_pdf_md5_in_primary_XML": "46b7bebea6af3cfe334e83cac96635b5",
+      "primary_XML_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9916575/fullTextXML"
+    },
+    {
+      "file_name": "tzoumani-si.pdf",
+      "sha256": "501d76d154cf58a336a91e435d58bd5c6ccc4bffaa2fa6e674c4deb7b2136913",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9916575/supplementaryFiles"
+    },
+    {
+      "file_name": "tzoumani.xml",
+      "sha256": "bdaf4e64f7c07e52468b8062ed5ff06f8279644703d364445eab8a844a15779b",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9916575/fullTextXML"
+    },
+    {
+      "file_name": "dpal-July2025.csv",
+      "sha256": "33d3d63d837e5687ad80001aef1a3103180d011831f925a1a66007fbbcc4fca8",
+      "url": "https://github.com/kmiller621/DPAL/releases/download/July2025/Dynamic-Polymer-Annotated-Library-DPAL.csv"
+    }
+  ],
+  "transport_note": "Tzoumani publisher PDF obtained via a mirror; its MD5 matches the original publisher PDF MD5 declared by primary EuropePMC XML (46b7bebea6af3cfe334e83cac96635b5). Its SI was obtained from the primary EuropePMC bundle. Wang SI access attempts did not obtain a usable PDF.",
+  "selection_policy": "Purposive four-formulation case study from three confirmed DPAL members, not a random sample or a reproduction of DPAL Case study 3."
+}

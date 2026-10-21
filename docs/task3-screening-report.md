@@ -1,123 +1,101 @@
-# Task 3: evidence-based polymer screening
+# Task 3: checked polymer screening for one application
 
-Completed research pack: **20 October 2026**. Scope: the DPAL article and its supplemental PDF only. This pack contains screening criteria, a checked DPAL example, decisions and an evidence-gap ledger. It does not report a material-performance benchmark or live extraction results.
+Completed case study: **21 October 2026**, on the `task3-selection` fork. We selected one application, checked four formulations from three real experimental papers in DPAL, froze reference decisions independently of selector output, and ran the existing selector. This completes the requested small screening demonstration and documents the software's disagreements. It does not claim that extraction-to-selection automation is complete.
 
-**Research question:** How should AutoSchema separate reliable source information from material suitability for a particular application?
+**Task 3 separates two questions: does the original source support the observation, and does comparable evidence meet this application's requirements?** Missing evidence is a distinct outcome, not a failed experiment. No combined material score or ranking is used.
 
-## 1. What one screening record must contain
+## 1. Real papers with verified DPAL provenance
 
-The required unit is:
+We downloaded the authors' [July 2025 DPAL release](https://github.com/kmiller621/DPAL/releases/tag/July2025), parsed its 15,460 CSV records, and matched exact titles, DOIs and Zotero keys. The CSV SHA256 is `33d3d63d837e5687ad80001aef1a3103180d011831f925a1a66007fbbcc4fca8`. Ordinals count data records after the header, not physical CSV lines. These papers are verified library members; we do not assert membership in DPAL's biocompatible-soft-robotics intersection.
 
-**Exact formulation and specimen state → property and value → unit and baseline → test conditions → source evidence → application requirement.**
-
-A polymer backbone is the main chain; a dynamic-bond category describes a reversible interaction or exchange chemistry. Neither alone uniquely identifies a formulation. A property is a measured response. An application is a function the material is intended to perform. A proposed use and a demonstrated device experiment are different claims.
-
-DPAL supplies literature-level associations. Its tagging, case studies and limitations explain why those associations cannot directly become sample-level acceptance evidence. [DPAL, main pp. 3, 6–8; supplemental methods pp. 10–11](https://doi.org/10.1016/j.matt.2025.102624).
-
-## 2. Separate evidence support from application fit
-
-Keep these columns independent; do not average them into a score.
-
-| Review field | What to check | Allowed conclusion |
+| Experimental paper | DPAL record / key | Role in this case |
 | --- | --- | --- |
-| Source support | Original passage, table or figure supports this exact claim | Supported, contradicted, ambiguous or unavailable |
-| Identity | Property, state and experiment concern the same current-work formulation | Linked, unresolved or different sample |
-| Measurement | Metric definition, raw value, unit, baseline and uncertainty are preserved | Interpretable or needs review |
-| Experiment category | Library association, specimen measurement, device test, simulation/projection or proposed use | Preserve the actual category |
-| Comparability | Processing, measurement and service conditions answer the declared criterion | Comparable, incompatible or incomplete |
-| Application fit | Supported comparable evidence meets each mandatory requirement | Pass, fail or undetermined |
+| [Balkenende et al. (2016), Optically responsive supramolecular polymer glasses](https://doi.org/10.1038/ncomms10995) | 13072 / YQL784D6 | Same-paper neat/blended formulations with matched stiffness measurements |
+| [Wang et al. (2020), Room-temperature autonomous self-healing glassy polymers with hyperbranched structure](https://doi.org/10.1073/pnas.2000001117) | 11970 / YW8WL95T | Reported stiffness with unresolved target measurement protocol |
+| [Tzoumani et al. (2023), Room-Temperature Self-Healable Blends of Waterborne Polyurethanes with 2-Hydroxyethyl Methacrylate-Based Polymers](https://doi.org/10.3390/ijms24032575) | 12814 / NIAFVEMT | Scratch-healing result that cannot establish the requested formulation/protocol measurements |
 
-An accurate quotation can still be assigned to the wrong sample or metric. A well-supported result can show poor performance. Conversely, a promising statement without methods is insufficient evidence. Replicates, controls, uncertainty and repeated testing inform experimental adequacy; a quote match does not establish reproducibility.
+The [provenance manifest](../examples/task3/dpal_experiments/provenance.json) preserves release information, selected records and original-document hashes. Full papers and the CSV are archived outside the repository; only short exact excerpts and paraphrased assessments are committed. The Tzoumani PDF obtained through a mirror has an MD5 checksum matching the original publisher PDF checksum declared in primary EuropePMC XML; its supplement came from EuropePMC's original bundle. Wang's main article was available, but a usable supplement was not obtained. Access failure is not evidence that a measurement was never reported.
 
-## 3. Concrete application and required evidence
+## 2. Choose an application before making decisions
 
-Our **analyst-proposed example** is a laboratory soft robotic gripper that picks up and releases cell-loaded hydrogel specimens in aqueous medium at a nominal **37°C**. The function and temperature are explicit teaching assumptions, not conditions reported for the DPAL leads. The example is motivated by DPAL's biocompatible-soft-robotics case.
+The application is a **research shortlist for a stiff, UV-repairable coating on rigid wood**, allowing hot-melt fabrication and local photothermal heating. It is a laboratory entry screen, with separately fabricated film stiffness explicitly permitted as a same-formulation proxy. It is not a qualification of an installed protective coating.
 
-The owner must still set specimen dimensions, payload, allowed deformation, actuation mode, contact duration, biological endpoint and cycle life. Do not invent universal acceptance thresholds. The following are our proposed screening criteria, not numerical limits established by DPAL.
+These are **analyst-selected demonstration requirements**, chosen after exploratory reading and fixed before the independent reference and software replay. They are not industrial standards, paper recommendations or a blinded material-discovery benchmark.
 
-| Requirement | Metric or evidence needed | Conditions needed before comparison |
+| Mandatory criterion | Acceptance requirement | Required evidence |
 | --- | --- | --- |
-| Relevant biological response | Chosen endpoint relative to a matched control, with its definition, uncertainty and replicates | Full formulation; biological model; contact/extract exposure; dose, medium, temperature, duration and controls |
-| Successful gripping | Pick-and-release success, supported payload and specimen deformation | Same device/formulation; object geometry; actuation input; aqueous state; temperature; repetitions |
-| Adequate compliance and strength | Appropriate modulus, strain at failure and deformation response | Geometry, hydration, conditioning, loading direction/rate and specimen state; a larger value is not universally better |
-| Stable repeated operation | Functional retention, fatigue, creep or dimensional drift appropriate to the mechanism | Load/input amplitude, frequency, dwell, environment, duration and cycle count |
-| Feasible fabrication and actuation | Demonstrated process and operating window | Temperature, pressure/voltage/other stimulus, solvents or residual components, and resulting device function |
-| Repair, **only if required** | A named recovery metric and restored device function | Damage severity, contact, repair conditions, cooling/aging, original same-formulation baseline and repeated repair |
+| C1: initial stiffness | Dynamic **flexural storage modulus E' at least 3.0 GPa** | Unhealed material; DMA three-point bending; 25 C; 1 Hz; heating 5 C/min |
+| C2: optical repair response | Visible razor-cut closure within **30 s**, allowing a remaining shallow scar | 300 micrometre coating on wood; UV 320-390 nm; 500 mW/cm2; actual timed optical experiment |
 
-A dynamic bond does not by itself establish self-repair. A coupon modulus cannot substitute for gripping success. Biological evidence on one ingredient cannot be transferred to a different complete formulation.
+C1 asks for stiffness, not tensile strength, static flexural modulus or shear storage modulus. C2 asks for a limited visible response, not complete microscopic restoration, recovered strength or repeated-repair durability. The thresholds make the example executable; their engineering relevance must be revisited for any real product.
 
-## 4. Operational screening rules
+Preserve the source's reported plus/minus extent. For this conservative demonstration, a band wholly above or below the bound supports that direction; crossing it requires review. The statistic in the glass paper is not identified, so its band is not relabelled SD or a confidence interval. This is a screening convention, not a statistical significance test.
 
-Apply the rules in order, retaining a reason and owner for each unresolved item.
+## 3. Checked evidence and material decisions
 
-| Rule | Action |
-| --- | --- |
-| R1: identify the source and sample | Preserve paper/locator, exact formulation, current-work role and state. Unresolved identity goes to review. |
-| R2: verify the observation | Check the metric–value–unit–baseline relation against its original context. Reject an unsupported claim or correct/review it; this does not prove the material failed. |
-| R3: establish the experiment category | A device criterion requires an actual experiment on the identified material and relevant function. A tag, proposal or simulation cannot silently fill it. |
-| R4: establish the requirement | Undefined acceptance bounds or service conditions go to the application owner. More literature cannot choose the owner's specification. |
-| R5: compare compatible evidence | Keep different protocols separate. Unit conversion requires a recorded, reviewed transformation. Different conditions alone do not demonstrate failure at the requested condition. |
-| R6: handle uncertainty and conflict | Preserve the reported uncertainty kind. A threshold-straddling interval or conflicting comparable results requires review under the current conservative policy; SD is not a confidence interval. |
-| R7: decide fit | After the preceding reviews, adequate comparable passing evidence supports `keep_for_followup`; a supported mandatory failure supports `exclude_for_use`. Missing decisive evidence requires `retrieve_more`. |
-| R8: retain the decision boundary | State which use and protocol the decision concerns. Keep means advance research, not complete device qualification. Do not rank incomparable or incomplete records. |
+Original pages, relevant tables/figures and available methods/supplements were checked. A separate research assistant derived the reference without reading selector output; another independently audited the glass evidence. These are assistant source judgments, not human expert ground truth. The [reference file](../examples/task3/dpal_experiments/reference.json) preserves the frozen decisions and their reasons.
 
-A separately declared hard process limit can reject a **demonstrated processing route**. It does not prove that the polymer could never work through another route. The existing numeric selector treats condition mismatches as evidence gaps; this report does not claim that a separate process-feasibility veto has been implemented.
-
-## 5. Worked DPAL example: five checked reading leads
-
-DPAL Case study 3 reports an intersection of **22 paper records** and lists the following backbone–bond associations with citation totals. These are literature groups and a historical bibliographic snapshot, not five tested formulations or current citation queries. [DPAL, Case study 3, p. 6; related Fig. 4C, p. 8](https://doi.org/10.1016/j.matt.2025.102624).
-
-| Lead | Reported backbone–bond association | Reported citations, metadata only | Evidence judgment | Reading decision | Material-fit decision |
-| --- | --- | ---: | --- | --- | --- |
-| L01 | Poly(saccharide) / catechol | 713 | Association supported as reported | Keep for targeted reading | Retrieve primary evidence; fit undetermined |
-| L02 | Poly(acrylic acid) / catechol | 661 | Association supported as reported | Keep for targeted reading | Retrieve primary evidence; fit undetermined |
-| L03 | Poly(vinyl alcohol) / borate ester | 472 | Association supported as reported | Keep for targeted reading | Retrieve primary evidence; fit undetermined |
-| L04 | Poly(vinyl alcohol) / catechol | 249 | Association supported as reported | Keep for targeted reading | Retrieve primary evidence; fit undetermined |
-| L05 | Poly(vinyl alcohol) / cyclodextrin | 151 | Association supported as reported | Keep for targeted reading | Retrieve primary evidence; fit undetermined |
-
-For every row, the exact formulation, matched biological/device measurements and acceptance limits are unresolved in this source-bounded case. This does not mean the underlying papers lack experiments. No row receives a fabricated sample ID or numerical material observation. Citation ordering is reproduced as source metadata, not our performance ranking. Paper groups may overlap; their counts cannot be treated as independent experimental samples.
-
-The checked output is **five relevant reading leads, zero formulation-level approvals, and zero performance-based material exclusions**. All five material-fit decisions remain undetermined. This is a result of the evidence scope, not a negative experiment on any family.
-
-Machine-readable evidence: [dpal_evidence.json](../examples/task3/dpal_evidence.json). Editable worksheet: [dpal_screening.csv](../examples/task3/dpal_screening.csv). These are literature-triage records, **not** inputs to the numeric material selector.
-
-## 6. What is excluded, and why
-
-The following are **constructed audit examples**, not statements attributed to DPAL or observed AutoSchema mistakes:
-
-| Inference to check | Decision |
-| --- | --- |
-| Highest citation total means best gripping performance | Reject the claim: citations are not a functional measurement. |
-| Co-occurring tags establish this formulation passed the proposed 37°C gripper test | Reject the claim: formulation, protocol and result are missing. |
-| A family-level association establishes biological compatibility for every formulation | Reject the transfer: identity and exposure are unspecified. |
-| An absent numerical result means the material failed | Reject the inference: missing evidence is not a measured failure. |
-| An absent tag proves a property was never studied | Reject the inference: metadata-only discovery can omit full-text information. |
-
-This shows claim-level exclusion without pretending to have measured material-level failures. Demonstrating actual material retention and exclusion requires applicable experimental evidence, which this single library article does not provide for these rows.
-
-## 7. Missing evidence and when to retrieve more
-
-The [evidence register](../examples/task3/dpal_evidence.json) assigns six gap IDs to every lead:
-
-| Gap | Next action | Owner |
+| Exact material | What the original evidence establishes | Scientific screening decision |
 | --- | --- | --- |
-| G01: exact formulation and state | Identify the underlying record, sample labels, composition and processing | Source reviewer |
-| G02: application requirements | Define load, geometry, actuation, exposure and acceptance bounds | Application owner |
-| G03: quantitative measurements | Inspect same-sample figures, tables, methods, baseline and uncertainty | Source reviewer |
-| G04: actual device experiment | Separate tested function from coupon results, simulation and proposed use | Source reviewer |
-| G05: relevant biological evidence | Match the full formulation and exposure to the chosen endpoint and controls | Owner, then source reviewer |
-| G06: comparability and repeatability | Check conditioning, replicates, cycles, creep and conflicts | Source reviewer |
+| Neat amorphous **(UPyU)3TMP** | C1: 3.65 +/- 0.51 GPa; descriptive band 3.14-4.16. C2: first-step visible closure after 12 s under target wood/UV conditions; a shallow scar remains. | **Keep for follow-up:** both narrowly defined criteria pass. |
+| **(UPyU)3TMP with 1.5 equivalents UPy-C6-U-EH** | C1: 1.47 +/- 0.29 GPa; band 1.18-1.76 under the same DMA protocol. Target repair was not established for this blend. | **Exclude for this use:** a supported mandatory stiffness failure settles the screen. Missing repair remains a gap, not a second failure. |
+| **RHP-1**, MBA/BDA molar feed 1/1.125 | Main article reports 2,721 MPa at 25 C. Required DMA mode, frequency and heating rate remain unverified; target timed UV-on-wood repair is unestablished. | **Need more evidence:** do not convert a lower, unqualified number into a comparable failure. |
+| **WPU1/20P(HEMA-co-DMAM80)** | Qualitative water-triggered scratch closure on a free film. Supplementary DMA concerns different formulations at 10 Hz, not this formulation under C1. | **Need more evidence:** neither requested measurement is established; a different repair trigger is not proof of failure. |
 
-Retrieve only to answer a named question that could change a criterion. Stop the numerical comparison while requirements are undefined. If a valid mandatory failure already settles the stated use, do not search selectively for a more favorable number. For inaccessible or unlocated evidence, record coverage and the unresolved decision; do not write “not reported” without an adequate source check.
+Sources and locators: [Balkenende, main pp. 3-6, Table 1, Fig. 6a/b p. 7 and Optical healing methods p. 8](https://doi.org/10.1038/ncomms10995); [Wang, thermomechanical results, Fig. 2C/D and Materials and Methods](https://pmc.ncbi.nlm.nih.gov/articles/PMC7260978/); [Tzoumani, Fig. 8e/f p. 11, preparation p. 13, repair methods p. 14 and supplemental Fig. S2](https://pmc.ncbi.nlm.nih.gov/articles/PMC9916575/).
 
-These follow-ups are **queued, not executed**: the user-selected scope remains DPAL and its supplemental PDF. No additional materials paper was introduced.
+### Walk through the neat/blended pair
 
-## 8. AutoSchema integration and validation boundary
+1. **Identify the formulation.** Keep neat and chain-stopper blend separate. Never transfer the neat coating's repair result to the blend.
+2. **Identify the metric and conditions.** Table 1 names storage modulus, assigns its GPa header, and identifies three DMA measurements. Common methods provide the matching protocol. A static flexural modulus elsewhere in the same table is a different quantity.
+3. **Check the requirement.** The neat reported band clears C1. The 1.5-equivalent blend's band lies below C1. This same-paper comparison supports a use-specific exclusion without ranking unrelated papers.
+4. **Check what repair actually means.** The neat result meets C2's shallow-scar allowance. Methods describe another exposure for scar removal; the first step must not become a claim of complete repair. Local heating reaches 188 C. Hot repair and an ambient pre-repair stiffness test are separate conditions.
+5. **Keep the decision boundary.** Retention advances investigation. It does not establish adhesion, abrasion resistance, barrier performance, repeatability or durability. Film DMA was not measured in situ on wood. [Original experiment and methods](https://doi.org/10.1038/ncomms10995).
 
-The existing Task 3 selector can compare reviewed atomic material observations against declared numeric criteria. Its evidence receipts are supplied judgments, not authenticated human reviews or scientific proof. Paper-level DPAL leads must first acquire genuine formulation/property/condition relations; bibliographic counts must never be passed as measurements.
+For the WPU record, “20” means additive mass relative to WPU solids, not 20% of the whole blend; DMAM80 is the nominal feed designation. Its available mechanical studies cannot be borrowed across formulation and frequency. A source label mentioning healing is useful discovery information, but it cannot fill an unmeasured timed UV criterion. [Tzoumani, sections 2.2, 2.4 and 3.3; Fig. 8; supplement](https://doi.org/10.3390/ijms24032575).
 
-This pack completes the DPAL-only research deliverable: criteria, one concrete application example, five checked lead decisions, rejected inference examples and actionable gaps. It does not claim extraction accuracy, validated material-selection performance or an autonomous literature search.
+## 4. Actual selector replay: show the disagreements
 
-For a later authorized material evaluation, assess source/sample alignment, comparable criterion outcomes, unsafe retentions, incorrect exclusions and decision reasons separately. Returning “need more evidence” everywhere is not proof that the selector recovered useful evidence. No unified score or universal material ranking is needed.
+We manually prepared atomic observations with original notation, identities, conditions, locators and separate source-review receipts. The existing selector and Phase I/II code were **not changed**. We did not append table units, remove thousands commas or invent a missing condition to make records pass.
 
-The [practical AutoSchema preparation plan](task3-autoschema-plan.md) separates completed work from the remaining application requirements, source evidence, schema/alignment prerequisites and evaluation steps. It includes the verified synthetic software checks and makes no claim that automatic extraction-to-screening integration is complete.
+| Candidate | Frozen source-based reference | Actual selector | Explanation |
+| --- | --- | --- | --- |
+| Neat UPy glass | Keep | Keep | Inline value/unit, matching reviewed conditions and both criteria admitted. |
+| 1.5-equivalent blend | Exclude | Manual review | Original table cell has no inline unit; the parser cannot use its separately cited GPa header (`raw_unit_mismatch`). |
+| RHP-1 | Need more evidence | Manual review | Thousands-comma notation triggers `numeric_and_raw_value_mismatch` before protocol comparison. Resolving notation would still leave scientific protocol and repair gaps. |
+| WPU composite | Need more evidence | Need more evidence | Prepared input explicitly records missing target measurements. This does not demonstrate that an extractor independently found the gaps. |
+
+The replay matches **2 of 4 overall decisions** and **6 of 8 criterion decisions**. It makes no unsupported retention or incorrect exclusion in these four cases, but adds two review decisions. The supported exclusion is missed by automation; the RHP evidence gap is reached only as a source-format review issue. Do not call this general screening accuracy or successful evidence retrieval.
+
+This small purposive case diagnoses two concrete handoff limitations: **table cell-to-header unit relations** and **reviewed normalization of numeric notation**. A supplied semantic review does not override mechanical validation. Future changes must preserve original text and explicit transformations rather than weakening the evidence gate. Upstream flat extraction arrays also still need formulation/metric/condition relations before this stage.
+
+Checked results: [evaluation.json](../examples/task3/dpal_experiments/evaluation.json), [decision worksheet](../examples/task3/dpal_experiments/decisions.csv), [atomic inputs](../examples/task3/dpal_experiments/input.json), [separate reviews](../examples/task3/dpal_experiments/reviews.json). These are real-paper **curated inputs and an actual selector run**, not actual LLM extraction output.
+
+## 5. Follow-up rules and stopping points
+
+| Candidate / gap | Owner and next action | Stopping rule |
+| --- | --- | --- |
+| Neat: finished-coating performance | Application owner defines adhesion, barrier, abrasion and lifetime needs; source reviewer checks relevant experiments | Do not promote research retention into product readiness. |
+| Blend: table unit; unknown repair | Software/evidence reviewer specifies traceable cell/header normalization; retain repair unknown | Established stiffness failure already excludes this profile; more repair searching cannot reverse it. |
+| RHP-1: notation and protocol | Evidence/software reviewer handles the comma without changing the raw string; source reviewer obtains usable original SI and verifies DMA | A corrected number alone cannot establish comparability. If access remains blocked, preserve that status. |
+| RHP-1: repair | Source reviewer seeks an exact-formulation timed coating/wood UV experiment | Contact healing is not a substitute; if no applicable evidence is found, a new experiment is needed. |
+| WPU: stiffness and repair | Source reviewer seeks exact-formulation target DMA and timed wood/UV evidence | Do not transfer other formulations' 10 Hz data or treat untimed water healing as a failed UV test. |
+
+The code emits six pending actions. Its early format gates do not enumerate every later scientific gap; the source-based ledger above remains necessary. Retrieval was performed for this study's original papers and supplements, but queued future actions were not autonomously executed.
+
+## 6. Reproduce and report the completion boundary
+
+From the repository root:
+
+```sh
+python select_candidates.py --input examples/task3/dpal_experiments/input.json --reviews examples/task3/dpal_experiments/reviews.json --out-dir outputs/task3_dpal_experiments
+python -m unittest -v test_task3_selection test_task3_dpal_case
+```
+
+The new checks bind fixture reviews to their cited source revisions, replay actual CLI decisions, retain the two reference disagreements and prevent unsupported numeric formats from silently producing a selection. All **34 tests passed** on 21 October 2026: 31 existing checks and three real-case checks. They do not assert that all source-based decisions are automated correctly. The independent reference was frozen before the replay and was not rewritten to match it.
+
+**Completed:** executable criteria, one application, three DPAL-member experimental papers, four formulation decisions, evidence and condition checks, actual code replay, separately reported reference/software outcomes, and targeted gaps. No unified score is required.
+
+**Outside this completed case study:** live AutoSchema extraction accuracy, autonomous retrieval, production normalization fixes, human expert adjudication, new experiments and full coating qualification. Sources were selected to expose useful decision types; the small dependent sample cannot estimate performance across DPAL.
+
+The earlier [five-lead discovery register](../examples/task3/dpal_evidence.json) and [worksheet](../examples/task3/dpal_screening.csv) remain historical literature-triage artifacts. They are not the experimental input used here.

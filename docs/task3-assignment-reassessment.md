@@ -1,5 +1,7 @@
 # Task 3: assignment and DPAL research
 
+Historical scope note: this reassessment records the **20 October 2026 DPAL-only preparation**. On 21 October the user expanded the scope to experimental papers from DPAL. The [completed experimental case study](task3-screening-report.md) now provides one fixed application, real formulation decisions, an actual selector replay and its reference disagreements. Statements below about unavailable material evaluation refer to the earlier preparation stage.
+
 Research date: 20 October 2026. Scope: the assignment supplied by the user, the linked DPAL article and its supplemental methods, and the existing generic Task 3 implementation. This is a research/design note, not an executed material benchmark or a live extraction result.
 
 The [completed DPAL screening research pack](task3-screening-report.md) now supplies operational criteria, an analyst-proposed application context, a checked five-lead worksheet and a gap ledger. This note records the assignment and implementation boundaries behind that deliverable.

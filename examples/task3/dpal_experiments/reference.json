@@ -1,0 +1,45 @@
+{
+  "reference_kind": "source_checked_reference_frozen_before_selector_execution",
+  "reference_date": "2026-10-21",
+  "original_reference_sha256": "b720af57c972c5bd6305a9d4dd3ba0e0fe198b578d581a0d86b18e36f9535f4f",
+  "review_method": "Separate research assistant read original sources without selector outputs; root and another assistant independently checked the glass result. Not human expert ground truth.",
+  "profile_id": "stiff_UV_repairable_wood_coating_entry_v1",
+  "cases": [
+    {
+      "candidate_id": "Balkenende2016-neat",
+      "decision": "keep_for_followup",
+      "criteria": {
+        "C1": "keep_for_followup",
+        "C2": "keep_for_followup"
+      },
+      "rationale": "Reported stiffness band is above 3 GPa and first-step visible cut closure is 12 s under matching wood/UV conditions, with shallow scar explicitly allowed."
+    },
+    {
+      "candidate_id": "Balkenende2016-chainstopper1.5",
+      "decision": "exclude_for_use",
+      "criteria": {
+        "C1": "exclude_for_use",
+        "C2": "retrieve_more"
+      },
+      "rationale": "Reported stiffness band is entirely below 3 GPa under matching DMA; unknown repair is retained as a gap, not treated as a failure."
+    },
+    {
+      "candidate_id": "Wang2020-RHP1",
+      "decision": "retrieve_more",
+      "criteria": {
+        "C1": "retrieve_more",
+        "C2": "retrieve_more"
+      },
+      "rationale": "Main reports modulus at 25 C, but required DMA protocol is unverified and target wood/UV closure is not established."
+    },
+    {
+      "candidate_id": "Tzoumani2023-WPU1-20-DMAM80",
+      "decision": "retrieve_more",
+      "criteria": {
+        "C1": "retrieve_more",
+        "C2": "retrieve_more"
+      },
+      "rationale": "Qualitative water-triggered scratch result is supported; selected-formulation 1 Hz DMA and timed UV-on-wood experiment are not established."
+    }
+  ]
+}

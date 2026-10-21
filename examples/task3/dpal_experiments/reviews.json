@@ -1,0 +1,38 @@
+[
+  {
+    "observation_id": "neat-storage",
+    "paper_id": "10.1038/ncomms10995",
+    "sample_id": "UPy3TMP_neat",
+    "record_digest": "e3614395d81050ef3522b262fb54cdc4dea5620d59d99d2e6f4aa9a413b0e3ef",
+    "status": "supported",
+    "reviewer": "Assistant primary-source review cross-checked by independent research assistant",
+    "review_basis": "Original full context, formulation, metric, value, unit relation and conditions checked. Receipt is an assistant-supplied judgment, not authenticated human annotation or proof of reproducibility."
+  },
+  {
+    "observation_id": "neat-UV-closure",
+    "paper_id": "10.1038/ncomms10995",
+    "sample_id": "UPy3TMP_neat",
+    "record_digest": "353452a1030299e9fadde7f74a8a748cca8c5e404770bb5f77d386abcd656832",
+    "status": "supported",
+    "reviewer": "Assistant primary-source review cross-checked by independent research assistant",
+    "review_basis": "Original full context, formulation, metric, value, unit relation and conditions checked. Receipt is an assistant-supplied judgment, not authenticated human annotation or proof of reproducibility."
+  },
+  {
+    "observation_id": "blend1p5-storage",
+    "paper_id": "10.1038/ncomms10995",
+    "sample_id": "UPy3TMP_chainstopper_1p5",
+    "record_digest": "c3b477e469d27287393ae97b205a83e4e1314043fca6057b04dfff09f0207c35",
+    "status": "supported",
+    "reviewer": "Assistant primary-source review cross-checked by independent research assistant",
+    "review_basis": "Original full context, formulation, metric, value, unit relation and conditions checked. Receipt is an assistant-supplied judgment, not authenticated human annotation or proof of reproducibility."
+  },
+  {
+    "observation_id": "RHP1-storage",
+    "paper_id": "10.1073/pnas.2000001117",
+    "sample_id": "RHP1",
+    "record_digest": "9a78ff39088e427e4535454c4dbda4fd50e708e6b52207880ea99ded37ad4899",
+    "status": "supported",
+    "reviewer": "Assistant primary-source review cross-checked by independent research assistant",
+    "review_basis": "Original full context, formulation, metric, value, unit relation and conditions checked. Receipt is an assistant-supplied judgment, not authenticated human annotation or proof of reproducibility."
+  }
+]

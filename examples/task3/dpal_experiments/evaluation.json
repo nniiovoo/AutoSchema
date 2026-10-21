@@ -1,0 +1,132 @@
+{
+  "evaluation_kind": "checked_real_paper_replay_with_manually_prepared_inputs_not_live_extraction",
+  "date": "2026-10-21",
+  "profile_id": "stiff_UV_repairable_wood_coating_entry_v1",
+  "reference_review": "Independent assistant-source judgments frozen before replay; not human expert labels.",
+  "summary": {
+    "papers": 3,
+    "candidate_formulations": 4,
+    "candidate_decision_matches": 2,
+    "candidate_decision_denominator": 4,
+    "criterion_decision_matches": 6,
+    "criterion_decision_denominator": 8,
+    "reference_counts": {
+      "keep_for_followup": 1,
+      "exclude_for_use": 1,
+      "retrieve_more": 2
+    },
+    "selector_counts": {
+      "keep_for_followup": 1,
+      "manual_review": 2,
+      "retrieve_more": 1
+    },
+    "incorrect_retention_count": 0,
+    "incorrect_exclusion_count": 0,
+    "extra_review_vs_reference_count": 2,
+    "pending_actions": 6
+  },
+  "comparisons": [
+    {
+      "candidate_id": "Balkenende2016-neat",
+      "reference_decision": "keep_for_followup",
+      "selector_decision": "keep_for_followup",
+      "decision_agrees": true,
+      "evidence_admission": "supported_as_reported",
+      "criteria": [
+        {
+          "criterion_id": "C1",
+          "reference_decision": "keep_for_followup",
+          "selector_decision": "keep_for_followup",
+          "reason": "supported_comparable_observations_agree",
+          "agrees": true
+        },
+        {
+          "criterion_id": "C2",
+          "reference_decision": "keep_for_followup",
+          "selector_decision": "keep_for_followup",
+          "reason": "supported_comparable_observations_agree",
+          "agrees": true
+        }
+      ],
+      "followup_count": 0
+    },
+    {
+      "candidate_id": "Balkenende2016-chainstopper1.5",
+      "reference_decision": "exclude_for_use",
+      "selector_decision": "manual_review",
+      "decision_agrees": false,
+      "evidence_admission": "needs_review",
+      "criteria": [
+        {
+          "criterion_id": "C1",
+          "reference_decision": "exclude_for_use",
+          "selector_decision": "manual_review",
+          "reason": "raw_unit_mismatch",
+          "agrees": false
+        },
+        {
+          "criterion_id": "C2",
+          "reference_decision": "retrieve_more",
+          "selector_decision": "retrieve_more",
+          "reason": "Exact_1p5_blend_target_UV_coating_experiment_not_established; do_not_transfer_neat_glass_result",
+          "agrees": true
+        }
+      ],
+      "followup_count": 2
+    },
+    {
+      "candidate_id": "Wang2020-RHP1",
+      "reference_decision": "retrieve_more",
+      "selector_decision": "manual_review",
+      "decision_agrees": false,
+      "evidence_admission": "needs_review",
+      "criteria": [
+        {
+          "criterion_id": "C1",
+          "reference_decision": "retrieve_more",
+          "selector_decision": "manual_review",
+          "reason": "numeric_and_raw_value_mismatch",
+          "agrees": false
+        },
+        {
+          "criterion_id": "C2",
+          "reference_decision": "retrieve_more",
+          "selector_decision": "retrieve_more",
+          "reason": "Reported_room_temperature_contact_healing_is_not_target_UV_coating_on_wood_experiment",
+          "agrees": true
+        }
+      ],
+      "followup_count": 2
+    },
+    {
+      "candidate_id": "Tzoumani2023-WPU1-20-DMAM80",
+      "reference_decision": "retrieve_more",
+      "selector_decision": "retrieve_more",
+      "decision_agrees": true,
+      "evidence_admission": "no_observations",
+      "criteria": [
+        {
+          "criterion_id": "C1",
+          "reference_decision": "retrieve_more",
+          "selector_decision": "retrieve_more",
+          "reason": "Selected_20_DMAM80_formulation_target_DMA_value_not_established; SI_10Hz_data_are_different_formulations",
+          "agrees": true
+        },
+        {
+          "criterion_id": "C2",
+          "reference_decision": "retrieve_more",
+          "selector_decision": "retrieve_more",
+          "reason": "Water_triggered_untimed_free_film_scratch_closure_does_not_establish_target_UV_wood_protocol",
+          "agrees": true
+        }
+      ],
+      "followup_count": 2
+    }
+  ],
+  "limitations": [
+    "Small purposively selected case study, not an accuracy estimate for polymer literature.",
+    "Semantic support receipts are supplied after full-source assistant review; quotation checking does not independently verify scientific support.",
+    "Raw table-header units and thousands commas remain unmodified and trigger review; no production parser changes or hidden conversions.",
+    "Screening only: no Phase I/II LLM extraction, autonomous follow-up retrieval, new experiments or complete coating qualification."
+  ]
+}
