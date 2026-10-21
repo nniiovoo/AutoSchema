@@ -79,9 +79,9 @@ Aggregation uses mandatory criteria only, in this order: `manual_review`, then `
 
 ## Validation boundary
 
-The [completed real-paper case study](task3-screening-report.md) uses four formulations from three verified members of the released DPAL library. Its [atomic inputs](../examples/task3/dpal_experiments/input.json) and [separate reviews](../examples/task3/dpal_experiments/reviews.json) are manually curated from original experiments, not Phase II output. Replay them with the existing CLI, then run `python -m unittest -v test_task3_selection test_task3_dpal_case`.
+The [completed real-paper case study](task3-screening-report.md) uses three formulations from two verified members of the released DPAL library. Its [atomic inputs](../examples/task3/dpal_experiments/input.json) and [separate reviews](../examples/task3/dpal_experiments/reviews.json) are manually curated from original experiments, not Phase II output. Replay them with the existing CLI, then run `python -m unittest -v test_task3_selection test_task3_dpal_case`.
 
-The [independent reference](../examples/task3/dpal_experiments/reference.json) contains one keep, one exclusion and two retrieval decisions. The [actual replay](../examples/task3/dpal_experiments/evaluation.json) contains one keep, two manual reviews and one retrieval: original table-header units and thousands commas exceed current normalization support. Do not replace the scientific reference with software outputs or silently edit raw source notation. No production parser change is included in this case study.
+The [independent reference](../examples/task3/dpal_experiments/reference.json) contains one keep, one exclusion and one retrieval decision. The [actual replay](../examples/task3/dpal_experiments/evaluation.json) contains one keep, one manual review and one retrieval: original table-header unit linkage exceeds current normalization support. Do not replace the scientific reference with software outputs or silently edit raw source notation. No production parser change is included in this case study.
 
 The earlier [discovery register](../examples/task3/dpal_evidence.json) still describes literature families, not tested formulations, and must not be passed to the numeric selector. DPAL's paper tags guide discovery but cannot establish numerical performance.
 

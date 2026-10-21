@@ -1,5 +1,5 @@
 {
-  "reference_kind": "source_checked_reference_frozen_before_selector_execution",
+  "reference_kind": "presentation_subset_of_source_checked_reference_frozen_before_original_replay",
   "reference_date": "2026-10-21",
   "original_reference_sha256": "b720af57c972c5bd6305a9d4dd3ba0e0fe198b578d581a0d86b18e36f9535f4f",
   "review_method": "Separate research assistant read original sources without selector outputs; root and another assistant independently checked the glass result. Not human expert ground truth.",
@@ -24,15 +24,6 @@
       "rationale": "Reported stiffness band is entirely below 3 GPa under matching DMA; unknown repair is retained as a gap, not treated as a failure."
     },
     {
-      "candidate_id": "Wang2020-RHP1",
-      "decision": "retrieve_more",
-      "criteria": {
-        "C1": "retrieve_more",
-        "C2": "retrieve_more"
-      },
-      "rationale": "Main reports modulus at 25 C, but required DMA protocol is unverified and target wood/UV closure is not established."
-    },
-    {
       "candidate_id": "Tzoumani2023-WPU1-20-DMAM80",
       "decision": "retrieve_more",
       "criteria": {
@@ -41,5 +32,6 @@
       },
       "rationale": "Qualitative water-triggered scratch result is supported; selected-formulation 1 Hz DMA and timed UV-on-wood experiment are not established."
     }
-  ]
+  ],
+  "subset_note": "Three unchanged case labels retained from the original independently frozen four-case reference. The original_reference_sha256 identifies that parent snapshot. The subset was chosen after the first replay to simplify presentation, not to create a new blinded benchmark or claim improved performance."
 }
