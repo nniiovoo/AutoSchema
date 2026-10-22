@@ -4,26 +4,26 @@
   "profile_id": "stiff_UV_repairable_wood_coating_entry_v1",
   "reference_review": "Independent assistant-source judgments frozen before replay; not human expert labels.",
   "summary": {
-    "papers": 2,
-    "candidate_formulations": 3,
-    "candidate_decision_matches": 2,
-    "candidate_decision_denominator": 3,
-    "criterion_decision_matches": 5,
-    "criterion_decision_denominator": 6,
+    "papers": 4,
+    "candidate_formulations": 5,
+    "candidate_decision_matches": 3,
+    "candidate_decision_denominator": 5,
+    "criterion_decision_matches": 8,
+    "criterion_decision_denominator": 10,
     "reference_counts": {
       "keep_for_followup": 1,
       "exclude_for_use": 1,
-      "retrieve_more": 1
+      "retrieve_more": 3
     },
     "selector_counts": {
       "keep_for_followup": 1,
-      "manual_review": 1,
-      "retrieve_more": 1
+      "manual_review": 2,
+      "retrieve_more": 2
     },
     "incorrect_retention_count": 0,
     "incorrect_exclusion_count": 0,
-    "extra_review_vs_reference_count": 1,
-    "pending_actions": 4
+    "extra_review_vs_reference_count": 2,
+    "pending_actions": 8
   },
   "comparisons": [
     {
@@ -75,6 +75,30 @@
       "followup_count": 2
     },
     {
+      "candidate_id": "Wang2020-RHP1",
+      "reference_decision": "retrieve_more",
+      "selector_decision": "manual_review",
+      "decision_agrees": false,
+      "evidence_admission": "needs_review",
+      "criteria": [
+        {
+          "criterion_id": "C1",
+          "reference_decision": "retrieve_more",
+          "selector_decision": "manual_review",
+          "reason": "numeric_and_raw_value_mismatch",
+          "agrees": false
+        },
+        {
+          "criterion_id": "C2",
+          "reference_decision": "retrieve_more",
+          "selector_decision": "retrieve_more",
+          "reason": "Reported_room_temperature_contact_healing_is_not_target_UV_coating_on_wood_experiment",
+          "agrees": true
+        }
+      ],
+      "followup_count": 2
+    },
+    {
       "candidate_id": "Tzoumani2023-WPU1-20-DMAM80",
       "reference_decision": "retrieve_more",
       "selector_decision": "retrieve_more",
@@ -97,13 +121,37 @@
         }
       ],
       "followup_count": 2
+    },
+    {
+      "candidate_id": "Burnworth2011-Zn0p7",
+      "reference_decision": "retrieve_more",
+      "selector_decision": "retrieve_more",
+      "decision_agrees": true,
+      "evidence_admission": "supported_as_reported",
+      "criteria": [
+        {
+          "criterion_id": "C1",
+          "reference_decision": "retrieve_more",
+          "selector_decision": "retrieve_more",
+          "reason": "required_condition_missing:deformation_mode",
+          "agrees": true
+        },
+        {
+          "criterion_id": "C2",
+          "reference_decision": "retrieve_more",
+          "selector_decision": "retrieve_more",
+          "reason": "required_condition_missing:substrate",
+          "agrees": true
+        }
+      ],
+      "followup_count": 2
     }
   ],
   "limitations": [
     "Small purposively selected case study, not an accuracy estimate for polymer literature.",
     "Semantic support receipts are supplied after full-source assistant review; quotation checking does not independently verify scientific support.",
-    "Raw table-header units remain unmodified and trigger review; no production parser changes or hidden unit insertion.",
+    "Original table-header units and thousands commas remain unmodified and trigger review. Burnworth null-valued records support protocol facts only and do not invent target numeric measurements. No production parser changes or hidden conversions.",
     "Screening only: no Phase I/II LLM extraction, autonomous follow-up retrieval, new experiments or complete coating qualification."
   ],
-  "scope_note": "Two-paper presentation subset selected after the earlier replay; unchanged code, profile and retained reference labels. Changed denominators do not show improved model performance."
+  "scope_note": "Four distinct papers and five formulations, purposively selected for evidence/condition coverage. Existing code, application profile and original reference labels unchanged; new Burnworth label frozen before expanded replay. Changed denominators do not show model improvement."
 }

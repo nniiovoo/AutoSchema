@@ -21,7 +21,7 @@ class DPALExperimentalCaseTests(unittest.TestCase):
     def test_source_reviews_and_dpal_membership_remain_bound(self):
         provenance = json.loads((CASE / "provenance.json").read_text())
         members = {r["doi_in_snapshot"] for r in provenance["records"]}
-        self.assertEqual(2, len(members))
+        self.assertEqual(4, len(members))
         receipts = {r["observation_id"]: r for r in self.reviews}
         for candidate in self.bundle["candidates"]:
             self.assertIn(candidate["paper_id"], members)
@@ -57,21 +57,35 @@ class DPALExperimentalCaseTests(unittest.TestCase):
                 self.assertEqual(criteria[cid]["reason"], criterion["reason"])
                 self.assertEqual(criteria[cid]["selector_decision"], criterion["decision"])
                 criterion_matches += criterion["decision"] == expected["criteria"][cid]
-        self.assertEqual(2, matches)
-        self.assertEqual(5, criterion_matches)
+        self.assertEqual(3, matches)
+        self.assertEqual(8, criterion_matches)
         self.assertEqual(matches, self.evaluation["summary"]["candidate_decision_matches"])
         self.assertEqual(criterion_matches, self.evaluation["summary"]["criterion_decision_matches"])
 
-    def test_real_table_requires_review_and_keep_needs_receipts(self):
+    def test_real_table_and_comma_require_review_and_keep_needs_receipts(self):
         states = {}
         for candidate in self.bundle["candidates"]:
             row = screen_candidate(candidate, self.bundle["profile"], self.bundle["sources"], self.reviews)
             states[candidate["candidate_id"]] = row
         self.assertEqual("raw_unit_mismatch", states["Balkenende2016-chainstopper1.5"]["criteria"][0]["reason"])
+        self.assertEqual("numeric_and_raw_value_mismatch", states["Wang2020-RHP1"]["criteria"][0]["reason"])
         self.assertEqual("manual_review", states["Balkenende2016-chainstopper1.5"]["decision"])
+        self.assertEqual("manual_review", states["Wang2020-RHP1"]["decision"])
         neat = self.bundle["candidates"][0]
         row = screen_candidate(neat, self.bundle["profile"], self.bundle["sources"], [])
         self.assertEqual("manual_review", row["decision"])
+
+    def test_protocol_only_records_do_not_invent_numeric_measurements(self):
+        candidate = next(c for c in self.bundle["candidates"]
+                         if c["candidate_id"] == "Burnworth2011-Zn0p7")
+        self.assertEqual(2, len(candidate["observations"]))
+        for observation in candidate["observations"]:
+            self.assertIsNone(observation["value"])
+            self.assertIsNone(observation["value_raw"])
+        row = screen_candidate(candidate, self.bundle["profile"], self.bundle["sources"], self.reviews)
+        self.assertEqual("retrieve_more", row["decision"])
+        self.assertEqual(["required_condition_missing:deformation_mode", "required_condition_missing:substrate"],
+                         [c["reason"] for c in row["criteria"]])
 
 
 if __name__ == "__main__":

@@ -8,6 +8,23 @@
   "ordinal_definition": "1-based CSV data-record ordinal excluding header; not physical line number",
   "records": [
     {
+      "record_ordinal": 11970,
+      "zotero_key": "YW8WL95T",
+      "doi_in_snapshot": "10.1073/pnas.2000001117",
+      "title": "Room-temperature autonomous self-healing glassy polymers with hyperbranched structure",
+      "publication_year": "2020",
+      "authors": "Wang, H; Liu, HC; Cao, ZX; Li, WH; Huang, X; Zhu, Y; Ling, FW; Xu, H; Wu, Q; Peng, Y; Yang, B; Zhang, R; Kessler, O; Huang, GS; Wu, JR",
+      "url_in_snapshot": "",
+      "manual_tags": [
+        "Source: General",
+        "Property: Glass Transition",
+        "Property: Mechanical",
+        "Property: Rheology",
+        "Property: Self-healing"
+      ],
+      "membership_basis": "exact DOI and title in original released CSV"
+    },
+    {
       "record_ordinal": 12814,
       "zotero_key": "NIAFVEMT",
       "doi_in_snapshot": "10.3390/ijms24032575",
@@ -45,6 +62,20 @@
         "Bond: Ureidopyrimidinone"
       ],
       "membership_basis": "exact DOI and title in original released CSV"
+    },
+    {
+      "record_ordinal": 9700,
+      "zotero_key": "A3N57YZI",
+      "doi_in_snapshot": "10.1038/nature09963",
+      "title": "Optically healable supramolecular polymers",
+      "publication_year": "2011",
+      "authors": "Burnworth, M; Tang, LM; Kumpfer, JR; Duncan, AJ; Beyer, FL; Fiore, GL; Rowan, SJ; Weder, C",
+      "url_in_snapshot": "",
+      "manual_tags": [
+        "Source: General",
+        "Property: Self-healing"
+      ],
+      "membership_basis": "exact DOI and title in original released CSV"
     }
   ],
   "original_source_files": [
@@ -57,6 +88,11 @@
       "file_name": "balkenende2016-si.pdf",
       "sha256": "b906b72e6d50ddb7340f19a1d6358c7d22c7be1d8473e311607b15020c703664",
       "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fncomms10995/MediaObjects/41467_2016_BFncomms10995_MOESM1712_ESM.pdf"
+    },
+    {
+      "file_name": "wang2020.html",
+      "sha256": "2576b4a9ec157f70daee647c9b6a1995e3aeb27896a0e3c5f04630d414b6b155",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7260978/"
     },
     {
       "file_name": "tzoumani-primary.pdf",
@@ -80,8 +116,20 @@
       "file_name": "dpal-July2025.csv",
       "sha256": "33d3d63d837e5687ad80001aef1a3103180d011831f925a1a66007fbbcc4fca8",
       "url": "https://github.com/kmiller621/DPAL/releases/download/July2025/Dynamic-Polymer-Annotated-Library-DPAL.csv"
+    },
+    {
+      "file_name": "burnworth2011-primary.pdf",
+      "sha256": "a878ad7cecf23636096ccbbe9606c7a7e36fc91c2fdfd44f7db9c6cacdee7359",
+      "url": "https://folia.unifr.ch/documents/302066/files/wed_ohs.pdf",
+      "version_note": "Full original article including Full Methods from author university repository"
+    },
+    {
+      "file_name": "burnworth2011-si.pdf",
+      "sha256": "74905c7897558c4034868d2e19fd714aaf10e33f5a1bc47e0fd800bb63e33f0d",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fnature09963/MediaObjects/41586_2011_BFnature09963_MOESM311_ESM.pdf",
+      "version_note": "Original publisher supplement"
     }
   ],
-  "transport_note": "Tzoumani publisher PDF obtained via a mirror; its MD5 matches the original publisher PDF MD5 declared by primary EuropePMC XML (46b7bebea6af3cfe334e83cac96635b5). Its SI was obtained from the primary EuropePMC bundle.",
-  "selection_policy": "Purposive three-formulation presentation case from two confirmed DPAL-member experimental papers. Reduced from an earlier larger case for clarity; not a random sample, new blinded benchmark or reproduction of DPAL Case study 3."
+  "transport_note": "Tzoumani publisher PDF obtained via mirror with MD5 matching original publisher PDF checksum in primary EuropePMC XML; its SI is from primary EuropePMC bundle. Wang usable SI was not obtained. Burnworth full article including methods is from author university repository and SI from publisher.",
+  "selection_policy": "Purposive five-formulation case study from four exact DPAL-member experimental papers, spanning same-paper stiffness screening, unavailable protocol, another healing trigger and another optical-healing protocol. Same application and thresholds; not a random sample, new blinded benchmark or reproduction of DPAL Case study 3."
 }

@@ -115,6 +115,14 @@
       "url": "https://doi.org/10.1038/ncomms10995",
       "context_review": "First irradiation step closes a razor cut on a 300 micrometre neat-glass coating on wood under 320-390 nm, 500 mW/cm2 UV. A shallow scar remains; another exposure is described for scar removal. This observation is not strength recovery or repeated-repair durability. Local photothermal temperature reaches 188 C."
     },
+    "wang-RHP1-modulus": {
+      "paper_id": "10.1073/pnas.2000001117",
+      "locator": "Results: thermomechanical properties, Fig. 2C/D",
+      "text": "2,721 MPa",
+      "document_sha256": "2576b4a9ec157f70daee647c9b6a1995e3aeb27896a0e3c5f04630d414b6b155",
+      "url": "https://doi.org/10.1073/pnas.2000001117",
+      "context_review": "RHP-1 is the MBA/BDA 1/1.125 molar-feed formulation, with a semicrystalline contribution at 25 C. Storage modulus is reported, but required measurement mode, frequency and heating rate could not be verified because usable SI was not obtained. Thousands comma preserved."
+    },
     "wpu-water-trigger": {
       "paper_id": "10.3390/ijms24032575",
       "locator": "Main p. 14 section 3.4.5; exact formulation Fig. 8e/f p. 11",
@@ -130,6 +138,22 @@
       "document_sha256": "501d76d154cf58a336a91e435d58bd5c6ccc4bffaa2fa6e674c4deb7b2136913",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9916575/supplementaryFiles",
       "context_review": "Supplement tests pure WPU1 and different 10-additive/WPU-solids formulations at 10 Hz and 3 C/min. These are not the selected 20-DMAM80 formulation or the required 1 Hz protocol; a duplicated caption is resolved only to the plotted labels and never used to transfer measurements."
+    },
+    "burnworth-DMTA-protocol": {
+      "paper_id": "10.1038/nature09963",
+      "locator": "Main author-repository PDF p5 Full Methods: Mechanical testing; p2 thermomechanical discussion; SI p5 FigS4",
+      "text": "1Hz",
+      "document_sha256": "a878ad7cecf23636096ccbbe9606c7a7e36fc91c2fdfd44f7db9c6cacdee7359",
+      "url": "https://folia.unifr.ch/documents/302066/files/wed_ohs.pdf",
+      "context_review": "The Zn0.7 material is one of the series tested by DMTA; p5 states all mechanical tests used dogbone samples, temperature sweep frequency1Hz and heating3C/min underN2. This is not declared as the required three-point bending at5C/min. Main p2 provides only a 53–60MPa range for the Zn0.7–1.0 series, not an exact scalar for Zn0.7. No numeric target value is asserted."
+    },
+    "burnworth-optical-protocol": {
+      "paper_id": "10.1038/nature09963",
+      "locator": "Main author-repository PDF p2 Fig2c caption; p3 healing paragraph; p5 Film damaging and healing",
+      "text": "30 s twice",
+      "document_sha256": "a878ad7cecf23636096ccbbe9606c7a7e36fc91c2fdfd44f7db9c6cacdee7359",
+      "url": "https://folia.unifr.ch/documents/302066/files/wed_ohs.pdf",
+      "context_review": "Exact Zn0.7 formulation healed cuts in free-standing350–400micrometre films under320–390nm UV at950mW/cm2 in two30s exposures. This is not evidence of a target300micrometre wood coating at500mW/cm2 closing within30s. A total60s illumination is derived arithmetic and is deliberately not represented as a raw numeric observation."
     }
   },
   "candidates": [
@@ -268,6 +292,54 @@
       }
     },
     {
+      "candidate_id": "Wang2020-RHP1",
+      "paper_id": "10.1073/pnas.2000001117",
+      "sample_id": "RHP1",
+      "formulation_as_reported": "RHP-1; MBA/BDA molar feed 1/1.125; semicrystalline with glassy phase at 25 C",
+      "observations": [
+        {
+          "observation_id": "RHP1-storage",
+          "paper_id": "10.1073/pnas.2000001117",
+          "sample_id": "RHP1",
+          "role": "current_work",
+          "property": "storage_modulus",
+          "value": 2721,
+          "value_raw": "2,721 MPa",
+          "unit": "MPa",
+          "baseline": "Absolute reported property; not a recovery percentage.",
+          "claim_type": "property_test",
+          "conditions": {
+            "measurement_temperature_C": 25,
+            "measurement_method": "DMA",
+            "specimen_state": "unhealed"
+          },
+          "evidence": [
+            {
+              "source_id": "wang-RHP1-modulus",
+              "quote": "2,721 MPa"
+            }
+          ],
+          "uncertainty_reporting": "Not established in reviewed main text; usable SI unavailable.",
+          "missing_conditions": [
+            "deformation_mode",
+            "frequency_Hz",
+            "heating_rate_C_min"
+          ]
+        }
+      ],
+      "missing": [
+        {
+          "property": "visible_cut_closure_time",
+          "reason": "Reported_room_temperature_contact_healing_is_not_target_UV_coating_on_wood_experiment"
+        }
+      ],
+      "source_coverage": {
+        "main_text": "checked",
+        "supplementary_information": "unavailable; downloaded access page is not a PDF",
+        "figures_tables": "main Fig. 2 examined; detailed DMA protocol unverified"
+      }
+    },
+    {
       "candidate_id": "Tzoumani2023-WPU1-20-DMAM80",
       "paper_id": "10.3390/ijms24032575",
       "sample_id": "WPU1_20_PHEMAcoDMAM80",
@@ -292,7 +364,106 @@
         "wpu-water-trigger",
         "wpu-other-formulations-DMA"
       ]
+    },
+    {
+      "candidate_id": "Burnworth2011-Zn0p7",
+      "paper_id": "10.1038/nature09963",
+      "sample_id": "Mebip-PEB-Mebip_3_ZnNTf2_0p7",
+      "formulation_as_reported": "3·[Zn(NTf2)2]0.7; Mebip-terminated poly(ethylene-co-butylene) macromonomer 3 assembled with Zn(NTf2)2 at paper-defined ratio 0.7",
+      "observations": [
+        {
+          "observation_id": "burnworth-Zn0p7-DMTA-protocol",
+          "paper_id": "10.1038/nature09963",
+          "sample_id": "Mebip-PEB-Mebip_3_ZnNTf2_0p7",
+          "role": "current_work",
+          "property": "storage_modulus",
+          "value": null,
+          "value_raw": null,
+          "unit": "MPa",
+          "baseline": "Unhealed film; no sample-specific scalar target-protocol modulus asserted.",
+          "claim_type": "property_test",
+          "conditions": {
+            "measurement_temperature_C": 25,
+            "measurement_method": "DMA",
+            "frequency_Hz": 1,
+            "heating_rate_C_min": 3,
+            "specimen_state": "unhealed",
+            "atmosphere": "N2",
+            "specimen_geometry": "dog_bone",
+            "reported_method_name": "DMTA"
+          },
+          "evidence": [
+            {
+              "source_id": "burnworth-DMTA-protocol",
+              "quote": "1Hz"
+            }
+          ],
+          "measurement_method_normalization": "DMTA is the paper terminology and was normalized to the DMA class by semantic review. Full Methods specify dogbone specimens; three-point bending is not established and deformation_mode is omitted.",
+          "value_reporting": "Series-level bound53–60MPa at25C is retained only in reviewed context; exact Zn0.7 scalar unavailable in prose.",
+          "uncertainty_reporting": "Not reported for the series bound.",
+          "observation_kind": "reviewed_protocol_context_without_admissible_target_numeric_value",
+          "missing_reason": "Exact_target_protocol_numeric_measurement_not_established; retained_protocol_facts_are_source_supported"
+        },
+        {
+          "observation_id": "burnworth-Zn0p7-optical-protocol",
+          "paper_id": "10.1038/nature09963",
+          "sample_id": "Mebip-PEB-Mebip_3_ZnNTf2_0p7",
+          "role": "current_work",
+          "property": "visible_cut_closure_time",
+          "value": null,
+          "value_raw": null,
+          "unit": "s",
+          "baseline": "Damaged unhealed free-standing film; source reports two30s exposures, not target-protocol total closure duration.",
+          "claim_type": "property_test",
+          "conditions": {
+            "damage_type": "razor_cut",
+            "stimulus": "UV",
+            "wavelength_min_nm": 320,
+            "wavelength_max_nm": 390,
+            "irradiance_mW_cm2": 950,
+            "number_of_exposures": 2,
+            "exposure_duration_per_pulse_s": 30,
+            "endpoint": "visible_cut_closure"
+          },
+          "evidence": [
+            {
+              "source_id": "burnworth-optical-protocol",
+              "quote": "30 s twice"
+            }
+          ],
+          "specimen_metadata": {
+            "film_thickness_um_range": [
+              350,
+              400
+            ],
+            "substrate_reporting": "No wood substrate; free-standing dogbone film. Omitted scalar substrate condition to avoid inventing one.",
+            "relative_damage_depth_percent_approx": [
+              50,
+              70
+            ]
+          },
+          "value_reporting": "No direct scalar duration for the target wood-coating protocol; do not reinterpret a30s pulse as total closure time or assert derived60s as raw evidence.",
+          "uncertainty_reporting": "Not reported for the optical demonstration.",
+          "observation_kind": "reviewed_protocol_context_without_admissible_target_numeric_value",
+          "missing_reason": "Exact_target_protocol_numeric_measurement_not_established; retained_protocol_facts_are_source_supported"
+        }
+      ],
+      "missing": [
+        {
+          "property": "storage_modulus",
+          "reason": "Target25C_three_point_bending_1Hz_5Cpermin_same_sample_value_not_established"
+        },
+        {
+          "property": "visible_cut_closure_time",
+          "reason": "Two30s_pulses950mW_free_film_do_not_establish_target300um_wood_500mW_time"
+        }
+      ],
+      "source_coverage": {
+        "main_text": "all5pages inclFullMethods read; relevant p2/p3/p5 visually inspected",
+        "supplementary_information": "all17pages text read; FigS4S7 TableS2 checked",
+        "figures_tables": "primary figure and SI protocol captions inspected"
+      }
     }
   ],
-  "presentation_scope": "Two experimental papers and three formulations, reduced for Friday presentation; application requirements and retained observations unchanged."
+  "presentation_scope": "Four distinct DPAL-member experimental papers and five formulations. The fixed coating profile and previously checked records are unchanged; added source improves protocol coverage, not a claim of general screening performance."
 }

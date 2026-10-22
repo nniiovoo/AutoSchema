@@ -1,6 +1,6 @@
 # Task 3: checked polymer screening for one application
 
-Two-paper presentation case: **21 October 2026**, on the `task3-selection` fork. We selected one application, checked three formulations from two real experimental papers in DPAL, froze reference decisions independently of selector output, and ran the existing selector. This completes the requested small screening demonstration and documents the software's disagreements. It does not claim that extraction-to-selection automation is complete.
+Completed four-paper case study: **21 October 2026**, on the `task3-selection` fork. We selected one application, checked five formulations from four distinct experimental papers in DPAL, retained the original independently frozen reference decisions, independently froze the added paper's decision before the expanded replay, and ran the existing selector. This completes the requested small screening demonstration and documents the software's disagreements. It does not claim that extraction-to-selection automation is complete.
 
 **Task 3 separates two questions: does the original source support the observation, and does comparable evidence meet this application's requirements?** Missing evidence is a distinct outcome, not a failed experiment. No combined material score or ranking is used.
 
@@ -10,10 +10,12 @@ We downloaded the authors' [July 2025 DPAL release](https://github.com/kmiller62
 
 | Experimental paper | DPAL record / key | Role in this case |
 | --- | --- | --- |
+| [Burnworth et al. (2011), Optically healable supramolecular polymers](https://doi.org/10.1038/nature09963) | 9700 / A3N57YZI | Related optical-healing experiment with different mechanical and irradiation protocols |
 | [Balkenende et al. (2016), Optically responsive supramolecular polymer glasses](https://doi.org/10.1038/ncomms10995) | 13072 / YQL784D6 | Same-paper neat/blended formulations with matched stiffness measurements |
+| [Wang et al. (2020), Room-temperature autonomous self-healing glassy polymers with hyperbranched structure](https://doi.org/10.1073/pnas.2000001117) | 11970 / YW8WL95T | Reported stiffness with unresolved target measurement protocol |
 | [Tzoumani et al. (2023), Room-Temperature Self-Healable Blends of Waterborne Polyurethanes with 2-Hydroxyethyl Methacrylate-Based Polymers](https://doi.org/10.3390/ijms24032575) | 12814 / NIAFVEMT | Scratch-healing result that cannot establish the requested formulation/protocol measurements |
 
-The [provenance manifest](../examples/task3/dpal_experiments/provenance.json) preserves release information, selected records and original-document hashes. Full papers and the CSV are archived outside the repository; only short exact excerpts and paraphrased assessments are committed. The Tzoumani PDF obtained through a mirror has an MD5 checksum matching the original publisher PDF checksum declared in primary EuropePMC XML; its supplement came from EuropePMC's original bundle.
+The [provenance manifest](../examples/task3/dpal_experiments/provenance.json) preserves release information, selected records and original-document hashes. Full papers and the CSV are archived outside the repository; only short exact excerpts and paraphrased assessments are committed. The Tzoumani PDF obtained through a mirror has an MD5 checksum matching the original publisher PDF checksum declared in primary EuropePMC XML; its supplement came from EuropePMC's original bundle. Wang's main article was available, but a usable supplement was not obtained. Access failure is not evidence that a measurement was never reported. The Burnworth article including Full Methods was acquired from the authors' university repository; its supplement came from the publisher.
 
 ## 2. Choose an application before making decisions
 
@@ -38,9 +40,11 @@ Original pages, relevant tables/figures and available methods/supplements were c
 | --- | --- | --- |
 | Neat amorphous **(UPyU)3TMP** | C1: 3.65 +/- 0.51 GPa; descriptive band 3.14-4.16. C2: first-step visible closure after 12 s under target wood/UV conditions; a shallow scar remains. | **Keep for follow-up:** both narrowly defined criteria pass. |
 | **(UPyU)3TMP with 1.5 equivalents UPy-C6-U-EH** | C1: 1.47 +/- 0.29 GPa; band 1.18-1.76 under the same DMA protocol. Target repair was not established for this blend. | **Exclude for this use:** a supported mandatory stiffness failure settles the screen. Missing repair remains a gap, not a second failure. |
+| **RHP-1**, MBA/BDA molar feed 1/1.125 | Main article reports 2,721 MPa at 25 C. Required DMA mode, frequency and heating rate remain unverified; target timed UV-on-wood repair is unestablished. | **Need more evidence:** do not convert a lower, unqualified number into a comparable failure. |
 | **WPU1/20P(HEMA-co-DMAM80)** | Qualitative water-triggered scratch closure on a free film. Supplementary DMA concerns different formulations at 10 Hz, not this formulation under C1. | **Need more evidence:** neither requested measurement is established; a different repair trigger is not proof of failure. |
+| **3·[Zn(NTf2)2]0.7**, Mebip-terminated poly(ethylene-co-butylene) assembled with Zn salt | DMTA uses dogbone films at 1 Hz and 3 C/min. Optical repair uses 350-400 micrometre free films at 950 mW/cm2 with two 30 s UV exposures. | **Need more evidence:** neither test establishes the fixed mechanical/wood-coating profile. Different conditions are not a material failure. |
 
-Sources and locators: [Balkenende, main pp. 3-6, Table 1, Fig. 6a/b p. 7 and Optical healing methods p. 8](https://doi.org/10.1038/ncomms10995); [Tzoumani, Fig. 8e/f p. 11, preparation p. 13, repair methods p. 14 and supplemental Fig. S2](https://pmc.ncbi.nlm.nih.gov/articles/PMC9916575/).
+Sources and locators: [Balkenende, main pp. 3-6, Table 1, Fig. 6a/b p. 7 and Optical healing methods p. 8](https://doi.org/10.1038/ncomms10995); [Wang, thermomechanical results, Fig. 2C/D and Materials and Methods](https://pmc.ncbi.nlm.nih.gov/articles/PMC7260978/); [Tzoumani, Fig. 8e/f p. 11, preparation p. 13, repair methods p. 14 and supplemental Fig. S2](https://pmc.ncbi.nlm.nih.gov/articles/PMC9916575/); [Burnworth, author-repository PDF pp. 2-3 and Full Methods p. 5; supplemental Fig. S4](https://folia.unifr.ch/documents/302066/files/wed_ohs.pdf).
 
 ### Walk through the neat/blended pair
 
@@ -52,19 +56,27 @@ Sources and locators: [Balkenende, main pp. 3-6, Table 1, Fig. 6a/b p. 7 and Opt
 
 For the WPU record, “20” means additive mass relative to WPU solids, not 20% of the whole blend; DMAM80 is the nominal feed designation. Its available mechanical studies cannot be borrowed across formulation and frequency. A source label mentioning healing is useful discovery information, but it cannot fill an unmeasured timed UV criterion. [Tzoumani, sections 2.2, 2.4 and 3.3; Fig. 8; supplement](https://doi.org/10.3390/ijms24032575).
 
+### Why the fourth paper adds information
+
+Burnworth demonstrates a chemically related UV-healing route, so it contributes a protocol comparison rather than a new unrelated application. The reported 53-60 MPa statement covers a Zn-series range; it must not become an exact value for the selected Zn0.7 formulation. Two 30 s exposures also must not become a fabricated single raw closure-time quotation. The main experiment uses stronger irradiation on free films, while our profile requires a wood coating. [Burnworth, main pp. 2-3, Full Methods p. 5 and supplemental Fig. S4](https://doi.org/10.1038/nature09963).
+
+The two added records therefore contain **null numeric values with source-reviewed protocol facts**. Undeclared deformation mode and unestablished wood substrate remain missing. These records support a request for applicable evidence; they do not establish numerical performance. This directly tests whether the selector preserves unknowns instead of inventing a point from a range or repeated exposures.
+
 ## 4. Actual selector replay: show the disagreements
 
-We manually prepared atomic observations with original notation, identities, conditions, locators and separate source-review receipts. The existing selector and Phase I/II code were **not changed**. We did not append table units or invent a missing condition to make records pass.
+We manually prepared atomic observations with original notation, identities, conditions, locators and separate source-review receipts. The existing selector and Phase I/II code were **not changed**. We did not append table units, remove thousands commas or invent a missing condition to make records pass.
 
 | Candidate | Frozen source-based reference | Actual selector | Explanation |
 | --- | --- | --- | --- |
 | Neat UPy glass | Keep | Keep | Inline value/unit, matching reviewed conditions and both criteria admitted. |
 | 1.5-equivalent blend | Exclude | Manual review | Original table cell has no inline unit; the parser cannot use its separately cited GPa header (`raw_unit_mismatch`). |
+| RHP-1 | Need more evidence | Manual review | Thousands-comma notation triggers `numeric_and_raw_value_mismatch` before protocol comparison. Resolving notation would still leave scientific protocol and repair gaps. |
 | WPU composite | Need more evidence | Need more evidence | Prepared input explicitly records missing target measurements. This does not demonstrate that an extractor independently found the gaps. |
+| Burnworth Zn0.7 film | Need more evidence | Need more evidence | Reviewed protocol-only records leave target numeric values null; the code identifies missing deformation-mode and substrate conditions. |
 
-The replay matches **2 of 3 overall decisions** and **5 of 6 criterion decisions**. It makes no unsupported retention or incorrect exclusion in these three cases, but adds one review decision. The supported exclusion is missed by automation because of the table-header unit relation. Do not call this general screening accuracy or successful evidence retrieval. This is a smaller presentation subset of the earlier study; the code and retained reference labels are unchanged, so changed denominators do not show improved model performance.
+The replay matches **3 of 5 overall decisions** and **8 of 10 criterion decisions**. It makes no unsupported retention or incorrect exclusion in these five cases, but adds two review decisions. The supported exclusion is missed by automation; the RHP evidence gap is reached only as a source-format review issue. Do not call this general screening accuracy or successful evidence retrieval. The source set was expanded for experimental coverage with the same code and requirements; changed denominators do not show model improvement.
 
-This small purposive case diagnoses a concrete handoff limitation: **reviewed table cell-to-header unit relations**. A supplied semantic review does not override mechanical validation. Future changes must preserve original text and explicit transformations rather than weakening the evidence gate. Upstream flat extraction arrays also still need formulation/metric/condition relations before this stage.
+This small purposive case diagnoses two concrete handoff limitations: **table cell-to-header unit relations** and **reviewed normalization of numeric notation**. A supplied semantic review does not override mechanical validation. Future changes must preserve original text and explicit transformations rather than weakening the evidence gate. Upstream flat extraction arrays also still need formulation/metric/condition relations before this stage.
 
 Checked results: [evaluation.json](../examples/task3/dpal_experiments/evaluation.json), [decision worksheet](../examples/task3/dpal_experiments/decisions.csv), [atomic inputs](../examples/task3/dpal_experiments/input.json), [separate reviews](../examples/task3/dpal_experiments/reviews.json). These are real-paper **curated inputs and an actual selector run**, not actual LLM extraction output.
 
@@ -74,9 +86,12 @@ Checked results: [evaluation.json](../examples/task3/dpal_experiments/evaluation
 | --- | --- | --- |
 | Neat: finished-coating performance | Application owner defines adhesion, barrier, abrasion and lifetime needs; source reviewer checks relevant experiments | Do not promote research retention into product readiness. |
 | Blend: table unit; unknown repair | Software/evidence reviewer specifies traceable cell/header normalization; retain repair unknown | Established stiffness failure already excludes this profile; more repair searching cannot reverse it. |
+| RHP-1: notation and protocol | Evidence/software reviewer handles the comma without changing the raw string; source reviewer obtains usable original SI and verifies DMA | A corrected number alone cannot establish comparability. If access remains blocked, preserve that status. |
+| RHP-1: repair | Source reviewer seeks an exact-formulation timed coating/wood UV experiment | Contact healing is not a substitute; if no applicable evidence is found, a new experiment is needed. |
 | WPU: stiffness and repair | Source reviewer seeks exact-formulation target DMA and timed wood/UV evidence | Do not transfer other formulations' 10 Hz data or treat untimed water healing as a failed UV test. |
+| Burnworth: target protocol | Source reviewer seeks exact Zn0.7 three-point/5 C/min DMA and a timed 500 mW/cm2 wood-coating experiment | Do not promote the series modulus range or two-pulse exposure into a target scalar; if no applicable primary evidence exists, a new experiment is needed. |
 
-The code emits four pending actions. Its early format gates do not enumerate every later scientific gap; the source-based ledger above remains necessary. Retrieval was performed for this study's original papers and supplements, but queued future actions were not autonomously executed.
+The code emits eight pending actions. Its early format gates do not enumerate every later scientific gap; the source-based ledger above remains necessary. Retrieval was performed for this study's original papers and supplements, but queued future actions were not autonomously executed.
 
 ## 6. Reproduce and report the completion boundary
 
@@ -87,9 +102,9 @@ python select_candidates.py --input examples/task3/dpal_experiments/input.json -
 python -m unittest -v test_task3_selection test_task3_dpal_case
 ```
 
-The new checks bind fixture reviews to their cited source revisions, replay actual CLI decisions, retain the reference disagreement and prevent unsupported table-unit mappings from silently producing a selection. All **34 tests passed** on 21 October 2026: 31 existing checks and three real-case checks. They do not assert that all source-based decisions are automated correctly. The independent reference was frozen before the replay and was not rewritten to match it.
+The new checks bind fixture reviews to their cited source revisions, replay actual CLI decisions, retain the two reference disagreements and prevent unsupported numeric formats from silently producing a selection. All **35 tests passed** on 21 October 2026: 31 existing checks and four real-case checks. They do not assert that all source-based decisions are automated correctly. The original reference judgments are unchanged; the added Burnworth judgment was independently frozen before this expanded replay. No labels were rewritten to match the outputs.
 
-**Completed:** executable criteria, one application, two DPAL-member experimental papers, three formulation decisions, evidence and condition checks, actual code replay, separately reported reference/software outcomes, and targeted gaps. No unified score is required.
+**Completed:** executable criteria, one application, four DPAL-member experimental papers, five formulation decisions, evidence and condition checks, actual code replay, separately reported reference/software outcomes, and targeted gaps. No unified score is required.
 
 **Outside this completed case study:** live AutoSchema extraction accuracy, autonomous retrieval, production normalization fixes, human expert adjudication, new experiments and full coating qualification. Sources were selected to expose useful decision types; the small dependent sample cannot estimate performance across DPAL.
 

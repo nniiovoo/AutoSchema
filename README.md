@@ -337,7 +337,7 @@ python select_candidates.py --input examples/task3/input.json --reviews examples
 
 See [Task 3 inputs, evidence reviews and decision rules](docs/task3-selection.md). Run its focused checks with `python -m unittest -v test_task3_selection`.
 
-The [completed Task 3 case study](docs/task3-screening-report.md) checks three formulations from two experimental papers verified in the original DPAL release. Its application is a research entry screen for stiff UV-repairable wood coatings. The independently checked reference contains one keep, one exclusion and one evidence gap. The unchanged selector agrees on two of three candidate decisions, sending the table-unit case to review; this limitation remains explicit. The smaller source set is for presentation clarity, not a claim of improved screening performance.
+The [completed Task 3 case study](docs/task3-screening-report.md) checks five formulations from four distinct experimental papers verified in the original DPAL release. Its application is a research entry screen for stiff UV-repairable wood coatings. The independently checked reference contains one keep, one exclusion and three evidence gaps. The unchanged selector agrees on three of five candidate decisions, sending table-unit and thousands-comma records to review. The expanded source set improves evidence coverage; its changed denominators do not demonstrate improved model performance.
 
 Run the real-paper replay without model calls:
 

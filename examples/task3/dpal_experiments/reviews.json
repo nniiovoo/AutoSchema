@@ -25,5 +25,32 @@
     "status": "supported",
     "reviewer": "Assistant primary-source review cross-checked by independent research assistant",
     "review_basis": "Original full context, formulation, metric, value, unit relation and conditions checked. Receipt is an assistant-supplied judgment, not authenticated human annotation or proof of reproducibility."
+  },
+  {
+    "observation_id": "RHP1-storage",
+    "paper_id": "10.1073/pnas.2000001117",
+    "sample_id": "RHP1",
+    "record_digest": "9a78ff39088e427e4535454c4dbda4fd50e708e6b52207880ea99ded37ad4899",
+    "status": "supported",
+    "reviewer": "Assistant primary-source review cross-checked by independent research assistant",
+    "review_basis": "Original full context, formulation, metric, value, unit relation and conditions checked. Receipt is an assistant-supplied judgment, not authenticated human annotation or proof of reproducibility."
+  },
+  {
+    "observation_id": "burnworth-Zn0p7-DMTA-protocol",
+    "paper_id": "10.1038/nature09963",
+    "sample_id": "Mebip-PEB-Mebip_3_ZnNTf2_0p7",
+    "record_digest": "f93623b7bb2bbe33de1ca6ae3e029666336964b77d300101002cb95ab883cca4",
+    "status": "supported",
+    "reviewer": "Assistant primary-source protocol review cross-checked by independent research assistant",
+    "review_basis": "Supports exact formulation and actual protocol facts with intentionally null target values. Does not attest an absent target measurement, a sample-specific scalar from a series range, or a total closure time from repeated exposures. Not authenticated human review."
+  },
+  {
+    "observation_id": "burnworth-Zn0p7-optical-protocol",
+    "paper_id": "10.1038/nature09963",
+    "sample_id": "Mebip-PEB-Mebip_3_ZnNTf2_0p7",
+    "record_digest": "d0dcbaf8608906d4b617aa5b056334e6388d501576da1a003d5601233c67c914",
+    "status": "supported",
+    "reviewer": "Assistant primary-source protocol review cross-checked by independent research assistant",
+    "review_basis": "Supports exact formulation and actual protocol facts with intentionally null target values. Does not attest an absent target measurement, a sample-specific scalar from a series range, or a total closure time from repeated exposures. Not authenticated human review."
   }
 ]
