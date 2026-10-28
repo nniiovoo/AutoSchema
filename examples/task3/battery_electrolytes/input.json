@@ -1,0 +1,540 @@
+{
+  "record_kind": "manually_curated_real_DPAL_battery_case",
+  "prepared_date": "2026-10-27",
+  "not_live_AutoSchema_extraction": true,
+  "profile": {
+    "profile_id": "lithium_metal_electrolyte_30C_transport_entry_v1",
+    "application": "First-stage transport shortlist for a nonaqueous polymer electrolyte in lithium-metal cells operated at 30 C",
+    "origin": "Analyst-selected research demonstration after exploratory source reading; not a universal electrolyte threshold, industrial standard or blinded benchmark. Fixed before the independent reference and selector replay on 2026-10-27.",
+    "decision_scope": "Keep means advance to battery-specific follow-up after this one conductivity check. It does not establish complete battery suitability, practical safety, salted-film healing or device qualification. No ranking across papers or unlike geometries.",
+    "reviewed_eligibility_file": "eligibility.json",
+    "eligibility_note": "The role, chemistry, formulation and comparator status are reviewed research inputs, not automatically validated by the numeric selector. The PTMG-HDI/LiFSI control is explicitly a performance control, not independently established here as a dynamic-polymer candidate.",
+    "criteria": [
+      {
+        "criterion_id": "C1",
+        "property": "ionic_conductivity",
+        "unit": "S/cm",
+        "minimum": 0.0001,
+        "required": true,
+        "required_claim_type": "property_test",
+        "baseline": "absolute_reported_ionic_conductivity",
+        "conditions": {
+          "measurement_temperature_C": {
+            "equals": 30
+          },
+          "measurement_method": {
+            "equals": "EIS"
+          },
+          "cell_configuration": {
+            "equals": "SS_electrolyte_SS"
+          }
+        }
+      }
+    ],
+    "protocol_notes": [
+      "SS denotes the source's blocking steel electrodes. Pei explicitly defines SS as sheet steel. Do not silently expand every SS abbreviation to stainless steel.",
+      "Preserve assembly, resistance definition, thickness, salt, residual solvent/plasticizer and frequency range in the observation. This broad entry screen accepts the authors' reported conductivity from SS/electrolyte/SS; it does not assert identical bulk/interface separation or geometry across papers.",
+      "No interpolation from 25/35 C, substitution from 60 C, or assignment of an unspecified room temperature to 30 C.",
+      "A plotted 30 C point without an exact extracted value remains incomplete; declared figure digitization or raw-data retrieval is a follow-up, not an exact reported measurement.",
+      "Do not convert a neat-polymer healing result into a salted-electrolyte result or transfer a wet/plasticized result to a dry matrix."
+    ],
+    "outside_entry_screen": [
+      "Exact-salted-formulation healing mechanism, temperature, time and recovered property",
+      "Lithium compatibility and cycling at selected current density, areal capacity, temperature and pressure",
+      "Oxidative stability and lithium-ion transference number under specified protocols",
+      "Full-cell cathode, loading, electrolyte amount, voltage window and rate definition",
+      "Mechanical durability, residual solvent, reproducibility and practical safety"
+    ]
+  },
+  "sources": {
+    "pei-bhds-transport": {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "locator": "Main Electrochemical characterization of the SPEs, first paragraph (XML Sec5/Par13), Fig3a/b",
+      "text": "PTMG-HDI-BHDS/LiFSI (2.4 × 10−4 S cm−1)",
+      "document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+      "source_file": "pei/primary.xml",
+      "url": "https://doi.org/10.1038/s41467-023-43467-w",
+      "transcription": "Primary full-text XML excerpt",
+      "context_review": "Exact BHDS/LiFSI sample; reported 30 C conductivity. Preparation Par27 establishes polymer:LiFSI mass2:1. Methods Par30/31: SS sandwich EIS0.1–10^6 Hz, default30 C, sigma=L/(R*S), R=total electrolyte resistance. BHDS dual-integrated assembly has about200 micrometre total bonded thickness; identical comparator assembly is not established."
+    },
+    "pei-hdi-transport": {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "locator": "Same paragraph as BHDS measurement, Fig3a/b; preparation Par27; Methods Par30/31",
+      "text": "PTMG-HDI/LiFSI (6.5 × 10−5 S cm−1)",
+      "document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+      "source_file": "pei/primary.xml",
+      "url": "https://doi.org/10.1038/s41467-023-43467-w",
+      "transcription": "Primary full-text XML excerpt",
+      "context_review": "Current-work PTMG-HDI/LiFSI comparator, polymer:LiFSI mass2:1. Reported30 C conductivity with general SS/EIS method. Do not copy BHDS dual-integrated200 micrometre geometry to this sample; no independent dynamic-polymer eligibility claim for control."
+    },
+    "pei-temperature": {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "locator": "Main Electrochemical characterization of the SPEs, first paragraph (XML Sec5/Par13)",
+      "text": "at 30 °C",
+      "document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+      "source_file": "pei/primary.xml",
+      "url": "https://doi.org/10.1038/s41467-023-43467-w",
+      "transcription": "Primary full-text XML excerpt",
+      "context_review": "Temperature applies to the conductivity comparison, not a healing treatment."
+    },
+    "pei-steel": {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "locator": "Methods Electrochemical characterization, XML Sec17/Par30",
+      "text": "between two steel sheets",
+      "document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+      "source_file": "pei/primary.xml",
+      "url": "https://doi.org/10.1038/s41467-023-43467-w",
+      "transcription": "Primary full-text XML excerpt",
+      "context_review": "SS is sheet steel in this paper. General method uses CR2032 blocking steel/SPE/steel sandwich cells, not Li-metal electrodes for this conductivity experiment."
+    },
+    "cao-transport": {
+      "paper_id": "10.1039/d0ra10035h",
+      "locator": "Main sec7 Electrochemical properties, Fig8a and following paragraph",
+      "text": "1.67 × 10−4 S cm−1 at 60 °C",
+      "document_sha256": "7f841016ab14761874d96a92384baf9036276c72a9ec500e4b9e4ffdb288ab2f",
+      "source_file": "extension/cao2021.xml",
+      "url": "https://doi.org/10.1039/d0ra10035h",
+      "transcription": "Primary full-text XML excerpt",
+      "context_review": "Ordered list assigns this number to ShSPE-3, not ShSP-3 or samples1/2. EO/Li=16:1; SS/ShSPE/SS EIS20–80 C. Explicit60 C number is related evidence, never a30 C value."
+    },
+    "cao-30C-plot": {
+      "paper_id": "10.1039/d0ra10035h",
+      "locator": "Supplement PDF p8 FigS3; synthesis pp2–3; EIS pp4–5",
+      "text": "30°C",
+      "document_sha256": "c5e98d96fdd867de4e9fcf6dfcd206aa741cf6ffafcbf49a8c95bc8d36aea57c",
+      "source_file": "extension/cao-supplements/RA-011-D0RA10035H-s001.pdf",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8694013/supplementaryFiles",
+      "transcription": "Manually transcribed figure-legend temperature; not a numeric conductivity transcription",
+      "context_review": "Visually checked30 C EIS legend for SS/ShSPE-3/SS. Plot is present; an exact conductivity scalar at30 C was not retrieved. SI recipe TPA:DGEBA:NH2-PEG-NH2:LiTFSI mass0.0335:0.1702:1.5:0.5921; EO/Li16:1; EIS1Hz–100kHz,5mV,1h equilibration."
+    },
+    "chen-series": {
+      "paper_id": "10.3390/polym13234155",
+      "locator": "Main section3.3, Fig6a and temperature-ordered values; FigS2",
+      "text": "1.69 × 10−4, 2.69 × 10−4",
+      "document_sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc",
+      "source_file": "extension/chen2021.xml",
+      "url": "https://doi.org/10.3390/polym13234155",
+      "transcription": "Primary full-text XML excerpt",
+      "context_review": "First two values in ordered series are25 and35 C, unitS·cm−1 given later in original sentence. No30 C numeric entry. SS discs; sigma=l/(R*A), bulk resistance. SHPEM12 micrometre in Methods vs about15 micrometre in Results; EIS method says with liquid electrolyte. Do not assert dry state or interpolate."
+    },
+    "chen-wetted": {
+      "paper_id": "10.3390/polym13234155",
+      "locator": "Main section3.3, wet-membrane comparison; section2.5 cell preparation and section2.6 EIS",
+      "text": "2.56 × 10−3 S·cm−1 at room temperature",
+      "document_sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc",
+      "source_file": "extension/chen2021.xml",
+      "url": "https://doi.org/10.3390/polym13234155",
+      "transcription": "Primary full-text XML excerpt",
+      "context_review": "Separate10 microlitre-liquid-electrolyte membrane comparison. Room temperature has no exact Celsius value here. Do not equate with30 C or unplasticized matrix; EC:DMC1:1 added to cell in Methods."
+    },
+    "gel-transport": {
+      "paper_id": "10.3390/batteries9090452",
+      "locator": "Official PDF p8, Fig3 and adjacent Results; method section2.6 pp3–4",
+      "text": "9.06 × 10−4 S cm−1",
+      "document_sha256": "79d127124c530fc75270ace6c7317e194d428bb65674347739fefec80ed0f81e",
+      "source_file": "extension/shige-article.pdf",
+      "url": "https://doi.org/10.3390/batteries9090452",
+      "transcription": "Manually checked published PDF value text; paragraph duplicated in extracted PDF text",
+      "context_review": "Reported at25 C. Other explicit points20 C=7.78e-4 and60 C=2.62e-3 S/cm. SS/SHIGE/SS CR2016 EIS1e5–1e-1 Hz. Figure3 includes30 C EIS and Arrhenius points, but exact30 C numeric conductivity was not retrieved. Polymer/ionic-liquid ratio unspecified."
+    },
+    "gel-30C-plot": {
+      "paper_id": "10.3390/batteries9090452",
+      "locator": "Official PDF p8, Fig3a inset temperature legend and Fig3b",
+      "text": "30°C",
+      "document_sha256": "79d127124c530fc75270ace6c7317e194d428bb65674347739fefec80ed0f81e",
+      "source_file": "extension/shige-article.pdf",
+      "url": "https://doi.org/10.3390/batteries9090452",
+      "transcription": "Manually transcribed figure-legend temperature; not a numeric conductivity transcription",
+      "context_review": "Visually checked30 C plotted evidence, not evidence of an exact extracted conductivity. Requires raw data or declared figure digitization with uncertainty."
+    }
+  },
+  "candidates": [
+    {
+      "candidate_id": "Pei2024-BHDS-LiFSI",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "sample_id": "PTMG-HDI-BHDS_LiFSI_2to1",
+      "formulation": {
+        "polymer": "PTMG-HDI-BHDS",
+        "salt": "LiFSI",
+        "polymer_to_salt_mass_ratio": "2:1",
+        "monomer_feed_PTMG_HDI_BHDS": "1:2.4:1",
+        "drying": "vacuum65 C48h; residual solvent not quantified"
+      },
+      "source_coverage": {
+        "main": "read_original",
+        "supplement": "read_available_SI",
+        "target_numeric_30C": "explicit_number",
+        "retrieval_scope": "Original full paper plus available SI; no same-formulation external follow-up search or new experiments."
+      },
+      "observations": [
+        {
+          "observation_id": "Pei2024-BHDS-LiFSI-transport",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "sample_id": "PTMG-HDI-BHDS_LiFSI_2to1",
+          "property": "ionic_conductivity",
+          "role": "current_work",
+          "value": 0.00024,
+          "value_raw": "2.4 × 10−4 S cm−1",
+          "unit": "S/cm",
+          "baseline": "absolute_reported_ionic_conductivity",
+          "claim_type": "property_test",
+          "record_kind": "reported_numeric_measurement",
+          "conditions": {
+            "measurement_method": "EIS",
+            "cell_configuration": "SS_electrolyte_SS",
+            "measurement_temperature_C": 30,
+            "electrode_material_source": "sheet steel",
+            "assembly": "dual_integrated_two_SS_at_SPE",
+            "total_bonded_thickness_um_approx": 200,
+            "resistance_definition": "total electrolyte resistance",
+            "frequency_min_Hz": 0.1,
+            "frequency_max_Hz": 1000000
+          },
+          "evidence": [
+            {
+              "source_id": "pei-bhds-transport",
+              "quote": "PTMG-HDI-BHDS/LiFSI (2.4 × 10−4 S cm−1)"
+            },
+            {
+              "source_id": "pei-temperature",
+              "quote": "at 30 °C"
+            },
+            {
+              "source_id": "pei-steel",
+              "quote": "between two steel sheets"
+            }
+          ],
+          "normalization_provenance": {
+            "raw_preserved": true,
+            "numeric_transformation": "Multiply coefficient by10 to the stated negative exponent; S cm−1 and S/cm denote the same dimension.",
+            "status": "Assistant source-reviewed interpretation; existing numeric parser does not consume this mapping."
+          }
+        }
+      ],
+      "missing": [],
+      "application_followups": [
+        "Quantify healing in this exact salted2:1 material; do not transfer neat-polymer Fig2 or SI8/10.",
+        "Resolve main/SI conflicts: symmetricLi lifetime>6000h vs5500h; SPAN700-cycle capacity560 vs745mAh/gSPAN; sulfur350-cycle capacity812 vs782mAh/gS.",
+        "Choose cell-specific loadings/current/pressure/cathode and check full battery suitability; no cross-paper rank."
+      ],
+      "related_results": []
+    },
+    {
+      "candidate_id": "Pei2024-HDI-LiFSI-control",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "sample_id": "PTMG-HDI_LiFSI_2to1",
+      "formulation": {
+        "polymer": "PTMG-HDI",
+        "salt": "LiFSI",
+        "polymer_to_salt_mass_ratio": "2:1",
+        "monomer_feed_PTMG_HDI": "1:1.2"
+      },
+      "source_coverage": {
+        "main": "read_original",
+        "supplement": "read_available_SI",
+        "target_numeric_30C": "explicit_number",
+        "retrieval_scope": "Original full paper plus available SI; no same-formulation external follow-up search or new experiments."
+      },
+      "observations": [
+        {
+          "observation_id": "Pei2024-HDI-LiFSI-control-transport",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "sample_id": "PTMG-HDI_LiFSI_2to1",
+          "property": "ionic_conductivity",
+          "role": "current_work",
+          "value": 6.5e-05,
+          "value_raw": "6.5 × 10−5 S cm−1",
+          "unit": "S/cm",
+          "baseline": "absolute_reported_ionic_conductivity",
+          "claim_type": "property_test",
+          "record_kind": "reported_numeric_measurement",
+          "conditions": {
+            "measurement_method": "EIS",
+            "cell_configuration": "SS_electrolyte_SS",
+            "measurement_temperature_C": 30,
+            "electrode_material_source": "sheet steel",
+            "assembly": "SS_sandwich_general_method; exact comparator architecture unestablished",
+            "resistance_definition": "total electrolyte resistance",
+            "frequency_min_Hz": 0.1,
+            "frequency_max_Hz": 1000000
+          },
+          "evidence": [
+            {
+              "source_id": "pei-hdi-transport",
+              "quote": "PTMG-HDI/LiFSI (6.5 × 10−5 S cm−1)"
+            },
+            {
+              "source_id": "pei-temperature",
+              "quote": "at 30 °C"
+            },
+            {
+              "source_id": "pei-steel",
+              "quote": "between two steel sheets"
+            }
+          ],
+          "normalization_provenance": {
+            "raw_preserved": true,
+            "numeric_transformation": "Multiply coefficient by10 to the stated negative exponent; S cm−1 and S/cm denote the same dimension.",
+            "status": "Assistant source-reviewed interpretation; existing numeric parser does not consume this mapping."
+          }
+        }
+      ],
+      "missing": [],
+      "application_followups": [
+        "Below this entry threshold; do not generalize to all temperatures, formulations or uses.",
+        "Comparator is a performance control; dynamic-polymer eligibility is not independently established here.",
+        "No assumption of identical200 micrometre dual-integrated assembly to BHDS."
+      ],
+      "related_results": []
+    },
+    {
+      "candidate_id": "Cao2021-ShSPE3",
+      "paper_id": "10.1039/d0ra10035h",
+      "sample_id": "ShSPE-3_EO-Li_16to1",
+      "formulation": {
+        "polymer": "TPA/DGEBA/NH2-PEG-NH2 network",
+        "salt": "LiTFSI",
+        "EO_to_Li_molar_ratio": "16:1",
+        "TPA_DGEBA_NH2PEGNH2_LiTFSI_mass": "0.0335:0.1702:1.5:0.5921"
+      },
+      "source_coverage": {
+        "main": "read_original",
+        "supplement": "read_available_SI",
+        "target_numeric_30C": "not_retrieved",
+        "retrieval_scope": "Original full paper plus available SI; no same-formulation external follow-up search or new experiments."
+      },
+      "observations": [
+        {
+          "observation_id": "Cao2021-ShSPE3-transport",
+          "paper_id": "10.1039/d0ra10035h",
+          "sample_id": "ShSPE-3_EO-Li_16to1",
+          "property": "ionic_conductivity",
+          "role": "current_work",
+          "value": null,
+          "value_raw": null,
+          "unit": "S/cm",
+          "baseline": "absolute_reported_ionic_conductivity",
+          "claim_type": "property_test",
+          "record_kind": "target_gap_with_reviewed_protocol",
+          "conditions": {
+            "measurement_method": "EIS",
+            "cell_configuration": "SS_electrolyte_SS",
+            "measurement_temperature_C": 30,
+            "electrode_material_source": "blocking SS",
+            "temperature_evidence": "SI FigS3 plotted; exact scalar not retrieved",
+            "frequency_min_Hz": 1,
+            "frequency_max_Hz": 100000
+          },
+          "evidence": [
+            {
+              "source_id": "cao-transport",
+              "quote": "1.67 × 10−4 S cm−1 at 60 °C"
+            },
+            {
+              "source_id": "cao-30C-plot",
+              "quote": "30°C"
+            }
+          ],
+          "missing_reason": "30C_conductivity_plotted_but_exact_numeric_not_retrieved",
+          "target_temperature_C": 30,
+          "null_value_note": "A target gap/protocol record, not a claimed numeric measurement. Known non-target numbers are retained in related_results, which this selector does not evaluate."
+        }
+      ],
+      "missing": [],
+      "application_followups": [
+        "30C_conductivity_plotted_but_exact_numeric_not_retrieved",
+        "Retrieve original30 C fit/data or explicitly digitize with uncertainty and same-sample geometry; do not substitute60 C.",
+        "Li/LFP cycling was demonstrated at60 C, not30 C; quantitative post-healing recovery remains separate."
+      ],
+      "related_results": [
+        {
+          "property": "ionic_conductivity",
+          "value": 0.000167,
+          "unit": "S/cm",
+          "value_raw": "1.67 × 10−4 S cm−1",
+          "measurement_temperature_C": 60,
+          "evidence_source_id": "cao-transport",
+          "selector_evaluates": false
+        },
+        {
+          "property": "qualitative_cut_rejoining",
+          "measurement_temperature_C": 25,
+          "duration_min": 30,
+          "locator": "Main Fig6, same ShSPE-3; qualitative images/stretching",
+          "selector_evaluates": false
+        }
+      ]
+    },
+    {
+      "candidate_id": "Chen2021-SHPEM",
+      "paper_id": "10.3390/polym13234155",
+      "sample_id": "SHPEM_P-MMA-BA-FMA_BMI-LiBOB",
+      "formulation": {
+        "polymer_source_label": "P(MMA-BA-(F-MA)):BMI-LiBOB",
+        "monomer_feed_MMA_BMA_FMA": "1:2:1",
+        "copolymer_to_BMI_molar_ratio": "2:1.1",
+        "salt": "LiBOB",
+        "identity_caveat": "Main notation BA vs defined BMA retained; liquid-electrolyte amount/state of temperature series unresolved"
+      },
+      "source_coverage": {
+        "main": "read_original",
+        "supplement": "read_available_SI",
+        "target_numeric_30C": "not_retrieved",
+        "retrieval_scope": "Original full paper plus available SI; no same-formulation external follow-up search or new experiments."
+      },
+      "observations": [
+        {
+          "observation_id": "Chen2021-SHPEM-transport",
+          "paper_id": "10.3390/polym13234155",
+          "sample_id": "SHPEM_P-MMA-BA-FMA_BMI-LiBOB",
+          "property": "ionic_conductivity",
+          "role": "current_work",
+          "value": null,
+          "value_raw": null,
+          "unit": "S/cm",
+          "baseline": "absolute_reported_ionic_conductivity",
+          "claim_type": "property_test",
+          "record_kind": "target_gap_with_reviewed_non_target_protocol",
+          "conditions": {
+            "measurement_method": "EIS",
+            "cell_configuration": "SS_electrolyte_SS",
+            "measurement_temperature_C": 25,
+            "electrode_material_source": "parallel SS discs",
+            "specimen_state": "liquid-electrolyte state unresolved; do not label dry",
+            "resistance_definition": "bulk electrolyte resistance",
+            "frequency_min_Hz": 0.1,
+            "frequency_max_Hz": 100000
+          },
+          "evidence": [
+            {
+              "source_id": "chen-series",
+              "quote": "1.69 × 10−4, 2.69 × 10−4"
+            },
+            {
+              "source_id": "chen-wetted",
+              "quote": "2.56 × 10−3 S·cm−1 at room temperature"
+            }
+          ],
+          "missing_reason": "No explicit30 C numeric entry;25 and35 C points must not be interpolated as direct evidence.",
+          "target_temperature_C": 30,
+          "null_value_note": "A target gap/protocol record, not a claimed numeric measurement. Known non-target numbers are retained in related_results, which this selector does not evaluate."
+        }
+      ],
+      "missing": [],
+      "application_followups": [
+        "No explicit30 C numeric entry;25 and35 C points must not be interpolated as direct evidence.",
+        "Resolve wet/plasticized state, BA/BMA naming and film-thickness description before sample-matched comparison.",
+        "Main Methods12 micrometre vs Results about15 micrometre thickness; keep discrepancy.",
+        "Healing80 C2hN2 with about65% strength recovery is external thermal repair, not demonstrated autonomous sealed-cell repair."
+      ],
+      "related_results": [
+        {
+          "property": "ionic_conductivity",
+          "value": 0.000169,
+          "unit": "S/cm",
+          "value_raw": "1.69 × 10−4",
+          "measurement_temperature_C": 25,
+          "evidence_source_id": "chen-series",
+          "unit_link": "unit at end of ordered sentence",
+          "selector_evaluates": false
+        },
+        {
+          "property": "ionic_conductivity",
+          "value": 0.000269,
+          "unit": "S/cm",
+          "value_raw": "2.69 × 10−4",
+          "measurement_temperature_C": 35,
+          "evidence_source_id": "chen-series",
+          "unit_link": "unit at end of ordered sentence",
+          "selector_evaluates": false
+        },
+        {
+          "property": "ionic_conductivity",
+          "value": 0.00256,
+          "unit": "S/cm",
+          "value_raw": "2.56 × 10−3 S·cm−1",
+          "measurement_temperature": "room_temperature_unspecified",
+          "added_liquid_electrolyte_uL": 10,
+          "evidence_source_id": "chen-wetted",
+          "selector_evaluates": false
+        }
+      ]
+    },
+    {
+      "candidate_id": "Chen2023-SHIGE",
+      "paper_id": "10.3390/batteries9090452",
+      "sample_id": "SHIGE_D-IEM-SBMA_LiTFSI-EMIMTFSI",
+      "formulation": {
+        "polymer": "D-IEM/SBMA copolymer",
+        "salt": "LiTFSI",
+        "ionic_liquid": "EMIM TFSI",
+        "salt_molarity_M": 1,
+        "polymer_to_ionic_liquid_ratio": null,
+        "residual_solvent": "TFEA possible per Results; do not claim solvent-free"
+      },
+      "source_coverage": {
+        "main": "read_original",
+        "supplement": "main_methods_and_figures_read",
+        "target_numeric_30C": "not_retrieved",
+        "retrieval_scope": "Original full paper plus available SI; no same-formulation external follow-up search or new experiments."
+      },
+      "observations": [
+        {
+          "observation_id": "Chen2023-SHIGE-transport",
+          "paper_id": "10.3390/batteries9090452",
+          "sample_id": "SHIGE_D-IEM-SBMA_LiTFSI-EMIMTFSI",
+          "property": "ionic_conductivity",
+          "role": "current_work",
+          "value": null,
+          "value_raw": null,
+          "unit": "S/cm",
+          "baseline": "absolute_reported_ionic_conductivity",
+          "claim_type": "property_test",
+          "record_kind": "target_gap_with_reviewed_protocol",
+          "conditions": {
+            "measurement_method": "EIS",
+            "cell_configuration": "SS_electrolyte_SS",
+            "measurement_temperature_C": 30,
+            "electrode_material_source": "SS",
+            "temperature_evidence": "Fig3 plotted; exact scalar not retrieved",
+            "cell_type": "CR2016",
+            "frequency_min_Hz": 0.1,
+            "frequency_max_Hz": 100000
+          },
+          "evidence": [
+            {
+              "source_id": "gel-transport",
+              "quote": "9.06 × 10−4 S cm−1"
+            },
+            {
+              "source_id": "gel-30C-plot",
+              "quote": "30°C"
+            }
+          ],
+          "missing_reason": "30C_conductivity_plotted_but_exact_numeric_not_retrieved",
+          "target_temperature_C": 30,
+          "null_value_note": "A target gap/protocol record, not a claimed numeric measurement. Known non-target numbers are retained in related_results, which this selector does not evaluate."
+        }
+      ],
+      "missing": [],
+      "application_followups": [
+        "30C_conductivity_plotted_but_exact_numeric_not_retrieved",
+        "Retrieve original30 C point/fit or declare figure-digitization uncertainty; obtain exact polymer/ionic-liquid ratio.",
+        "Resolve cycling temperature25 C in Methods vs60 C in abstract/results and SHSPE/SHIGE naming.",
+        "Heating60 C30min closes cuts qualitatively; quantitative restored conductivity/strength is not established here."
+      ],
+      "related_results": [
+        {
+          "property": "ionic_conductivity",
+          "value": 0.000906,
+          "unit": "S/cm",
+          "value_raw": "9.06 × 10−4 S cm−1",
+          "measurement_temperature_C": 25,
+          "evidence_source_id": "gel-transport",
+          "selector_evaluates": false
+        }
+      ]
+    }
+  ],
+  "encoding_note": "Target-gap observations intentionally have null values. Known non-target numbers are preserved in related_results and do not substitute for30 C. All original multiplication/superscript notation remains unchanged."
+}

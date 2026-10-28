@@ -1,0 +1,139 @@
+{
+  "reference_kind": "Independent assistant primary-source adjudication before selector replay",
+  "prepared_date_local": "2026-10-27",
+  "frozen_at_utc": "2026-10-28 02:34:54 UTC",
+  "profile_id": "lithium_metal_electrolyte_30C_transport_entry_v1",
+  "profile_sha256": "f385bedf9672682ca26e6f6c4b9397090d71ff8344d4f1825de298bd2a725a36",
+  "independence_note": "This source review did not inspect selector outputs or run the selector. It is assistant review, not authenticated human ground truth. The profile followed exploratory source reading, so neither source selection nor threshold choice is blinded or prospective. Software/reference disagreement must be preserved; no labels may be revised merely to match software.",
+  "decision_scope": "One transport entry criterion; complete electrolyte/device qualification remains outside scope. Do not rank materials tested under unlike conditions.",
+  "records": [
+    {
+      "candidate_id": "Pei2024-BHDS-LiFSI",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "sample_id": "PTMG-HDI-BHDS_LiFSI_2to1",
+      "formulation": "PTMG-HDI-BHDS/LiFSI, polymer:LiFSI 2:1 by mass",
+      "decision": "keep_for_followup",
+      "criteria": {
+        "C1": "keep_for_followup"
+      },
+      "rationale": "The exact salted BHDS formulation is reported at 2.4e-4 S/cm at 30 C from SS/electrolyte/SS EIS, above the frozen 1e-4 S/cm entry threshold. This advances only the reported transport result. It does not establish overall battery suitability.",
+      "locators": [
+        "Main Results, Electrochemical characterization of the SPEs, first paragraph and Fig3a/b",
+        "Methods, Electrolyte preparation, both PTMG matrices mixed at polymer:LiFSI 2:1",
+        "Methods, Electrochemical characterization, SS/SPE/SS CR2032 EIS and default30C"
+      ],
+      "eligibility": "Current-work lithium-salt polymer electrolyte with dynamic disulfide/hydrogen-bond architecture; in scope for Topic B and a candidate, not merely an abstract application claim.",
+      "qualifications": [
+        "Source defines SS as sheet steel, not necessarily stainless steel.",
+        "Reported quantity is the conductivity obtained with total resistance in this integrated cell, not independently resolved intrinsic bulk conductivity.",
+        "BHDS is explicitly dual-integrated with about200um total bonded SPE thickness. Do not assert comparator or cross-paper geometry equivalence.",
+        "Neat-polymer scratch/healing and strength results do not establish the same properties of the salted2:1 electrolyte.",
+        "Main/SI cycle-life and capacity discrepancies must be resolved before using those results as further screening criteria.",
+        "No uncertainty-based confidence claim; criterion uses the reported point estimate."
+      ]
+    },
+    {
+      "candidate_id": "Pei2024-HDI-LiFSI-control",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "sample_id": "PTMG-HDI_LiFSI_2to1",
+      "formulation": "PTMG-HDI/LiFSI, polymer:LiFSI 2:1 by mass",
+      "decision": "exclude_for_use",
+      "criteria": {
+        "C1": "exclude_for_use"
+      },
+      "rationale": "The exact salted current-work control is reported at6.5e-5 S/cm at30C by the common SS/SPE/SS EIS method, below1e-4 S/cm. Exclude only from this selected transport shortlist. The result is not a universal judgment about the material.",
+      "locators": [
+        "Main Results, Electrochemical characterization of the SPEs, first paragraph and Fig3b",
+        "Methods, Electrolyte preparation, PTMG-HDI solution plusLiFSI2:1",
+        "Methods, Electrochemical characterization, SS/SPE/SS EIS"
+      ],
+      "eligibility": "Explicit performance control in the same paper; not independently established here as a dynamic-polymer candidate. Include to exercise a genuine threshold failure without inventing a poor new polymer.",
+      "qualifications": [
+        "Common general EIS method is established; identical dual-integrated geometry or200um thickness is not separately established for this control.",
+        "The broad entry profile accepts the reported conductivity and retains assembly metadata; do not rank chemical mechanisms or claim all assembly effects are controlled.",
+        "Reported point estimate only; no statistical superiority claim."
+      ]
+    },
+    {
+      "candidate_id": "Cao2021-ShSPE3",
+      "paper_id": "10.1039/d0ra10035h",
+      "sample_id": "ShSPE-3_EO-Li_16to1",
+      "formulation": "ShSPE-3 imine/epoxy PEG network withLiTFSI; TPA:DGEBA:NH2-PEG-NH2=1:2:3; EO/Li+=16:1",
+      "decision": "retrieve_more",
+      "criteria": {
+        "C1": "retrieve_more"
+      },
+      "rationale": "The paper reports1.67e-4 S/cm at60C, not an exact extracted30C conductivity. SS/ShSPE-3/SS EIS at30C is plotted in SI FigS3. Obtain raw resistance, geometry and fit or a declared approximate digitization before deciding C1. Do not use the60C result as a30C pass or infer failure from missing exact data.",
+      "locators": [
+        "Main electrochemical performance discussion, Fig8a/b",
+        "SI Experimental Section, electrolyte synthesis and electrochemical characterization",
+        "SI FigS3,30C EIS legend/curve"
+      ],
+      "eligibility": "Current-work salted polymer electrolyte with dynamic imine network and Li-metal/LFP cells; in Topic B. Avoid conflating ShSP(no lithium salt) with ShSPE.",
+      "qualifications": [
+        "SI supplies actual stainless-steel blocking electrodes, EIS1Hz-100kHz,5mV and1h equilibration at each temperature.",
+        "An exact30C conductivity or an appropriately declared derived estimate is missing from this audit;30C testing itself is not absent.",
+        "Do not transfer otherPEG formulations from SI comparison TableS1 into this paper current-work sample."
+      ]
+    },
+    {
+      "candidate_id": "Chen2021-SHPEM",
+      "paper_id": "10.3390/polym13234155",
+      "sample_id": "SHPEM_P-MMA-BA-FMA_BMI-LiBOB",
+      "formulation": "P(MMA-BA-(F-MA)):BMI-LiBOB SHPEM, reported crosslinker molar ratio2:1.1",
+      "decision": "retrieve_more",
+      "criteria": {
+        "C1": "retrieve_more"
+      },
+      "rationale": "The text enumerates25C1.69e-4 and35C2.69e-4 S/cm with no exact30C value. Do not interpolate. Moreover methods specify EIS with liquid electrolyte while results separately report a10uL-wetted room-temperature value; the state assigned to each conductivity series must be clarified before comparing an exact formulation.",
+      "locators": [
+        "Methods2.3 precursor synthesis and2.4 electrolyte membrane preparation",
+        "Methods2.5 battery assembly and10uL EC:DMC addition",
+        "Methods2.6 characterization, EIS with liquid electrolyte; SHP12um versusPE15um",
+        "Results3.3 first paragraph: all electrochemical SHP membranes about15um; second paragraph/Fig6a conductivity temperatures and values",
+        "SI FigS2 Arrhenius plot"
+      ],
+      "eligibility": "The authors use SHPEM as a polymer electrolyte/functional separator in LCO/Li-metal coin cells. The lithium-ion wording in the title is not a reason to exclude this demonstrated Li-metal test; role ambiguity must be recorded, not resolved by labels alone.",
+      "qualifications": [
+        "Target30C value missing. Neither25C,35C nor unspecified room temperature is30C.",
+        "Thickness conflicts within the original source: Methods2.6 assigns SHP12um andPE15um, whereas Results3.3 says all SHP membranes used in electrochemical tests were about15um. Preserve both; do not choose one as resolved.",
+        "Exact conductivity-sample lithium-salt loading and which data series is wetted require further verification. Results3.1 mentions10wt% LiBOB for a depicted about20um film; do not automatically transfer that morphology-sample loading to a differently specified conductivity specimen.",
+        "Do not present separate10uL result2.56e-3 S/cm atroomtemperature as dry-matrix30C conductivity."
+      ]
+    },
+    {
+      "candidate_id": "Chen2023-SHIGE",
+      "paper_id": "10.3390/batteries9090452",
+      "sample_id": "SHIGE_D-IEM-SBMA_LiTFSI-EMIMTFSI",
+      "formulation": "D-IEM/SBMA copolymer with1M LiTFSI inEMIMTFSI ionic liquid; polymer fraction not numerically specified in reviewed methods",
+      "decision": "retrieve_more",
+      "criteria": {
+        "C1": "retrieve_more"
+      },
+      "rationale": "The exact numeric text gives9.06e-4 S/cm at25C and2.62e-3 at60C. Fig3a includes a30C EIS curve and Fig3b a corresponding plotted point, but no exact30C conductivity has been retrieved. Obtain raw values or clearly approximate digitization and resolve formulation fraction before assessing the selected30C criterion. This is missing exact evidence, not an experimental failure.",
+      "locators": [
+        "Methods2.4 polymer/salt/ionic-liquid preparation",
+        "Methods2.6 stainless-steel electrodes, CR2016 and20-80C EIS",
+        "Main p8 Fig3a/b and numeric conductivity paragraph"
+      ],
+      "eligibility": "Current-work hydrogen-bond/ionic-interaction self-healing ionic-gel polymer electrolyte for Li-metal cells, in Topic B. Do not relabel as solvent-free all-solid polymer.",
+      "qualifications": [
+        "Methods2.4 specifies a certain amount of polymer rather than an explicit polymer:ionic-liquid ratio.",
+        "Source acknowledges possible residualTFEA; do not assert solvent-free.",
+        "Battery-cycle temperature inMethods2.8(25C) conflicts with abstract/results(60C); preserve unresolved discrepancy.",
+        "Optical cut closure at60C30min is not room-temperature healing or quantified transport recovery after healing.",
+        "The figure caption temperature range and plotted legend differ; keep source locators rather than rewriting them."
+      ],
+      "author_citation": "Chen, W. et al. (2023)"
+    }
+  ],
+  "source_corrections_before_replay": [
+    {
+      "date_local": "2026-10-27",
+      "candidate_id": "Chen2021-SHPEM",
+      "previous_reference_sha256": "10fa208b5faee413b729ad8b9e010d66692fe612069ffe97da7539389226d10b",
+      "reason": "Further primary-source read confirmed Results3.3 about15um conflicts with Methods2.6 SHP12um; corrected methods section numbering and added both values as unresolved conflict. No selector run or output was inspected. Decision labels are unchanged.",
+      "decisions_changed": false
+    }
+  ]
+}

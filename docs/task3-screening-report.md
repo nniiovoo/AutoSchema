@@ -1,5 +1,7 @@
 # Task 3: checked polymer screening for one application
 
+**Historical wood-coating method example.** The current demonstration aligned with Nina's battery-polymer scope is [Task 3 battery screening](task3-battery-screening-report.md), prepared 27 October 2026. This earlier evidence and replay remain unchanged; do not compare their different cases as a model improvement benchmark.
+
 Completed four-paper case study: **21 October 2026**, on the `task3-selection` fork. We selected one application, checked five formulations from four distinct experimental papers in DPAL, retained the original independently frozen reference decisions, independently froze the added paper's decision before the expanded replay, and ran the existing selector. This completes the requested small screening demonstration and documents the software's disagreements. It does not claim that extraction-to-selection automation is complete.
 
 **Task 3 separates two questions: does the original source support the observation, and does comparable evidence meet this application's requirements?** Missing evidence is a distinct outcome, not a failed experiment. No combined material score or ranking is used.

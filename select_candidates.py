@@ -39,23 +39,25 @@ def _read(path):
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Task 3: check evidence, screen candidates for a stated use, and queue evidence gaps.")
     parser.add_argument("--input", type=Path, required=True, help="JSON bundle containing profile, sources and atomic candidates.")
+    parser.add_argument("--profile", type=Path, help="Separate application-rule JSON. Overrides the input bundle's profile without changing observations or reviews.")
     parser.add_argument("--reviews", type=Path, help="Separate source/semantic review receipts. Without these, observations need review.")
     parser.add_argument("--out-dir", type=Path, required=True)
     args = parser.parse_args(argv)
     try:
         bundle = _read(args.input)
+        profile = _read(args.profile) if args.profile else bundle.get("profile") if isinstance(bundle, dict) else None
         reviews = _read(args.reviews) if args.reviews else []
         if not isinstance(bundle, dict) or not isinstance(bundle.get("candidates"), list) or not bundle["candidates"]:
             raise ValueError("Input must contain a nonempty candidates list, plus profile and sources.")
         ids = [c.get("candidate_id") if isinstance(c, dict) else None for c in bundle["candidates"]]
         if any(not isinstance(i, str) or not i.strip() for i in ids) or len(ids) != len(set(ids)):
             raise ValueError("Candidate IDs must be present and unique.")
-        records = [screen_candidate(c, bundle.get("profile"), bundle.get("sources"), reviews)
+        records = [screen_candidate(c, profile, bundle.get("sources"), reviews)
                    for c in bundle["candidates"]]
         outputs = [args.out_dir / name for name in ("selection.json", "selection.csv", "followups.json")]
-        inputs = {p.resolve() for p in (args.input, args.reviews) if p is not None}
+        inputs = {p.resolve() for p in (args.input, args.reviews, args.profile) if p is not None}
         if any(path.resolve() in inputs for path in outputs):
-            raise ValueError("Output paths must not overwrite input or review files.")
+            raise ValueError("Output paths must not overwrite input, review or profile files.")
         args.out_dir.mkdir(parents=True, exist_ok=True)
         outputs[0].write_text(json.dumps(records, indent=2, ensure_ascii=False, allow_nan=False) + "\n", encoding="utf-8")
         gaps = [{"candidate_id": r["candidate_id"], "profile_id": r["profile_id"], **g}

@@ -1,0 +1,96 @@
+{
+  "prepared_date": "2026-10-27",
+  "source_archive_local": "/Volumes/Seagate/research /polymer-screening/sources/task3-battery-2026-10-27",
+  "source_files": [
+    {
+      "file": "pei/primary.xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10774406/fullTextXML",
+      "sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+      "bytes": 113541
+    },
+    {
+      "file": "pei/supplement.pdf",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-023-43467-w/MediaObjects/41467_2023_43467_MOESM1_ESM.pdf",
+      "sha256": "2acd8a89e1c49717586bef25b397876c4142ba545492ae711bb58bc7e9ca6a2a",
+      "bytes": 7279325
+    },
+    {
+      "file": "pei/epmc-bundle/41467_2023_43467_MOESM3_ESM.xlsx",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10774406/supplementaryFiles",
+      "sha256": "6ffe714f5add9467a935d788b3a86dc6e1a4f6502091c5a41ee5ded19bfd6add",
+      "bytes": 39924190
+    },
+    {
+      "file": "extension/cao2021.xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8694013/fullTextXML",
+      "sha256": "7f841016ab14761874d96a92384baf9036276c72a9ec500e4b9e4ffdb288ab2f",
+      "bytes": 79675
+    },
+    {
+      "file": "extension/cao-supplements/RA-011-D0RA10035H-s001.pdf",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8694013/supplementaryFiles",
+      "sha256": "c5e98d96fdd867de4e9fcf6dfcd206aa741cf6ffafcbf49a8c95bc8d36aea57c",
+      "bytes": 540886
+    },
+    {
+      "file": "extension/chen2021.xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8659245/fullTextXML",
+      "sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc",
+      "bytes": 86284
+    },
+    {
+      "file": "extension/chen-supplements/SI/polymers-1422928-supplementary.pdf",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8659245/supplementaryFiles",
+      "sha256": "4ab5bc4996af38db76da94bc9c15c027faccf86e157369dfa811ccb35672cca4",
+      "bytes": 246080
+    },
+    {
+      "file": "extension/shige-article.pdf",
+      "url": "https://mdpi-res.com/d_attachment/batteries/batteries-09-00452/article_deploy/batteries-09-00452.pdf",
+      "sha256": "79d127124c530fc75270ace6c7317e194d428bb65674347739fefec80ed0f81e",
+      "bytes": 3125800
+    }
+  ],
+  "dpal_release_url": "https://github.com/kmiller621/DPAL/releases/tag/July2025",
+  "dpal_csv_sha256": "33d3d63d837e5687ad80001aef1a3103180d011831f925a1a66007fbbcc4fca8",
+  "dpal_record_count": 15460,
+  "records": [
+    {
+      "Key": "LD7DQY33",
+      "Title": "Interfacial self-healing polymer electrolytes for long-cycle solid-state lithium-sulfur batteries",
+      "DOI": "10.1038/s41467-023-43467-w",
+      "Publication Year": "2024",
+      "Manual Tags": "Source: General; Application: Batteries; Bond: Disulfide; Bond: Urethane; Property: Self-healing; Class: Hydrogen Bond; Class: Dynamic Covalent",
+      "data_record_1based": 11282
+    },
+    {
+      "Key": "25XYVWJC",
+      "Title": "Self-Healing of a Covalently Cross-Linked Polymer Electrolyte Membrane by Diels-Alder Cycloaddition and Electrolyte Embedding for Lithium Ion Batteries",
+      "DOI": "10.3390/polym13234155",
+      "Publication Year": "2021",
+      "Manual Tags": "Source: General; Application: Batteries; Property: Ionic Conductivity; Application: Membranes; Bond: Diels-alder; Property: Self-healing; Class: Dynamic Covalent",
+      "data_record_1based": 11650
+    },
+    {
+      "Key": "2UKHV34P",
+      "Title": "Self-healing solid polymer electrolyte based on imine bonds for high safety and stable lithium metal batteries",
+      "DOI": "10.1039/d0ra10035h",
+      "Publication Year": "2021",
+      "Manual Tags": "Source: General; Application: Batteries; Bond: Imine; Property: Ionic Conductivity; Property: Mechanical; Application: Membranes; Property: Self-healing; Class: Dynamic Covalent; Backbone: Poly(propylene glycol)",
+      "data_record_1based": 12254
+    },
+    {
+      "Key": "REFIR3WM",
+      "Title": "A Flexible and Self-Healing Ionic Gel Electrolyte Based on a Zwitterion (ZI) Copolymer for High-Performance Lithium Metal Batteries",
+      "DOI": "10.3390/batteries9090452",
+      "Publication Year": "2023",
+      "Manual Tags": "Source: General; Application: Batteries; Property: Ionic Conductivity; Property: Self-healing",
+      "data_record_1based": 12616
+    }
+  ],
+  "profile_sha256": "f385bedf9672682ca26e6f6c4b9397090d71ff8344d4f1825de298bd2a725a36",
+  "membership_note": "DOI membership in DPAL, not a claim these were Nina’s unidentified seed papers.",
+  "sampling": "Purposive exploratory four-paper research case, five formulations including one same-paper performance control; not a representative benchmark.",
+  "pipeline_scope": "Actual existing deterministic selector replay on manually reviewed input; no LLM extraction, schema induction or automatic paper retrieval in this run.",
+  "engine_changes": "No changes to selection_lib/screening.py. CLI adds separate --profile file only."
+}

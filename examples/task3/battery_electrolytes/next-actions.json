@@ -1,0 +1,134 @@
+{
+  "status": "Pending; this replay does not retrieve papers or perform experiments",
+  "selector_actions": [
+    {
+      "candidate_id": "Pei2024-BHDS-LiFSI",
+      "profile_id": "lithium_metal_electrolyte_30C_transport_entry_v1",
+      "criterion_id": "C1",
+      "property": "ionic_conductivity",
+      "reason": "numeric_and_raw_value_mismatch",
+      "owner": "evidence_reviewer",
+      "next_action": "Resolve source, sample, metric, unit or review conflicts; preserve the original records and re-review the corrected revision.",
+      "status": "pending",
+      "source_coverage": {
+        "main": "read_original",
+        "supplement": "read_available_SI",
+        "target_numeric_30C": "explicit_number",
+        "retrieval_scope": "Original full paper plus available SI; no same-formulation external follow-up search or new experiments."
+      },
+      "retrieval_executed": false
+    },
+    {
+      "candidate_id": "Pei2024-HDI-LiFSI-control",
+      "profile_id": "lithium_metal_electrolyte_30C_transport_entry_v1",
+      "criterion_id": "C1",
+      "property": "ionic_conductivity",
+      "reason": "numeric_and_raw_value_mismatch",
+      "owner": "evidence_reviewer",
+      "next_action": "Resolve source, sample, metric, unit or review conflicts; preserve the original records and re-review the corrected revision.",
+      "status": "pending",
+      "source_coverage": {
+        "main": "read_original",
+        "supplement": "read_available_SI",
+        "target_numeric_30C": "explicit_number",
+        "retrieval_scope": "Original full paper plus available SI; no same-formulation external follow-up search or new experiments."
+      },
+      "retrieval_executed": false
+    },
+    {
+      "candidate_id": "Cao2021-ShSPE3",
+      "profile_id": "lithium_metal_electrolyte_30C_transport_entry_v1",
+      "criterion_id": "C1",
+      "property": "ionic_conductivity",
+      "reason": "30C_conductivity_plotted_but_exact_numeric_not_retrieved",
+      "owner": "source_review",
+      "next_action": "Check the same sample's original methods, figures and available supplement, then targeted same-formulation primary studies.",
+      "status": "pending",
+      "source_coverage": {
+        "main": "read_original",
+        "supplement": "read_available_SI",
+        "target_numeric_30C": "not_retrieved",
+        "retrieval_scope": "Original full paper plus available SI; no same-formulation external follow-up search or new experiments."
+      },
+      "retrieval_executed": false
+    },
+    {
+      "candidate_id": "Chen2021-SHPEM",
+      "profile_id": "lithium_metal_electrolyte_30C_transport_entry_v1",
+      "criterion_id": "C1",
+      "property": "ionic_conductivity",
+      "reason": "required_protocol_not_tested:measurement_temperature_C",
+      "owner": "source_review",
+      "next_action": "Check the same sample's original methods, figures and available supplement, then targeted same-formulation primary studies.",
+      "status": "pending",
+      "source_coverage": {
+        "main": "read_original",
+        "supplement": "read_available_SI",
+        "target_numeric_30C": "not_retrieved",
+        "retrieval_scope": "Original full paper plus available SI; no same-formulation external follow-up search or new experiments."
+      },
+      "retrieval_executed": false
+    },
+    {
+      "candidate_id": "Chen2023-SHIGE",
+      "profile_id": "lithium_metal_electrolyte_30C_transport_entry_v1",
+      "criterion_id": "C1",
+      "property": "ionic_conductivity",
+      "reason": "30C_conductivity_plotted_but_exact_numeric_not_retrieved",
+      "owner": "source_review",
+      "next_action": "Check the same sample's original methods, figures and available supplement, then targeted same-formulation primary studies.",
+      "status": "pending",
+      "source_coverage": {
+        "main": "read_original",
+        "supplement": "main_methods_and_figures_read",
+        "target_numeric_30C": "not_retrieved",
+        "retrieval_scope": "Original full paper plus available SI; no same-formulation external follow-up search or new experiments."
+      },
+      "retrieval_executed": false
+    }
+  ],
+  "reviewed_application_actions": [
+    {
+      "candidate_id": "Pei2024-BHDS-LiFSI",
+      "actions": [
+        "Quantify healing in this exact salted2:1 material; do not transfer neat-polymer Fig2 or SI8/10.",
+        "Resolve main/SI conflicts: symmetricLi lifetime>6000h vs5500h; SPAN700-cycle capacity560 vs745mAh/gSPAN; sulfur350-cycle capacity812 vs782mAh/gS.",
+        "Choose cell-specific loadings/current/pressure/cathode and check full battery suitability; no cross-paper rank."
+      ]
+    },
+    {
+      "candidate_id": "Pei2024-HDI-LiFSI-control",
+      "actions": [
+        "Below this entry threshold; do not generalize to all temperatures, formulations or uses.",
+        "Comparator is a performance control; dynamic-polymer eligibility is not independently established here.",
+        "No assumption of identical200 micrometre dual-integrated assembly to BHDS."
+      ]
+    },
+    {
+      "candidate_id": "Cao2021-ShSPE3",
+      "actions": [
+        "30C_conductivity_plotted_but_exact_numeric_not_retrieved",
+        "Retrieve original30 C fit/data or explicitly digitize with uncertainty and same-sample geometry; do not substitute60 C.",
+        "Li/LFP cycling was demonstrated at60 C, not30 C; quantitative post-healing recovery remains separate."
+      ]
+    },
+    {
+      "candidate_id": "Chen2021-SHPEM",
+      "actions": [
+        "No explicit30 C numeric entry;25 and35 C points must not be interpolated as direct evidence.",
+        "Resolve wet/plasticized state, BA/BMA naming and film-thickness description before sample-matched comparison.",
+        "Main Methods12 micrometre vs Results about15 micrometre thickness; keep discrepancy.",
+        "Healing80 C2hN2 with about65% strength recovery is external thermal repair, not demonstrated autonomous sealed-cell repair."
+      ]
+    },
+    {
+      "candidate_id": "Chen2023-SHIGE",
+      "actions": [
+        "30C_conductivity_plotted_but_exact_numeric_not_retrieved",
+        "Retrieve original30 C point/fit or declare figure-digitization uncertainty; obtain exact polymer/ionic-liquid ratio.",
+        "Resolve cycling temperature25 C in Methods vs60 C in abstract/results and SHSPE/SHIGE naming.",
+        "Heating60 C30min closes cuts qualitatively; quantitative restored conductivity/strength is not established here."
+      ]
+    }
+  ]
+}

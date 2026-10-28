@@ -1,0 +1,52 @@
+[
+  {
+    "observation_id": "Pei2024-BHDS-LiFSI-transport",
+    "paper_id": "10.1038/s41467-023-43467-w",
+    "sample_id": "PTMG-HDI-BHDS_LiFSI_2to1",
+    "record_digest": "5e08007719c960422c3f0a0c0aa2a9a2349134ee0ea7a15d17f659ebef0d04ab",
+    "status": "supported",
+    "reviewer": "Assistant primary-source review cross-checked by separate research assistants",
+    "review_basis": "Reviewed original main/SI formulation, metric, value, unit and protocol. Multiplication/superscript normalization is understood by reviewers but not implemented by this numeric parser.",
+    "limitation": "Assistant-supplied receipt; not authenticated human annotation, independent experiment, or proof of reproducibility."
+  },
+  {
+    "observation_id": "Pei2024-HDI-LiFSI-control-transport",
+    "paper_id": "10.1038/s41467-023-43467-w",
+    "sample_id": "PTMG-HDI_LiFSI_2to1",
+    "record_digest": "ed118aac3a49fcf083402594f68f859a31a3bd6fa590e1d5c101b30c72f8e970",
+    "status": "supported",
+    "reviewer": "Assistant primary-source review cross-checked by separate research assistants",
+    "review_basis": "Reviewed original main/SI formulation, metric, value, unit and protocol. Multiplication/superscript normalization is understood by reviewers but not implemented by this numeric parser.",
+    "limitation": "Assistant-supplied receipt; not authenticated human annotation, independent experiment, or proof of reproducibility."
+  },
+  {
+    "observation_id": "Cao2021-ShSPE3-transport",
+    "paper_id": "10.1039/d0ra10035h",
+    "sample_id": "ShSPE-3_EO-Li_16to1",
+    "record_digest": "904bfa366ec40cc6f8720ea43995b240f31a08f53c0e886edc801ef4d22a87f6",
+    "status": "supported",
+    "reviewer": "Assistant primary-source review cross-checked by separate research assistants",
+    "review_basis": "Supports only stated formulation/protocol, plotted-target or non-target evidence and null target gap. Does not attest an absent exact30 C measurement or interpolate any number.",
+    "limitation": "Assistant-supplied receipt; not authenticated human annotation, independent experiment, or proof of reproducibility."
+  },
+  {
+    "observation_id": "Chen2021-SHPEM-transport",
+    "paper_id": "10.3390/polym13234155",
+    "sample_id": "SHPEM_P-MMA-BA-FMA_BMI-LiBOB",
+    "record_digest": "b10eceb45f05864b43cb00b156b541a0cff8c2265923ce28ccf98d0a970be606",
+    "status": "supported",
+    "reviewer": "Assistant primary-source review cross-checked by separate research assistants",
+    "review_basis": "Supports only stated formulation/protocol, plotted-target or non-target evidence and null target gap. Does not attest an absent exact30 C measurement or interpolate any number.",
+    "limitation": "Assistant-supplied receipt; not authenticated human annotation, independent experiment, or proof of reproducibility."
+  },
+  {
+    "observation_id": "Chen2023-SHIGE-transport",
+    "paper_id": "10.3390/batteries9090452",
+    "sample_id": "SHIGE_D-IEM-SBMA_LiTFSI-EMIMTFSI",
+    "record_digest": "dd1ca2500054a4742675b274830ebae488a2e1755e7ec2772ee294688fab2b78",
+    "status": "supported",
+    "reviewer": "Assistant primary-source review cross-checked by separate research assistants",
+    "review_basis": "Supports only stated formulation/protocol, plotted-target or non-target evidence and null target gap. Does not attest an absent exact30 C measurement or interpolate any number.",
+    "limitation": "Assistant-supplied receipt; not authenticated human annotation, independent experiment, or proof of reproducibility."
+  }
+]

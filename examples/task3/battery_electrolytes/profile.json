@@ -1,0 +1,38 @@
+{
+  "profile_id": "lithium_metal_electrolyte_30C_transport_entry_v1",
+  "application": "First-stage transport shortlist for a nonaqueous polymer electrolyte in lithium-metal cells operated at 30 C",
+  "origin": "Analyst-selected research demonstration after exploratory source reading; not a universal electrolyte threshold, industrial standard or blinded benchmark. Fixed before the independent reference and selector replay on 2026-10-27.",
+  "decision_scope": "Keep means advance to battery-specific follow-up after this one conductivity check. It does not establish complete battery suitability, practical safety, salted-film healing or device qualification. No ranking across papers or unlike geometries.",
+  "reviewed_eligibility_file": "eligibility.json",
+  "eligibility_note": "The role, chemistry, formulation and comparator status are reviewed research inputs, not automatically validated by the numeric selector. The PTMG-HDI/LiFSI control is explicitly a performance control, not independently established here as a dynamic-polymer candidate.",
+  "criteria": [
+    {
+      "criterion_id": "C1",
+      "property": "ionic_conductivity",
+      "unit": "S/cm",
+      "minimum": 0.0001,
+      "required": true,
+      "required_claim_type": "property_test",
+      "baseline": "absolute_reported_ionic_conductivity",
+      "conditions": {
+        "measurement_temperature_C": {"equals": 30},
+        "measurement_method": {"equals": "EIS"},
+        "cell_configuration": {"equals": "SS_electrolyte_SS"}
+      }
+    }
+  ],
+  "protocol_notes": [
+    "SS denotes the source's blocking steel electrodes. Pei explicitly defines SS as sheet steel. Do not silently expand every SS abbreviation to stainless steel.",
+    "Preserve assembly, resistance definition, thickness, salt, residual solvent/plasticizer and frequency range in the observation. This broad entry screen accepts the authors' reported conductivity from SS/electrolyte/SS; it does not assert identical bulk/interface separation or geometry across papers.",
+    "No interpolation from 25/35 C, substitution from 60 C, or assignment of an unspecified room temperature to 30 C.",
+    "A plotted 30 C point without an exact extracted value remains incomplete; declared figure digitization or raw-data retrieval is a follow-up, not an exact reported measurement.",
+    "Do not convert a neat-polymer healing result into a salted-electrolyte result or transfer a wet/plasticized result to a dry matrix."
+  ],
+  "outside_entry_screen": [
+    "Exact-salted-formulation healing mechanism, temperature, time and recovered property",
+    "Lithium compatibility and cycling at selected current density, areal capacity, temperature and pressure",
+    "Oxidative stability and lithium-ion transference number under specified protocols",
+    "Full-cell cathode, loading, electrolyte amount, voltage window and rate definition",
+    "Mechanical durability, residual solvent, reproducibility and practical safety"
+  ]
+}

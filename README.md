@@ -337,7 +337,16 @@ python select_candidates.py --input examples/task3/input.json --reviews examples
 
 See [Task 3 inputs, evidence reviews and decision rules](docs/task3-selection.md). Run its focused checks with `python -m unittest -v test_task3_selection`.
 
-The [completed Task 3 case study](docs/task3-screening-report.md) checks five formulations from four distinct experimental papers verified in the original DPAL release. Its application is a research entry screen for stiff UV-repairable wood coatings. The independently checked reference contains one keep, one exclusion and three evidence gaps. The unchanged selector agrees on three of five candidate decisions, sending table-unit and thousands-comma records to review. The expanded source set improves evidence coverage; its changed denominators do not demonstrate improved model performance.
+The current [battery Task 3 case study](docs/task3-battery-screening-report.md) aligns with Nina's battery-polymer scope. It checks four DPAL papers and five formulations for a first-stage lithium-metal electrolyte transport shortlist at 30 C. Source review gives one keep, one exclusion and three evidence gaps. Actual replay gives two manual reviews and three gaps: original scientific notation exceeds current parser support. Inputs are manually curated, not live extraction or a general accuracy benchmark. The separate `--profile` file changes numeric application requirements while preserving observations and receipts; categorical eligibility remains reviewed input.
+
+```bash
+python3 select_candidates.py --input examples/task3/battery_electrolytes/input.json --profile examples/task3/battery_electrolytes/profile.json --reviews examples/task3/battery_electrolytes/reviews.json --out-dir outputs/task3_battery
+python3 -m unittest -v test_task3_selection test_task3_dpal_case test_task3_battery_case
+```
+
+See the battery [rule table](examples/task3/battery_electrolytes/profile.json), [decision worksheet](examples/task3/battery_electrolytes/decisions.csv), [evaluation](examples/task3/battery_electrolytes/evaluation.json) and [source provenance](examples/task3/battery_electrolytes/provenance.json).
+
+The earlier [wood-coating case](docs/task3-screening-report.md) remains a historical method example, outside the current shared battery/disulfide context. Its source reference and software disagreements are preserved; it is not a before/after comparison with the battery case.
 
 Run the real-paper replay without model calls:
 

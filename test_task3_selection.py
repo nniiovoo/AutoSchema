@@ -377,6 +377,48 @@ class Task3CommandLineTests(unittest.TestCase):
                               "candidate-C": "manual_review"},
                              {r["candidate_id"]: r["decision"] for r in records})
 
+    def test_separate_profile_changes_requirement_without_changing_observations(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            input_path, review_path, output = self.prepare(root)
+            original_input, original_reviews = input_path.read_bytes(), review_path.read_bytes()
+            profile = json.loads(original_input)["profile"]
+            profile["profile_id"] = "stricter_recovery_example"
+            criterion = next(c for c in profile["criteria"] if c["property"] == "ultimate_tensile_strength_recovery")
+            criterion["minimum"] = 96
+            profile_path = root / "profile.json"
+            profile_path.write_text(json.dumps(profile))
+            code = self.invoke(["--input", str(input_path), "--reviews", str(review_path),
+                                "--profile", str(profile_path), "--out-dir", str(output)])
+            self.assertEqual(0, code)
+            records = json.loads((output / "selection.json").read_text())
+            row = next(r for r in records if r["candidate_id"] == "candidate-A")
+            self.assertEqual("exclude_for_use", row["decision"])
+            self.assertEqual("stricter_recovery_example", row["profile_id"])
+            self.assertEqual(original_input, input_path.read_bytes())
+            self.assertEqual(original_reviews, review_path.read_bytes())
+
+    def test_profile_is_strictly_parsed_and_cannot_be_overwritten_by_results(self):
+        for kind in ("duplicate_key", "nonfinite", "overwrite"):
+            with self.subTest(kind=kind), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                input_path, review_path, output = self.prepare(root)
+                profile_path = root / "selection.json"
+                if kind == "duplicate_key":
+                    profile_path.write_text('{"criteria": [], "criteria": []}')
+                elif kind == "nonfinite":
+                    profile_path.write_text('{"criteria": [NaN]}')
+                else:
+                    profile_path.write_text(json.dumps(json.loads(input_path.read_text())["profile"]))
+                before = profile_path.read_bytes()
+                code = self.invoke(["--input", str(input_path), "--reviews", str(review_path),
+                                    "--profile", str(profile_path),
+                                    "--out-dir", str(root if kind == "overwrite" else output)])
+                self.assertEqual(2, code)
+                self.assertEqual(before, profile_path.read_bytes())
+                self.assertFalse(output.exists())
+                self.assertFalse((root / "selection.csv").exists())
+
     def test_invalid_input_writes_no_results_and_preserves_input(self):
         # Test parsing errors and a later malformed candidate so validation
         # cannot silently leave a partial result from earlier valid candidates.

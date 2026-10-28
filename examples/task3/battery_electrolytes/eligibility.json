@@ -1,0 +1,97 @@
+{
+  "scope": "Reviewed research inputs, not an automated domain classifier",
+  "cases": [
+    {
+      "candidate_id": "Pei2024-BHDS-LiFSI",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "current_work": true,
+      "electrolyte_role": "candidate_electrolyte",
+      "nonaqueous": true,
+      "lithium_metal_test_context": true,
+      "dynamic_interaction": "disulfide_and_hydrogen_bonds",
+      "formulation_sufficient_for_exact_30C_interpretation": true,
+      "evidence_source_ids": [
+        "pei-bhds-transport",
+        "pei-temperature",
+        "pei-steel"
+      ],
+      "reviewed_status": "accepted_for_entry_evaluation_with_visible_gaps",
+      "reviewer": "Assistant primary-source review cross-checked by separate research assistants",
+      "automatic_eligibility_validation": false,
+      "rule_note": "Qualitative eligibility reviewed outside numeric selector. This is a Topic B battery example; intersection with Topic A disulfide is not required."
+    },
+    {
+      "candidate_id": "Pei2024-HDI-LiFSI-control",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "current_work": true,
+      "electrolyte_role": "performance_control",
+      "nonaqueous": true,
+      "lithium_metal_test_context": true,
+      "dynamic_interaction": "not_independently_established_for_control",
+      "formulation_sufficient_for_exact_30C_interpretation": true,
+      "evidence_source_ids": [
+        "pei-hdi-transport",
+        "pei-temperature",
+        "pei-steel"
+      ],
+      "reviewed_status": "accepted_as_control",
+      "reviewer": "Assistant primary-source review cross-checked by separate research assistants",
+      "automatic_eligibility_validation": false,
+      "rule_note": "Qualitative eligibility reviewed outside numeric selector. This is a Topic B battery example; intersection with Topic A disulfide is not required."
+    },
+    {
+      "candidate_id": "Cao2021-ShSPE3",
+      "paper_id": "10.1039/d0ra10035h",
+      "current_work": true,
+      "electrolyte_role": "candidate_electrolyte",
+      "nonaqueous": true,
+      "lithium_metal_test_context": true,
+      "dynamic_interaction": "imine",
+      "formulation_sufficient_for_exact_30C_interpretation": true,
+      "evidence_source_ids": [
+        "cao-transport",
+        "cao-30C-plot"
+      ],
+      "reviewed_status": "accepted_for_entry_evaluation_with_visible_gaps",
+      "reviewer": "Assistant primary-source review cross-checked by separate research assistants",
+      "automatic_eligibility_validation": false,
+      "rule_note": "Qualitative eligibility reviewed outside numeric selector. This is a Topic B battery example; intersection with Topic A disulfide is not required."
+    },
+    {
+      "candidate_id": "Chen2021-SHPEM",
+      "paper_id": "10.3390/polym13234155",
+      "current_work": true,
+      "electrolyte_role": "candidate_electrolyte",
+      "nonaqueous": true,
+      "lithium_metal_test_context": true,
+      "dynamic_interaction": "Diels_Alder",
+      "formulation_sufficient_for_exact_30C_interpretation": false,
+      "evidence_source_ids": [
+        "chen-series",
+        "chen-wetted"
+      ],
+      "reviewed_status": "accepted_for_entry_evaluation_with_visible_gaps",
+      "reviewer": "Assistant primary-source review cross-checked by separate research assistants",
+      "automatic_eligibility_validation": false,
+      "rule_note": "Qualitative eligibility reviewed outside numeric selector. This is a Topic B battery example; intersection with Topic A disulfide is not required."
+    },
+    {
+      "candidate_id": "Chen2023-SHIGE",
+      "paper_id": "10.3390/batteries9090452",
+      "current_work": true,
+      "electrolyte_role": "candidate_electrolyte",
+      "nonaqueous": true,
+      "lithium_metal_test_context": true,
+      "dynamic_interaction": "hydrogen_bonds_and_ionic_interactions",
+      "formulation_sufficient_for_exact_30C_interpretation": false,
+      "evidence_source_ids": [
+        "gel-transport",
+        "gel-30C-plot"
+      ],
+      "reviewed_status": "accepted_for_entry_evaluation_with_visible_gaps",
+      "reviewer": "Assistant primary-source review cross-checked by separate research assistants",
+      "automatic_eligibility_validation": false,
+      "rule_note": "Qualitative eligibility reviewed outside numeric selector. This is a Topic B battery example; intersection with Topic A disulfide is not required."
+    }
+  ]
+}

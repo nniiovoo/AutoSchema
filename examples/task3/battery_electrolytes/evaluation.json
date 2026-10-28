@@ -1,0 +1,144 @@
+{
+  "run_date_local": "2026-10-27",
+  "run_kind": "Actual deterministic AutoSchema Task3 selector replay on manually curated atomic inputs",
+  "command": "python3 select_candidates.py --input examples/task3/battery_electrolytes/input.json --profile examples/task3/battery_electrolytes/profile.json --reviews examples/task3/battery_electrolytes/reviews.json --out-dir outputs/task3_battery_2026-10-27",
+  "reference_sha256": "ca2c97fe1fceeac713f3e7298f222de6ffdc3ca84feaebdc6e9dfa70a81e0256",
+  "profile_sha256": "f385bedf9672682ca26e6f6c4b9397090d71ff8344d4f1825de298bd2a725a36",
+  "input_sha256": "a0caaad0fbd9c46592d322dc39ce71a47fa8a509308047eef3f3da7827601c81",
+  "reviews_sha256": "f653e9dba12af4ad3282e580374dc533589a336dd9ba303a1efa53af44bf84cc",
+  "engine_sha256": "9e5f6716d816239244a8f26d4f071aa313e5fa598a53858f556d9753e0e4dffb",
+  "engine_changed": false,
+  "cli_change": "Optional separate --profile JSON override, strict parsing and overwrite protection; numeric engine unchanged.",
+  "summary": {
+    "distinct_papers": 4,
+    "formulations": 5,
+    "performance_controls": 1,
+    "reference_counts": {
+      "keep_for_followup": 1,
+      "exclude_for_use": 1,
+      "retrieve_more": 3
+    },
+    "selector_counts": {
+      "manual_review": 2,
+      "retrieve_more": 3
+    },
+    "candidate_decision_matches": 3,
+    "denominator": 5,
+    "decisive_reference_cases": 2,
+    "decisive_reference_cases_requiring_software_review": 2,
+    "interpretation": "Three of five broad labels agree, all three being evidence-gap records. Neither decisive reference case is automatically decided. This is not extraction accuracy, general screening accuracy, improved model performance, or time saved."
+  },
+  "comparisons": [
+    {
+      "candidate_id": "Pei2024-BHDS-LiFSI",
+      "reference_decision": "keep_for_followup",
+      "selector_decision": "manual_review",
+      "decision_matches": false,
+      "reason": "numeric_and_raw_value_mismatch",
+      "reference_rationale": "The exact salted BHDS formulation is reported at 2.4e-4 S/cm at 30 C from SS/electrolyte/SS EIS, above the frozen 1e-4 S/cm entry threshold. This advances only the reported transport result. It does not establish overall battery suitability.",
+      "explanation": "Original multiplication/exponent notation is source-supported, but the current parser reads the coefficient alone before rejecting it. It does not consume reviewed normalization_provenance. Do not rewrite original source text to force a pass.",
+      "qualifications": [
+        "Source defines SS as sheet steel, not necessarily stainless steel.",
+        "Reported quantity is the conductivity obtained with total resistance in this integrated cell, not independently resolved intrinsic bulk conductivity.",
+        "BHDS is explicitly dual-integrated with about200um total bonded SPE thickness. Do not assert comparator or cross-paper geometry equivalence.",
+        "Neat-polymer scratch/healing and strength results do not establish the same properties of the salted2:1 electrolyte.",
+        "Main/SI cycle-life and capacity discrepancies must be resolved before using those results as further screening criteria.",
+        "No uncertainty-based confidence claim; criterion uses the reported point estimate."
+      ],
+      "application_followups": [
+        "Quantify healing in this exact salted2:1 material; do not transfer neat-polymer Fig2 or SI8/10.",
+        "Resolve main/SI conflicts: symmetricLi lifetime>6000h vs5500h; SPAN700-cycle capacity560 vs745mAh/gSPAN; sulfur350-cycle capacity812 vs782mAh/gS.",
+        "Choose cell-specific loadings/current/pressure/cathode and check full battery suitability; no cross-paper rank."
+      ]
+    },
+    {
+      "candidate_id": "Pei2024-HDI-LiFSI-control",
+      "reference_decision": "exclude_for_use",
+      "selector_decision": "manual_review",
+      "decision_matches": false,
+      "reason": "numeric_and_raw_value_mismatch",
+      "reference_rationale": "The exact salted current-work control is reported at6.5e-5 S/cm at30C by the common SS/SPE/SS EIS method, below1e-4 S/cm. Exclude only from this selected transport shortlist. The result is not a universal judgment about the material.",
+      "explanation": "Original multiplication/exponent notation is source-supported, but the current parser reads the coefficient alone before rejecting it. It does not consume reviewed normalization_provenance. Do not rewrite original source text to force a pass.",
+      "qualifications": [
+        "Common general EIS method is established; identical dual-integrated geometry or200um thickness is not separately established for this control.",
+        "The broad entry profile accepts the reported conductivity and retains assembly metadata; do not rank chemical mechanisms or claim all assembly effects are controlled.",
+        "Reported point estimate only; no statistical superiority claim."
+      ],
+      "application_followups": [
+        "Below this entry threshold; do not generalize to all temperatures, formulations or uses.",
+        "Comparator is a performance control; dynamic-polymer eligibility is not independently established here.",
+        "No assumption of identical200 micrometre dual-integrated assembly to BHDS."
+      ]
+    },
+    {
+      "candidate_id": "Cao2021-ShSPE3",
+      "reference_decision": "retrieve_more",
+      "selector_decision": "retrieve_more",
+      "decision_matches": true,
+      "reason": "30C_conductivity_plotted_but_exact_numeric_not_retrieved",
+      "reference_rationale": "The paper reports1.67e-4 S/cm at60C, not an exact extracted30C conductivity. SS/ShSPE-3/SS EIS at30C is plotted in SI FigS3. Obtain raw resistance, geometry and fit or a declared approximate digitization before deciding C1. Do not use the60C result as a30C pass or infer failure from missing exact data.",
+      "explanation": "Correct broad evidence-gap outcome on deliberately null target input. Numeric extraction was not tested; related_results are not processed by this selector.",
+      "qualifications": [
+        "SI supplies actual stainless-steel blocking electrodes, EIS1Hz-100kHz,5mV and1h equilibration at each temperature.",
+        "An exact30C conductivity or an appropriately declared derived estimate is missing from this audit;30C testing itself is not absent.",
+        "Do not transfer otherPEG formulations from SI comparison TableS1 into this paper current-work sample."
+      ],
+      "application_followups": [
+        "30C_conductivity_plotted_but_exact_numeric_not_retrieved",
+        "Retrieve original30 C fit/data or explicitly digitize with uncertainty and same-sample geometry; do not substitute60 C.",
+        "Li/LFP cycling was demonstrated at60 C, not30 C; quantitative post-healing recovery remains separate."
+      ]
+    },
+    {
+      "candidate_id": "Chen2021-SHPEM",
+      "reference_decision": "retrieve_more",
+      "selector_decision": "retrieve_more",
+      "decision_matches": true,
+      "reason": "required_protocol_not_tested:measurement_temperature_C",
+      "reference_rationale": "The text enumerates25C1.69e-4 and35C2.69e-4 S/cm with no exact30C value. Do not interpolate. Moreover methods specify EIS with liquid electrolyte while results separately report a10uL-wetted room-temperature value; the state assigned to each conductivity series must be clarified before comparing an exact formulation.",
+      "explanation": "Correct broad evidence-gap outcome on deliberately null target input. Numeric extraction was not tested; related_results are not processed by this selector.",
+      "qualifications": [
+        "Target30C value missing. Neither25C,35C nor unspecified room temperature is30C.",
+        "Thickness conflicts within the original source: Methods2.6 assigns SHP12um andPE15um, whereas Results3.3 says all SHP membranes used in electrochemical tests were about15um. Preserve both; do not choose one as resolved.",
+        "Exact conductivity-sample lithium-salt loading and which data series is wetted require further verification. Results3.1 mentions10wt% LiBOB for a depicted about20um film; do not automatically transfer that morphology-sample loading to a differently specified conductivity specimen.",
+        "Do not present separate10uL result2.56e-3 S/cm atroomtemperature as dry-matrix30C conductivity."
+      ],
+      "application_followups": [
+        "No explicit30 C numeric entry;25 and35 C points must not be interpolated as direct evidence.",
+        "Resolve wet/plasticized state, BA/BMA naming and film-thickness description before sample-matched comparison.",
+        "Main Methods12 micrometre vs Results about15 micrometre thickness; keep discrepancy.",
+        "Healing80 C2hN2 with about65% strength recovery is external thermal repair, not demonstrated autonomous sealed-cell repair."
+      ]
+    },
+    {
+      "candidate_id": "Chen2023-SHIGE",
+      "reference_decision": "retrieve_more",
+      "selector_decision": "retrieve_more",
+      "decision_matches": true,
+      "reason": "30C_conductivity_plotted_but_exact_numeric_not_retrieved",
+      "reference_rationale": "The exact numeric text gives9.06e-4 S/cm at25C and2.62e-3 at60C. Fig3a includes a30C EIS curve and Fig3b a corresponding plotted point, but no exact30C conductivity has been retrieved. Obtain raw values or clearly approximate digitization and resolve formulation fraction before assessing the selected30C criterion. This is missing exact evidence, not an experimental failure.",
+      "explanation": "Correct broad evidence-gap outcome on deliberately null target input. Numeric extraction was not tested; related_results are not processed by this selector.",
+      "qualifications": [
+        "Methods2.4 specifies a certain amount of polymer rather than an explicit polymer:ionic-liquid ratio.",
+        "Source acknowledges possible residualTFEA; do not assert solvent-free.",
+        "Battery-cycle temperature inMethods2.8(25C) conflicts with abstract/results(60C); preserve unresolved discrepancy.",
+        "Optical cut closure at60C30min is not room-temperature healing or quantified transport recovery after healing.",
+        "The figure caption temperature range and plotted legend differ; keep source locators rather than rewriting them."
+      ],
+      "application_followups": [
+        "30C_conductivity_plotted_but_exact_numeric_not_retrieved",
+        "Retrieve original30 C point/fit or declare figure-digitization uncertainty; obtain exact polymer/ionic-liquid ratio.",
+        "Resolve cycling temperature25 C in Methods vs60 C in abstract/results and SHSPE/SHIGE naming.",
+        "Heating60 C30min closes cuts qualitatively; quantitative restored conductivity/strength is not established here."
+      ]
+    }
+  ],
+  "scope_limits": [
+    "No live model extraction, schema induction, query generation or automated retrieval.",
+    "Domain eligibility and scientific review are supplied assistant inputs; review receipts do not authenticate people or prove reproducibility.",
+    "Target gaps are intentionally null; real non-target numbers remain in related_results and are outside this numeric replay.",
+    "Chen2021 software reason required_protocol_not_tested means this record is25 C; it must not be read as proof that no30 C measurement exists anywhere.",
+    "Purposive small case, exploratory threshold choice, one criterion, no statistical performance estimate or cross-paper ranking.",
+    "Old wood-coating case uses a different context and denominator; do not use it as a before/after model comparison."
+  ]
+}

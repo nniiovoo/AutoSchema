@@ -26,6 +26,8 @@ Outputs are `selection.json`, `selection.csv`, and `followups.json` in the selec
 
 The `--reviews` argument is optional. Without matching supported review receipts, observations cannot establish that a criterion passes or fails; affected criteria require `manual_review`.
 
+The optional `--profile path/to/profile.json` overrides the bundle's application profile while preserving its sources, observations and review receipts. It uses the same strict JSON parser, and outputs cannot overwrite the supplied profile. Qualitative domain eligibility still needs separate review; changing numeric requirements does not automatically reclassify materials. See the current [battery case](task3-battery-screening-report.md) and its [editable profile](../examples/task3/battery_electrolytes/profile.json).
+
 ## 1. Define the use before selecting materials
 
 An input bundle has a `profile`, `sources`, and `candidates`. The profile names the application and lists criteria. Each criterion declares a property, unit, inclusive numeric bounds, at least one relevant test condition, whether it is mandatory, and the required claim type. Missing protocol requirements go to the application owner. Claim types are `property_test` (default), `tested_device`, or an explicitly permitted `simulation`; simulated evidence remains simulated evidence.
@@ -78,6 +80,8 @@ Aggregation uses mandatory criteria only, in this order: `manual_review`, then `
 “Keep” means a research candidate worth investigating for this profile. It does not demonstrate the complete application. After retrieval or review, update the observations and receipts and rerun selection; the stage produces follow-up requests but does not automatically download papers or alter existing extraction outputs.
 
 ## Validation boundary
+
+The current [battery case](task3-battery-screening-report.md) aligns with Nina's battery-polymer scope. Four DPAL papers supply five formulations, including one explicit control. Source review gives one keep, one exclusion and three evidence gaps; actual replay gives two manual reviews and three gaps. Original scientific notation is preserved and exceeds the parser's support in the two decisive cases. Three matching labels concern manually curated null target gaps only; they are not an extraction-performance estimate. Run `python3 -m unittest -v test_task3_selection test_task3_dpal_case test_task3_battery_case` for all 41 focused checks. Domain eligibility, source review and target gaps remain supplied research inputs.
 
 The [completed real-paper case study](task3-screening-report.md) uses five formulations from four verified members of the released DPAL library. Its [atomic inputs](../examples/task3/dpal_experiments/input.json) and [separate reviews](../examples/task3/dpal_experiments/reviews.json) are manually curated from original experiments, not Phase II output. Replay them with the existing CLI, then run `python -m unittest -v test_task3_selection test_task3_dpal_case`.
 
