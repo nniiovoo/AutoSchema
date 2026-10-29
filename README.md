@@ -347,6 +347,8 @@ python3 extract_polymer_cards.py --papers path/to/full-papers.json --out-dir out
 
 The model route reuses AutoSchema's local OpenAI/Azure configuration, also accepting `OPENAI_API_KEY`. `--env-file` selects an existing configuration file; keys are never copied into outputs or printed. Each request and paper count is bounded, and live/replay modes are recorded separately. See the [workflow and results](docs/polymer-cards.md), [card contract](docs/polymer-card-contract.md), [checked paper reference](docs/polymer-card-real-paper-reference.md), and [source licenses](examples/polymer_cards/sources/LICENSE.md).
 
+The [first actual three-paper model run](docs/polymer-cards-live-report-2026-10-28.md) produced 18 draft card records and exposed missing ratio labels, identity/specimen problems and source-text limitations. Original responses and source-review notes are saved separately from the curated replay; no scientific accuracy score is claimed.
+
 Run the focused checks:
 
 ```bash

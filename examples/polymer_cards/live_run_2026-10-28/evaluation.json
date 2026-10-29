@@ -1,0 +1,157 @@
+{
+  "date": "2026-10-28",
+  "mode": "live_model_extraction",
+  "provider": "openai",
+  "model": "gpt-5.4",
+  "model_calls": 3,
+  "source_manifest_sha256": "ea1f79f1412185f7668a8f27608ce42e0bd4d318051e3c7ca44b29e6cdfefd28",
+  "implementation_commit": "6e5520f5524b807c25755efbcba22f096e7bc0e6",
+  "counts": {
+    "papers": 3,
+    "retained_cards": 18,
+    "discarded_entities": 0,
+    "review_records": 39,
+    "validation_issues": 58
+  },
+  "raw_entity_records": 21,
+  "classification_review_records": 3,
+  "fact_review_records": 36,
+  "per_paper": [
+    {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "raw_entities": 8,
+      "retained_card_records": 6,
+      "classification_review_records": 2,
+      "fact_review_records": 7,
+      "validation_issue_flags": 14,
+      "card_identities": [
+        {
+          "entity_id": "p1",
+          "name": "poly(ether-urethane)-based solid-state polymer electrolyte"
+        },
+        {
+          "entity_id": "p2",
+          "name": "poly(ethylene oxide) (PEO)"
+        },
+        {
+          "entity_id": "p4",
+          "name": "PTMG-HDI-BHDS"
+        },
+        {
+          "entity_id": "p6",
+          "name": "polyacrylonitrile (PAN)"
+        },
+        {
+          "entity_id": "p7",
+          "name": "sulfurized polyacrylonitrile (SPAN)"
+        },
+        {
+          "entity_id": "p8",
+          "name": "PVDF"
+        }
+      ]
+    },
+    {
+      "paper_id": "10.3390/polym13234155",
+      "raw_entities": 5,
+      "retained_card_records": 4,
+      "classification_review_records": 1,
+      "fact_review_records": 4,
+      "validation_issue_flags": 11,
+      "card_identities": [
+        {
+          "entity_id": "p1",
+          "name": "P(MMA-BA-(F-MA)) copolymer"
+        },
+        {
+          "entity_id": "p2",
+          "name": "self-healing polymer (SHP)"
+        },
+        {
+          "entity_id": "p4",
+          "name": "PVDF"
+        },
+        {
+          "entity_id": "p5",
+          "name": "commercial PE film"
+        }
+      ]
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "raw_entities": 8,
+      "retained_card_records": 8,
+      "classification_review_records": 0,
+      "fact_review_records": 25,
+      "validation_issue_flags": 33,
+      "card_identities": [
+        {
+          "entity_id": "p1",
+          "name": "polydimethylsiloxane (PDMS)"
+        },
+        {
+          "entity_id": "p2",
+          "name": "PDMS–SS–IP–BNB"
+        },
+        {
+          "entity_id": "p3",
+          "name": "P1, P2: PDMS–SS–IP"
+        },
+        {
+          "entity_id": "p4",
+          "name": "P5: PDMS–IP–BNB"
+        },
+        {
+          "entity_id": "p5",
+          "name": "poly (methyl methacrylate) (PMMA)"
+        },
+        {
+          "entity_id": "p6",
+          "name": "PDMS (Sylgard 184)"
+        },
+        {
+          "entity_id": "p7",
+          "name": "polyurethane"
+        },
+        {
+          "entity_id": "p8",
+          "name": "styrene butadiene styrene block copolymer (saturated)"
+        }
+      ]
+    }
+  ],
+  "issue_reasons": {
+    "composition_basis_missing": 17,
+    "reported_group_has_no_usable_items": 16,
+    "quote_not_in_original_source": 2,
+    "entity_name_not_in_original_evidence": 2,
+    "condition_value_not_in_original_evidence": 4,
+    "invalid_group_status": 3,
+    "fact_specimen_not_linked_to_polymer": 13,
+    "property_value_not_in_original_evidence": 1
+  },
+  "token_usage": {
+    "prompt_tokens": 40196,
+    "completion_tokens": 39734,
+    "total_tokens": 79930
+  },
+  "finish_reasons": [
+    "stop",
+    "stop",
+    "stop"
+  ],
+  "limits": [
+    "18 retained records are not 18 unique, fully correct polymers.",
+    "No standalone nonpolymer candidates were returned, so negative-classification performance was not measured.",
+    "Sources were full main-text XML; supplements, graph values, OCR and exhaustive material annotation were not included.",
+    "Missing extracted information is not proof the paper lacks it.",
+    "One flagged Guo value, 1.77, is supported; a validator punctuation bug rejected the sentence-final number.",
+    "JATS superscripts were flattened during text preparation. Confirm molecular-weight exponents in the original HTML/PDF."
+  ],
+  "scores_not_claimed": [
+    "scientific accuracy",
+    "full-paper entity precision or recall",
+    "nonpolymer classification accuracy",
+    "18 distinct polymer identities"
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-28",
+  "review_origin": "Assistant focused primary-source review; not authenticated human annotation or exhaustive fact checking.",
+  "original_model_outputs_unchanged": true,
+  "status": "live run completed; scientific and extraction issues remain",
+  "classification_reviews": [
+    {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "entity_id": "p3",
+      "name": "PTMG-HDI",
+      "reason": "quote_not_in_original_source",
+      "raw_path": "entities[2].classification"
+    },
+    {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "entity_id": "p5",
+      "name": "polytetrahydrofuran (PTMG)",
+      "reason": "entity_name_not_in_original_evidence",
+      "raw_path": "entities[4].classification"
+    },
+    {
+      "paper_id": "10.3390/polym13234155",
+      "entity_id": "p3",
+      "name": "self-healing polymer electrolyte membrane (SHPEM)",
+      "reason": "entity_name_not_in_original_evidence",
+      "raw_path": "entities[2].classification"
+    }
+  ],
+  "per_card_notes": {
+    "10.1038/s41467-023-43467-w": {
+      "p1": [
+        "This broad family description appears to overlap the BHDS matrix card. It is not established as another distinct synthesized material."
+      ],
+      "p2": [
+        "The 3.8 V electrochemical result is linked to neat PEO. Source review indicates it belongs to the PEO/LiFSI electrolyte; do not use that specimen link as checked.",
+        "The demonstrated application cites a background sentence. Attach current experimental evidence."
+      ],
+      "p4": [
+        "The salt-containing conductivity and neat-film strength are separated correctly in this focused check.",
+        "Composition is in the paper but its two extracted items lack the required ratio-basis field. They remain in the audit.",
+        "The demonstrated battery application needs a Results/Methods citation. Molecular-weight exponents need checking against the original HTML/PDF."
+      ],
+      "p6": [
+        "Starting-material role is supported. Sparse fields do not justify removal. This is not a complete fact review."
+      ],
+      "p7": [
+        "The cathode role is supported. Its composition and capacity record remain in review. Capacity needs a tested cell configuration, not only a polymer name."
+      ],
+      "p8": [
+        "This is a binder, not the new electrolyte. Its composition needs a basis; origin is not established in the supplied main text."
+      ]
+    },
+    "10.3390/polym13234155": {
+      "p1": [
+        "The selected precursor strength of 5 MPa is kept separate from the network strength.",
+        "Ratio information exists but lacks the required basis field. The origin item says author-synthesized, but its group status is invalid.",
+        "The molecular-weight unit was appropriately left unspecified in this supplied passage."
+      ],
+      "p2": [
+        "The selected network strength of 21 MPa is linked separately from the precursor.",
+        "The origin item says author-synthesized, but the group status is invalid. This card is not the separately tested wet membrane."
+      ],
+      "p4": [
+        "This is a cathode binder. Do not transfer its cathode ratio to the SHPEM recipe. Its ratio item lacks a basis."
+      ],
+      "p5": [
+        "This is a commercial comparator. The source-tag group status needs correction; a commercial claim does not identify a specific supplier."
+      ]
+    },
+    "10.1038/s41467-020-15949-8": {
+      "p1": [
+        "The root name is broad PDMS while the source describes a hydroxy-functional reactive precursor. Clarify exact identity.",
+        "The synthesis text describes using PDMS to make another polymer, not making PDMS itself. Commercial origin remains unknown."
+      ],
+      "p2": [
+        "Important identity error: P2 lacks BNB and P5 lacks disulfide, yet both appear as specimens under this BNB/disulfide family and also have separate control cards. Do not treat all these as one exact polymer.",
+        "P3 healing efficiency of 93% ± 3% after 2 h at room temperature is preserved. It means fracture-strain recovery; add the defining Methods evidence.",
+        "Composition is available in the paper but the model omitted required basis fields. GPC conditions/specimen identity need review."
+      ],
+      "p3": [
+        "P1 and P2 are grouped controls and also appear under the main family card. Resolve family/member duplication and formulation granularity."
+      ],
+      "p4": [
+        "This control lacks disulfide. Keep it separate from the disulfide/BNB family even though its specimen also appears there."
+      ],
+      "p5": [
+        "This is a chromatography standard, not the new elastomer. Sparse fields do not justify removal."
+      ],
+      "p6": [
+        "This is a cited comparator. Its property links were withheld; this is not a newly synthesized polymer in the present work."
+      ],
+      "p7": [
+        "This is a cited comparator. Its property links were withheld; this is not a newly synthesized polymer in the present work."
+      ],
+      "p8": [
+        "This is a cited comparator. Its property links were withheld; this is not a newly synthesized polymer in the present work."
+      ]
+    }
+  },
+  "common_limits": [
+    "18 retained records are not 18 unique, fully correct polymers.",
+    "No standalone nonpolymer candidates were returned, so negative-classification performance was not measured.",
+    "Sources were full main-text XML; supplements, graph values, OCR and exhaustive material annotation were not included.",
+    "Missing extracted information is not proof the paper lacks it.",
+    "One flagged Guo value, 1.77, is supported; a validator punctuation bug rejected the sentence-final number.",
+    "JATS superscripts were flattened during text preparation. Confirm molecular-weight exponents in the original HTML/PDF."
+  ]
+}

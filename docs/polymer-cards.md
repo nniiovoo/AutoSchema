@@ -84,7 +84,7 @@ python3 extract_polymer_cards.py --papers path/to/full-papers.json --out-dir out
 
 The live route uses local AutoSchema configuration and accepts both `CHAT_API_KEY` and `OPENAI_API_KEY`. An existing configuration can be selected with `--env-file`; secrets are not included in source prompts, run metadata, responses or logs. Default limits are three papers and 10,000 completion tokens per request, with no hidden model retries. A malformed/truncated response is an error, not a partial completed extraction. Source data are never replaced by a model's invented citation metadata.
 
-**Current run status:** the real-paper test completed in curated-record replay mode. At implementation time no model credential was available in the local environment or repository configuration. The OpenAI client integration is implemented and its route is tested with a stipulated response, but a live extraction result must be recorded separately after secure account/key setup. No live extraction score is claimed here.
+**Current run status:** secure local setup was completed and a separate live run made three OpenAI `gpt-5.4` calls on the three original main texts. It produced 18 draft card records, with three identities and 36 facts in the review queue. Source review found both extraction errors and validator/text-preparation limitations. These are not 18 unique, fully correct polymers. Read the [live results and remaining checks](polymer-cards-live-report-2026-10-28.md). The curated replay above remains unchanged and is not a model-accuracy score.
 
 ## Validation and practical limits
 

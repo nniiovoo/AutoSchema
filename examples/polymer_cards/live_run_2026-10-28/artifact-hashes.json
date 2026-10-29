@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-28",
+  "original_live_files_sha256": {
+    "cards.json": "5663f0ef8c7ef3423d54f86323bd9c171c6b06642644ef32d1a944012927bfbd",
+    "raw-responses.json": "9d54235f3d645a1a0c13dcd02454a4c0e1f42753a063f8245c9c0a7bb67c1c82",
+    "audit.json": "e0063000714848b5ac7a0e5075c9d41f36d724821ada2447a8b0509b002c43d6",
+    "sources.json": "32e165d5b71b0fb7f89c565b2b691eff81b076cd8b93ccbc72457c0e653ad469",
+    "cards.html": "550e59e2137e9370283e5ade879b34b1590e59cbf1f98609892a1c812630f941",
+    "cards.md": "57fa4fe3206ee295cd3363cf77fc5a3b56ea677eee7f253b763305be2e013e88"
+  },
+  "published_data_copies": {
+    "cards.json": "5663f0ef8c7ef3423d54f86323bd9c171c6b06642644ef32d1a944012927bfbd",
+    "raw-responses.json": "9d54235f3d645a1a0c13dcd02454a4c0e1f42753a063f8245c9c0a7bb67c1c82",
+    "audit.json": "e0063000714848b5ac7a0e5075c9d41f36d724821ada2447a8b0509b002c43d6"
+  },
+  "review_view_note": "cards-with-review.html adds source-review warnings without modifying the underlying original model or validated records."
+}
