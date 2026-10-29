@@ -325,7 +325,35 @@ schema_values.csv
 paper_ranking.csv   # only when --top_n is used
 ```
 
-## Task 3: application-specific candidate selection
+## Task 3: polymer identification and evidence-linked cards
+
+The revised Task 3 keeps identified polymer entities and creates a card for each one. Each card includes name/aliases/description plus **monomers, composition, synthesis text, properties with values/units/conditions, applications, and source tag**. Original evidence and source locations stay attached to individual facts. Purchased polymers, low-performing controls and incomplete cards are retained; nonpolymer ingredients can remain inside a card without receiving their own polymer card.
+
+This is an additive workflow. It does not change Phase I schema-field induction or pass cards through the older application-performance selector. Polymer classification and semantic attribution remain model/reviewer judgments; matching a quote is a mechanical source-link check, not scientific verification.
+
+Run the portable, manually checked three-paper example without API calls:
+
+```bash
+python3 extract_polymer_cards.py --papers examples/polymer_cards/papers.json --records examples/polymer_cards/curated-responses.json --out-dir outputs/polymer_cards_demo
+```
+
+Open `outputs/polymer_cards_demo/cards.html` for readable cards and expandable original evidence. Machine outputs include nested JSON/JSONL, source records, the raw response records, and a separate discard/review audit. The example covers disulfide polymers and dynamic battery polymers with selected original excerpts from Pei 2024, Chen 2021 and Guo 2020. It is a deterministic replay of assistant-curated reference inputs, not a live extraction benchmark or an exhaustive annotation of those articles.
+
+For live extraction, provide a manifest pointing to original local PDF/JATS XML/text files and the approved local model configuration; omit `--records`:
+
+```bash
+python3 extract_polymer_cards.py --papers path/to/full-papers.json --out-dir outputs/polymer_cards_live
+```
+
+The model route reuses AutoSchema's local OpenAI/Azure configuration, also accepting `OPENAI_API_KEY`. `--env-file` selects an existing configuration file; keys are never copied into outputs or printed. Each request and paper count is bounded, and live/replay modes are recorded separately. See the [workflow and results](docs/polymer-cards.md), [card contract](docs/polymer-card-contract.md), [checked paper reference](docs/polymer-card-real-paper-reference.md), and [source licenses](examples/polymer_cards/sources/LICENSE.md).
+
+Run the focused checks:
+
+```bash
+python3 -m unittest -v test_polymer_cards_validation test_polymer_cards_render test_polymer_cards_workflow test_polymer_cards_real_papers test_task3_selection test_task3_dpal_case test_task3_battery_case
+```
+
+## Historical Task 3: application-specific candidate selection
 
 Task 3 checks source-linked observations against explicit application requirements and records evidence gaps, without a combined material score. It is a separate stage; Phase I and Phase II behavior are unchanged. Flat extraction arrays need reviewed sample/property/condition links before selection.
 

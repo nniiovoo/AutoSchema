@@ -1,0 +1,52 @@
+{
+  "contract_version": "polymer-cards-v1",
+  "coverage": "selected_excerpts",
+  "papers": [
+    {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "title": "Interfacial self-healing polymer electrolytes for long-cycle solid-state lithium-sulfur batteries",
+      "domains": [
+        "disulfide",
+        "batteries"
+      ],
+      "sources": [
+        {
+          "path": "sources/pei-excerpts.json",
+          "format": "json",
+          "source_part": "main",
+          "expected_sha256": "d63704283bdc6ae278160464c036418a7d75f663a2c280990b867aaf66a49f54"
+        }
+      ]
+    },
+    {
+      "paper_id": "10.3390/polym13234155",
+      "title": "Self-Healing of a Covalently Cross-Linked Polymer Electrolyte Membrane by Diels-Alder Cycloaddition and Electrolyte Embedding for Lithium Ion Batteries",
+      "domains": [
+        "batteries"
+      ],
+      "sources": [
+        {
+          "path": "sources/chen-excerpts.json",
+          "format": "json",
+          "source_part": "main",
+          "expected_sha256": "4e5c63d39a282a800476bfad6583746811061fd311220a6168aa36faef12c1fe"
+        }
+      ]
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "title": "Universally autonomous self-healing elastomer with high stretchability",
+      "domains": [
+        "disulfide"
+      ],
+      "sources": [
+        {
+          "path": "sources/guo-excerpts.json",
+          "format": "json",
+          "source_part": "main",
+          "expected_sha256": "3f302c833e11b4fac089d47cbe3725d1af6ad70393063a9d1273c78602a483c6"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "paper_id": "10.1038/s41467-020-15949-8",
+  "title": "Universally autonomous self-healing elastomer with high stretchability",
+  "source_url": "https://doi.org/10.1038/s41467-020-15949-8",
+  "coverage": "selected_excerpts",
+  "attribution": "Guo et al. (2020), Universally autonomous self-healing elastomer with high stretchability. https://doi.org/10.1038/s41467-020-15949-8",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "original_document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4",
+  "excerpt_note": "Verbatim selected main-text passages only; source selection and chunk metadata added for a portable research test. Not a complete article or exhaustive entity inventory.",
+  "chunks": [
+    {
+      "chunk_id": "guo-design",
+      "text": "A series of polymers were synthesized through a two-step polycondensation reaction. To synthesize a bis-isocyanate-terminated preoligomer, α, ω-dihydroxyethylpropoxyl-PDMS (Mw = 4,600 g mol−1, as a soft segment diol) was reacted with isophorone diisocyanate (IPDI) monomer (M(PDMS)/M(IPDI) = 1/2) in N, N′-dimethylacetamide (DMAc) using dibutyltin dilaurate (DBTDL) as a catalyst. Then, 4,4′-dithiodianiline (SS) (an aromatic disulfide) and/or 4,4′-bis(hydroxymethyl)-2,2′-bipyridine (BNB) were added to the solution as a chain extender to complete the PDMS–SS–IP–BNB synthesis. PDMS–SS–IP–BNB polymers were thus linked by SS, BNB, and isophorone bisurea (IP) units of varying ratios (structures shown in Fig. 1 and Supplementary Fig. 1). Copolymers in Supplementary Table 1 are therefore identified by a shorthand name (P1–P7) that corresponds to the ratio.",
+      "source_part": "main",
+      "locator": "Results, opening polymer-design paragraph before Material characterization (XML Sec2, direct paragraph)",
+      "original_document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4"
+    },
+    {
+      "chunk_id": "guo-synthesis",
+      "text": "A typical polymerization procedure for P3 is described below. HO–PDMS–OH (23.0 g, 5.0 mmol) in a dried glass vessel equipped with a mechanical stirrer was heated in an oil bath at 100 °C under vacuum (<133 Pa) for 1 h to remove any moisture, and then cooled to 70 °C. IPDI (2.44 g, 11 mmol) and DBTDL (0.08 g) were dissolved in DMAc (20 mL), dropwise added into the vessel, and stirred for 3 h under a N2 atmosphere. After the synthesis of the pre-polymer, 4,4′-dithiodianiline (0.6 g, 2.5 mmol) and 4, 4′-bis(hydroxymethyl)-2,2′-bipyridine (0.465 g, 2.5 mmol) in 6 mL of dry DMAc were added to the pre-polymer solution. After stirring at 70 °C for another 3 h, the solution was added by methanol (3 mL), and further stirred for 30 min to ensure the consumption enough of isocyanate groups. Then, the solution was poured into a Poly tetra fluoroethylene (PTFE) plate that was subsequently put in a vacuum oven at 90 °C for 12 h to allow the reaction to complete. By dissolving the crude polymer in 40 mL of CH2Cl2 and then precipitating it into petroleum ether, we successfully obtained the purified P3 sample (16 g, yield 60%) as a yellow brown elastomer. The purification process was repeated three times. GPC using THF as the eluent measured the average molecular weight as Mn = 63 KDa and Mw = 112 KDa, and Mw/Mn = 1.77.",
+      "source_part": "main",
+      "locator": "Methods, Polymer synthesis (XML Sec10, paragraph1)",
+      "original_document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4"
+    },
+    {
+      "chunk_id": "guo-healing",
+      "text": "As shown in Fig. 3a, after a healing duration of 10 min at room temperature, the healed P3 film sustained a large strain and held a weight that was 526 times greater than the film weight. As expected, a longer healing time resulted in a higher recovered fracture strain (Supplementary Fig. 16a and b), When healed at room temperature for 2 h, the film had a recovered fracture strain of 1200% ± 50%, which showed a high healing efficiency (η) of 93% ± 3% (Supplementary Fig. 16b).",
+      "source_part": "main",
+      "locator": "Results, Universally self-healing capability (XML Sec5, paragraph2), Supplementary Fig16b discussed in main text",
+      "original_document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4"
+    },
+    {
+      "chunk_id": "guo-healing-metric",
+      "text": "For the self-healing tests, the polymer films were cut into two pieces and put together to heal in different conditions. The healed polymer films were stretched following the same procedure to obtain the stress–strain curves. The mechanical healing efficiency, η, was defined as the ratio between the restored fracture strain relative to the original fracture strain.",
+      "source_part": "main",
+      "locator": "Methods, Film preparation for self-healing and mechanical property testing (XML Sec11, paragraph3)",
+      "original_document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4"
+    },
+    {
+      "chunk_id": "guo-device",
+      "text": "Therefore, we fabricated a stretchable and autonomous self-healing conductor using the liquid metal EGaIn as a conducting wire and the P3 elastomer as the encapsulation and supporting layer (Fig. 4a)64–66.",
+      "source_part": "main",
+      "locator": "Results, A self-healing and stretchable conducting device (XML Sec6, paragraph1, Fig4a)",
+      "original_document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4"
+    }
+  ]
+}

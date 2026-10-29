@@ -1,0 +1,55 @@
+{
+  "paper_id": "10.3390/polym13234155",
+  "title": "Self-Healing of a Covalently Cross-Linked Polymer Electrolyte Membrane by Diels-Alder Cycloaddition and Electrolyte Embedding for Lithium Ion Batteries",
+  "source_url": "https://doi.org/10.3390/polym13234155",
+  "coverage": "selected_excerpts",
+  "attribution": "Chen et al. (2021), Self-Healing of a Covalently Cross-Linked Polymer Electrolyte Membrane by Diels-Alder Cycloaddition and Electrolyte Embedding for Lithium Ion Batteries. https://doi.org/10.3390/polym13234155",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "original_document_sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc",
+  "excerpt_note": "Verbatim selected main-text passages only; source selection and chunk metadata added for a portable research test. Not a complete article or exhaustive entity inventory.",
+  "chunks": [
+    {
+      "chunk_id": "chen-materials",
+      "text": "Methyl methacrylate (AR, 99%), lithium cobalt oxide (99.0% metals basis), butyl methacrylate (99%, containing 10 ppm MEHQ stabilizer), 4,4’-bismaleimidodiphenylmethane (>96%), lithium bis(oxalato)borate (≥99.0% metals basis), methacryloyl chloride (95%, containing 200 ppm MEHQ stabilizer), anhydrous tetrahydrofuran, furfuryl alcohol (AR, 98%), triethylamine and ammonium persulfate were purchased from Aladdin (Shanghai, China) and used as received.",
+      "source_part": "main",
+      "locator": "Materials and Methods,2.1 Materials, paragraph1",
+      "original_document_sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc"
+    },
+    {
+      "chunk_id": "chen-precursor",
+      "text": "The P(MMA-BA-(F-MA)) copolymer was prepared by emulsion polymerization. In brief, 2.5 wt% sodium dodecyl sulfate solution was prepared (as an emulsifier) with deionized water under N2 at 60 °C. The mixture (MMA:BMA:F-MA = 1:2:1 (in molar ratio)) was added to the above solution under vigorous stirring for 1 h to form an emulsified solution. After adding ammonium persulfate (as an initiator) and stirring continuously for 6 h, the resulting emulsion was poured into 3 wt% Al2(SO4)3 solution to yield a precipitate that was isolated by filtration and washed with hot deionized water (55 °C) in order to remove any impurities such as residual monomers and emulsifier. The P(MMA-BA-(F-MA)) copolymer was finally obtained by drying the purified precipitate in a vacuum oven at 60 °C for 12 h and kept in a desiccator for membrane preparation.",
+      "source_part": "main",
+      "locator": "Materials and Methods,2.3 Preparation of the Self-Healing Polymer Precursor, paragraph1",
+      "original_document_sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc"
+    },
+    {
+      "chunk_id": "chen-membrane",
+      "text": "An optimal P(MMA-BA-(F-MA)):BMI-LiBOB self-healing polymer electrolyte composition was selected (the optimal molar ration of ((MMA-BA-(F-MA)):BMI = 2:1.1). Initially, a homogeneous solution of copolymer and lithium salt was prepared by mixing the components at 50 °C for 1 h. Subsequently, crosslinking agent was added to the mixture, after complete dissolution, the resulting viscous solution was cast with a doctor blade onto a glass plate, and then dried in vacuum at 90 °C for 24 h; finally, self-healing polymer electrolyte membrane was obtained.",
+      "source_part": "main",
+      "locator": "Materials and Methods,2.4 Preparation of the Self-Healing Polymer Electrolyte Membrane, paragraph1",
+      "original_document_sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc"
+    },
+    {
+      "chunk_id": "chen-mechanics",
+      "text": "Firstly, we characterized the prepared self-healing polymer composite. By an emulsion polymerization method, we have been prepared self-healing polymer precursors. Gel permeation chromatography (GPC) data shows that the number-average molecular weight of the self-healing polymer precursors reaches 644,000 (Figure 2a). We can expect that the random copolymer will have excellent physical properties due to its high molecular weight. The tensile tests show that the tensile strength of the self-healing polymer precursors reaches 5 MPa. Not surprisingly, the tensile strength of the cross-linked polymer network reached 21 MPa after adding a suitable amount of the cross-linked agent BMI as shown in Figure 2b.",
+      "source_part": "main",
+      "locator": "Results,3.1 Synthesis and Characterization of SHP, paragraph2, Fig2a/b",
+      "original_document_sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc"
+    },
+    {
+      "chunk_id": "chen-cell",
+      "text": "Coin cells were assembled using lithium cobalt oxides (LCO) positive electrode and lithium metal negative electrode. The cathode was prepared by hand mixing LCO, acetylene black and PVDF in an 8:1:1 weight ratio. The PE membranes cells were fabricated with commercial liquid electrolyte (1 M LiPF6 in dimethyl carbonate (DMC)/diethyl carbonate (DEC)/ethylene carbonate (EC) (1:1:1, v/v/v)). The self-healing polymer electrolyte membranes were fabricated between the two electrodes and a small amount of solution (EC:DMC = 1:1, v/v, 10 μL) as the plasticizer add into the self-healing polymer electrolyte membranes. The assembled coin cells were employed to evaluate the electrochemical performance.",
+      "source_part": "main",
+      "locator": "Materials and Methods,2.5 Fabrication of the Self-Healing Polymer Lithium Ion Battery, paragraph1",
+      "original_document_sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc"
+    },
+    {
+      "chunk_id": "chen-network",
+      "text": "Next, the robust flexible self-healing precursor polymer was prepared by emulsion polymerization using MMA, butyl methacrylate (BMA) and F-MA monomers with the molar ratio of 1:2:1. Then, by adding N,N’-4,4′-diphenylmethanebismaleimide (BMI) to the N-methylpyrrolidone (NMP) solution containing the precursor polymer and lithium bis(oxalato)borate (LiBOB), we created a crosslinked mechanically robust polymer matrix in situ to provide lithium-ion transport pathways and thermal response self-healing ability after filming and drying.",
+      "source_part": "main",
+      "locator": "Results,3.1 Synthesis and Characterization of SHP, paragraph1",
+      "original_document_sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "prepared_date": "2026-10-28",
+  "primary_sources": [
+    {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "title": "Interfacial self-healing polymer electrolytes for long-cycle solid-state lithium-sulfur batteries",
+      "authors": "Fei Pei et al.",
+      "year": 2024,
+      "domains": [
+        "disulfide",
+        "batteries"
+      ],
+      "url": "https://doi.org/10.1038/s41467-023-43467-w",
+      "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10774406/fullTextXML",
+      "original_file_local": "/Volumes/Seagate/research /polymer-screening/sources/polymer-cards-2026-10-28/pei-original.xml",
+      "original_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+      "excerpt_file": "sources/pei-excerpts.json",
+      "excerpt_sha256": "d63704283bdc6ae278160464c036418a7d75f663a2c280990b867aaf66a49f54",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "paper_id": "10.3390/polym13234155",
+      "title": "Self-Healing of a Covalently Cross-Linked Polymer Electrolyte Membrane by Diels-Alder Cycloaddition and Electrolyte Embedding for Lithium Ion Batteries",
+      "authors": "Chen et al.",
+      "year": 2021,
+      "domains": [
+        "batteries"
+      ],
+      "url": "https://doi.org/10.3390/polym13234155",
+      "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8659245/fullTextXML",
+      "original_file_local": "/Volumes/Seagate/research /polymer-screening/sources/polymer-cards-2026-10-28/chen-original.xml",
+      "original_sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc",
+      "excerpt_file": "sources/chen-excerpts.json",
+      "excerpt_sha256": "4e5c63d39a282a800476bfad6583746811061fd311220a6168aa36faef12c1fe",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "title": "Universally autonomous self-healing elastomer with high stretchability",
+      "authors": "Guo et al.",
+      "year": 2020,
+      "domains": [
+        "disulfide"
+      ],
+      "url": "https://doi.org/10.1038/s41467-020-15949-8",
+      "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7184568/fullTextXML",
+      "original_file_local": "/Volumes/Seagate/research /polymer-screening/sources/polymer-cards-2026-10-28/guo-original.xml",
+      "original_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4",
+      "excerpt_file": "sources/guo-excerpts.json",
+      "excerpt_sha256": "3f302c833e11b4fac089d47cbe3725d1af6ad70393063a9d1273c78602a483c6",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  ],
+  "dpal_release_url": "https://github.com/kmiller621/DPAL/releases/tag/July2025",
+  "dpal_csv_sha256": "33d3d63d837e5687ad80001aef1a3103180d011831f925a1a66007fbbcc4fca8",
+  "dpal_members": [
+    {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "data_record_1based": 11282,
+      "zotero_key": "LD7DQY33",
+      "title_in_snapshot": "Interfacial self-healing polymer electrolytes for long-cycle solid-state lithium-sulfur batteries",
+      "tags": "Source: General; Application: Batteries; Bond: Disulfide; Bond: Urethane; Property: Self-healing; Class: Hydrogen Bond; Class: Dynamic Covalent"
+    },
+    {
+      "paper_id": "10.3390/polym13234155",
+      "data_record_1based": 11650,
+      "zotero_key": "25XYVWJC",
+      "title_in_snapshot": "Self-Healing of a Covalently Cross-Linked Polymer Electrolyte Membrane by Diels-Alder Cycloaddition and Electrolyte Embedding for Lithium Ion Batteries",
+      "tags": "Source: General; Application: Batteries; Property: Ionic Conductivity; Application: Membranes; Bond: Diels-alder; Property: Self-healing; Class: Dynamic Covalent"
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "data_record_1based": 3304,
+      "zotero_key": "N5VIW87Q",
+      "title_in_snapshot": "Universally autonomous self-healing elastomer with high stretchability",
+      "tags": "Source: General; Source: Specific; Property: Mechanical; Bond: Disulfide; Property: Self-healing; Class: Dynamic Covalent; Backbone: Poly(dimethyl siloxane)"
+    }
+  ],
+  "source_selection": "Purposive three-paper set aligned with Nina’s two stated domains; exact Nina seed identities were not provided, so these are not called her seed papers.",
+  "curation": "Assistant primary-source review; manually curated responses for deterministic replay, not saved live model outputs.",
+  "reference_sha256": "75c137a9aedbb132b62f521c66324fe03b2b9d68799d2c0afe6a82aeeb331a1b",
+  "curated_responses_sha256": "4c5c47caca1bc7e0e2272b2773e294fd9c5aacdb51e606c9f674e3b87d60a0cf",
+  "licenses": "Only selected main-text excerpts from three verified CC BY4.0 papers are redistributed here, with attribution. Original complete papers remain outsideGit. Cao2021 was not used for public fixture excerpts because its RSC license is CC BY-NC3.0."
+}

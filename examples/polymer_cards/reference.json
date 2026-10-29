@@ -1,0 +1,110 @@
+{
+  "prepared_date": "2026-10-28",
+  "reference_kind": "Assistant primary-source adjudication frozen before card pipeline replay",
+  "independence_note": "Labels and fact expectations were assigned from the original published sources, without running or inspecting the new card validator. This is not authenticated human annotation or a blinded model benchmark.",
+  "retention_rule": "Keep polymer entities; omit confirmed nonpolymer standalone entities; no conductivity cutoff or completeness/origin filter.",
+  "expected_retained": {
+    "10.1038/s41467-023-43467-w": [
+      "pei-bhds",
+      "pei-hdi",
+      "pei-peo",
+      "pei-ptmg"
+    ],
+    "10.3390/polym13234155": [
+      "chen-precursor",
+      "chen-network"
+    ],
+    "10.1038/s41467-020-15949-8": [
+      "guo-p3",
+      "guo-pdms-reactant"
+    ]
+  },
+  "expected_discarded": {
+    "10.1038/s41467-023-43467-w": [
+      "pei-lifsi",
+      "pei-hdi-reagent"
+    ],
+    "10.3390/polym13234155": [
+      "chen-libob"
+    ],
+    "10.1038/s41467-020-15949-8": [
+      "guo-ipdi"
+    ]
+  },
+  "expected_review_queue": [],
+  "fact_expectations": [
+    {
+      "entity_id": "pei-bhds",
+      "field": "properties",
+      "property": "ionic_conductivity",
+      "value": "2.4 × 10−4",
+      "unit": "S cm−1",
+      "specimen_id": "pei-bhds-salted",
+      "temperature": "30 °C"
+    },
+    {
+      "entity_id": "pei-hdi",
+      "field": "properties",
+      "property": "ionic_conductivity",
+      "value": "6.5 × 10−5",
+      "unit": "S cm−1",
+      "specimen_id": "pei-hdi-salted",
+      "note": "Still retained although below the historical application-screening minimum."
+    },
+    {
+      "entity_id": "pei-peo",
+      "field": "source_tag",
+      "value": "commercially_purchased"
+    },
+    {
+      "entity_id": "pei-ptmg",
+      "field": "source_tag",
+      "value": "commercially_purchased",
+      "missing_fields": [
+        "monomers",
+        "composition",
+        "synthesis_text",
+        "properties",
+        "applications"
+      ]
+    },
+    {
+      "entity_id": "chen-precursor",
+      "field": "properties",
+      "property": "tensile_strength",
+      "value": "5",
+      "unit": "MPa",
+      "specimen_id": "chen-precursor-film"
+    },
+    {
+      "entity_id": "chen-network",
+      "field": "properties",
+      "property": "tensile_strength",
+      "value": "21",
+      "unit": "MPa",
+      "specimen_id": "chen-network-tensile",
+      "note": "Not assigned to the uncrosslinked precursor or all salted membranes."
+    },
+    {
+      "entity_id": "guo-p3",
+      "field": "properties",
+      "property": "fracture_strain_recovery",
+      "value": "93% ± 3%",
+      "unit": "%",
+      "specimen_id": "guo-p3-film",
+      "note": "Not tensile-strength recovery; not the EGaIn device electrical recovery."
+    },
+    {
+      "entity_id": "guo-pdms-reactant",
+      "field": "source_tag",
+      "expected_status": "not_found_in_provided_text",
+      "note": "Main excerpt does not establish commercial origin."
+    }
+  ],
+  "limits": [
+    "Selected reference entities, not exhaustive recall ground truth.",
+    "Six information groups must exist even where not found.",
+    "Quote containment is mechanical and does not validate chemistry or experimental reproducibility.",
+    "Matrix and formulated/tested specimen identities remain separate."
+  ]
+}

@@ -1,0 +1,1486 @@
+{
+  "record_kind": "assistant_curated_primary_source_records_not_model_output",
+  "prepared_date": "2026-10-28",
+  "coverage": "Selected entities and facts for deterministic code replay; not exhaustive article extraction.",
+  "responses": [
+    {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "entities": [
+        {
+          "entity_id": "pei-bhds",
+          "name": "PTMG-HDI-BHDS",
+          "identity_evidence": [
+            {
+              "chunk_id": "pei-bhds-synthesis",
+              "quote": "PTMG-HDI-BHDS"
+            }
+          ],
+          "classification": {
+            "is_polymer": true,
+            "reason": "The source identifies this synthesized matrix in the polymer solutions.",
+            "evidence": [
+              {
+                "chunk_id": "pei-electrolytes",
+                "quote": "The PTMG-HDI and PTMG-HDI-BHDS polymer solutions"
+              }
+            ]
+          },
+          "aliases": [],
+          "description": {
+            "value": "Polymer matrix prepared in the paper; salt-containing specimen is recorded separately.",
+            "evidence": [
+              {
+                "chunk_id": "pei-electrolytes",
+                "quote": "The PTMG-HDI and PTMG-HDI-BHDS polymer solutions"
+              }
+            ]
+          },
+          "role": {
+            "value": "author-synthesized polymer matrix",
+            "evidence": [
+              {
+                "chunk_id": "pei-bhds-synthesis",
+                "quote": "PTMG-HDI-BHDS"
+              }
+            ]
+          },
+          "specimens": [
+            {
+              "specimen_id": "pei-bhds-salted",
+              "label": "PTMG-HDI-BHDS/LiFSI",
+              "evidence": [
+                {
+                  "chunk_id": "pei-conductivity",
+                  "quote": "PTMG-HDI-BHDS/LiFSI"
+                }
+              ]
+            }
+          ],
+          "monomers": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-bhds",
+                "value": "PTMG",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-bhds-synthesis",
+                    "quote": "PTMG"
+                  }
+                ],
+                "role": "polymeric reactant"
+              },
+              {
+                "entity_id": "pei-bhds",
+                "value": "HDI",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-bhds-synthesis",
+                    "quote": "HDI"
+                  }
+                ],
+                "role": "reactive building block"
+              },
+              {
+                "entity_id": "pei-bhds",
+                "value": "BHDS",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-bhds-synthesis",
+                    "quote": "BHDS"
+                  }
+                ],
+                "role": "chain extender"
+              }
+            ]
+          },
+          "composition": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-bhds",
+                "value": "PTMG:HDI:BHDS = 1:2.4:1",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-bhds-synthesis",
+                    "quote": "1:2.4:1"
+                  }
+                ],
+                "basis": "monomer-feed molar ratio"
+              },
+              {
+                "entity_id": "pei-bhds",
+                "value": "polymer:LiFSI = 2:1",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-electrolytes",
+                    "quote": "2:1 (polymer: LiFSI)"
+                  }
+                ],
+                "basis": "mass ratio",
+                "specimen_id": "pei-bhds-salted"
+              }
+            ]
+          },
+          "synthesis_text": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-bhds",
+                "value": "The synthesis of PTMG-HDI-BHDS involved the introduction of the chain extender BHDS into the PTMG-HDI.",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-bhds-synthesis",
+                    "quote": "The synthesis of PTMG-HDI-BHDS involved the introduction of the chain extender BHDS into the PTMG-HDI."
+                  }
+                ]
+              }
+            ]
+          },
+          "properties": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-bhds",
+                "value": "2.4 × 10−4",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-conductivity",
+                    "quote": "PTMG-HDI-BHDS/LiFSI (2.4 × 10−4 S cm−1)"
+                  }
+                ],
+                "property": "ionic_conductivity",
+                "unit": "S cm−1",
+                "specimen_id": "pei-bhds-salted",
+                "conditions": [
+                  {
+                    "name": "temperature",
+                    "value": "30 °C",
+                    "evidence": [
+                      {
+                        "chunk_id": "pei-conductivity",
+                        "quote": "at 30 °C"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "salt_ratio",
+                    "value": "2:1",
+                    "evidence": [
+                      {
+                        "chunk_id": "pei-electrolytes",
+                        "quote": "2:1 (polymer: LiFSI)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "applications": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-bhds",
+                "value": "Salt-containing electrolyte in the reported SPAN/lithium cell experiments",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-application",
+                    "quote": "A PTMG-HDI-BHDS/LiFSI solution was used to wet the anode and cathode (Supplementary Fig. 26). The precursor solutions were cast onto the surface of the cathodes, and integrated SPAN@SPE and Li@SPE were formed simultaneously after solvent evaporation (Supplementary Fig. 27 and Supplementary Fig. 28). The SPAN|PTMG-HDI-BHDS|Li cells were assembled by simply fitting the integrated SPAN@SPE with Li@SPE."
+                  }
+                ],
+                "claim_type": "demonstrated"
+              }
+            ]
+          },
+          "source_tag": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-bhds",
+                "value": "author_synthesized",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-bhds-synthesis",
+                    "quote": "The synthesis of PTMG-HDI-BHDS"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "entity_id": "pei-hdi",
+          "name": "PTMG-HDI",
+          "identity_evidence": [
+            {
+              "chunk_id": "pei-hdi-synthesis",
+              "quote": "PTMG-HDI"
+            }
+          ],
+          "classification": {
+            "is_polymer": true,
+            "reason": "The source identifies this synthesized matrix in the polymer solutions.",
+            "evidence": [
+              {
+                "chunk_id": "pei-electrolytes",
+                "quote": "The PTMG-HDI and PTMG-HDI-BHDS polymer solutions"
+              }
+            ]
+          },
+          "aliases": [],
+          "description": {
+            "value": "Polymer matrix prepared in the paper; salt-containing specimen is recorded separately.",
+            "evidence": [
+              {
+                "chunk_id": "pei-electrolytes",
+                "quote": "The PTMG-HDI and PTMG-HDI-BHDS polymer solutions"
+              }
+            ]
+          },
+          "role": {
+            "value": "author-synthesized polymer matrix",
+            "evidence": [
+              {
+                "chunk_id": "pei-hdi-synthesis",
+                "quote": "PTMG-HDI"
+              }
+            ]
+          },
+          "specimens": [
+            {
+              "specimen_id": "pei-hdi-salted",
+              "label": "PTMG-HDI/LiFSI",
+              "evidence": [
+                {
+                  "chunk_id": "pei-conductivity",
+                  "quote": "PTMG-HDI/LiFSI"
+                }
+              ]
+            }
+          ],
+          "monomers": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-hdi",
+                "value": "PTMG",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-hdi-synthesis",
+                    "quote": "PTMG"
+                  }
+                ],
+                "role": "polymeric reactant"
+              },
+              {
+                "entity_id": "pei-hdi",
+                "value": "HDI",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-hdi-synthesis",
+                    "quote": "HDI"
+                  }
+                ],
+                "role": "reactive building block"
+              }
+            ]
+          },
+          "composition": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-hdi",
+                "value": "PTMG:HDI = 1:1.2",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-hdi-synthesis",
+                    "quote": "1:1.2"
+                  }
+                ],
+                "basis": "monomer-feed molar ratio"
+              },
+              {
+                "entity_id": "pei-hdi",
+                "value": "polymer:LiFSI = 2:1",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-electrolytes",
+                    "quote": "2:1 (polymer: LiFSI)"
+                  }
+                ],
+                "basis": "mass ratio",
+                "specimen_id": "pei-hdi-salted"
+              }
+            ]
+          },
+          "synthesis_text": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-hdi",
+                "value": "PTMG-HDI was synthesized via condensation of PTMG with HDI.",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-hdi-synthesis",
+                    "quote": "PTMG-HDI was synthesized via condensation of PTMG with HDI."
+                  }
+                ]
+              }
+            ]
+          },
+          "properties": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-hdi",
+                "value": "6.5 × 10−5",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-conductivity",
+                    "quote": "PTMG-HDI/LiFSI (6.5 × 10−5 S cm−1)"
+                  }
+                ],
+                "property": "ionic_conductivity",
+                "unit": "S cm−1",
+                "specimen_id": "pei-hdi-salted",
+                "conditions": [
+                  {
+                    "name": "temperature",
+                    "value": "30 °C",
+                    "evidence": [
+                      {
+                        "chunk_id": "pei-conductivity",
+                        "quote": "at 30 °C"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "salt_ratio",
+                    "value": "2:1",
+                    "evidence": [
+                      {
+                        "chunk_id": "pei-electrolytes",
+                        "quote": "2:1 (polymer: LiFSI)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "applications": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-hdi",
+                "value": "Salt-containing electrolyte in the reported SPAN/lithium cell experiments",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-application-controls",
+                    "quote": "After 400 cycles, the discharge capacities were 606, 363, 180, and 124 mAh gSPAN−1 for the integrated SPAN|PTMG-HDI-BHDS|Li, laminated SPAN|PTMG-HDI-BHDS|Li, integrated SPAN|PTMG-HDI|Li and laminated SPAN|PEO|Li cells, which represented 99.7%, 60.7%, 30.9% and 29.3% of their initial capacities at 0.3 C, respectively."
+                  }
+                ],
+                "claim_type": "demonstrated"
+              }
+            ]
+          },
+          "source_tag": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-hdi",
+                "value": "author_synthesized",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-hdi-synthesis",
+                    "quote": "PTMG-HDI was synthesized via condensation of PTMG with HDI."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "entity_id": "pei-peo",
+          "name": "PEO",
+          "identity_evidence": [
+            {
+              "chunk_id": "pei-materials",
+              "quote": "PEO"
+            }
+          ],
+          "classification": {
+            "is_polymer": true,
+            "reason": "PEO is explicitly identified as poly(ethylene oxide) in the original preparation.",
+            "evidence": [
+              {
+                "chunk_id": "pei-electrolytes",
+                "quote": "Poly(ethylene oxide) (PEO"
+              }
+            ]
+          },
+          "aliases": [
+            {
+              "value": "Poly(ethylene oxide)",
+              "evidence": [
+                {
+                  "chunk_id": "pei-electrolytes",
+                  "quote": "Poly(ethylene oxide) (PEO"
+                }
+              ]
+            }
+          ],
+          "description": null,
+          "role": {
+            "value": "purchased polymer used in a comparison electrolyte",
+            "evidence": [
+              {
+                "chunk_id": "pei-materials",
+                "quote": "PEO"
+              }
+            ]
+          },
+          "specimens": [
+            {
+              "specimen_id": "pei-peo-salted",
+              "label": "PEO/LiFSI",
+              "evidence": [
+                {
+                  "chunk_id": "pei-electrolytes",
+                  "quote": "PEO/LiFSI"
+                }
+              ]
+            }
+          ],
+          "monomers": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "composition": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-peo",
+                "value": "PEO:LiFSI = 2:1",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-electrolytes",
+                    "quote": "2:1 (PEO: LiFSI)"
+                  }
+                ],
+                "basis": "mass ratio",
+                "specimen_id": "pei-peo-salted"
+              }
+            ]
+          },
+          "synthesis_text": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "properties": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-peo",
+                "value": "1.2 × 10−5",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-conductivity",
+                    "quote": "PEO/LiFSI (1.2 × 10−5 S cm−1)"
+                  }
+                ],
+                "property": "ionic_conductivity",
+                "unit": "S cm−1",
+                "specimen_id": "pei-peo-salted",
+                "conditions": [
+                  {
+                    "name": "temperature",
+                    "value": "30 °C",
+                    "evidence": [
+                      {
+                        "chunk_id": "pei-conductivity",
+                        "quote": "at 30 °C"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "applications": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-peo",
+                "value": "Comparison polymer electrolyte in laminated SPAN/PEO/lithium cells",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-application-controls",
+                    "quote": "After 400 cycles, the discharge capacities were 606, 363, 180, and 124 mAh gSPAN−1 for the integrated SPAN|PTMG-HDI-BHDS|Li, laminated SPAN|PTMG-HDI-BHDS|Li, integrated SPAN|PTMG-HDI|Li and laminated SPAN|PEO|Li cells, which represented 99.7%, 60.7%, 30.9% and 29.3% of their initial capacities at 0.3 C, respectively."
+                  }
+                ],
+                "claim_type": "demonstrated"
+              }
+            ]
+          },
+          "source_tag": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-peo",
+                "value": "commercially_purchased",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-materials",
+                    "quote": "PEO, polytetrahydrofuran (PTMG, 2000 g mol−1), hexamethylene diisocyanate (HDI) and 2-Hydroxyethyl disulfide (BHDS) and dibutyltin dilaurate (DBTDL) catalyst were purchased from Alfa Aesar."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "entity_id": "pei-ptmg",
+          "name": "polytetrahydrofuran",
+          "identity_evidence": [
+            {
+              "chunk_id": "pei-materials",
+              "quote": "polytetrahydrofuran (PTMG, 2000 g mol−1)"
+            }
+          ],
+          "classification": {
+            "is_polymer": true,
+            "reason": "Purchased polymeric reactant; a reactive role does not make its chemical identity a nonpolymer.",
+            "evidence": [
+              {
+                "chunk_id": "pei-materials",
+                "quote": "polytetrahydrofuran (PTMG, 2000 g mol−1)"
+              }
+            ]
+          },
+          "aliases": [
+            {
+              "value": "PTMG",
+              "evidence": [
+                {
+                  "chunk_id": "pei-materials",
+                  "quote": "polytetrahydrofuran (PTMG, 2000 g mol−1)"
+                }
+              ]
+            }
+          ],
+          "description": null,
+          "role": {
+            "value": "polymeric reactant in matrix synthesis",
+            "evidence": [
+              {
+                "chunk_id": "pei-hdi-synthesis",
+                "quote": "PTMG-HDI was synthesized via condensation of PTMG with HDI."
+              }
+            ]
+          },
+          "specimens": [],
+          "monomers": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "composition": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "synthesis_text": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "properties": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "applications": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "source_tag": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-ptmg",
+                "value": "commercially_purchased",
+                "evidence": [
+                  {
+                    "chunk_id": "pei-materials",
+                    "quote": "polytetrahydrofuran (PTMG, 2000 g mol−1), hexamethylene diisocyanate (HDI) and 2-Hydroxyethyl disulfide (BHDS) and dibutyltin dilaurate (DBTDL) catalyst were purchased from Alfa Aesar."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "entity_id": "pei-lifsi",
+          "name": "LiFSI",
+          "identity_evidence": [
+            {
+              "chunk_id": "pei-materials",
+              "quote": "Lithium bis(fluorosulfonyl)imide (LiFSI)"
+            }
+          ],
+          "classification": {
+            "is_polymer": false,
+            "reason": "Lithium salt, not a polymer; remains in retained electrolyte composition.",
+            "evidence": [
+              {
+                "chunk_id": "pei-materials",
+                "quote": "Lithium bis(fluorosulfonyl)imide (LiFSI)"
+              }
+            ]
+          },
+          "aliases": [],
+          "description": null,
+          "role": null,
+          "specimens": [],
+          "monomers": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "composition": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "synthesis_text": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "properties": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "applications": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "source_tag": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          }
+        },
+        {
+          "entity_id": "pei-hdi-reagent",
+          "name": "HDI",
+          "identity_evidence": [
+            {
+              "chunk_id": "pei-materials",
+              "quote": "hexamethylene diisocyanate (HDI)"
+            }
+          ],
+          "classification": {
+            "is_polymer": false,
+            "reason": "Small-molecule diisocyanate reagent, not the polymer PTMG-HDI.",
+            "evidence": [
+              {
+                "chunk_id": "pei-materials",
+                "quote": "hexamethylene diisocyanate (HDI)"
+              }
+            ]
+          },
+          "aliases": [],
+          "description": null,
+          "role": null,
+          "specimens": [],
+          "monomers": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "composition": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "synthesis_text": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "properties": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "applications": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "source_tag": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          }
+        }
+      ]
+    },
+    {
+      "paper_id": "10.3390/polym13234155",
+      "entities": [
+        {
+          "entity_id": "chen-precursor",
+          "name": "P(MMA-BA-(F-MA))",
+          "identity_evidence": [
+            {
+              "chunk_id": "chen-precursor",
+              "quote": "P(MMA-BA-(F-MA))"
+            }
+          ],
+          "classification": {
+            "is_polymer": true,
+            "reason": "The source explicitly calls this an emulsion-polymerized copolymer.",
+            "evidence": [
+              {
+                "chunk_id": "chen-precursor",
+                "quote": "The P(MMA-BA-(F-MA)) copolymer was prepared by emulsion polymerization."
+              }
+            ]
+          },
+          "aliases": [],
+          "description": {
+            "value": "Precursor copolymer; source writes BA in its name while its feed defines BMA. This inconsistency is preserved.",
+            "evidence": [
+              {
+                "chunk_id": "chen-precursor",
+                "quote": "MMA:BMA:F-MA = 1:2:1 (in molar ratio)"
+              }
+            ]
+          },
+          "role": {
+            "value": "author-synthesized precursor polymer",
+            "evidence": [
+              {
+                "chunk_id": "chen-precursor",
+                "quote": "The P(MMA-BA-(F-MA)) copolymer was prepared by emulsion polymerization."
+              }
+            ]
+          },
+          "specimens": [
+            {
+              "specimen_id": "chen-precursor-film",
+              "label": "self-healing polymer precursors",
+              "evidence": [
+                {
+                  "chunk_id": "chen-mechanics",
+                  "quote": "self-healing polymer precursors"
+                }
+              ]
+            }
+          ],
+          "monomers": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "chen-precursor",
+                "value": "MMA",
+                "evidence": [
+                  {
+                    "chunk_id": "chen-precursor",
+                    "quote": "MMA:BMA:F-MA = 1:2:1 (in molar ratio)"
+                  }
+                ],
+                "role": "monomer"
+              },
+              {
+                "entity_id": "chen-precursor",
+                "value": "BMA",
+                "evidence": [
+                  {
+                    "chunk_id": "chen-precursor",
+                    "quote": "MMA:BMA:F-MA = 1:2:1 (in molar ratio)"
+                  }
+                ],
+                "role": "monomer"
+              },
+              {
+                "entity_id": "chen-precursor",
+                "value": "F-MA",
+                "evidence": [
+                  {
+                    "chunk_id": "chen-precursor",
+                    "quote": "MMA:BMA:F-MA = 1:2:1 (in molar ratio)"
+                  }
+                ],
+                "role": "monomer"
+              }
+            ]
+          },
+          "composition": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "chen-precursor",
+                "value": "MMA:BMA:F-MA = 1:2:1",
+                "evidence": [
+                  {
+                    "chunk_id": "chen-precursor",
+                    "quote": "MMA:BMA:F-MA = 1:2:1 (in molar ratio)"
+                  }
+                ],
+                "basis": "monomer-feed molar ratio"
+              }
+            ]
+          },
+          "synthesis_text": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "chen-precursor",
+                "value": "Emulsion polymerization under nitrogen, followed by isolation, washing and vacuum drying of the precursor.",
+                "evidence": [
+                  {
+                    "chunk_id": "chen-precursor",
+                    "quote": "The P(MMA-BA-(F-MA)) copolymer was prepared by emulsion polymerization. In brief, 2.5 wt% sodium dodecyl sulfate solution was prepared (as an emulsifier) with deionized water under N2 at 60 °C. The mixture (MMA:BMA:F-MA = 1:2:1 (in molar ratio)) was added to the above solution under vigorous stirring for 1 h to form an emulsified solution. After adding ammonium persulfate (as an initiator) and stirring continuously for 6 h, the resulting emulsion was poured into 3 wt% Al2(SO4)3 solution to yield a precipitate that was isolated by filtration and washed with hot deionized water (55 °C) in order to remove any impurities such as residual monomers and emulsifier. The P(MMA-BA-(F-MA)) copolymer was finally obtained by drying the purified precipitate in a vacuum oven at 60 °C for 12 h and kept in a desiccator for membrane preparation."
+                  }
+                ]
+              }
+            ]
+          },
+          "properties": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "chen-precursor",
+                "value": "5",
+                "evidence": [
+                  {
+                    "chunk_id": "chen-mechanics",
+                    "quote": "the tensile strength of the self-healing polymer precursors reaches 5 MPa"
+                  }
+                ],
+                "property": "tensile_strength",
+                "unit": "MPa",
+                "specimen_id": "chen-precursor-film",
+                "conditions": []
+              }
+            ]
+          },
+          "applications": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "chen-precursor",
+                "value": "Precursor for subsequent membrane preparation",
+                "evidence": [
+                  {
+                    "chunk_id": "chen-precursor",
+                    "quote": "kept in a desiccator for membrane preparation."
+                  }
+                ],
+                "claim_type": "demonstrated"
+              }
+            ]
+          },
+          "source_tag": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "chen-precursor",
+                "value": "author_synthesized",
+                "evidence": [
+                  {
+                    "chunk_id": "chen-precursor",
+                    "quote": "The P(MMA-BA-(F-MA)) copolymer was prepared by emulsion polymerization."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "entity_id": "chen-network",
+          "name": "cross-linked polymer network",
+          "identity_evidence": [
+            {
+              "chunk_id": "chen-mechanics",
+              "quote": "cross-linked polymer network"
+            }
+          ],
+          "classification": {
+            "is_polymer": true,
+            "reason": "Crosslinked polymer network prepared from precursor and BMI; no generic application cutoff applies.",
+            "evidence": [
+              {
+                "chunk_id": "chen-mechanics",
+                "quote": "cross-linked polymer network"
+              }
+            ]
+          },
+          "aliases": [],
+          "description": null,
+          "role": {
+            "value": "crosslinked polymer matrix in self-healing electrolyte membrane",
+            "evidence": [
+              {
+                "chunk_id": "chen-network",
+                "quote": "a crosslinked mechanically robust polymer matrix in situ"
+              }
+            ]
+          },
+          "specimens": [
+            {
+              "specimen_id": "chen-network-tensile",
+              "label": "cross-linked polymer network",
+              "evidence": [
+                {
+                  "chunk_id": "chen-mechanics",
+                  "quote": "cross-linked polymer network"
+                }
+              ]
+            },
+            {
+              "specimen_id": "chen-network-salted",
+              "label": "P(MMA-BA-(F-MA)):BMI-LiBOB",
+              "evidence": [
+                {
+                  "chunk_id": "chen-membrane",
+                  "quote": "P(MMA-BA-(F-MA)):BMI-LiBOB"
+                }
+              ]
+            }
+          ],
+          "monomers": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "chen-network",
+                "value": "P(MMA-BA-(F-MA)) copolymer and BMI",
+                "evidence": [
+                  {
+                    "chunk_id": "chen-membrane",
+                    "quote": "P(MMA-BA-(F-MA)):BMI-LiBOB"
+                  }
+                ],
+                "role": "precursor polymer plus crosslinking agent"
+              }
+            ]
+          },
+          "composition": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "chen-network",
+                "value": "copolymer:BMI = 2:1.1",
+                "evidence": [
+                  {
+                    "chunk_id": "chen-membrane",
+                    "quote": "((MMA-BA-(F-MA)):BMI = 2:1.1)"
+                  }
+                ],
+                "basis": "reported molar ratio",
+                "specimen_id": "chen-network-salted"
+              }
+            ]
+          },
+          "synthesis_text": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "chen-network",
+                "value": "Crosslinking agent is added to the copolymer/lithium-salt solution, then cast and vacuum dried.",
+                "evidence": [
+                  {
+                    "chunk_id": "chen-membrane",
+                    "quote": "An optimal P(MMA-BA-(F-MA)):BMI-LiBOB self-healing polymer electrolyte composition was selected (the optimal molar ration of ((MMA-BA-(F-MA)):BMI = 2:1.1). Initially, a homogeneous solution of copolymer and lithium salt was prepared by mixing the components at 50 °C for 1 h. Subsequently, crosslinking agent was added to the mixture, after complete dissolution, the resulting viscous solution was cast with a doctor blade onto a glass plate, and then dried in vacuum at 90 °C for 24 h; finally, self-healing polymer electrolyte membrane was obtained."
+                  }
+                ],
+                "specimen_id": "chen-network-salted"
+              }
+            ]
+          },
+          "properties": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "chen-network",
+                "value": "21",
+                "evidence": [
+                  {
+                    "chunk_id": "chen-mechanics",
+                    "quote": "the tensile strength of the cross-linked polymer network reached 21 MPa"
+                  }
+                ],
+                "property": "tensile_strength",
+                "unit": "MPa",
+                "specimen_id": "chen-network-tensile",
+                "conditions": []
+              }
+            ]
+          },
+          "applications": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "chen-network",
+                "value": "Electrolyte membrane in lithium-metal/LCO coin-cell experiments",
+                "evidence": [
+                  {
+                    "chunk_id": "chen-cell",
+                    "quote": "Coin cells were assembled using lithium cobalt oxides (LCO) positive electrode and lithium metal negative electrode."
+                  }
+                ],
+                "claim_type": "demonstrated"
+              }
+            ]
+          },
+          "source_tag": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "chen-network",
+                "value": "author_synthesized",
+                "evidence": [
+                  {
+                    "chunk_id": "chen-network",
+                    "quote": "we created a crosslinked mechanically robust polymer matrix in situ"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "entity_id": "chen-libob",
+          "name": "lithium bis(oxalato)borate",
+          "identity_evidence": [
+            {
+              "chunk_id": "chen-materials",
+              "quote": "lithium bis(oxalato)borate"
+            }
+          ],
+          "classification": {
+            "is_polymer": false,
+            "reason": "Lithium salt ingredient, not a polymer; not a standalone polymer card.",
+            "evidence": [
+              {
+                "chunk_id": "chen-materials",
+                "quote": "lithium bis(oxalato)borate"
+              }
+            ]
+          },
+          "aliases": [],
+          "description": null,
+          "role": null,
+          "specimens": [],
+          "monomers": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "composition": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "synthesis_text": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "properties": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "applications": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "source_tag": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          }
+        }
+      ]
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entities": [
+        {
+          "entity_id": "guo-p3",
+          "name": "P3",
+          "identity_evidence": [
+            {
+              "chunk_id": "guo-synthesis",
+              "quote": "A typical polymerization procedure for P3"
+            }
+          ],
+          "classification": {
+            "is_polymer": true,
+            "reason": "P3 is the explicitly synthesized polymer formulation, with polymer-family and sample-specific evidence.",
+            "evidence": [
+              {
+                "chunk_id": "guo-design",
+                "quote": "PDMS–SS–IP–BNB polymers"
+              }
+            ]
+          },
+          "aliases": [],
+          "description": {
+            "value": "P3 formulation in the PDMS–SS–IP–BNB polymer family; family name is not treated as an alias for every formulation.",
+            "evidence": [
+              {
+                "chunk_id": "guo-design",
+                "quote": "Copolymers in Supplementary Table 1 are therefore identified by a shorthand name (P1–P7) that corresponds to the ratio."
+              }
+            ]
+          },
+          "role": {
+            "value": "author-synthesized disulfide elastomer",
+            "evidence": [
+              {
+                "chunk_id": "guo-synthesis",
+                "quote": "purified P3 sample (16 g, yield 60%) as a yellow brown elastomer"
+              }
+            ]
+          },
+          "specimens": [
+            {
+              "specimen_id": "guo-p3-film",
+              "label": "P3 film",
+              "evidence": [
+                {
+                  "chunk_id": "guo-healing",
+                  "quote": "P3 film"
+                }
+              ]
+            },
+            {
+              "specimen_id": "guo-p3-polymer",
+              "label": "P3",
+              "evidence": [
+                {
+                  "chunk_id": "guo-synthesis",
+                  "quote": "P3 sample"
+                }
+              ]
+            }
+          ],
+          "monomers": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "guo-p3",
+                "value": "HO–PDMS–OH",
+                "evidence": [
+                  {
+                    "chunk_id": "guo-synthesis",
+                    "quote": "HO–PDMS–OH"
+                  }
+                ],
+                "role": "polymeric diol reactant"
+              },
+              {
+                "entity_id": "guo-p3",
+                "value": "IPDI",
+                "evidence": [
+                  {
+                    "chunk_id": "guo-synthesis",
+                    "quote": "IPDI"
+                  }
+                ],
+                "role": "diisocyanate monomer"
+              },
+              {
+                "entity_id": "guo-p3",
+                "value": "4,4′-dithiodianiline",
+                "evidence": [
+                  {
+                    "chunk_id": "guo-synthesis",
+                    "quote": "4,4′-dithiodianiline"
+                  }
+                ],
+                "role": "disulfide chain extender"
+              },
+              {
+                "entity_id": "guo-p3",
+                "value": "4, 4′-bis(hydroxymethyl)-2,2′-bipyridine",
+                "evidence": [
+                  {
+                    "chunk_id": "guo-synthesis",
+                    "quote": "4, 4′-bis(hydroxymethyl)-2,2′-bipyridine"
+                  }
+                ],
+                "role": "chain extender"
+              }
+            ]
+          },
+          "composition": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "guo-p3",
+                "value": "HO–PDMS–OH:23.0 g/5.0 mmol; IPDI:2.44 g/11 mmol; dithiodianiline:0.6 g/2.5 mmol; bipyridine building block:0.465 g/2.5 mmol",
+                "evidence": [
+                  {
+                    "chunk_id": "guo-synthesis",
+                    "quote": "HO–PDMS–OH (23.0 g, 5.0 mmol) in a dried glass vessel equipped with a mechanical stirrer was heated in an oil bath at 100 °C under vacuum (<133 Pa) for 1 h to remove any moisture, and then cooled to 70 °C. IPDI (2.44 g, 11 mmol) and DBTDL (0.08 g) were dissolved in DMAc (20 mL), dropwise added into the vessel, and stirred for 3 h under a N2 atmosphere. After the synthesis of the pre-polymer, 4,4′-dithiodianiline (0.6 g, 2.5 mmol) and 4, 4′-bis(hydroxymethyl)-2,2′-bipyridine (0.465 g, 2.5 mmol) in 6 mL of dry DMAc were added to the pre-polymer solution."
+                  }
+                ],
+                "basis": "reported reaction-feed masses and amounts"
+              }
+            ]
+          },
+          "synthesis_text": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "guo-p3",
+                "value": "Dry the PDMS diol, react with IPDI, add chain extenders, complete reaction and purify P3.",
+                "evidence": [
+                  {
+                    "chunk_id": "guo-synthesis",
+                    "quote": "A typical polymerization procedure for P3 is described below. HO–PDMS–OH (23.0 g, 5.0 mmol) in a dried glass vessel equipped with a mechanical stirrer was heated in an oil bath at 100 °C under vacuum (<133 Pa) for 1 h to remove any moisture, and then cooled to 70 °C. IPDI (2.44 g, 11 mmol) and DBTDL (0.08 g) were dissolved in DMAc (20 mL), dropwise added into the vessel, and stirred for 3 h under a N2 atmosphere. After the synthesis of the pre-polymer, 4,4′-dithiodianiline (0.6 g, 2.5 mmol) and 4, 4′-bis(hydroxymethyl)-2,2′-bipyridine (0.465 g, 2.5 mmol) in 6 mL of dry DMAc were added to the pre-polymer solution. After stirring at 70 °C for another 3 h, the solution was added by methanol (3 mL), and further stirred for 30 min to ensure the consumption enough of isocyanate groups. Then, the solution was poured into a Poly tetra fluoroethylene (PTFE) plate that was subsequently put in a vacuum oven at 90 °C for 12 h to allow the reaction to complete. By dissolving the crude polymer in 40 mL of CH2Cl2 and then precipitating it into petroleum ether, we successfully obtained the purified P3 sample (16 g, yield 60%) as a yellow brown elastomer. The purification process was repeated three times."
+                  }
+                ]
+              }
+            ]
+          },
+          "properties": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "guo-p3",
+                "value": "93% ± 3%",
+                "evidence": [
+                  {
+                    "chunk_id": "guo-healing",
+                    "quote": "a high healing efficiency (η) of 93% ± 3%"
+                  }
+                ],
+                "property": "fracture_strain_recovery",
+                "unit": "%",
+                "specimen_id": "guo-p3-film",
+                "conditions": [
+                  {
+                    "name": "healing_temperature",
+                    "value": "room temperature",
+                    "evidence": [
+                      {
+                        "chunk_id": "guo-healing",
+                        "quote": "When healed at room temperature for 2 h"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "healing_duration",
+                    "value": "2 h",
+                    "evidence": [
+                      {
+                        "chunk_id": "guo-healing",
+                        "quote": "When healed at room temperature for 2 h"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "metric_definition",
+                    "value": "restored fracture strain relative to the original fracture strain",
+                    "evidence": [
+                      {
+                        "chunk_id": "guo-healing-metric",
+                        "quote": "restored fracture strain relative to the original fracture strain"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "entity_id": "guo-p3",
+                "value": "63",
+                "evidence": [
+                  {
+                    "chunk_id": "guo-synthesis",
+                    "quote": "Mn = 63 KDa"
+                  }
+                ],
+                "property": "number_average_molecular_weight",
+                "unit": "KDa",
+                "specimen_id": "guo-p3-polymer",
+                "conditions": [
+                  {
+                    "name": "method",
+                    "value": "GPC",
+                    "evidence": [
+                      {
+                        "chunk_id": "guo-synthesis",
+                        "quote": "GPC using THF as the eluent"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "eluent",
+                    "value": "THF",
+                    "evidence": [
+                      {
+                        "chunk_id": "guo-synthesis",
+                        "quote": "GPC using THF as the eluent"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "applications": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "guo-p3",
+                "value": "Encapsulation and supporting layer of a stretchable self-healing EGaIn conductor",
+                "evidence": [
+                  {
+                    "chunk_id": "guo-device",
+                    "quote": "Therefore, we fabricated a stretchable and autonomous self-healing conductor using the liquid metal EGaIn as a conducting wire and the P3 elastomer as the encapsulation and supporting layer (Fig. 4a)64–66."
+                  }
+                ],
+                "claim_type": "demonstrated"
+              }
+            ]
+          },
+          "source_tag": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "guo-p3",
+                "value": "author_synthesized",
+                "evidence": [
+                  {
+                    "chunk_id": "guo-synthesis",
+                    "quote": "we successfully obtained the purified P3 sample"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "entity_id": "guo-pdms-reactant",
+          "name": "α, ω-dihydroxyethylpropoxyl-PDMS",
+          "identity_evidence": [
+            {
+              "chunk_id": "guo-design",
+              "quote": "α, ω-dihydroxyethylpropoxyl-PDMS"
+            }
+          ],
+          "classification": {
+            "is_polymer": true,
+            "reason": "Polymeric PDMS diol precursor; the reactive role is not a reason to discard it.",
+            "evidence": [
+              {
+                "chunk_id": "guo-design",
+                "quote": "α, ω-dihydroxyethylpropoxyl-PDMS (Mw = 4,600 g mol−1, as a soft segment diol)"
+              }
+            ]
+          },
+          "aliases": [],
+          "description": null,
+          "role": {
+            "value": "polymeric diol reactant",
+            "evidence": [
+              {
+                "chunk_id": "guo-design",
+                "quote": "as a soft segment diol"
+              }
+            ]
+          },
+          "specimens": [
+            {
+              "specimen_id": "guo-pdms-starting-material",
+              "label": "α, ω-dihydroxyethylpropoxyl-PDMS",
+              "evidence": [
+                {
+                  "chunk_id": "guo-design",
+                  "quote": "α, ω-dihydroxyethylpropoxyl-PDMS"
+                }
+              ]
+            }
+          ],
+          "monomers": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "composition": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "synthesis_text": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "properties": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "guo-pdms-reactant",
+                "value": "4,600",
+                "evidence": [
+                  {
+                    "chunk_id": "guo-design",
+                    "quote": "Mw = 4,600 g mol−1"
+                  }
+                ],
+                "property": "weight_average_molecular_weight",
+                "unit": "g mol−1",
+                "specimen_id": "guo-pdms-starting-material",
+                "conditions": []
+              }
+            ]
+          },
+          "applications": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "source_tag": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          }
+        },
+        {
+          "entity_id": "guo-ipdi",
+          "name": "IPDI",
+          "identity_evidence": [
+            {
+              "chunk_id": "guo-design",
+              "quote": "isophorone diisocyanate (IPDI) monomer"
+            }
+          ],
+          "classification": {
+            "is_polymer": false,
+            "reason": "Small-molecule diisocyanate; remains as a reactive ingredient in the P3 card.",
+            "evidence": [
+              {
+                "chunk_id": "guo-design",
+                "quote": "isophorone diisocyanate (IPDI) monomer"
+              }
+            ]
+          },
+          "aliases": [],
+          "description": null,
+          "role": null,
+          "specimens": [],
+          "monomers": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "composition": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "synthesis_text": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "properties": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "applications": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          },
+          "source_tag": {
+            "status": "not_found_in_provided_text",
+            "items": []
+          }
+        }
+      ]
+    }
+  ]
+}

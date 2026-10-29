@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-28",
+  "mode": "curated_record_replay",
+  "model_calls": 0,
+  "input_record_origin": "Assistant-curated selected primary-source passages; not model outputs or authenticated human ground truth.",
+  "reference_sha256": "75c137a9aedbb132b62f521c66324fe03b2b9d68799d2c0afe6a82aeeb331a1b",
+  "curated_responses_sha256": "4c5c47caca1bc7e0e2272b2773e294fd9c5aacdb51e606c9f674e3b87d60a0cf",
+  "counts": {
+    "papers": 3,
+    "retained_cards": 8,
+    "discarded_entities": 4,
+    "review_records": 0,
+    "validation_issues": 0
+  },
+  "per_paper_checks": [
+    {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "selected_retention_reference_matches": true,
+      "retained": [
+        "pei-bhds",
+        "pei-hdi",
+        "pei-peo",
+        "pei-ptmg"
+      ],
+      "standalone_nonpolymers_omitted": [
+        "pei-hdi-reagent",
+        "pei-lifsi"
+      ]
+    },
+    {
+      "paper_id": "10.3390/polym13234155",
+      "selected_retention_reference_matches": true,
+      "retained": [
+        "chen-network",
+        "chen-precursor"
+      ],
+      "standalone_nonpolymers_omitted": [
+        "chen-libob"
+      ]
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "selected_retention_reference_matches": true,
+      "retained": [
+        "guo-p3",
+        "guo-pdms-reactant"
+      ],
+      "standalone_nonpolymers_omitted": [
+        "guo-ipdi"
+      ]
+    }
+  ],
+  "regression_suite": {
+    "result": "passed",
+    "tests": 79,
+    "command": "python3 -m unittest test_polymer_cards_validation test_polymer_cards_render test_polymer_cards_workflow test_polymer_cards_real_papers test_task3_selection test_task3_dpal_case test_task3_battery_case"
+  },
+  "limits": [
+    "These counts validate the supplied selected records and pipeline, not live model accuracy.",
+    "Reference entities and source excerpts are non-exhaustive; no full-paper recall or precision is claimed.",
+    "Literal quote containment does not certify scientific interpretation or specimen attribution.",
+    "A live model extraction and source review remain pending secure OpenAI setup."
+  ],
+  "replay_exit_code": 0
+}

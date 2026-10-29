@@ -1,0 +1,62 @@
+{
+  "paper_id": "10.1038/s41467-023-43467-w",
+  "title": "Interfacial self-healing polymer electrolytes for long-cycle solid-state lithium-sulfur batteries",
+  "source_url": "https://doi.org/10.1038/s41467-023-43467-w",
+  "coverage": "selected_excerpts",
+  "attribution": "Fei Pei et al. (2024), Interfacial self-healing polymer electrolytes for long-cycle solid-state lithium-sulfur batteries. https://doi.org/10.1038/s41467-023-43467-w",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+  "excerpt_note": "Verbatim selected main-text passages only; source selection and chunk metadata added for a portable research test. Not a complete article or exhaustive entity inventory.",
+  "chunks": [
+    {
+      "chunk_id": "pei-materials",
+      "text": "All reagents were commercially available and used as supplied without further purification. Dimethylacetamide (DMAc), dichloromethane, PEO, polytetrahydrofuran (PTMG, 2000 g mol−1), hexamethylene diisocyanate (HDI) and 2-Hydroxyethyl disulfide (BHDS) and dibutyltin dilaurate (DBTDL) catalyst were purchased from Alfa Aesar. Lithium bis(fluorosulfonyl)imide (LiFSI) were purchased from Aldrich.",
+      "source_part": "main",
+      "locator": "Methods, Materials (XML Sec11, paragraph1)",
+      "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8"
+    },
+    {
+      "chunk_id": "pei-hdi-synthesis",
+      "text": "PTMG-HDI was synthesized via condensation of PTMG with HDI. Briefly, 2.5 g (1.25 mmol) of PTMG and 250 μL (1.5 mmol) of HDI were dissolved in 5 mL of CH2Cl2. 5 μL of DBTDL was added to the solution as a reaction catalyst. The final molar ratio of the monomers (PTMG:HDI) was 1:1.2. The mixture was stirred at 40 °C for 3 h in a N2-filled glove box. Then, 5 mL of DMAc was added to the reaction mixture every 2 h 3 times repeated 3 times, and stirred for 12 h. Finally, a transparent PTMG-HDI solution was obtained.",
+      "source_part": "main",
+      "locator": "Methods, Preparation of PTMG-HDI (XML Sec12, paragraph1)",
+      "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8"
+    },
+    {
+      "chunk_id": "pei-bhds-synthesis",
+      "text": "The synthesis of PTMG-HDI-BHDS involved the introduction of the chain extender BHDS into the PTMG-HDI. Briefly, 2.5 g (1.25 mmol) of PTMG, 500 μL (3.0 mmol) of HDI, and 5 μL of DBTDL were dissolved in 5 mL of CH2Cl2 and stirred at 40 °C for 1 h in a N2-filled glove box, and then 200 μL (1.25 mmol) of BHDS was added to the above solution. The final molar ratio of the monomers (PTMG:HDI:BHDS) was 1:2.4:1. Subsequently, 5 mL of DMAc was added into the reaction mixture every 2 h and repeated 3 times, and stirred for 12 h to obtain the PTMG-HDI-BHDS solution.",
+      "source_part": "main",
+      "locator": "Methods, Preparation of PTMG-HDI-BHDS (XML Sec13, paragraph1)",
+      "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8"
+    },
+    {
+      "chunk_id": "pei-electrolytes",
+      "text": "Poly(ethylene oxide) (PEO, Mw = 6 × 105 g mol−1) and lithium bis(fluorosulfonyl)imide (LiFSI) were dissolved in acetonitrile with a mass ratio of 2:1 (PEO: LiFSI) to form a uniform PEO/LiFSI solution. The PTMG-HDI and PTMG-HDI-BHDS polymer solutions were mixed with LiFSI in dimethylacetamide (DMAc) at a mass ratio of 2:1 (polymer: LiFSI) and stirred for 3 h. These viscous solutions were degassed under vacuum, cast into a Teflon mold, and then dried in a vacuum oven at 65 °C for 48 h to obtain the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes.",
+      "source_part": "main",
+      "locator": "Methods, Preparation of the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes (XML Sec14, paragraph1)",
+      "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8"
+    },
+    {
+      "chunk_id": "pei-conductivity",
+      "text": "The Li+ conductivities of the SPEs at temperatures ranging from 25 to 80 °C are presented in Fig. 3a and Supplementary Fig. 14. The dual-integrated SS|PTMG-HDI-BHDS|SS (SS stands for sheet steel) cell was assembled by fitting two integrated SS@SPEs together, and the total thickness of the bonded SPE was approximately 200 μm to reduce the measurement error (Supplementary Fig. 15). By adjusting the amount of LiFSI, the optimal weight ratio of polymer:LiFSI=2:1 was established (Supplementary Fig. 16). PTMG-HDI-BHDS/LiFSI (2.4 × 10−4 S cm−1) exhibited a significantly higher ionic conductivity than PTMG-HDI/LiFSI (6.5 × 10−5 S cm−1) and PEO/LiFSI (1.2 × 10−5 S cm−1) at 30 °C, indicating that the strong interfacial self-healing and adhesion significantly decreased the interfacial resistance of the SS@SPE, and the amorphous polymer skeleton enabled fast Li+ transport. The ionic conductivities at different temperatures are presented in Fig. 3b.",
+      "source_part": "main",
+      "locator": "Results, Electrochemical characterization of the SPEs, paragraph1, Fig3a/b (XML Sec5)",
+      "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8"
+    },
+    {
+      "chunk_id": "pei-application",
+      "text": "A PTMG-HDI-BHDS/LiFSI solution was used to wet the anode and cathode (Supplementary Fig. 26). The precursor solutions were cast onto the surface of the cathodes, and integrated SPAN@SPE and Li@SPE were formed simultaneously after solvent evaporation (Supplementary Fig. 27 and Supplementary Fig. 28). The SPAN|PTMG-HDI-BHDS|Li cells were assembled by simply fitting the integrated SPAN@SPE with Li@SPE.",
+      "source_part": "main",
+      "locator": "Results, Electrochemical Performance of the solid-state Li-S batteries, paragraph1 (XML Sec7)",
+      "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8"
+    },
+    {
+      "chunk_id": "pei-application-controls",
+      "text": "After 400 cycles, the discharge capacities were 606, 363, 180, and 124 mAh gSPAN−1 for the integrated SPAN|PTMG-HDI-BHDS|Li, laminated SPAN|PTMG-HDI-BHDS|Li, integrated SPAN|PTMG-HDI|Li and laminated SPAN|PEO|Li cells, which represented 99.7%, 60.7%, 30.9% and 29.3% of their initial capacities at 0.3 C, respectively.",
+      "source_part": "main",
+      "locator": "Same paragraph, current-work comparison cells after400cycles (XML Sec7)",
+      "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8"
+    }
+  ]
+}
