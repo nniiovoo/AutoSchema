@@ -85,6 +85,11 @@ def _resolve_evidence(evidence: Any, document: Dict) -> List[Dict]:
             for key in ("source_part", "locator", "page", "document_sha256"):
                 if key in chunk:
                     ref[key] = chunk[key]
+            # Conversion metadata, like a locator, is supplied by the source
+            # loader. A model cannot declare that the source used a transform.
+            ref.pop("text_transformations", None)
+            if chunk.get("text_transformations"):
+                ref["text_transformations"] = list(chunk["text_transformations"])
             ref["paper_id"] = document.get("paper_id")
         ref["source_reference_resolved"] = chunk is not None
         resolved.append(ref)
@@ -103,24 +108,48 @@ def _location(reference: Dict) -> str:
     return " · ".join(pieces)
 
 
-def _evidence_html(evidence: Any, document: Dict) -> str:
+def _transformation_note(reference: Dict) -> str:
+    transformations = reference.get("text_transformations", [])
+    if not isinstance(transformations, list) or not transformations:
+        return ""
+    notes = []
+    if "jats_script_notation_v1" in transformations:
+        notes.append("Source XML converted with preserved superscripts/subscripts (jats_script_notation_v1).")
+    other = [str(item) for item in transformations if item != "jats_script_notation_v1"]
+    if other:
+        notes.append("Declared source-text transformations: " + ", ".join(other) + ".")
+    return " ".join(notes)
+
+
+def _evidence_status(reference: Dict) -> str:
+    converted = bool(_transformation_note(reference))
+    if reference.get("evidence_status") == "quote_matched":
+        status = "Quote matched to converted source text" if converted else "Original quote matched to source"
+    else:
+        status = "Evidence reference to converted source text" if converted else "Original evidence reference"
+    if not reference["source_reference_resolved"]:
+        status += "; source chunk is unavailable in this view"
+    return status
+
+
+def _evidence_html(evidence: Any, document: Dict, label: str = "Original evidence") -> str:
     refs = _resolve_evidence(evidence, document)
     if not refs:
-        return '<p class="missing">No original evidence attached — needs review.</p>'
+        return '<p class="missing">' + _h(label) + ': not attached — needs review.</p>'
     entries = []
     for ref in refs:
-        status = ("Original quote matched to source" if ref.get("evidence_status") == "quote_matched"
-                  else "Original evidence reference")
-        if not ref["source_reference_resolved"]:
-            status += "; source chunk is unavailable in this view"
+        status = _evidence_status(ref)
+        conversion = _transformation_note(ref)
         digest = ("<p class=\"source-id\">Source SHA-256: " + _h(ref["document_sha256"]) + "</p>"
                   if ref.get("document_sha256") else "")
         entries.append(
             "<li><p class=\"location\">" + _h(_location(ref)) + "</p>"
             + '<blockquote class="quote">' + _paragraph(ref.get("quote", "")) + "</blockquote>"
-            + '<p class="source-id">' + _h(status) + "</p>" + digest + "</li>"
+            + '<p class="source-id">' + _h(status) + "</p>"
+            + ('<p class="source-id">' + _h(conversion) + '</p>' if conversion else '')
+            + digest + "</li>"
         )
-    return ('<details class="evidence"><summary>Original evidence (' + str(len(refs))
+    return ('<details class="evidence"><summary>' + _h(label) + ' (' + str(len(refs))
             + " source passage" + ("s" if len(refs) != 1 else "") + ")</summary><ol>"
             + "".join(entries) + "</ol></details>")
 
@@ -160,7 +189,23 @@ def _fact_html(fact: Dict, document: Dict, card: Dict, group: str = "") -> str:
                           + _evidence_html(condition.get("evidence"), document) + "</li>")
     if conditions:
         detail += '<p class="condition-heading">Test conditions</p><ul>' + "".join(conditions) + "</ul>"
+    if "specimen_evidence" in fact:
+        detail += _evidence_html(fact["specimen_evidence"], document, "Sample-link evidence")
     return '<li class="fact"><p>' + text + "</p>" + detail + _evidence_html(fact.get("evidence"), document) + "</li>"
+
+
+def _attribution_warning_text(warning: Dict) -> str:
+    parts = []
+    if warning.get("reason"):
+        parts.append(str(warning["reason"]).replace("_", " "))
+    if warning.get("specimen_label") or warning.get("specimen_id"):
+        parts.append("Sample: " + _display(warning.get("specimen_label") or warning["specimen_id"]))
+    if warning.get("related_entity_ids"):
+        parts.append("Related material records: " + _display(warning["related_entity_ids"]))
+    for key in ("detail", "details"):
+        if warning.get(key):
+            parts.append(_display(warning[key]))
+    return "; ".join(parts) or "The material/sample relationship needs source review."
 
 
 def _card_html(card: Dict, document: Dict, number: int) -> str:
@@ -168,6 +213,11 @@ def _card_html(card: Dict, document: Dict, number: int) -> str:
     content = ['<article class="polymer-card" id="card-' + str(number) + '">', "<h2>" + _h(name) + "</h2>",
                '<p class="identity">Polymer record · ' + _h(document.get("paper_id")) + "</p>",
                _evidence_html(card.get("identity_evidence"), document)]
+    warnings = card.get("attribution_warnings", [])
+    if warnings:
+        content.append('<aside class="attribution-warning"><strong>Sample/material link needs review</strong><ul>'
+                       + "".join("<li>" + _h(_attribution_warning_text(warning)) + "</li>"
+                                 for warning in warnings if isinstance(warning, dict)) + "</ul></aside>")
     classification = card.get("classification", {})
     if classification:
         content.append("<h3>Polymer identification</h3><p>" + _paragraph(classification.get("reason", "No reason supplied")) + "</p>"
@@ -202,6 +252,16 @@ def _card_html(card: Dict, document: Dict, number: int) -> str:
     return "\n".join(content)
 
 
+def _partial_run_message(run_metadata: Dict, completed_fallback: int) -> str:
+    completed = run_metadata.get("papers_completed", completed_fallback)
+    requested = run_metadata.get("papers_requested")
+    message = ("Extraction completed " + _display(completed) + " of " + _display(requested)
+               + " requested papers. These cards are drafts and still need review.")
+    if run_metadata.get("failed_paper_id"):
+        message += " Stopped at paper: " + _display(run_metadata["failed_paper_id"]) + "."
+    return message
+
+
 def render_html(results: List[Dict], documents: List[Dict], run_metadata: Dict) -> str:
     by_id = _documents_by_id(documents)
     sections = []
@@ -219,11 +279,15 @@ def render_html(results: List[Dict], documents: List[Dict], run_metadata: Dict) 
             sections.append(_card_html(card, document, card_number))
         if not result.get("cards"):
             sections.append("<p>No polymer cards were retained for this paper.</p>")
-        audit = {key: result.get(key, []) for key in ("discarded_entities", "review_queue", "validation_issues")}
+        audit = {key: result.get(key, []) for key in
+                 ("discarded_entities", "review_queue", "validation_issues", "attribution_warnings")}
         sections.append('<details class="paper-audit"><summary>Paper audit: nonpolymer entities and records needing review</summary>'
                         + '<p>These records are preserved for inspection; an unresolved record is not a demonstrated nonpolymer.</p><pre>'
                         + _h(json.dumps(audit, indent=2, ensure_ascii=False, allow_nan=False)) + "</pre></details></section>")
     run_label = run_metadata.get("run_kind") or run_metadata.get("mode") or "Polymer-card run"
+    partial_banner = (('<aside class="partial-run" role="status"><strong>Partial run</strong><p>'
+                       + _h(_partial_run_message(run_metadata, len(results))) + '</p></aside>')
+                      if run_metadata.get("run_complete") is False else "")
     return """<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Polymer cards and original evidence</title><style>
@@ -231,6 +295,8 @@ def render_html(results: List[Dict], documents: List[Dict], run_metadata: Dict) 
 main{max-width:1040px;margin:auto;padding:32px 24px 64px}h1{font-size:1.7rem;line-height:1.25}h2{font-size:1.45rem;margin:0 0 8px}
 h3{font-size:1.1rem;margin:24px 0 5px}a{color:#006b68}p{margin:6px 0 12px}.intro{margin-bottom:32px}.paper{margin-top:40px}
 .polymer-card{background:white;border:1px solid #d7dfda;padding:26px 30px;margin:22px 0 32px;overflow-wrap:anywhere}
+.attribution-warning{background:#fff7e8;border-left:4px solid #b76a21;padding:12px 18px;margin:16px 0}
+.partial-run{background:#fff1d8;border:2px solid #b76a21;padding:16px 20px;margin:22px 0;font-size:1.05rem}
 .identity,.paper-id,.group-status,.fact-detail,.location,.source-id,.missing{color:#52686c}.identity,.source-id{font-size:.85rem}
 .group-status{font-size:.9rem}.card-group{border-top:1px solid #e1e7e3;margin-top:22px}.facts{padding-left:22px}.fact{margin:14px 0}
 .fact-detail{font-size:.92rem}.condition-heading{font-weight:600}details{margin:10px 0}summary{cursor:pointer;color:#006b68}
@@ -240,7 +306,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#fff;padding:18px;bor
 </style></head><body><main><header class="intro"><h1>Polymer cards and original evidence</h1>
 <p>Polymers are retained because they are identified as polymers. Performance, purchase status and missing card fields do not decide retention.</p>
 <p>Open each “Original evidence” section to see the source text and location. A matched quotation does not by itself verify the scientific interpretation.</p>
-<p>Run: """ + _h(run_label) + "</p></header>" + "\n".join(sections) + "</main></body></html>\n"
+<p>Run: """ + _h(run_label) + "</p>" + partial_banner + "</header>" + "\n".join(sections) + "</main></body></html>\n"
 
 
 def _md(value: Any) -> str:
@@ -255,13 +321,17 @@ def _fence(value: Any) -> str:
     return marker + "text\n" + value + "\n" + marker
 
 
-def _evidence_md(evidence: Any, document: Dict) -> str:
+def _evidence_md(evidence: Any, document: Dict, label: str = "Original evidence") -> str:
     refs = _resolve_evidence(evidence, document)
     if not refs:
-        return "\nOriginal evidence: not attached; needs review.\n"
+        return "\n" + label + ": not attached; needs review.\n"
     lines = []
     for ref in refs:
-        lines.extend(["\nOriginal evidence — " + _md(_location(ref)), "", _fence(ref.get("quote", "")), ""])
+        lines.extend(["\n" + label + " — " + _md(_location(ref)), "", _fence(ref.get("quote", "")), "",
+                      _md(_evidence_status(ref))])
+        conversion = _transformation_note(ref)
+        if conversion:
+            lines.append(_md(conversion))
         if ref.get("document_sha256"):
             lines.append("Source SHA-256: " + _md(ref["document_sha256"]))
     return "\n".join(lines) + "\n"
@@ -282,6 +352,8 @@ def _fact_md(fact: Dict, document: Dict, card: Dict, group: str = "") -> str:
         if fact.get(key):
             lines.append(label + ": " + _md(fact[key]))
     lines.append(_evidence_md(fact.get("evidence"), document))
+    if "specimen_evidence" in fact:
+        lines.append(_evidence_md(fact["specimen_evidence"], document, "Sample-link evidence"))
     for condition in fact.get("conditions", []):
         lines.append("Condition — " + _md(condition.get("name")) + ": " + _md(condition.get("value")))
         lines.append(_evidence_md(condition.get("evidence"), document))
@@ -293,12 +365,20 @@ def render_markdown(results: List[Dict], documents: List[Dict], run_metadata: Di
     lines = ["# Polymer cards and original evidence", "",
              "Run: " + _md(run_metadata.get("run_kind") or run_metadata.get("mode") or "Polymer-card run"), "",
              "Quotations and source locations support inspection; they do not certify scientific interpretation.", ""]
+    if run_metadata.get("run_complete") is False:
+        lines.extend(["**Partial run**", "", _md(_partial_run_message(run_metadata, len(results))), ""])
     for result in results:
         pid = result["paper_id"]
         document = by_id.get(pid, {"paper_id": pid, "chunks": []})
         lines.extend(["## " + _md(document.get("title") or pid), "", "Paper: " + _md(pid), ""])
         for card in result.get("cards", []):
             lines.extend(["### " + _md(card.get("name", "Unnamed polymer")), "", _evidence_md(card.get("identity_evidence"), document)])
+            warnings = card.get("attribution_warnings", [])
+            if warnings:
+                lines.extend(["**Sample/material link needs review**", ""])
+                lines.extend("- " + _md(_attribution_warning_text(warning))
+                             for warning in warnings if isinstance(warning, dict))
+                lines.append("")
             classification = card.get("classification", {})
             if classification:
                 lines.extend(["Polymer identification: " + _md(classification.get("reason", "No reason supplied")),
@@ -321,7 +401,8 @@ def render_markdown(results: List[Dict], documents: List[Dict], run_metadata: Di
                 for specimen in card["specimens"]:
                     lines.extend([_md(specimen.get("label", specimen.get("specimen_id"))),
                                   _evidence_md(specimen.get("evidence"), document)])
-        audit = {key: result.get(key, []) for key in ("discarded_entities", "review_queue", "validation_issues")}
+        audit = {key: result.get(key, []) for key in
+                 ("discarded_entities", "review_queue", "validation_issues", "attribution_warnings")}
         lines.extend(["### Paper audit", "", _fence(json.dumps(audit, indent=2, ensure_ascii=False, allow_nan=False)), ""])
     return "\n".join(lines).rstrip() + "\n"
 
@@ -426,9 +507,11 @@ def write_outputs(results: List[Dict], documents: List[Dict], out_dir: Path | st
             "discarded_entities": sum(len(r.get("discarded_entities", [])) for r in results),
             "review_records": sum(len(r.get("review_queue", [])) for r in results),
             "validation_issues": sum(len(r.get("validation_issues", [])) for r in results),
+            "attribution_warnings": sum(len(r.get("attribution_warnings", [])) for r in results),
         },
         "papers": [{key: r.get(key, [] if key != "statistics" else {}) for key in
-                    ("paper_id", "discarded_entities", "review_queue", "validation_issues", "statistics")} for r in results],
+                    ("paper_id", "discarded_entities", "review_queue", "validation_issues",
+                     "attribution_warnings", "statistics")} for r in results],
         "verification_limit": "Original evidence linkage and mechanical checks do not certify polymer classification or scientific attribution.",
     }
     outputs = {

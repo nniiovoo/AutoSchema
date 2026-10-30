@@ -25,8 +25,35 @@ def _children(node, name):
     return [c for c in node if _tag(c) == name]
 
 
+_SCRIPT_DIGITS = "0123456789"
+_SUPERSCRIPT = dict(zip(_SCRIPT_DIGITS, "⁰¹²³⁴⁵⁶⁷⁸⁹"))
+_SUPERSCRIPT.update({"+": "⁺", "-": "⁻", "−": "⁻", "=": "⁼", "(": "⁽", ")": "⁾"})
+_SUBSCRIPT = dict(zip(_SCRIPT_DIGITS, "₀₁₂₃₄₅₆₇₈₉"))
+_SUBSCRIPT.update({"+": "₊", "-": "₋", "−": "₋", "=": "₌", "(": "₍", ")": "₎"})
+JATS_TEXT_TRANSFORMATION = "jats_script_notation_v1"
+
+
+def _inline_content(node):
+    """Render XML scripts without silently changing 10**5 into the number 105.
+
+    Digits and script signs use Unicode positions. Other script content retains
+    its boundary as ^{...} or _{...}; unsupported characters are never dropped.
+    Plain inline markup keeps its text and tails in their original order.
+    """
+    text = (node.text or "") + "".join(
+        _inline_content(child) + (child.tail or "") for child in node
+    )
+    tag = _tag(node)
+    if tag in {"sup", "sub"}:
+        mapping = _SUPERSCRIPT if tag == "sup" else _SUBSCRIPT
+        if text and all(char in mapping for char in text):
+            return "".join(mapping[char] for char in text)
+        return ("^{" if tag == "sup" else "_{") + text + "}"
+    return text
+
+
 def _content(node):
-    return "".join(node.itertext()).strip()
+    return _inline_content(node).strip()
 
 
 def _jats_chunks(path):
@@ -145,6 +172,7 @@ def _read_source(entry, base, paper_id, source_number):
         coverage = "selected_excerpts"
     elif format_name in {"xml", "jats"}:
         chunks, coverage = _jats_chunks(path), "article_xml_body_and_abstract"
+        metadata["text_transformations"] = [JATS_TEXT_TRANSFORMATION]
     elif format_name == "pdf":
         chunks, coverage = _pdf_chunks(path), "extracted_pdf_text_not_OCR"
     elif format_name in {"txt", "text"}:
@@ -165,6 +193,8 @@ def _read_source(entry, base, paper_id, source_number):
         record = {"chunk_id": chunk_id, "paper_id": paper_id, "text": chunk["text"],
                   "source_part": chunk.get("source_part", part), "locator": chunk["locator"],
                   "document_sha256": digest, "source_path": str(path)}
+        if "text_transformations" in metadata:
+            record["text_transformations"] = list(metadata["text_transformations"])
         if "page" in chunk:
             record["page"] = chunk["page"]
         original = chunk.get("original_document_sha256", metadata.get("original_document_sha256"))

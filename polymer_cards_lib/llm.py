@@ -5,7 +5,8 @@ import os
 from pathlib import Path
 
 from polymer_cards_lib.io import parse_json
-from polymer_cards_lib.prompt import build_system_prompt, build_user_prompt
+from polymer_cards_lib.prompt import (build_response_format, build_system_prompt,
+                                     build_user_prompt, extraction_profile)
 
 
 class ModelSetupError(ValueError):
@@ -16,7 +17,9 @@ class ModelRequestError(RuntimeError):
     pass
 
 
-def create_client(env_file=None):
+def create_client(env_file=None, request_timeout=300):
+    if not isinstance(request_timeout, (int, float)) or isinstance(request_timeout, bool) or not 0 < request_timeout <= 900:
+        raise ModelSetupError("Request timeout must be positive and at most900 seconds")
     root = Path(__file__).resolve().parents[1]
     paths = [Path(env_file)] if env_file else [root / ".env.local", root / ".env"]
     if env_file and not paths[0].is_file():
@@ -54,11 +57,11 @@ def create_client(env_file=None):
         raise ModelSetupError("Install the openai dependency listed in requirements.txt for live extraction") from None
     try:
         if provider == "openai":
-            client = OpenAI(api_key=key, timeout=120, max_retries=0)
+            client = OpenAI(api_key=key, timeout=request_timeout, max_retries=0)
             model = cfg.chat_model
         else:
             client = AzureOpenAI(api_key=key, azure_endpoint=cfg.chat_endpoint,
-                                 api_version=cfg.chat_version, timeout=120, max_retries=0)
+                                 api_version=cfg.chat_version, timeout=request_timeout, max_retries=0)
             model = cfg.chat_deployment
     except Exception:
         raise ModelSetupError("The configured model client could not be initialized; check local provider settings") from None
@@ -72,16 +75,25 @@ def extract_document(client, model, document, max_output_tokens=10000):
             model=model,
             messages=[{"role": "system", "content": build_system_prompt()},
                       {"role": "user", "content": build_user_prompt(document)}],
-            response_format={"type": "json_object"},
+            response_format=build_response_format(),
             max_completion_tokens=max_output_tokens,
         )
     except Exception as exc:
         status = getattr(exc, "status_code", None)
         detail = f" (HTTP {status})" if isinstance(status, int) else ""
-        raise ModelRequestError("Live model request failed" + detail + "; no provider error text was logged") from None
+        failure = {"APITimeoutError": "Live model request timed out", "TimeoutError": "Live model request timed out",
+                   "APIConnectionError": "Live model connection failed"}.get(type(exc).__name__, "Live model request failed")
+        schema_hint = "; this workflow requires a model/deployment supporting strict JSON-schema output" if status == 400 else ""
+        raise ModelRequestError(failure + detail + schema_hint + "; no provider error text was logged") from None
+    if not getattr(response, "choices", None):
+        raise ModelRequestError("Model returned no completion; no cards accepted")
     choice = response.choices[0]
     if getattr(choice, "finish_reason", None) == "length":
         raise ModelRequestError("Model response reached the output limit; no partial cards accepted")
+    if getattr(choice, "finish_reason", None) != "stop":
+        raise ModelRequestError("Model response did not finish normally; no partial cards accepted")
+    if getattr(choice.message, "refusal", None):
+        raise ModelRequestError("Model declined the extraction request; no cards accepted")
     raw_text = choice.message.content or ""
     try:
         parsed = parse_json(raw_text)
@@ -90,4 +102,5 @@ def extract_document(client, model, document, max_output_tokens=10000):
     usage = getattr(response, "usage", None)
     safe_usage = {name: getattr(usage, name, None) for name in ("prompt_tokens", "completion_tokens", "total_tokens")}
     return parsed, {"raw_response_text": raw_text, "usage": safe_usage,
+                    "extraction_profile": extraction_profile(),
                     "finish_reason": getattr(choice, "finish_reason", None)}

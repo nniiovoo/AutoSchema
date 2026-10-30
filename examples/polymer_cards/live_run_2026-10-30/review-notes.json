@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-30",
+  "review_origin": "Assistant focused primary-source review; not authenticated human annotation or exhaustive scientific validation.",
+  "raw_model_responses_unchanged": true,
+  "status": "Code fixes tested; composition improved; important identity, sample-link and coverage issues remain.",
+  "per_card_notes": {
+    "10.1038/s41467-023-43467-w": {
+      "p1": [
+        "Broad family description overlaps the named BHDS material; this is not established as an additional distinct synthesized polymer."
+      ],
+      "p2": [
+        "The 3.8 V result still uses the bare PEO specimen. Preparation/testing context indicates the PEO/LiFSI electrolyte; treat this as an unresolved attribution error. The automated warning exposes it, without correcting or approving the link.",
+        "The source-supported PEO:LiFSI mass ratio is now retained with its basis."
+      ],
+      "p3": [
+        "The polymeric PTMG reactant is retained. Its property entries lack a resolved measurement specimen and remain in review."
+      ],
+      "p4": [
+        "The 4.1 V result still uses the bare PTMG-HDI specimen rather than its LiFSI electrolyte. Do not use the current link as checked.",
+        "The 1:1.2 feed molar ratio and 2:1 polymer:salt mass ratio are kept separately. The old borrowed BHDS molecular-weight result is not repeated here."
+      ],
+      "p5": [
+        "The BHDS feed molar ratio 1:2.4:1 is separate from the polymer:salt mass ratio 2:1.",
+        "BHDS molecular weight 7.3 × 10⁵ and viscosity 1.3 × 10⁴ preserve script notation. The 88.3 MPa film strength is separate from LiFSI-mixture conductivity 2.4 × 10⁻⁴ S cm⁻¹ at 30°C.",
+        "The raw model reduced the source qualifier beyond 5.0 V to 5.0 V. Final validation holds that entry for review; it was not silently rewritten.",
+        "Demonstrated battery uses now cite actual assembly/cycling Results, not only introductory propose wording."
+      ]
+    },
+    "10.3390/polym13234155": {
+      "p1": [
+        "The precursor 5 MPa result remains separate from the cross-linked network 21 MPa result. Its role quotation remains in review."
+      ],
+      "p4": [
+        "The shared membrane specimen is too broad for network mechanical, thermal, thin-film and wetted observations.",
+        "The Methods 12 μm thickness and Results approximately 15 μm statement still need an explicit conflict record.",
+        "The room-temperature conductivity observation preserves 10 μL added liquid electrolyte, separate from the temperature series. Wet/dry context is still incomplete.",
+        "Repair at 80°C under nitrogen for about two hours before cell assembly is not evidence of autonomous repair inside an operating cell.",
+        "Several bare numbers lost approximation/limit qualifiers and are withheld by the final validator rather than presented as precise measurements."
+      ],
+      "p5": [
+        "PVDF cathode 8:1:1 mass composition and its component use are now both recorded with Methods evidence."
+      ]
+    },
+    "10.1038/s41467-020-15949-8": {
+      "p1": [
+        "The raw composition entry was only Mw = 4,600 g mol⁻¹. Final validation holds it as a molecular-weight observation, not a recipe; it is not automatically moved to a property without a supported specimen."
+      ],
+      "p2": [
+        "The approximately 14,000% stretchability entry uses a broad family specimen, but the source explicitly identifies P4. It still needs a precise member/sample link. Zero automated warnings here does not mean the attribution is correct.",
+        "The reported PDMS/IPDI starter feed ratio is retained; it is not the complete P3 synthesis recipe."
+      ],
+      "p10": [
+        "PMMA is a chromatography standard, not the paper’s new elastomer. Sparse fields do not make it a nonpolymer."
+      ],
+      "p11": [
+        "This is a cited comparator, not a newly measured elastomer in the current paper."
+      ],
+      "p12": [
+        "This is a cited comparator, not a newly measured elastomer in the current paper."
+      ]
+    }
+  },
+  "identity_reviews": [
+    "Six Guo identities, including P3, cite the range P1–P7 rather than a passage explicitly naming each material. They remain in review, not discarded as nonpolymers.",
+    "Raw P3 GPC Mw/Mn 1.77 now passes the punctuation matcher, but its identity and missing GPC specimen still prevent acceptance.",
+    "Raw P3 healing 93% ± 3% after two hours at room temperature is source-supported but withheld with identity. Its definition is fracture-strain recovery, not strength recovery; attach the defining Methods passage."
+  ],
+  "coverage_limits": [
+    "Main text only: no supplements, OCR or graph digitization.",
+    "Pei PVDF is omitted despite appearing in the cathode recipe.",
+    "No exhaustive entity/fact benchmark or overall accuracy score.",
+    "19 draft records are not 19 unique scientifically verified polymers.",
+    "Zero discarded roots does not measure nonpolymer classification accuracy."
+  ]
+}

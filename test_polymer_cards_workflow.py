@@ -69,7 +69,7 @@ class PolymerSourceTests(unittest.TestCase):
             self.assertEqual(3, len(doc["chunks"]))
             self.assertEqual("Abstract, paragraph 1", doc["chunks"][0]["locator"])
             self.assertIn("Synthesis / Properties", doc["chunks"][2]["locator"])
-            self.assertIn("6.5 × 10−5 S cm−1", doc["chunks"][2]["text"])
+            self.assertIn("6.5 × 10⁻⁵ S cm⁻¹", doc["chunks"][2]["text"])
             self.assertFalse(any("Unrelated" in c["text"] for c in doc["chunks"]))
             ids = [c["chunk_id"] for c in doc["chunks"]]
             with (root / "article.xml").open("a") as stream:
@@ -201,6 +201,41 @@ class PolymerWorkflowTests(unittest.TestCase):
         with patch.object(client.chat.completions, "create", return_value=response):
             with self.assertRaisesRegex(ModelRequestError, "output limit"):
                 extract_document(client, "model", {"paper_id": "p", "title": "t", "domains": [], "chunks": []})
+
+    def test_later_request_failure_keeps_finished_paper_with_explicit_partial_metadata(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            manifest, _, _, response = example(root)
+            data = json.loads(manifest.read_text())
+            second = deepcopy(data["papers"][0])
+            second["paper_id"] = "paper2"
+            data["papers"].append(second)
+            dump(manifest, data)
+            out = root / "partial"
+            with patch("polymer_cards_lib.llm.create_client", return_value=(object(), "configured-model", "openai")), \
+                    patch("polymer_cards_lib.llm.extract_document", side_effect=[(response, {"usage": {}}), ModelRequestError("Request failed safely")]):
+                code, _, err = self.invoke(["--papers", str(manifest), "--out-dir", str(out)])
+            self.assertEqual(3, code)
+            saved = json.loads((out / "cards.json").read_text())
+            metadata = saved["run_metadata"]
+            self.assertIs(False, metadata["run_complete"])
+            self.assertEqual(1, metadata["papers_completed"])
+            self.assertEqual(2, metadata["papers_requested"])
+            self.assertEqual(2, metadata["model_calls_attempted"])
+            self.assertEqual(1, metadata["model_calls"])
+            self.assertEqual("paper2", metadata["failed_paper_id"])
+            self.assertEqual(["paper1"], [r["paper_id"] for r in saved["results"]])
+            self.assertEqual([response], json.loads((out / "raw-responses.json").read_text())["responses"])
+
+    def test_timeout_diagnostic_is_useful_without_provider_error_text(self):
+        class APITimeoutError(Exception):
+            pass
+        def fail(**kwargs):
+            raise APITimeoutError("private request details that must not be logged")
+        client = SimpleNamespace(chat=SimpleNamespace(completions=SimpleNamespace(create=fail)))
+        with self.assertRaisesRegex(ModelRequestError, "timed out") as result:
+            extract_document(client, "model", {"paper_id": "p", "title": "t", "domains": [], "chunks": []})
+        self.assertNotIn("private", str(result.exception))
 
     def test_prompt_keeps_paper_text_as_data_and_omits_local_paths(self):
         document = {"paper_id": "p", "title": "t", "domains": ["disulfide"],

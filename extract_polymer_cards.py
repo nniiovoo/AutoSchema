@@ -44,11 +44,14 @@ def main(argv=None):
     parser.add_argument("--records", type=Path, help="Replay supplied responses JSON through source validation without model/API calls.")
     parser.add_argument("--env-file", type=Path, help="Existing local model environment configuration; never copied into outputs.")
     parser.add_argument("--max-papers", type=_bounded_int, default=3, help="Maximum papers to process; default3 keeps the pilot bounded.")
-    parser.add_argument("--max-output-tokens", type=_bounded_int, default=10000, help="Bound each live response, maximum24000.")
+    parser.add_argument("--max-output-tokens", type=_bounded_int, default=24000, help="Bound each live response; default and maximum24000 for full-paper cards.")
+    parser.add_argument("--request-timeout", type=_bounded_int, default=300, help="Seconds per live request; default300, maximum900; no automatic retries.")
     args = parser.parse_args(argv)
     try:
         if args.max_output_tokens > 24000:
             raise ValueError("Maximum output token limit is24000 per request")
+        if args.request_timeout > 900:
+            raise ValueError("Maximum request timeout is900 seconds")
         documents = load_documents(args.papers)
         if len(documents) > args.max_papers:
             raise ValueError("Manifest exceeds --max-papers; choose a smaller manifest or explicitly raise the limit")
@@ -79,20 +82,42 @@ def main(argv=None):
             metadata["replay_note"] = "Supplied records are inputs, not newly generated model extraction. See their provenance."
             raw = {"mode": metadata["mode"], "responses": responses}
         else:
-            from polymer_cards_lib.llm import create_client, extract_document
-            client, model, provider = create_client(args.env_file)
-            metadata.update({"provider": provider, "model": model, "model_calls": 0})
-            responses, traces = [], []
-            # No output artifacts until all papers produce valid records.
-            for document in documents:
-                response, trace = extract_document(client, model, document, args.max_output_tokens)
+            from polymer_cards_lib.llm import ModelRequestError, create_client, extract_document
+            from polymer_cards_lib.prompt import extraction_profile
+            client, model, provider = create_client(args.env_file, request_timeout=args.request_timeout)
+            metadata.update({"provider": provider, "model": model, "model_calls": 0,
+                             "extraction_profile": extraction_profile(), "request_timeout_seconds": args.request_timeout,
+                             "run_complete": False, "papers_requested": len(documents), "papers_completed": 0,
+                             "model_calls_attempted": 0})
+            responses, traces, results = [], [], []
+            for index, document in enumerate(documents, 1):
+                print(f"Extracting paper {index}/{len(documents)}: {document['paper_id']}", file=sys.stderr, flush=True)
+                metadata["model_calls_attempted"] += 1
+                try:
+                    response, trace = extract_document(client, model, document, args.max_output_tokens)
+                    result = build_cards(document, response)
+                except (ModelRequestError, ValueError):
+                    metadata["failed_paper_id"] = document["paper_id"]
+                    if results:
+                        write_outputs(results, documents[:len(results)], args.out_dir, metadata,
+                                      additional_outputs={"raw-responses.json": {"mode": metadata["mode"], "responses": responses, "traces": traces}})
+                    raise
                 responses.append(response)
                 traces.append({"paper_id": document["paper_id"], **trace})
+                results.append(result)
                 metadata["model_calls"] += 1
+                metadata.update({"papers_completed": index, "run_complete": index == len(documents)})
+                raw = {"mode": metadata["mode"], "responses": responses, "traces": traces}
+                # Keep each finished paper recoverable. Partial metadata is
+                # explicit; the transactional writer never fabricates results
+                # for a paper whose request failed or was interrupted.
+                write_outputs(results, documents[:index], args.out_dir, metadata,
+                              additional_outputs={"raw-responses.json": raw})
             raw = {"mode": metadata["mode"], "responses": responses, "traces": traces}
-        results = [build_cards(document, response) for document, response in zip(documents, responses)]
-        write_outputs(results, documents, args.out_dir, metadata,
-                      additional_outputs={"raw-responses.json": raw})
+        if args.records:
+            results = [build_cards(document, response) for document, response in zip(documents, responses)]
+            write_outputs(results, documents, args.out_dir, metadata,
+                          additional_outputs={"raw-responses.json": raw})
         count = sum(len(r["cards"]) for r in results)
         discarded = sum(len(r["discarded_entities"]) for r in results)
         print(f"{metadata['mode']}: {len(results)} papers, {count} polymer cards, {discarded} standalone nonpolymers omitted. Output: {args.out_dir}")

@@ -42,16 +42,17 @@ def _literal(value: Any, quote: str) -> bool:
         return False
     haystack = _text(quote)
     numeric_start = needle[0].isdigit() or needle[0] in "+-−."
-    if not numeric_start:
-        return re.search(r"(?<!\w)" + re.escape(needle) + r"(?!\w)", haystack) is not None
-
     numeric_end = needle[-1].isdigit()
+    if not numeric_start and not numeric_end:
+        return re.search(r"(?<!\w)" + re.escape(needle) + r"(?!\w)", haystack) is not None
     superscripts = "⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻"
     # A complete number may touch its unit.  Numeric continuation must not
     # turn a decimal, thousands group, exponent, fraction or ratio into a new
     # scalar.  Complete raw ranges/uncertainties are still allowed as values.
-    suffix = (r"(?![\d." + superscripts + r"]|[eE][+−-]?\d|[:/]\d)"
-              if numeric_end else r"(?![\w.])")
+    # A decimal point continues a number only when followed by another digit.
+    # A sentence-ending full stop must not reject a complete value (1.77.).
+    suffix = (r"(?![\d" + superscripts + r"]|\.\d|[eE][+−-]?\d|[:/]\s*\d)"
+              if numeric_end else r"(?!\w)")
     pattern = r"(?<![\w.+−–—⁺⁻-])" + re.escape(needle) + suffix
     operator = r"(?:[-−–—]|±|\+\s*/\s*[-−]|\bto\b|\bthrough\b)"
     # Cover the common '30°C–60°C' form as well as '30–60°C'.  Unit text is
@@ -59,10 +60,20 @@ def _literal(value: Any, quote: str) -> bool:
     unit_text = r"[A-Za-zµμ°%/]+"
     previous_endpoint = re.compile(r"\d(?:\s*" + unit_text + r")?\s*" + operator + r"\s*$")
     next_endpoint = re.compile(r"\s*(?:" + unit_text + r"\s*)?" + operator + r"\s*[+−-]?(?:\d|\.\d)")
-    next_scale = re.compile(r"\s*[×xX*·⋅∙]\s*10|\s*\^\s*[+−-]?\d")
+    next_scale = re.compile(r"\s*[×xX*·⋅∙]\s*10|\s*\^\s*(?:\{|[+−-]?\d)")
     for match in re.finditer(pattern, haystack):
         before, after = haystack[:match.start()], haystack[match.end():]
+        if numeric_start and re.search(r"(?:[<>≤≥≈~]|\b(?:beyond|above|below|approximately|about|at least|at most|less than|greater than|more than|up to))\s*$", before, flags=re.I):
+            continue
         if re.search(r"\d,$", before) or (numeric_end and re.match(r",\d", after)):
+            continue
+        if re.search(r"\d\s*[:/]\s*$", before):
+            continue
+        if re.match(r"\s*[:/]\s*[+−-]?(?:\d|\.\d)", after):
+            continue
+        if re.search(r"[_^]\{[^}]*$", before):
+            continue
+        if re.search(r"(?:\d|\d\.)\s*[×xX*·⋅∙]\s*$", before):
             continue
         if previous_endpoint.search(before) or next_endpoint.match(after):
             continue
@@ -168,7 +179,7 @@ def build_cards(document: Dict, response: Dict) -> Dict:
                 raise _Invalid("quote_not_in_original_source")
             if "paper_id" in ref and ref["paper_id"] != paper_id:
                 raise _Invalid("evidence_paper_mismatch")
-            for key in ("source_part", "locator", "document_sha256", "page"):
+            for key in ("source_part", "locator", "document_sha256", "page", "text_transformations"):
                 if key in ref and ref[key] != chunk.get(key):
                     raise _Invalid("evidence_source_metadata_mismatch:" + key)
             item = {"chunk_id": ref["chunk_id"], "quote": ref["quote"], "paper_id": paper_id,
@@ -176,6 +187,8 @@ def build_cards(document: Dict, response: Dict) -> Dict:
                     "document_sha256": chunk["document_sha256"], "evidence_status": "quote_matched"}
             if "page" in chunk:
                 item["page"] = chunk["page"]
+            if chunk.get("text_transformations"):
+                item["text_transformations"] = deepcopy(chunk["text_transformations"])
             resolved.append(item)
         return resolved
 
@@ -193,7 +206,10 @@ def build_cards(document: Dict, response: Dict) -> Dict:
         result["evidence"] = ev
         result["evidence_status"] = "quote_matched"
         result["semantic_review_status"] = "not_performed_by_validator"
-        if "specimen_id" in raw and (not _text(raw["specimen_id"])
+        optional_unknown_scope = field in {"composition", "synthesis_text"} and raw.get("specimen_id") is None
+        if optional_unknown_scope:
+            result.pop("specimen_id", None)
+        if "specimen_id" in raw and not optional_unknown_scope and (not _text(raw["specimen_id"])
                                      or raw["specimen_id"] not in (specimen_ids or set())):
             raise _Invalid("fact_specimen_not_linked_to_polymer")
         if field in {"synthesis_text", "description", "aliases", "role"} and not _text(raw["value"]):
@@ -202,6 +218,13 @@ def build_cards(document: Dict, response: Dict) -> Dict:
             raise _Invalid("alias_not_in_original_evidence")
         if field == "composition" and not _text(raw.get("basis")):
             raise _Invalid("composition_basis_missing")
+        mw_only = (r"(?:M(?:_?\{?[wn]\}?|[wn])|molecular\s+weight)\s*(?:=|:)\s*"
+                   r"[+−~≈<>-]?\s*[\d,.]+(?:\s*[×xX*]\s*10[\d⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻^{}+−-]+)?"
+                   r"(?:\s*(?:g\s*(?:/\s*mol|mol(?:⁻¹|−1|-1|\^\{[−-]1\}))|[kM]?Da))?\.?")
+        if field == "composition" and re.fullmatch(mw_only, _text(raw["value"]), flags=re.I):
+            # A stand-alone Mw/Mn observation is not an ingredient quantity.
+            # Hold it; do not relocate it without a supported measurement sample.
+            raise _Invalid("composition_contains_molecular_weight_only")
         if field == "applications":
             if (not isinstance(raw.get("claim_type", "unspecified"), str)
                     or raw.get("claim_type", "unspecified") not in APPLICATION_CLAIMS):
@@ -214,6 +237,12 @@ def build_cards(document: Dict, response: Dict) -> Dict:
                 raise _Invalid("property_name_missing")
             if not _text(raw.get("specimen_id")) or raw["specimen_id"] not in (specimen_ids or set()):
                 raise _Invalid("property_specimen_not_linked_to_polymer")
+            # Required in the new extraction schema; legacy replays may omit
+            # this field. Source containment still cannot prove attribution.
+            if "specimen_evidence" in raw:
+                if not isinstance(raw["specimen_evidence"], list) or not raw["specimen_evidence"]:
+                    raise _Invalid("property_specimen_evidence_missing")
+                result["specimen_evidence"] = evidence(raw["specimen_evidence"])
             if "unit" not in raw or (raw["unit"] is not None and not _text(raw["unit"])):
                 raise _Invalid("property_unit_missing_or_invalid")
             if not any(_literal(raw["value"], e["quote"]) for e in ev):
@@ -381,11 +410,63 @@ def build_cards(document: Dict, response: Dict) -> Dict:
                 card[field]["invalid_items_count"] = invalid
         cards.append(card)
 
+    attribution_warnings = _attribution_warnings(cards)
     return {"contract_version": "polymer-cards-v1", "paper_id": paper_id, "cards": cards,
             "discarded_entities": discarded, "review_queue": review_queue, "validation_issues": issues,
+            "attribution_warnings": attribution_warnings,
             "statistics": {"input_entities": len(entities), "cards": len(cards), "retained_polymers": len(cards),
                            "discarded_entities": len(discarded), "discarded_nonpolymers": len(discarded),
                            "classification_review_entities": classification_reviews,
-                           "review_queue": len(review_queue), "validation_issues": len(issues)},
+                           "review_queue": len(review_queue), "validation_issues": len(issues),
+                           "attribution_warnings": len(attribution_warnings)},
             "validation_scope": "Source quote containment and record links only; polymer classification, "
                                 "origin and semantic attribution are model/reviewer judgments, not verified by this validator."}
+
+
+def _attribution_warnings(cards: List[Dict]) -> List[Dict]:
+    """Flag structural ambiguity without merging, deleting or reassigning data.
+
+    These are advisory checks, separate from quarantined facts. They cannot
+    determine chemical equivalence or resolve shorthand used by paper authors.
+    """
+    warnings = []
+    labels = {}
+    by_id = {card["entity_id"]: card for card in cards}
+    for card in cards:
+        for specimen in card["specimens"]:
+            labels.setdefault(_text(specimen["label"]), set()).add(card["entity_id"])
+    for label, owners in sorted(labels.items()):
+        if len(owners) < 2:
+            continue
+        warning = {"reason": "specimen_label_shared_between_polymer_records", "specimen_label": label,
+                   "related_entity_ids": sorted(owners),
+                   "detail": "The same sample label appears under different polymer records. Check family/member identity; no records were merged."}
+        warnings.append(warning)
+        for owner in owners:
+            by_id[owner].setdefault("attribution_warnings", []).append(deepcopy(warning))
+
+    for card in cards:
+        specimens = {s["specimen_id"]: s for s in card["specimens"]}
+        for index, prop in enumerate(card["properties"]["items"]):
+            chosen = specimens[prop["specimen_id"]]
+            # Identify an explicitly additive-containing sibling, using the
+            # paper's labels. This is a caution, not a chemical name parser.
+            base = re.sub(r"\s+(?:film|membrane|solution|sample|specimen)$", "", _text(chosen["label"]), flags=re.I)
+            siblings = [s["label"] for sid, s in specimens.items() if sid != prop["specimen_id"]
+                        and re.match(re.escape(base) + r"(?:/|\s*\+|\s+with\b)", _text(s["label"]))]
+            if not siblings:
+                continue
+            quotes = " ".join(e["quote"] for e in prop["evidence"] + prop.get("specimen_evidence", []))
+            explicit_neat = (r"(?<!\w)(?:neat|salt[ -]free|pure(?:\s+polymer)?)\s+" + re.escape(base)
+                             + r"(?!\w)|(?<!\w)" + re.escape(base)
+                             + r"(?:\s+(?:film|membrane|polymer|sample))?\s+(?:without|with\s+no)\s+(?:any\s+)?(?:salt|additives)\b")
+            if re.search(explicit_neat, quotes, flags=re.I):
+                continue
+            warning = {"reason": "specimen_form_ambiguous", "entity_id": card["entity_id"],
+                       "path": "properties.items[" + str(index) + "]", "property": prop["property"],
+                       "value": prop["value"], "specimen_label": chosen["label"],
+                       "related_specimen_labels": siblings,
+                       "detail": "A bare polymer label and an additive-containing form coexist. Check the test/preparation context; the result has not been automatically reassigned."}
+            warnings.append(warning)
+            card.setdefault("attribution_warnings", []).append(deepcopy(warning))
+    return warnings

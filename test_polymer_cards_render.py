@@ -8,7 +8,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from polymer_cards_lib.render import render_html, write_outputs
+from polymer_cards_lib.render import render_html, render_markdown, write_outputs
 
 
 def example(paper_id="paper-a", title="Example polymer paper", locator="Methods A"):
@@ -31,6 +31,24 @@ def example(paper_id="paper-a", title="Example polymer paper", locator="Methods 
 
 
 class PolymerCardRenderTests(unittest.TestCase):
+    def test_partial_run_is_prominent_but_success_and_legacy_runs_are_not_partial(self):
+        document, result, _ = example()
+        metadata = {"run_complete": False, "papers_completed": 1, "papers_requested": 3,
+                    "failed_paper_id": "paper-b"}
+        page = render_html([result], [document], metadata)
+        markdown = render_markdown([result], [document], metadata)
+        for view in (page, markdown):
+            self.assertIn("Partial run", view)
+            self.assertIn("completed 1 of 3 requested papers", view)
+            self.assertIn("drafts and still need review", view)
+        self.assertIn("paper-b", page)
+        self.assertIn(r"paper\-b", markdown)
+        self.assertIn('class="partial-run"', page)
+        self.assertIn("**Partial run**", markdown)
+        for complete in ({"run_complete": True, "papers_completed": 3, "papers_requested": 3}, {}):
+            self.assertNotIn('class="partial-run"', render_html([result], [document], complete))
+            self.assertNotIn("**Partial run**", render_markdown([result], [document], complete))
+
     def test_all_six_groups_visible_even_when_information_is_missing(self):
         document, result, _ = example()
         page = render_html([result], [document], {"mode": "curated_replay"})
@@ -82,6 +100,70 @@ class PolymerCardRenderTests(unittest.TestCase):
         self.assertIn("30", page)
         self.assertIn("P/LiFSI 2:1 film", page)
 
+    def test_script_conversion_is_declared_beside_the_evidence_in_both_views(self):
+        document, result, _ = example()
+        document["chunks"][0]["text_transformations"] = ["jats_script_notation_v1"]
+        page = render_html([result], [document], {})
+        markdown = render_markdown([result], [document], {})
+        for view in (page, markdown):
+            self.assertIn("preserved superscripts/subscripts", view)
+            self.assertIn("converted source text", view)
+        self.assertNotIn("Original quote matched to source", page)
+
+    def test_transformation_labels_come_from_source_chunks_not_model_claims(self):
+        document, result, _ = example()
+        result["cards"][0]["identity_evidence"][0]["text_transformations"] = ["jats_script_notation_v1"]
+        page = render_html([result], [document], {})
+        markdown = render_markdown([result], [document], {})
+        self.assertIn("Original quote matched to source", page)
+        for view in (page, markdown):
+            self.assertNotIn("preserved superscripts/subscripts", view)
+
+    def test_sample_link_evidence_remains_separate_from_measurement_evidence(self):
+        document, result, evidence = example()
+        document["chunks"].append({"chunk_id": "sample-link", "source_part": "main",
+                                   "locator": "Electrolyte preparation", "document_sha256": "abc123",
+                                   "text": "P/LiFSI was cast as a film."})
+        result["cards"][0]["properties"] = {"status": "reported", "items": [{
+            "entity_id": "P", "property": "ionic conductivity", "value": "0.00024", "unit": "S/cm",
+            "specimen_id": "salted", "conditions": [], "evidence": copy.deepcopy(evidence),
+            "specimen_evidence": [{"chunk_id": "sample-link", "quote": "P/LiFSI was cast as a film.",
+                                   "evidence_status": "quote_matched"}],
+        }]}
+        page = render_html([result], [document], {})
+        markdown = render_markdown([result], [document], {})
+        self.assertIn("<summary>Sample-link evidence (1 source passage)</summary>", page)
+        for view in (page, markdown):
+            self.assertIn("Sample-link evidence", view)
+            self.assertIn("P/LiFSI was cast as a film.", view)
+            self.assertIn("Electrolyte preparation", view)
+
+    def test_empty_sample_link_evidence_is_shown_as_missing(self):
+        document, result, evidence = example()
+        result["cards"][0]["properties"] = {"status": "reported", "items": [{
+            "entity_id": "P", "property": "ionic conductivity", "value": "0.00024", "unit": "S/cm",
+            "specimen_id": "salted", "conditions": [], "evidence": copy.deepcopy(evidence),
+            "specimen_evidence": [],
+        }]}
+        for view in (render_html([result], [document], {}), render_markdown([result], [document], {})):
+            self.assertIn("Sample-link evidence: not attached", view)
+
+    def test_attribution_warnings_are_visible_and_safely_escaped(self):
+        document, result, _ = example()
+        result["cards"][0]["attribution_warnings"] = [{
+            "reason": "specimen_label_matches_other_material", "specimen_label": '<img src=x onerror="bad()">',
+            "related_entity_ids": ["P2", "<script>bad()</script>"],
+        }]
+        page = render_html([result], [document], {})
+        markdown = render_markdown([result], [document], {})
+        for view in (page, markdown):
+            self.assertIn("Sample/material link needs review", view)
+            self.assertIn("P2", view)
+            self.assertIn("&lt;img", view)
+            self.assertNotIn("<img ", view)
+            self.assertNotIn("<script>", view)
+        self.assertIn("specimen label matches other material", page)
+
     def test_output_files_preserve_machine_records_and_separate_audit(self):
         document, result, evidence = example()
         result["cards"][0]["aliases"] = [{"value": "Poly-P", "evidence": copy.deepcopy(evidence)}]
@@ -97,6 +179,8 @@ class PolymerCardRenderTests(unittest.TestCase):
             audit = json.loads(Path(paths["audit.json"]).read_text())
             self.assertEqual(1, audit["counts"]["retained_cards"])
             self.assertEqual(1, audit["counts"]["discarded_entities"])
+            self.assertEqual(0, audit["counts"]["attribution_warnings"])
+            self.assertEqual([], audit["papers"][0]["attribution_warnings"])
             self.assertEqual([document], json.loads(Path(paths["sources.json"]).read_text())["documents"])
             markdown = Path(paths["cards.md"]).read_text()
             self.assertIn("Poly-P", Path(paths["cards.html"]).read_text())
@@ -104,6 +188,25 @@ class PolymerCardRenderTests(unittest.TestCase):
             self.assertIn("Original evidence", markdown)
             self.assertIn("```text", markdown)
         self.assertEqual(original, result)
+
+    def test_paper_audits_preserve_unique_attribution_warnings_and_counts(self):
+        document, result, _ = example()
+        warning = {"reason": "specimen_label_shared_between_polymer_records", "specimen_label": "P film",
+                   "related_entity_ids": ["P", "P2"], "detail": "Check exact material identity."}
+        result["attribution_warnings"] = [warning]
+        result["cards"][0]["attribution_warnings"] = [copy.deepcopy(warning)]
+        second = copy.deepcopy(result["cards"][0])
+        second["entity_id"] = "P2"
+        result["cards"].append(second)
+        with tempfile.TemporaryDirectory() as temporary:
+            paths = write_outputs([result], [document], temporary, {})
+            audit = json.loads(Path(paths["audit.json"]).read_text())
+            self.assertEqual(1, audit["counts"]["attribution_warnings"])
+            self.assertEqual([warning], audit["papers"][0]["attribution_warnings"])
+            for filename in ("cards.html", "cards.md"):
+                view = Path(paths[filename]).read_text()
+                self.assertIn('"attribution_warnings"' if filename.endswith(".md") else "&quot;attribution_warnings&quot;", view)
+                self.assertIn("Check exact material identity.", view)
 
     def test_invalid_nonfinite_json_does_not_create_partial_outputs(self):
         document, result, _ = example()

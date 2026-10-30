@@ -1,0 +1,12 @@
+{
+  "performed_at_utc": "2026-10-30T16:53:48.256894+00:00",
+  "additional_model_calls": 0,
+  "kind": "automatic_revalidation_of_unchanged_live_responses",
+  "reason": "Final qualifier-preservation and molecular-weight-versus-recipe guards were added after provider run started; no model value or quote was edited.",
+  "input_artifact_hashes": {
+    "cards.json": "1350b5ac9acd875678f8880d5383ba8b0b75191cddf1b32e4c68311927919ec8",
+    "raw-responses.json": "639e39f287dc5db8a6b20280e3e8ea076b08e1a9df2936ec1b10a939148dc24c",
+    "sources.json": "20aa6303c46c60cc325f2b9f9720f9fac42bfb061fa861b83e052105ea99f7e2"
+  },
+  "validation_code_sha256": "7d6fe6633fa3087db1564a4266098fbf12d3d847752df49ac21020ce21f3d0a4"
+}

@@ -1,0 +1,177 @@
+{
+  "date": "2026-10-30",
+  "original_run_unchanged": true,
+  "old": {
+    "metadata": {
+      "contract_version": "polymer-cards-v1",
+      "created_at_utc": "2026-10-29T01:02:57.949088+00:00",
+      "mode": "live_model_extraction",
+      "retention_rule": "polymer identity only; no application or completeness threshold",
+      "semantic_validation": "Original quote containment is mechanically checked; chemical interpretation and attribution still need source review.",
+      "source_manifest_sha256": "ea1f79f1412185f7668a8f27608ce42e0bd4d318051e3c7ca44b29e6cdfefd28",
+      "max_output_tokens_per_live_request": 24000,
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "model_calls": 3
+    },
+    "papers": [
+      {
+        "paper_id": "10.1038/s41467-023-43467-w",
+        "raw_entities": 8,
+        "cards": 6,
+        "identity_review": 2,
+        "fact_review": 7,
+        "composition_cards": 0,
+        "composition_entries": 0,
+        "missing_basis": 6,
+        "validation_flags": 14,
+        "attribution_warnings": 0,
+        "discarded_nonpolymer": 0
+      },
+      {
+        "paper_id": "10.3390/polym13234155",
+        "raw_entities": 5,
+        "cards": 4,
+        "identity_review": 1,
+        "fact_review": 4,
+        "composition_cards": 0,
+        "composition_entries": 0,
+        "missing_basis": 3,
+        "validation_flags": 11,
+        "attribution_warnings": 0,
+        "discarded_nonpolymer": 0
+      },
+      {
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "raw_entities": 8,
+        "cards": 8,
+        "identity_review": 0,
+        "fact_review": 25,
+        "composition_cards": 0,
+        "composition_entries": 0,
+        "missing_basis": 8,
+        "validation_flags": 33,
+        "attribution_warnings": 0,
+        "discarded_nonpolymer": 0
+      }
+    ],
+    "totals": {
+      "raw_entities": 21,
+      "cards": 18,
+      "identity_review": 3,
+      "fact_review": 36,
+      "composition_cards": 0,
+      "composition_entries": 0,
+      "missing_basis": 17,
+      "validation_flags": 58,
+      "attribution_warnings": 0,
+      "discarded_nonpolymer": 0
+    },
+    "usage": {
+      "prompt_tokens": 40196,
+      "completion_tokens": 39734,
+      "total_tokens": 79930
+    }
+  },
+  "new": {
+    "metadata": {
+      "contract_version": "polymer-cards-v1",
+      "created_at_utc": "2026-10-30T16:41:53.720927+00:00",
+      "mode": "live_model_extraction",
+      "retention_rule": "polymer identity only; no application or completeness threshold",
+      "semantic_validation": "Original quote containment is mechanically checked; chemical interpretation and attribution still need source review.",
+      "source_manifest_sha256": "ea1f79f1412185f7668a8f27608ce42e0bd4d318051e3c7ca44b29e6cdfefd28",
+      "max_output_tokens_per_live_request": 24000,
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "model_calls": 3,
+      "extraction_profile": {
+        "output_format": "json_schema",
+        "schema_name": "polymer_cards_strict_v1",
+        "schema_sha256": "3f101f4db735e7242e8b346d3f52e41b3966da30ec3783966da043cd1b77b4ae",
+        "system_prompt_sha256": "76d8e6c56f3238acb71495b605e5880048a2cde6d4c80f24193f819bfa493ccb"
+      },
+      "request_timeout_seconds": 300,
+      "run_complete": true,
+      "papers_requested": 3,
+      "papers_completed": 3,
+      "model_calls_attempted": 3,
+      "post_run_revalidation": {
+        "performed_at_utc": "2026-10-30T16:53:48.256894+00:00",
+        "additional_model_calls": 0,
+        "kind": "automatic_revalidation_of_unchanged_live_responses",
+        "reason": "Final qualifier-preservation and molecular-weight-versus-recipe guards were added after provider run started; no model value or quote was edited.",
+        "input_artifact_hashes": {
+          "cards.json": "1350b5ac9acd875678f8880d5383ba8b0b75191cddf1b32e4c68311927919ec8",
+          "raw-responses.json": "639e39f287dc5db8a6b20280e3e8ea076b08e1a9df2936ec1b10a939148dc24c",
+          "sources.json": "20aa6303c46c60cc325f2b9f9720f9fac42bfb061fa861b83e052105ea99f7e2"
+        },
+        "validation_code_sha256": "7d6fe6633fa3087db1564a4266098fbf12d3d847752df49ac21020ce21f3d0a4"
+      }
+    },
+    "papers": [
+      {
+        "paper_id": "10.1038/s41467-023-43467-w",
+        "raw_entities": 7,
+        "cards": 7,
+        "identity_review": 0,
+        "fact_review": 5,
+        "composition_cards": 4,
+        "composition_entries": 7,
+        "missing_basis": 0,
+        "validation_flags": 6,
+        "attribution_warnings": 9,
+        "discarded_nonpolymer": 0
+      },
+      {
+        "paper_id": "10.3390/polym13234155",
+        "raw_entities": 6,
+        "cards": 6,
+        "identity_review": 0,
+        "fact_review": 8,
+        "composition_cards": 3,
+        "composition_entries": 6,
+        "missing_basis": 0,
+        "validation_flags": 8,
+        "attribution_warnings": 0,
+        "discarded_nonpolymer": 0
+      },
+      {
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "raw_entities": 12,
+        "cards": 6,
+        "identity_review": 6,
+        "fact_review": 9,
+        "composition_cards": 1,
+        "composition_entries": 1,
+        "missing_basis": 1,
+        "validation_flags": 19,
+        "attribution_warnings": 0,
+        "discarded_nonpolymer": 0
+      }
+    ],
+    "totals": {
+      "raw_entities": 25,
+      "cards": 19,
+      "identity_review": 6,
+      "fact_review": 22,
+      "composition_cards": 8,
+      "composition_entries": 14,
+      "missing_basis": 1,
+      "validation_flags": 33,
+      "attribution_warnings": 9,
+      "discarded_nonpolymer": 0
+    },
+    "usage": {
+      "prompt_tokens": 50316,
+      "completion_tokens": 53837,
+      "total_tokens": 104153
+    }
+  },
+  "limits": [
+    "One uncontrolled rerun, not a scientific accuracy benchmark.",
+    "Card sets and granularity can differ. Counts alone do not measure accuracy.",
+    "A matching quote and a sample-link passage do not establish chemical attribution.",
+    "The original run and raw responses were not edited."
+  ]
+}

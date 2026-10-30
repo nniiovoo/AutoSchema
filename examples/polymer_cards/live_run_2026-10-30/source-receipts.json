@@ -1,0 +1,60 @@
+{
+  "source_manifest_sha256": "ea1f79f1412185f7668a8f27608ce42e0bd4d318051e3c7ca44b29e6cdfefd28",
+  "supplied_source_artifact_sha256": "20aa6303c46c60cc325f2b9f9720f9fac42bfb061fa861b83e052105ea99f7e2",
+  "papers": [
+    {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "title": "Interfacial self-healing polymer electrolytes for long-cycle solid-state lithium-sulfur batteries",
+      "source_files": [
+        {
+          "format": "xml",
+          "source_part": "main",
+          "document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "coverage": "article_xml_body_and_abstract",
+          "bytes": 113541,
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ],
+          "file_name": "pei-original.xml"
+        }
+      ],
+      "chunk_count": 35
+    },
+    {
+      "paper_id": "10.3390/polym13234155",
+      "title": "Self-Healing of a Covalently Cross-Linked Polymer Electrolyte Membrane by Diels-Alder Cycloaddition and Electrolyte Embedding for Lithium Ion Batteries",
+      "source_files": [
+        {
+          "format": "xml",
+          "source_part": "main",
+          "document_sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc",
+          "coverage": "article_xml_body_and_abstract",
+          "bytes": 86284,
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ],
+          "file_name": "chen-original.xml"
+        }
+      ],
+      "chunk_count": 38
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "title": "Universally autonomous self-healing elastomer with high stretchability",
+      "source_files": [
+        {
+          "format": "xml",
+          "source_part": "main",
+          "document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4",
+          "coverage": "article_xml_body_and_abstract",
+          "bytes": 118044,
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ],
+          "file_name": "guo-original.xml"
+        }
+      ],
+      "chunk_count": 50
+    }
+  ]
+}
