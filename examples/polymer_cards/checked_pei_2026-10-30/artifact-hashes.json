@@ -1,0 +1,16 @@
+{
+  "README.md": "cdeb7205113ed94303a999d23f3deb50e9b85778c2086f9d5a8299fde776b267",
+  "checked-card.html": "52a331dcf469e6c6a300be3fff4513fd5036cc84e379476bdb971b7d30dc2fd3",
+  "checked-records.json": "a5fa5b67b20ea4fa0c89fe10980e932431de7151f8c4833e1e73dffd5c39f5e9",
+  "evaluation-cases.json": "e34b50f553fe79a51b04f297b89c3fcbcc237a6797bf8d4aab2c1fa7e011e1b9",
+  "papers.json": "53de13b525abbfa58eee3c0ba121678dfebad34363ca44661a7a35b088923786",
+  "reference.json": "50cb47c3a027ff7f9aa43f63fd13dd7c9825ba42544ee027dfedb30d97ab8490",
+  "rendered/audit.json": "bb66bf29f86981546d0c1a568ecadc13ca2c00eece4709a22000c4de6a9c79d6",
+  "rendered/cards.html": "b60d324727da58b92c698712b868f06d750770444586ac8bad4c6f0cc45d8ec4",
+  "rendered/cards.json": "ebd139171ca989c8858cea6cd3c54b4e80de2d1990985909b0f99dcf3cb5e07c",
+  "rendered/cards.jsonl": "2f8f59ee0dca64e4da0b2343b2009c1ebbbc21a54ec35508246ada68790377f2",
+  "rendered/cards.md": "7331bffe5cb10154c2ac87d2caaa9527291fe74782fd40cd325049515b5d2524",
+  "rendered/sources.json": "5bef3828c6b97006125f2eb22fe3aa1dbe43ad1db1ca267f4ed4be3b82bcaad8",
+  "source-excerpts.json": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+  "validation.json": "3c6f1bb9b16b6076dd6498a41a68cb278b5f98b32f3c7ea98805716e75b4700b"
+}

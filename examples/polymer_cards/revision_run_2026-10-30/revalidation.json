@@ -1,0 +1,12 @@
+{
+  "performed_at_utc": "2026-10-30T18:55:06.718426+00:00",
+  "additional_model_calls": 0,
+  "kind": "automatic_revalidation_of_unchanged_model_revision",
+  "reason": "Omitted-sibling sample-evidence guard was finalized while provider requests were running; no response value, identity or sample link was manually changed.",
+  "input_artifact_hashes": {
+    "cards.json": "4a3e89cc04f3c27eb6b9da3842eda2840ee605be913aab1bb46b8267b63ba70d",
+    "raw-responses.json": "ae5a6fbed7d9970193739b1568214b2ad195be7635c67eba40bb9264d68e9fd1",
+    "sources.json": "20aa6303c46c60cc325f2b9f9720f9fac42bfb061fa861b83e052105ea99f7e2"
+  },
+  "validation_code_sha256": "ad4b47a6ca3df6e8d6dc0603ac5e2f99c9dfedaba86536e1aaca8d8181d081e5"
+}

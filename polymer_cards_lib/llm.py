@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import os
+import hashlib
+import json
 from pathlib import Path
 
 from polymer_cards_lib.io import parse_json
@@ -70,11 +72,31 @@ def create_client(env_file=None, request_timeout=300):
 
 def extract_document(client, model, document, max_output_tokens=10000):
     """One bounded request; no hidden model retries or raw provider errors in logs."""
+    return _request(client, model, build_user_prompt(document), max_output_tokens)
+
+
+def revise_document(client, model, document, previous_response, max_output_tokens=24000):
+    """One new, explicit model revision from primary sources and prior proposals.
+
+    No checked card is read and no earlier response is edited. The caller must
+    preserve the prior run and label this as a revision, not a fresh extraction.
+    """
+    from polymer_cards_lib.repair import build_revision_user_prompt
+    user_prompt = build_revision_user_prompt(document, previous_response)
+    parsed, trace = _request(client, model, user_prompt, max_output_tokens)
+    previous_bytes = json.dumps(previous_response, ensure_ascii=False, sort_keys=True,
+                                separators=(",", ":"), allow_nan=False).encode("utf-8")
+    trace.update({"request_mode": "source_grounded_model_revision",
+                  "previous_response_sha256": hashlib.sha256(previous_bytes).hexdigest()})
+    return parsed, trace
+
+
+def _request(client, model, user_prompt, max_output_tokens):
     try:
         response = client.chat.completions.create(
             model=model,
             messages=[{"role": "system", "content": build_system_prompt()},
-                      {"role": "user", "content": build_user_prompt(document)}],
+                      {"role": "user", "content": user_prompt}],
             response_format=build_response_format(),
             max_completion_tokens=max_output_tokens,
         )
@@ -103,4 +125,5 @@ def extract_document(client, model, document, max_output_tokens=10000):
     safe_usage = {name: getattr(usage, name, None) for name in ("prompt_tokens", "completion_tokens", "total_tokens")}
     return parsed, {"raw_response_text": raw_text, "usage": safe_usage,
                     "extraction_profile": extraction_profile(),
+                    "request_prompt_sha256": hashlib.sha256(user_prompt.encode("utf-8")).hexdigest(),
                     "finish_reason": getattr(choice, "finish_reason", None)}

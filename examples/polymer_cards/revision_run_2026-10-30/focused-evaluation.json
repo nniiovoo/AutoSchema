@@ -1,0 +1,293 @@
+{
+  "evaluation_kind": "focused_source_expectation_check",
+  "reference_version": "focused-identity-sample-reference-v1",
+  "identities": [
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "name": "P2",
+      "candidates": [
+        {
+          "path": "results[2].cards[3]",
+          "reasons": [],
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "matched_focused_expectation",
+      "identity_held_for_review": false
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "name": "P3",
+      "candidates": [
+        {
+          "path": "results[2].cards[4]",
+          "reasons": [],
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "matched_focused_expectation",
+      "identity_held_for_review": false
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "name": "P4",
+      "candidates": [
+        {
+          "path": "results[2].cards[5]",
+          "reasons": [],
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "matched_focused_expectation",
+      "identity_held_for_review": false
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "name": "P5",
+      "candidates": [
+        {
+          "path": "results[2].cards[6]",
+          "reasons": [],
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "matched_focused_expectation",
+      "identity_held_for_review": false
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "name": "P6",
+      "candidates": [
+        {
+          "path": "results[2].cards[7]",
+          "reasons": [],
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "matched_focused_expectation",
+      "identity_held_for_review": false
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "name": "P7",
+      "candidates": [
+        {
+          "path": "results[2].cards[8]",
+          "reasons": [],
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "matched_focused_expectation",
+      "identity_held_for_review": false
+    }
+  ],
+  "measurements": [
+    {
+      "claim_id": "guo-p3-gpc-pdi",
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "candidates": [
+        {
+          "path": "results[2].cards[4].properties.items[2]",
+          "entity_id": "p5",
+          "specimen_id": "p5-gpc-sample",
+          "value": "1.77",
+          "unit": null,
+          "reasons": [],
+          "notes": [],
+          "match_kind": "raw_value_and_unit",
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "matched_focused_expectation",
+      "matching_value_held_for_review": false
+    },
+    {
+      "claim_id": "guo-p3-healing-ambient",
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "candidates": [
+        {
+          "path": "results[2].cards[4].properties.items[4]",
+          "entity_id": "p5",
+          "specimen_id": "p5-healed-film-rt",
+          "value": "93% ± 3%",
+          "unit": null,
+          "reasons": [],
+          "notes": [
+            "unit_field_missing_but_unit_in_raw_value"
+          ],
+          "match_kind": "raw_value_and_unit",
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "matched_focused_expectation",
+      "matching_value_held_for_review": false
+    },
+    {
+      "claim_id": "guo-p3-healing-water",
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "candidates": [
+        {
+          "path": "results[2].cards[4].properties.items[8]",
+          "entity_id": "p5",
+          "specimen_id": "p5-healed-film-water",
+          "value": "93% ± 2%",
+          "unit": null,
+          "reasons": [],
+          "notes": [
+            "unit_field_missing_but_unit_in_raw_value"
+          ],
+          "match_kind": "raw_value_and_unit",
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "matched_focused_expectation",
+      "matching_value_held_for_review": false
+    },
+    {
+      "claim_id": "guo-p4-stretch",
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "candidates": [
+        {
+          "path": "results[2].cards[5].properties.items[0]",
+          "entity_id": "p6",
+          "specimen_id": "p6-film",
+          "value": "nearly 140 times its original length",
+          "unit": null,
+          "reasons": [
+            "raw_value_or_unit_not_exact_reference"
+          ],
+          "notes": [],
+          "match_kind": "source_related_value_variant",
+          "legacy_scope_undeclared": false
+        },
+        {
+          "path": "results[2].cards[5].properties.items[1]",
+          "entity_id": "p6",
+          "specimen_id": "p6-film",
+          "value": "quick and efficient",
+          "unit": null,
+          "reasons": [
+            "raw_value_or_unit_not_exact_reference",
+            "required_condition_missing:10 mm min⁻¹|10 mm min−1|10 mm/min|10 mm min^-1"
+          ],
+          "notes": [],
+          "match_kind": "source_related_value_variant",
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "needs_source_review",
+      "matching_value_held_for_review": false
+    },
+    {
+      "claim_id": "pei-peo-voltage",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "candidates": [
+        {
+          "path": "results[0].cards[1].properties.items[1]",
+          "entity_id": "p2",
+          "specimen_id": "p2-peo-lifsi",
+          "value": "3.8",
+          "unit": "V",
+          "reasons": [
+            "required_condition_missing:room temperature|room-temperature|r.t.",
+            "required_evidence_chunk_missing:src-705d4d9258f66326a788"
+          ],
+          "notes": [],
+          "match_kind": "raw_value_and_unit",
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "needs_source_review",
+      "matching_value_held_for_review": false
+    },
+    {
+      "claim_id": "pei-hdi-voltage",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "candidates": [
+        {
+          "path": "results[0].cards[3].properties.items[2]",
+          "entity_id": "p4",
+          "specimen_id": "p4-lifsi-electrolyte",
+          "value": "4.1",
+          "unit": "V",
+          "reasons": [
+            "required_condition_missing:room temperature|room-temperature|r.t.",
+            "required_evidence_chunk_missing:src-705d4d9258f66326a788"
+          ],
+          "notes": [],
+          "match_kind": "raw_value_and_unit",
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "needs_source_review",
+      "matching_value_held_for_review": false
+    },
+    {
+      "claim_id": "chen-precursor-strength",
+      "paper_id": "10.3390/polym13234155",
+      "candidates": [
+        {
+          "path": "results[1].cards[0].properties.items[1]",
+          "entity_id": "p1",
+          "specimen_id": "p1-precursor-tensile",
+          "value": "5 MPa",
+          "unit": "MPa",
+          "reasons": [],
+          "notes": [],
+          "match_kind": "raw_value_and_unit",
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "matched_focused_expectation",
+      "matching_value_held_for_review": false
+    },
+    {
+      "claim_id": "chen-crosslinked-strength",
+      "paper_id": "10.3390/polym13234155",
+      "candidates": [
+        {
+          "path": "results[1].cards[3].properties.items[0]",
+          "entity_id": "p4",
+          "specimen_id": "p4-crosslinked-network",
+          "value": "21 MPa",
+          "unit": "MPa",
+          "reasons": [],
+          "notes": [],
+          "match_kind": "raw_value_and_unit",
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "matched_focused_expectation",
+      "matching_value_held_for_review": false
+    },
+    {
+      "claim_id": "chen-wet-room-temperature-conductivity",
+      "paper_id": "10.3390/polym13234155",
+      "candidates": [
+        {
+          "path": "results[1].cards[3].properties.items[15]",
+          "entity_id": "p4",
+          "specimen_id": "p4-shpem-10uL-plasticizer",
+          "value": "approximate to 2.56 × 10⁻³",
+          "unit": "S·cm⁻¹",
+          "reasons": [],
+          "notes": [],
+          "match_kind": "raw_value_and_unit",
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "matched_focused_expectation",
+      "matching_value_held_for_review": false
+    }
+  ],
+  "unevaluated_reference_sections": [
+    "review_expectations"
+  ],
+  "limits": [
+    "Selected expectation matches are not scientific accuracy, precision, recall, or exhaustive paper coverage.",
+    "Source containment and record structure are assumed from the validator run; scientific interpretation still needs source review.",
+    "Exact raw notation is compared with NFC/whitespace handling and nonduplicated units; equivalent numerical conversions are not inferred.",
+    "Legacy records without identity_kind are reported as undeclared, not assigned a new scope."
+  ],
+  "reference_artifact_sha256": "bfdac32f92df0c69451e7e49614df4e451fee4966e95a0a20f4e370a48580f98"
+}

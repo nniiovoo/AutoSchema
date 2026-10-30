@@ -13,7 +13,8 @@ TASK AND RETENTION
 Identify material entities, distinguish polymers from nonpolymers, and describe each polymer using six fixed information groups. Polymer identity is the ONLY scientific retention criterion. Do NOT select by conductivity, mechanical strength, application suitability, commercial origin, source role, novelty or completeness. Include purchased polymers, polymeric reactants, controls, and background polymers when identified in the provided text; mark their roles and do not borrow their measurements for a different entity. Small-molecule salts/solvents/catalysts may be nonpolymer root entities but remain needed ingredients within polymer cards. A reactive precursor can itself be polymeric. Dynamic bonds alone do not make a substance a polymer. Use is_polymer:null when identity cannot be established.
 
 IDENTITY AND EVIDENCE
-Use one paper-scoped entity_id for each exact polymer identity. The name must be an exact source label, including its original spelling/case; do not expand an abbreviation in the name unless that full label occurs in its identity quote. Put other source-supported labels in aliases. A generic family description is not an extra synthesized material when it only summarizes already identified members. Do not put chemically different controls or different monomer-feed formulations inside one exact-identity card, then repeat them as separate cards. Preserve a source-defined broad family only when its scope is explicitly identified in description/role and do not transfer member-specific measurements to the family.
+Use one paper-scoped entity_id for each exact polymer identity. Declare identity_kind:specific_polymer for an exact polymer identity/formulation, identity_kind:polymer_family for a broad class or series, and null for a nonpolymer or unresolved identity scope. A polymeric precursor can be a specific_polymer. The name must be an exact source label, including its original spelling/case; do not expand an abbreviation in the name unless that full label occurs in its identity quote. Put other source-supported labels in aliases. A source-defined sample code can be a valid exact name: search Methods/Polymer synthesis and the full body for a passage naming it explicitly. A range-only quote such as Q1–Q9 does not literally name Q4; do not expand ranges or invent a quotation. If no explicit named passage is available, preserve the uncertainty.
+A generic family description is not an extra synthesized material when it only summarizes already identified members. Do not put chemically different controls or different monomer-feed formulations inside one exact-identity card, then repeat them as separate cards. Preserve a source-defined broad family only when its scope is explicitly identified in description/role. Put numerical measurements of a named member in that specific member's card, never in a generic family card. Unknown member identity must remain for review rather than transferring the number to the family.
 Keep a matrix distinct from its salt-containing/wet/composite specimen; model these as linked specimens rather than automatic aliases. Distinct polymers must never share results without explicit evidence. Preserve chemical names, slashes, ratios, units and original number notation. Do NOT split a name at '/', 'and' or 'or'. Source origin is the origin of the polymer itself, not whether a monomer was bought.
 
 Every asserted identity, classification, alias, description, role, specimen and card fact requires evidence:[{chunk_id,quote}]. Quotes are verbatim contiguous spans of the supplied chunk; retain original symbols and enough context for scientific attribution. Never invent page/chunk IDs. A quote containing a number is not sufficient if it describes another sample. Do not guess a polymer's textbook monomers or expand names/aliases without source support. Empty information is better than an unsupported fact.
@@ -22,7 +23,7 @@ OUTPUT JSON ONLY
 Return {"paper_id":"the supplied ID","entities":[...]}.
 Each entity has:
 {
- "entity_id":"p1", "name":"original material name", "identity_evidence":[{"chunk_id":"provided","quote":"verbatim"}],
+ "entity_id":"p1", "name":"original material name", "identity_kind":"specific_polymer", "identity_evidence":[{"chunk_id":"provided","quote":"verbatim"}],
  "classification":{"is_polymer":true,"reason":"why the source supports polymer identity","evidence":[{"chunk_id":"provided","quote":"verbatim"}]},
  "aliases":[], "description":null, "role":null,
  "specimens":[{"specimen_id":"p1-film","label":"exact tested formulation/state","evidence":[{"chunk_id":"provided","quote":"verbatim"}]}],
@@ -41,10 +42,12 @@ Group status is reported, not_found_in_provided_text, needs_review, or conflicti
 
 GROUP DETAILS
 monomers: list reactive building blocks, distinguishing monomer, polymeric reactant, chain extender, etc. Optional role describes the ingredient. Do not call every reagent a monomer.
-composition: keep components and quantities together. Every item MUST contain basis, with the source-supported basis such as monomer_feed_molar_ratio, polymer_salt_mass_ratio, mass_ratio, concentration or component_amounts. If the supplied evidence does not establish the basis, set basis:null and status:needs_review; do not guess. A 1:2.4:1 monomer feed molar ratio and a 2:1 polymer:salt mass ratio are different observations. Always include specimen_id, using null when no specimen-specific link is established. Do not put a molecular-weight observation in composition; it is a property. Review Methods/Preparation and not only Results for recipe information before declaring this group not found.
+composition: keep components and quantities together. Every item MUST contain basis, with the source-supported basis such as monomer_feed_molar_ratio, polymer_salt_mass_ratio, mass_ratio, concentration or component_amounts. If the supplied evidence does not establish the basis, set basis:null and status:needs_review; do not guess. A monomer feed molar ratio and a later polymer:salt mass ratio are different observations. Always include specimen_id, using null when no specimen-specific link is established. Do not put a molecular-weight observation in composition; it is a property. Review Methods/Preparation and not only Results for recipe information before declaring this group not found.
 synthesis_text: allow a meaningful source-grounded process description, with original evidence. Distinguish polymer synthesis from casting/adding salt/preparing a specimen. Always include specimen_id; null means no optional specimen-specific link. Using a purchased precursor to synthesize another polymer is not synthesis of the precursor.
 properties: each item has entity_id, property, value(original raw text), unit(original text or null when not given/applicable), specimen_id, specimen_evidence:[{chunk_id,quote}] and conditions:[{name,value,evidence}]. Every condition has its own source evidence. specimen_evidence must connect this observation to the EXACT tested form: attach Methods/Preparation or other explicit linking context in addition to the numerical Results quote. The mere existence of a specimen ID or a quote containing its broad polymer name is not sufficient. If the numerical Results sentence uses a short name, resolve it using the testing/preparation context; never assume it means the neat polymer. If the subject cannot be resolved, set specimen_id:null, specimen_evidence:[], and the group status:needs_review. Do not invent a specimen to satisfy the format.
+The sample-link evidence must support the chosen form, not merely name it alongside alternatives. If it describes adding salt or electrolyte, link the observation to that electrolyte specimen rather than to the bare matrix. A numerical comparison alone is not a sample preparation link. Use the experiment's Methods context (including electrochemical testing) to resolve author shorthand. A purified chromatography sample, reaction solution, cast neat film, wetted membrane and operating cell are distinct measurement subjects. Give a source-supported GPC/chromatography sample its own specimen instead of assigning its molecular-weight result to a film or leaving an established sample unresolved. Keep qualitative family statements separate from quantitative member results.
 Property value and unit must occur in their supporting quotes. Preserve numeric notation, superscripts, uncertainty and ranges instead of converting them or reading a component number as the complete value. Retain separate records for equal numbers at different conditions, different specimens or different sources. A comparator sentence can contain many materials and numbers; identify which subject owns each number before linking it. No implicit interpolation or transfer from neat polymer to salted/wetted specimen. Include source-reported temperature, wet/dry state, atmosphere and protocol where attributable to that specimen; mark uncertain context for review.
+Preserve limit/approximation qualifiers as part of the raw value, including words such as beyond or approximately and symbols such as > or ~. If Methods and Results report different values or sample states, retain both source-qualified observations and mark unresolved conflicts; do not silently choose one or claim the same sample when that link is uncertain. A healing metric must retain its source-defined meaning, with the defining Methods passage attached rather than assuming strength recovery.
 applications: add claim_type:demonstrated, proposed, or unspecified. For demonstrated, cite actual current-paper Results/Methods showing the use, not only an Introduction sentence saying propose or a cited prior study. A property experiment is not automatically a demonstrated device application. Component roles such as cathode binder are reported uses when explicitly described, even if the polymer is commercial. Reconcile uses already identified in role/Methods with this group before declaring not found. Applications are descriptions, not pass/fail criteria.
 source_tag: value is author_synthesized or commercially_purchased, supported specifically for THIS polymer. If unestablished, return an empty group. Buying inputs does not mean buying the final polymer.
 
@@ -103,7 +106,9 @@ def _schema():
             "status": {"type": "string", "enum": ["reported", "not_found_in_provided_text", "needs_review", "conflicting"]},
             "items": _array(_ref(item)),
         })
-    entity = {"entity_id": text, "name": text, "identity_evidence": evidence,
+    entity = {"entity_id": text, "name": text,
+              "identity_kind": {"type": ["string", "null"], "enum": ["specific_polymer", "polymer_family", None]},
+              "identity_evidence": evidence,
               "classification": _ref("classification"), "aliases": _array(_ref("text_fact")),
               "description": {"anyOf": [_ref("text_fact"), {"type": "null"}]},
               "role": {"anyOf": [_ref("text_fact"), {"type": "null"}]},
@@ -120,7 +125,7 @@ def build_response_format():
     Semantic correctness is deliberately left to source-based validation/review.
     """
     return {"type": "json_schema", "json_schema": {
-        "name": "polymer_cards_strict_v1", "strict": True, "schema": _schema()}}
+        "name": "polymer_cards_strict_v2", "strict": True, "schema": _schema()}}
 
 
 def worked_example():
@@ -139,7 +144,7 @@ def worked_example():
     def group(*items):
         return {"status": "reported" if items else "not_found_in_provided_text", "items": list(items)}
     entity = {
-        "entity_id": "p1", "name": "P1", "identity_evidence": ev("example-method"),
+        "entity_id": "p1", "name": "P1", "identity_kind": "specific_polymer", "identity_evidence": ev("example-method"),
         "classification": {"is_polymer": True, "reason": "The source explicitly calls P1 a polymer.",
                            "evidence": ev("example-method")},
         "aliases": [], "description": None, "role": None,

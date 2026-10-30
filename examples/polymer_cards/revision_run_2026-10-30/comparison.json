@@ -1,0 +1,177 @@
+{
+  "created_date": "2026-10-30",
+  "stages": {
+    "prior_live_run": {
+      "papers": [
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "raw_entities": 7,
+          "draft_cards": 7,
+          "identity_review": 0,
+          "fact_review": 5,
+          "validation_flags": 6,
+          "advisory_warnings": 9,
+          "composition_cards": 4,
+          "composition_entries": 7
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "raw_entities": 6,
+          "draft_cards": 6,
+          "identity_review": 0,
+          "fact_review": 8,
+          "validation_flags": 8,
+          "advisory_warnings": 0,
+          "composition_cards": 3,
+          "composition_entries": 6
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "raw_entities": 12,
+          "draft_cards": 6,
+          "identity_review": 6,
+          "fact_review": 9,
+          "validation_flags": 19,
+          "advisory_warnings": 0,
+          "composition_cards": 1,
+          "composition_entries": 1
+        }
+      ],
+      "totals": {
+        "raw_entities": 25,
+        "draft_cards": 19,
+        "identity_review": 6,
+        "fact_review": 22,
+        "validation_flags": 33,
+        "advisory_warnings": 9,
+        "composition_cards": 8,
+        "composition_entries": 14
+      },
+      "declared_scope_counts": {
+        "legacy_undeclared": 19
+      }
+    },
+    "same_proposals_new_guards_zero_calls": {
+      "papers": [
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "raw_entities": 7,
+          "draft_cards": 7,
+          "identity_review": 0,
+          "fact_review": 8,
+          "validation_flags": 9,
+          "advisory_warnings": 6,
+          "composition_cards": 4,
+          "composition_entries": 7
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "raw_entities": 6,
+          "draft_cards": 6,
+          "identity_review": 0,
+          "fact_review": 9,
+          "validation_flags": 9,
+          "advisory_warnings": 0,
+          "composition_cards": 3,
+          "composition_entries": 6
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "raw_entities": 12,
+          "draft_cards": 6,
+          "identity_review": 6,
+          "fact_review": 9,
+          "validation_flags": 19,
+          "advisory_warnings": 0,
+          "composition_cards": 1,
+          "composition_entries": 1
+        }
+      ],
+      "totals": {
+        "raw_entities": 25,
+        "draft_cards": 19,
+        "identity_review": 6,
+        "fact_review": 26,
+        "validation_flags": 37,
+        "advisory_warnings": 6,
+        "composition_cards": 8,
+        "composition_entries": 14
+      },
+      "declared_scope_counts": {
+        "legacy_undeclared": 19
+      }
+    },
+    "new_source_grounded_model_revision": {
+      "papers": [
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "raw_entities": 7,
+          "draft_cards": 7,
+          "identity_review": 0,
+          "fact_review": 4,
+          "validation_flags": 5,
+          "advisory_warnings": 4,
+          "composition_cards": 4,
+          "composition_entries": 7
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "raw_entities": 6,
+          "draft_cards": 6,
+          "identity_review": 0,
+          "fact_review": 3,
+          "validation_flags": 3,
+          "advisory_warnings": 0,
+          "composition_cards": 4,
+          "composition_entries": 7
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "raw_entities": 12,
+          "draft_cards": 12,
+          "identity_review": 0,
+          "fact_review": 10,
+          "validation_flags": 10,
+          "advisory_warnings": 0,
+          "composition_cards": 2,
+          "composition_entries": 4
+        }
+      ],
+      "totals": {
+        "raw_entities": 25,
+        "draft_cards": 25,
+        "identity_review": 0,
+        "fact_review": 17,
+        "validation_flags": 18,
+        "advisory_warnings": 4,
+        "composition_cards": 10,
+        "composition_entries": 18
+      },
+      "declared_scope_counts": {
+        "polymer_family": 5,
+        "specific_polymer": 20
+      }
+    }
+  },
+  "usage_completed_revision_requests": {
+    "prompt_tokens": 121107,
+    "completion_tokens": 52356,
+    "total_tokens": 173463
+  },
+  "focused_identity_cases": {
+    "matched_focused_expectation": 6
+  },
+  "focused_measurement_cases": {
+    "matched_focused_expectation": 6,
+    "needs_source_review": 3
+  },
+  "checked_pei_full_context_cases": {
+    "needs_source_review": 6
+  },
+  "limits": [
+    "Source-grounded revision of saved proposals, not fresh extraction or a blind accuracy benchmark.",
+    "The checked card and reference answers were not supplied to the model.",
+    "Counts and case matches are not precision, recall or overall scientific accuracy.",
+    "P4 keeps a different source-native value phrase; no post-hoc conversion to the reference percentage was made."
+  ]
+}

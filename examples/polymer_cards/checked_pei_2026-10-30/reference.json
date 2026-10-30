@@ -1,0 +1,78 @@
+{
+  "paper_id": "10.1038/s41467-023-43467-w",
+  "entity_id": "pei-bhds",
+  "name": "PTMG-HDI-BHDS",
+  "identity_kind": "specific_polymer",
+  "origin": "assistant_source_checked_reference_not_human_gold",
+  "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+  "original_hash_verified_locally": true,
+  "text_transformations": [
+    "jats_script_notation_v1"
+  ],
+  "all_six_groups_populated": true,
+  "expected_group_item_counts": {
+    "monomers": 3,
+    "composition": 3,
+    "synthesis_text": 3,
+    "properties": 6,
+    "applications": 2,
+    "source_tag": 1
+  },
+  "expected_measurements": [
+    {
+      "property": "breaking strength",
+      "value": "88.3",
+      "unit": "MPa",
+      "specimen_id": "bhds-film"
+    },
+    {
+      "property": "ultimate elongation",
+      "value": "2000%",
+      "unit": "%",
+      "specimen_id": "bhds-film"
+    },
+    {
+      "property": "number-average molecular weight (M_{n}) during polymerization",
+      "value": "7.3 × 10⁵",
+      "unit": "g mol⁻¹",
+      "specimen_id": "bhds-monitoring-solution"
+    },
+    {
+      "property": "ionic conductivity",
+      "value": "2.4 × 10⁻⁴",
+      "unit": "S cm⁻¹",
+      "specimen_id": "bhds-lifsi"
+    },
+    {
+      "property": "electrochemical voltage limit reported by LSV",
+      "value": "beyond 5.0",
+      "unit": "V",
+      "specimen_id": "bhds-lifsi"
+    },
+    {
+      "property": "Li⁺ transference number",
+      "value": "0.81",
+      "unit": null,
+      "specimen_id": "bhds-lifsi"
+    }
+  ],
+  "specific_checks": [
+    "Monomer-feed molar ratio1:2.4:1 is distinct from polymer:LiFSI mass ratio2:1.",
+    "88.3MPa and2000% belong to the matrix film; conductivity and LSV belong to the LiFSI electrolyte.",
+    "Mn7.3×10⁵ belongs to BHDS polymerization monitoring, not to PTMG-HDI control.",
+    "40°C and8h describe the polymerization reaction; the GPC instrument temperature is not established.",
+    "beyond5.0 retains a limit qualifier and is not exact5.0.",
+    "Demonstrated uses cite Results assembly/mechanism passages.",
+    "The 8 h polymerization-monitoring observation is retained separately from the 12 h synthesis stirring step; they are not silently treated as the same measurement protocol."
+  ],
+  "remaining_unknowns": [
+    "No additional unambiguous material-specific aliases identified in selected source.",
+    "Tensile-test temperature, specimen dimensions, repeat count and uncertainty are not established in selected main-text passages.",
+    "GPC instrument temperature, final isolated yield and residual-solvent content are not established.",
+    "No supplementary material or graph-only data was inspected.",
+    "The voltage limit is an LSV observation under stated conditions, not a certified full-cell operating voltage.",
+    "The reported monomer-feed molar ratio does not establish a separately measured final incorporated repeat-unit composition."
+  ],
+  "not_a_benchmark": true,
+  "not_used_in_model_prompt": true
+}

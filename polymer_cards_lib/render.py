@@ -208,11 +208,22 @@ def _attribution_warning_text(warning: Dict) -> str:
     return "; ".join(parts) or "The material/sample relationship needs source review."
 
 
+def _record_type(card: Dict) -> str:
+    if "identity_kind" not in card:
+        return ""
+    kind = card["identity_kind"]
+    labels = {"specific_polymer": "Specific polymer", "polymer_family": "Polymer family"}
+    label = labels.get(kind, "Scope unresolved") if isinstance(kind, str) else "Scope unresolved"
+    return "Declared record type: " + label
+
+
 def _card_html(card: Dict, document: Dict, number: int) -> str:
     name = card.get("name", "Unnamed polymer")
     content = ['<article class="polymer-card" id="card-' + str(number) + '">', "<h2>" + _h(name) + "</h2>",
                '<p class="identity">Polymer record · ' + _h(document.get("paper_id")) + "</p>",
                _evidence_html(card.get("identity_evidence"), document)]
+    if _record_type(card):
+        content.append('<p class="identity">' + _h(_record_type(card)) + '</p>')
     warnings = card.get("attribution_warnings", [])
     if warnings:
         content.append('<aside class="attribution-warning"><strong>Sample/material link needs review</strong><ul>'
@@ -373,6 +384,8 @@ def render_markdown(results: List[Dict], documents: List[Dict], run_metadata: Di
         lines.extend(["## " + _md(document.get("title") or pid), "", "Paper: " + _md(pid), ""])
         for card in result.get("cards", []):
             lines.extend(["### " + _md(card.get("name", "Unnamed polymer")), "", _evidence_md(card.get("identity_evidence"), document)])
+            if _record_type(card):
+                lines.extend([_md(_record_type(card)), ""])
             warnings = card.get("attribution_warnings", [])
             if warnings:
                 lines.extend(["**Sample/material link needs review**", ""])

@@ -1,0 +1,172 @@
+{
+  "documents": [
+    {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "title": "Interfacial self-healing polymer electrolytes for long-cycle solid-state lithium-sulfur batteries",
+      "domains": [
+        "disulfide",
+        "batteries"
+      ],
+      "source_files": [
+        {
+          "path": "/Volumes/Seagate/research /AutoSchema/examples/polymer_cards/checked_pei_2026-10-30/source-excerpts.json",
+          "format": "json",
+          "source_part": "main",
+          "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+          "coverage": "selected_excerpts",
+          "bytes": 23746,
+          "license": "CC BY 4.0",
+          "attribution": "Pei et al. (2024), Interfacial self-healing polymer electrolytes for long-cycle solid-state lithium-sulfur batteries, DOI10.1038/s41467-023-43467-w. Superscripts/subscripts were converted using jats_script_notation_v1; original XML hash was verified locally.",
+          "url": "https://doi.org/10.1038/s41467-023-43467-w",
+          "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "declared_coverage": "selected_excerpts_of_notation_preserving_JATS_conversion"
+        }
+      ],
+      "chunks": [
+        {
+          "chunk_id": "src-fc7163e473a711c15d85",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "text": "Poly(ether-urethane) polymers are usually formed by stepwise polymerization of polyalcohols and polyisocyanates, and the urethane repeat group (-NH-COO-) is formed in the main framework^{37,38}. Selection of monomers with appropriate molecular weights is very important, and the activity of the terminal hydroxyl is affected by the lengths of the molecular chains (Supplementary Fig. 1). Polytetrahydrofuran (PTMG) with a low molecular weight (Mw=2,000 g mol⁻¹) and ether-oxygens was chosen as the soft segment to dissociate and conduct the lithium ions (Li⁺)³⁹. The terminal hydroxyls of PTMG reacted readily with hexamethylene diisocyanate (HDI) to generate -NH-COO- groups (Fig. 1a). On this basis, the poly(ether-urethane) with self-healing character (PTMG-HDI-BHDS) was synthesized by introducing 2-hydroxyethyl disulfide (BHDS) as a chain extender, and the hydroxyl groups of BHDS were polymerized with excess -N = C = O. The repeated reaction nodes -NH-COO- in the polymer chain formed a rich hydrogen bond network^{40,41}. The reaction conditions were mild and very easily scaled up to the kilogram level (Supplementary Fig. 2). Moreover, by introducing the dynamic disulfide bonds with low bond dissociation energy into the poly(ether-urethane), rearrangement of the disulfide bonds occurs readily at low temperatures and without external stimulation to enable rapid self-healing of PTMG-HDI-BHDS at room temperature (Fig. 1b)^{42–45}.Fig. 1Schematic illustration of the polymer electrolyte structure and structural comparison of solid-state Li-S batteries.a Chemical structures of PTMG-HDI and PTMG-HDI-BHDS. b Schematic structures of the dynamic covalent disulfide bonds and hydrogen bonds in PTMG-HDI-BHDS. c Structure of a conventional laminated solid-state Li-S battery. d Structure of the integrated electrode/electrolyte and solid-state Li-S battery.",
+          "source_part": "main",
+          "locator": "Results / Structural design of SPEs and integrated SSLMBs, paragraph 6",
+          "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+          "source_path": "/Volumes/Seagate/research /AutoSchema/examples/polymer_cards/checked_pei_2026-10-30/source-excerpts.json",
+          "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "original_hash_status": "declared_provenance_not_reverified_from_excerpt"
+        },
+        {
+          "chunk_id": "src-d1659b2c731d650cec05",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "text": "The synthesis of PTMG-HDI-BHDS involved the introduction of the chain extender BHDS into the PTMG-HDI. Briefly, 2.5 g (1.25 mmol) of PTMG, 500 μL (3.0 mmol) of HDI, and 5 μL of DBTDL were dissolved in 5 mL of CH₂Cl₂ and stirred at 40 °C for 1 h in a N₂-filled glove box, and then 200 μL (1.25 mmol) of BHDS was added to the above solution. The final molar ratio of the monomers (PTMG:HDI:BHDS) was 1:2.4:1. Subsequently, 5 mL of DMAc was added into the reaction mixture every 2 h and repeated 3 times, and stirred for 12 h to obtain the PTMG-HDI-BHDS solution.",
+          "source_part": "main",
+          "locator": "Methods / Preparation of PTMG-HDI-BHDS, paragraph 26",
+          "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+          "source_path": "/Volumes/Seagate/research /AutoSchema/examples/polymer_cards/checked_pei_2026-10-30/source-excerpts.json",
+          "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "original_hash_status": "declared_provenance_not_reverified_from_excerpt"
+        },
+        {
+          "chunk_id": "src-7c5b298f79cb980971cc",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "text": "The PTMG-HDI-BHDS solution was further cast on a polytetrafluoroethylene plate, and an optically transparent film was obtained after solvent evaporation (Supplementary Fig. 4). Compared with those of PEO and PTMG-HDI, the scanning electron microscopy (SEM) images showed that the surface of PTMG-HDI-BHDS was very dense and smooth (Supplementary Fig. 5). The crystallinity status was analyzed with XRD (Fig. 2c). PEO presented two strong peaks at approximately 19.5° and 23.6°. After the polymer chains of PTMG-HDI were extended with BHDS, the peak intensities for PTMG-HDI-BHDS and PTMG-HDI-BHDS/LiFSI were obviously reduced, and the decreased crystallinity improved the Li⁺ mobility and ion conductivity⁴⁷.",
+          "source_part": "main",
+          "locator": "Results / Material fabrication and characterization of the SPEs, paragraph 9",
+          "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+          "source_path": "/Volumes/Seagate/research /AutoSchema/examples/polymer_cards/checked_pei_2026-10-30/source-excerpts.json",
+          "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "original_hash_status": "declared_provenance_not_reverified_from_excerpt"
+        },
+        {
+          "chunk_id": "src-115302e48390d0fe7a91",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "text": "The breaking strength and ultimate elongation of PTMG-HDI-BHDS were 88.3 MPa and 2000%, respectively, which were significantly higher than those of PEO (17.8 MPa) and PTMG-HDI (31.2 MPa) (Fig. 2d, 2e and Supplementary Fig. 6)^{48–50}. This was attributed to the extended hydrogen-bond network and the increased molecular weight caused by the chain extender, indicating that PTMG-HDI-BHDS could theoretically serve as a mechanical barrier to suppress Li dendrites growth⁵¹. The self-healing ability of PTMG-HDI-BHDS was evaluated with the artificially stained method, and rhodamine B was added to the colorless PTMG-HDI-BHDS solution to obtain a red film (Fig. 2f and Supplementary Fig. 7). The PTMG-HDI-BHDS film segments with different colors completely merged into an integral block, and the self-healing interfaces were strong enough to withstand a tensile force along the direction vertical to the cut surface. Furthermore, the self-healing behavior was also confirmed by analyzing the PTMG-HDI-BHDS film after scratching with a scalpel (Supplementary Fig. 8). As shown in the Fourier transform infrared spectrum (ATR-FTIR) (Fig. 2g), a strong C-O-C stretching vibrational peak appeared at approximately 1102 cm⁻¹, and peaks for the urethane groups (-NH stretching vibration at 3325 cm⁻¹ and C = O stretching vibration at 1719 cm⁻¹) and disulfide bonds (approximately 635 cm⁻¹) were clearly observed after polymerization, suggesting successful synthesis of the PTMG-HDI-BHDS. The peak for the C = O groups were split into two peaks, one of which was blue shifted to approximately 1680 cm⁻¹ due to the formation of strong hydrogen bonds between the -NH-COO- groups (Fig. 2g and Supplementary Fig. 9). The functional groups of the pristine and self-healed PTMG-HDI-BHDS were well coincident by ATR-FTIR, and the mechanical strength of the self-healed PTMG-HDI-BHDS were very close to the original value (Supplementary Fig. 10).",
+          "source_part": "main",
+          "locator": "Results / Material fabrication and characterization of the SPEs, paragraph 10",
+          "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+          "source_path": "/Volumes/Seagate/research /AutoSchema/examples/polymer_cards/checked_pei_2026-10-30/source-excerpts.json",
+          "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "original_hash_status": "declared_provenance_not_reverified_from_excerpt"
+        },
+        {
+          "chunk_id": "src-8bc608870b143b549de5",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "text": "Both PTMG-HDI and PTMG-HDI-BHDS solutions exhibited uniform and transparent gel states (Fig. 2a). The difference was that the wall hanging time of PTMG-HDI-BHDS was significantly longer than that of PTMG-HDI, because the molecular weight and viscosity of PTMG-HDI-BHDS were increased by the introduction of a chain extender. The real-time polymerization process of PTMG-HDI-BHDS was monitored, and the average molecular weight (M_{n}) and viscosity (η) were measured with gel permeation chromatography (GPC) (Fig. 2b). The viscosity increased synchronously with the molecular weight during a reaction time of 8 h at 40 °C, and M_{n} and η ultimately reached 7.3 × 10⁵ g mol⁻¹ and 1.3 × 10⁴ cps, respectively, which were significantly higher than those of PTMG-HDI. The prepared poly(ether-urethane)-based polymer can be stored for a long time due to its excellent thermal and chemical stability (Supplementary Fig. 3).Fig. 2Structural characterization of the polymers.a Viscosity contrast optical photographs of PTMG-HDI and PTMG-HDI-BHDS after polymerization. b Variations in molecular weight (red point) and viscosity (blue point) during the polymerization process. c XRD patterns of the polymers and PTMG-HDI-BHDS/LiFSI. d Stress‒strain curves for the polymers. e Photographs of the stress‒strain measurements of the PTMG-HDI-BHDS. f The interfacial self-healing process of PTMG-HDI-BHDS. g ATR-FTIR spectra of the polymers. h\n¹H NMR spectrum of PTMG-HDI-BHDS. i Comparison of the XPS survey spectra. j C 1s XPS data for PTMG-HDI-BHDS.",
+          "source_part": "main",
+          "locator": "Results / Material fabrication and characterization of the SPEs, paragraph 8",
+          "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+          "source_path": "/Volumes/Seagate/research /AutoSchema/examples/polymer_cards/checked_pei_2026-10-30/source-excerpts.json",
+          "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "original_hash_status": "declared_provenance_not_reverified_from_excerpt"
+        },
+        {
+          "chunk_id": "src-6524f9582cedc0d6c138",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "text": "Poly(ethylene oxide) (PEO, Mw = 6 × 10⁵ g mol⁻¹) and lithium bis(fluorosulfonyl)imide (LiFSI) were dissolved in acetonitrile with a mass ratio of 2:1 (PEO: LiFSI) to form a uniform PEO/LiFSI solution. The PTMG-HDI and PTMG-HDI-BHDS polymer solutions were mixed with LiFSI in dimethylacetamide (DMAc) at a mass ratio of 2:1 (polymer: LiFSI) and stirred for 3 h. These viscous solutions were degassed under vacuum, cast into a Teflon mold, and then dried in a vacuum oven at 65 °C for 48 h to obtain the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes.",
+          "source_part": "main",
+          "locator": "Methods / Preparation of the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes, paragraph 27",
+          "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+          "source_path": "/Volumes/Seagate/research /AutoSchema/examples/polymer_cards/checked_pei_2026-10-30/source-excerpts.json",
+          "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "original_hash_status": "declared_provenance_not_reverified_from_excerpt"
+        },
+        {
+          "chunk_id": "src-85520225f19b69cfbf86",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "text": "The Li⁺ conductivities of the SPEs at temperatures ranging from 25 to 80 °C are presented in Fig. 3a and Supplementary Fig. 14. The dual-integrated SS|PTMG-HDI-BHDS|SS (SS stands for sheet steel) cell was assembled by fitting two integrated SS@SPEs together, and the total thickness of the bonded SPE was approximately 200 μm to reduce the measurement error (Supplementary Fig. 15). By adjusting the amount of LiFSI, the optimal weight ratio of polymer:LiFSI=2:1 was established (Supplementary Fig. 16). PTMG-HDI-BHDS/LiFSI (2.4 × 10⁻⁴ S cm⁻¹) exhibited a significantly higher ionic conductivity than PTMG-HDI/LiFSI (6.5 × 10⁻⁵ S cm⁻¹) and PEO/LiFSI (1.2 × 10⁻⁵ S cm⁻¹) at 30 °C, indicating that the strong interfacial self-healing and adhesion significantly decreased the interfacial resistance of the SS@SPE, and the amorphous polymer skeleton enabled fast Li⁺ transport. The ionic conductivities at different temperatures are presented in Fig. 3b. The lowest activation energy was seen in the Arrhenius plot for PTMG-HDI-BHDS/LiFSI (Ea = 0.30 eV), and it reflected a lower Li⁺ migration barrier compared to those of PTMG-HDI/LiFSI and PEO/LiFSI, which improved the rate performance of the battery.Fig. 3Electrochemical characterization of the SPEs.a ElS data for PTMG-HDI-BHDS/LiFSI determined at different temperatures. b Temperature-dependent ionic conductivities of the SPEs. c Raman spectra and the corresponding fitting curves for the S-N-S stretching vibrational mode of the SPEs. d Calculated lowest unoccupied molecular orbitals (LUMOs) of PEO and PTMG and their binding energies with Li⁺. e Linear scan voltammograms for the SPEs. f Chronoamperometry curve and AC impedance spectra before and after polarization of the Li|PTMG-HDI-BHDS|Li symmetric cell.",
+          "source_part": "main",
+          "locator": "Results / Electrochemical characterization of the SPEs, paragraph 13",
+          "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+          "source_path": "/Volumes/Seagate/research /AutoSchema/examples/polymer_cards/checked_pei_2026-10-30/source-excerpts.json",
+          "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "original_hash_status": "declared_provenance_not_reverified_from_excerpt"
+        },
+        {
+          "chunk_id": "src-5d598cf3569a0bb57b72",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "text": "The linear sweep voltammograms (LSV) for the asymmetrical cells indicated that PTMG-HDI-BHDS/LiFSI displayed a wider electrochemical voltage beyond 5.0 V than PEO (3.8 V) and PTMG-HDI (4.1 V), which is valuable for high-voltage (e.g., LiNi_{0.8}Co_{0.1}Mn_{0.1}O₂) battery systems, the corresponding PEO and PTMG-HDI showed significantly poor compatibility (Fig. 3e and Supplementary Fig. 17). The improved interfacial electrochemical stability of PTMG-HDI-BHDS/LiFSI was attributed to the adjacent electron-donating groups of the urethane, which suppressed decomposition of the adjacent E-O segments. In addition, the exceptionally high Li⁺ transference number (t_{Li}⁺ = 0.81) for PTMG-HDI-BHDS/LiFSI could inhibit the formation of space charge near the Li anode and reduce dendrite formation at a high current density (Fig. 3f). The abundant urethane groups generated an extended -NH-···F hydrogen bond network with the FSI^{–} anions, which hindered the transport of FSI^{–} to a certain extent⁵⁴. This was confirmed by the upfield displacement of the peak for FSI^{–} in the ¹⁹F spectrum (Supplementary Fig. 18).",
+          "source_part": "main",
+          "locator": "Results / Electrochemical characterization of the SPEs, paragraph 15",
+          "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+          "source_path": "/Volumes/Seagate/research /AutoSchema/examples/polymer_cards/checked_pei_2026-10-30/source-excerpts.json",
+          "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "original_hash_status": "declared_provenance_not_reverified_from_excerpt"
+        },
+        {
+          "chunk_id": "src-f5a8a275fe65ec830001",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "text": "The SEM analysis was carried out on FEI Nova NanoSEM450 microscope operated at 10 kV. FTIR spectra were measured using a Nicolet iS50 FT/IR Spectrometer (ThermoFisher) with a diamond-attenuated total reflectance attachment. Mechanical testing was carried out on an Instron 5565 testing stain using a strain rate of 5 cm min⁻¹. Powder X-ray diffraction (PXRD) analysis was characterized by X-ray powder diffraction (XRD, Cu Ka radiation, Rigaku Ultima IV) with a scanning rate of 2° min⁻¹. XPS tests were performed on ThermoFisher Thermo Scientific KAlpha+ . ¹H NMR and ¹⁹F NMR spectra of all samples were collected on a Bruker 500 NMR MHz, CDCl₃ and DMSO-d6 were used as a deuterated solvent and tetramethylsilane as an internal reference, respectively. All samples were dissolved in the solvent to form transparent solutions with a concentration of 10 mg mL⁻¹. The XPS testing was carried out using a Physical Electronics Quantera scanning X-ray microprobe, and XPS depth profiling was conducted using argon sputtering. To avoid side reactions or electrode contamination with ambient oxygen and moisture, cycled Li anodes were obtained by disassembling CR2032 coin cells in the glove box with O₂ and H₂O level <0.1 ppm and then washing them with dimethyl ether (DME). Li metal samples were transported from the glovebox to the SEM and XPS instruments in a hermetically sealed container filled with argon gas, all XPS data were normalized relative to the C 1s binding energy of 284.7 eV. Gel permeation chromatography (GPC) was carried out in DMF on two PolyPore columns (Agilent) connected in series with a DAWN multiangle laser light scattering (MALLS) detector.",
+          "source_part": "main",
+          "locator": "Methods / Material characterization, paragraph 29",
+          "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+          "source_path": "/Volumes/Seagate/research /AutoSchema/examples/polymer_cards/checked_pei_2026-10-30/source-excerpts.json",
+          "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "original_hash_status": "declared_provenance_not_reverified_from_excerpt"
+        },
+        {
+          "chunk_id": "src-705d4d9258f66326a788",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "text": "The ionic conductivities of the solid composite electrolytes at different temperatures were measured by sandwiching the SPEs between two steel sheets in CR2032 cells and the frequency range was 0.1–10⁶ Hz. The ionic conductivity σ was calculated by the equation σ = L/(RS), where R is the total resistance of the solid electrolyte, L is the sample thickness, and S is the area of the solid electrolyte. The Li⁺ transference number (t_{Li}⁺) was obtained using a symmetric Li||Li cell by a chronoamperometry test with a DC voltage amplitude of 50 mV. The EIS tests were taken before and after DC polarization. The t_{Li}⁺ can be calculated according to t_{Li}⁺ = I_{s}(ΔV − R₀I₀)/[I₀(ΔV−R_{s}I_{s})], where I₀ and I_{s} are the initial and steady-state DC current, respectively; R₀ and R_{s} are the initial and steady-state interfacial resistances, respectively. The electrochemical stabilities of the SPEs were evaluated at a scan rate of 10 mV s⁻¹ from 0 to 6 V at room temperature.",
+          "source_part": "main",
+          "locator": "Methods / Electrochemical characterization, paragraph 30",
+          "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+          "source_path": "/Volumes/Seagate/research /AutoSchema/examples/polymer_cards/checked_pei_2026-10-30/source-excerpts.json",
+          "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "original_hash_status": "declared_provenance_not_reverified_from_excerpt"
+        },
+        {
+          "chunk_id": "src-15c1ef1d47fb1a027978",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "text": "A PTMG-HDI-BHDS/LiFSI solution was used to wet the anode and cathode (Supplementary Fig. 26). The precursor solutions were cast onto the surface of the cathodes, and integrated SPAN@SPE and Li@SPE were formed simultaneously after solvent evaporation (Supplementary Fig. 27 and Supplementary Fig. 28). The SPAN|PTMG-HDI-BHDS|Li cells were assembled by simply fitting the integrated SPAN@SPE with Li@SPE. As shown in Fig. 5a and Supplementary Fig. 29, after activation at 0.05 C (1 C = 1000 mAh g_{SPAN}⁻¹) between 1.0 and 3.0 V, SPAN|PTMG-HDI-BHDS|Li delivered an initial discharge capacity of 602 mAh g_{SPAN}⁻¹ at 0.3 C. After 400 cycles, the discharge capacities were 606, 363, 180, and 124 mAh g_{SPAN}⁻¹ for the integrated SPAN|PTMG-HDI-BHDS|Li, laminated SPAN|PTMG-HDI-BHDS|Li, integrated SPAN|PTMG-HDI|Li and laminated SPAN|PEO|Li cells, which represented 99.7%, 60.7%, 30.9% and 29.3% of their initial capacities at 0.3 C, respectively. A reversible discharge capacity of 560 mAh g_{SPAN}⁻¹ and a Coulombic efficiency above 99% was retained after 700 cycles with the PTMG-HDI-BHDS electrolyte, and the high cycling stability (93% capacity retention) was significantly superior to those of most solid-state Li-S batteries reported thus far (Supplementary Table 2). It is worth noting that the cells show good consistency and highly reproducible electrochemical performance (Supplementary Fig. 30). The rate performance of the integrated SPAN|SPEs|Li cell was further evaluated (Fig. 5b and 5c). The discharge capacities of the SPAN|PTMG-HDI-BHDS|Li cell from 0.1 to 1.0 C were 641, 611, 594, 588, 582, 576, 570, 563, and 557 mAh g_{SPAN}⁻¹, respectively. When the current density was switched back to 0.1 C, a high discharge capacity was recovered and maintained for the next 200 cycles, and the performance was significantly better than those of the laminated SPAN|PTMG-HDI-BHDS|Li, integrated SPAN|PTMG-HDI|Li and laminated SPAN | PEO|Li cells at all tested rates. The SPAN|PTMG-HDI-BHDS|Li cell with a high loading cathode (SPAN: 6.8 mg cm⁻²) delivered a high discharge capacity of 647 mAh g⁻¹ with a high areal capacity of 4.4 mAh cm⁻² at 0.1 C and remained stable over 110 cycles (Supplementary Fig. 31). This provides a promising strategy for the design of high-energy-density solid-state Li-S batteries. The cycling performance of the SPAN | PTMG-HDI-BHDS|Li pouch cell was investigated. A digital photograph shows that the cell battery powered an LED lamp at room temperature (Fig. 5d and Supplementary Fig. 32). The total discharge capacity in the first cycle was as high as 216 mAh (611.8 mAh g_{SPAN}⁻¹) at 0.3 C, and the pouch cell exhibited a discharge capacity of 561 mAh g_{SPAN}⁻¹ with 91.7% capacity retention after 250 cycles.Fig. 5Electrochemical performance of the solid-state Li-S batteries.a Long-term cycling performance of SPAN|SPEs|Li at 0.3 C. b Charge/discharge curves for the SPAN|SPEs|Li cell at various rates. c Rate performance of SPAN|SPEs|Li cells. d Cycling performance and optical images (inset) of the as-fabricated SPAN|SPEs|Li pouch cell. e Cycling performance of S@CB|SPEs|Li at 0.3 C. All tests were performed at 30 °C.",
+          "source_part": "main",
+          "locator": "Results / Electrochemical Performance of the solid-state Li-S batteries, paragraph 19",
+          "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+          "source_path": "/Volumes/Seagate/research /AutoSchema/examples/polymer_cards/checked_pei_2026-10-30/source-excerpts.json",
+          "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "original_hash_status": "declared_provenance_not_reverified_from_excerpt"
+        },
+        {
+          "chunk_id": "src-1f566f112ee4678bc067",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "text": "Cross-sectional SEM images and EDS mapping of pouch cells indicated that SPAN@SPE and Li@SPE layers were well integrated without any visible delamination (Fig. 6a–c), which confirmed the utility of dual-integrated electrodes exhibiting interfacial self-healing in solid-state Li-S batteries. PTMG-HDI-BHDS/LiFSI served as both the electrolyte and Li⁺ conductor in SPAN@SPE, the S was mainly derived from SPAN and LiFSI, and LiFSI was distributed in both the SPAN@SPE layer and the Li@SPE layer, providing abundant channels for the transmission of Li⁺ ions⁴. The self-healing interface was clearly shown in the enlarged SEM images and backscattered-electron SEM images (Fig. 6d and Supplementary Fig. 35), visually illustrating the 3D interpenetrating Li⁺ channel between SPAN@SPE and Li@SPE. Systematic EIS studies were performed, and it was found that the ingenious dual-integrated strategy sharply reduced the interfacial contact resistance and enabled rapid transmission of Li⁺ (Supplementary Fig. 36).Fig. 6Stable sulfur-cathode|electrolyte|Li-anode interfaces of solid-state Li-S batteries evaluated in pouch cells.a Optical photographs of the integrated pouch cell. b, c Cross-sectional SEM image (b) and the corresponding EDS image (c) of integrated SPAN|PTMG-HDI-BHDS|Li cells. d Magnified SEM image of the self-healing interface. e Structure of the SPAN|PEO|Li pouch cell. f In situ ultrasonic transmission images of SPAN | PEO|Li during the first 50 cycles. g Structure of the SPAN|PTMG-HDI-BHDS|Li pouch cell. h In situ ultrasonic transmission images of SPAN|PTMG-HDI-BHDS|Li during the first 50 cycles.",
+          "source_part": "main",
+          "locator": "Results / Mechanistic analysis for the stable interfaces in solid-state pouch cells, paragraph 21",
+          "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+          "source_path": "/Volumes/Seagate/research /AutoSchema/examples/polymer_cards/checked_pei_2026-10-30/source-excerpts.json",
+          "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "original_hash_status": "declared_provenance_not_reverified_from_excerpt"
+        },
+        {
+          "chunk_id": "src-2c611521b59dcd102e55",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "text": "In summary, we developed a facile route with which to construct poly(ether-urethane)-based electrolytes with self-healing properties, which were cast directly on electrode films to construct integrated solid-state electrodes/electrolytes. Due to rearrangements of the dynamic covalent disulfide bonds and the hydrogen bonds between urethane groups, the interface of two integrated electrodes exhibited self-healing to overcome the problem of multiple interfacial contacts seen with SSLMBs. The constructed SPEs exhibited robust mechanical strength, excellent ion conductivity, a high Li⁺ transference number, and a broad electrochemical stability window. The long-term cycling stability of a Li|PTMG-HDI-BHDS|Li symmetric cell was investigated for more than 6000 h. Remarkably, the enhanced interfacial contact provided extremely long cycling stabilities and high capacity retention rates for the SPAN and S@CB cathodes. The dual-integrated strategy by using dynamic disulfide bonds-based self-healing SPEs opens a promising approach for constructing high-performance SSLMBs.",
+          "source_part": "main",
+          "locator": "Discussion, paragraph 23",
+          "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+          "source_path": "/Volumes/Seagate/research /AutoSchema/examples/polymer_cards/checked_pei_2026-10-30/source-excerpts.json",
+          "original_document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "original_hash_status": "declared_provenance_not_reverified_from_excerpt"
+        }
+      ]
+    }
+  ]
+}

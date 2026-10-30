@@ -1,0 +1,938 @@
+{
+  "contract_version": "polymer-cards-v1",
+  "run_metadata": {
+    "mode": "assistant_source_checked_reference_replay",
+    "model_calls": 0,
+    "review_origin": "Assistant source check with independent assistant source audit; not authenticated human annotation.",
+    "not_used_in_model_prompt": true,
+    "coverage": "selected_main_text_excerpts",
+    "source_manifest_sha256": "53de13b525abbfa58eee3c0ba121678dfebad34363ca44661a7a35b088923786",
+    "validation_code_sha256": "ad4b47a6ca3df6e8d6dc0603ac5e2f99c9dfedaba86536e1aaca8d8181d081e5",
+    "renderer_code_sha256": "842dd533fa266ed83ec76c568e11b2ebe3dce069c81b0afb48862e215d237971"
+  },
+  "results": [
+    {
+      "contract_version": "polymer-cards-v1",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "cards": [
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "pei-bhds",
+          "name": "PTMG-HDI-BHDS",
+          "identity_evidence": [
+            {
+              "chunk_id": "src-fc7163e473a711c15d85",
+              "quote": "On this basis, the poly(ether-urethane) with self-healing character (PTMG-HDI-BHDS) was synthesized by introducing 2-hydroxyethyl disulfide (BHDS) as a chain extender, and the hydroxyl groups of BHDS were polymerized with excess -N = C = O.",
+              "paper_id": "10.1038/s41467-023-43467-w",
+              "source_part": "main",
+              "locator": "Results / Structural design of SPEs and integrated SSLMBs, paragraph 6",
+              "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+              "evidence_status": "quote_matched"
+            }
+          ],
+          "classification": {
+            "is_polymer": true,
+            "reason": "The paper explicitly describes this synthesized material as a poly(ether-urethane), names PTMG-HDI-BHDS, and describes polymer chains and repeat groups.",
+            "evidence": [
+              {
+                "chunk_id": "src-fc7163e473a711c15d85",
+                "quote": "On this basis, the poly(ether-urethane) with self-healing character (PTMG-HDI-BHDS) was synthesized by introducing 2-hydroxyethyl disulfide (BHDS) as a chain extender, and the hydroxyl groups of BHDS were polymerized with excess -N = C = O.",
+                "paper_id": "10.1038/s41467-023-43467-w",
+                "source_part": "main",
+                "locator": "Results / Structural design of SPEs and integrated SSLMBs, paragraph 6",
+                "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                "evidence_status": "quote_matched"
+              },
+              {
+                "chunk_id": "src-fc7163e473a711c15d85",
+                "quote": "The repeated reaction nodes -NH-COO- in the polymer chain formed a rich hydrogen bond network^{40,41}.",
+                "paper_id": "10.1038/s41467-023-43467-w",
+                "source_part": "main",
+                "locator": "Results / Structural design of SPEs and integrated SSLMBs, paragraph 6",
+                "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                "evidence_status": "quote_matched"
+              }
+            ],
+            "evidence_status": "quote_matched",
+            "semantic_review_status": "not_performed_by_validator"
+          },
+          "evidence_status": "quote_matched",
+          "semantic_review_status": "not_performed_by_validator",
+          "identity_kind": "specific_polymer",
+          "decision": "retained_polymer",
+          "aliases": [],
+          "description": {
+            "value": "Self-healing poly(ether-urethane) synthesized using PTMG and HDI with the disulfide-containing chain extender BHDS.",
+            "evidence": [
+              {
+                "chunk_id": "src-fc7163e473a711c15d85",
+                "quote": "Polytetrahydrofuran (PTMG) with a low molecular weight (Mw=2,000 g mol⁻¹) and ether-oxygens was chosen as the soft segment to dissociate and conduct the lithium ions (Li⁺)³⁹. The terminal hydroxyls of PTMG reacted readily with hexamethylene diisocyanate (HDI) to generate -NH-COO- groups (Fig. 1a). On this basis, the poly(ether-urethane) with self-healing character (PTMG-HDI-BHDS) was synthesized by introducing 2-hydroxyethyl disulfide (BHDS) as a chain extender, and the hydroxyl groups of BHDS were polymerized with excess -N = C = O.",
+                "paper_id": "10.1038/s41467-023-43467-w",
+                "source_part": "main",
+                "locator": "Results / Structural design of SPEs and integrated SSLMBs, paragraph 6",
+                "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                "evidence_status": "quote_matched"
+              }
+            ],
+            "evidence_status": "quote_matched",
+            "semantic_review_status": "not_performed_by_validator"
+          },
+          "role": {
+            "value": "Author-synthesized polymer matrix used with LiFSI in the demonstrated integrated solid-state Li–S electrolyte/electrode system.",
+            "evidence": [
+              {
+                "chunk_id": "src-6524f9582cedc0d6c138",
+                "quote": "The PTMG-HDI and PTMG-HDI-BHDS polymer solutions were mixed with LiFSI in dimethylacetamide (DMAc) at a mass ratio of 2:1 (polymer: LiFSI) and stirred for 3 h. These viscous solutions were degassed under vacuum, cast into a Teflon mold, and then dried in a vacuum oven at 65 °C for 48 h to obtain the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes.",
+                "paper_id": "10.1038/s41467-023-43467-w",
+                "source_part": "main",
+                "locator": "Methods / Preparation of the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes, paragraph 27",
+                "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                "evidence_status": "quote_matched"
+              },
+              {
+                "chunk_id": "src-15c1ef1d47fb1a027978",
+                "quote": "A PTMG-HDI-BHDS/LiFSI solution was used to wet the anode and cathode (Supplementary Fig. 26). The precursor solutions were cast onto the surface of the cathodes, and integrated SPAN@SPE and Li@SPE were formed simultaneously after solvent evaporation (Supplementary Fig. 27 and Supplementary Fig. 28). The SPAN|PTMG-HDI-BHDS|Li cells were assembled by simply fitting the integrated SPAN@SPE with Li@SPE.",
+                "paper_id": "10.1038/s41467-023-43467-w",
+                "source_part": "main",
+                "locator": "Results / Electrochemical Performance of the solid-state Li-S batteries, paragraph 19",
+                "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                "evidence_status": "quote_matched"
+              }
+            ],
+            "evidence_status": "quote_matched",
+            "semantic_review_status": "not_performed_by_validator"
+          },
+          "specimens": [
+            {
+              "specimen_id": "bhds-reaction-solution",
+              "label": "PTMG-HDI-BHDS solution",
+              "evidence": [
+                {
+                  "chunk_id": "src-d1659b2c731d650cec05",
+                  "quote": "The synthesis of PTMG-HDI-BHDS involved the introduction of the chain extender BHDS into the PTMG-HDI. Briefly, 2.5 g (1.25 mmol) of PTMG, 500 μL (3.0 mmol) of HDI, and 5 μL of DBTDL were dissolved in 5 mL of CH₂Cl₂ and stirred at 40 °C for 1 h in a N₂-filled glove box, and then 200 μL (1.25 mmol) of BHDS was added to the above solution. The final molar ratio of the monomers (PTMG:HDI:BHDS) was 1:2.4:1. Subsequently, 5 mL of DMAc was added into the reaction mixture every 2 h and repeated 3 times, and stirred for 12 h to obtain the PTMG-HDI-BHDS solution.",
+                  "paper_id": "10.1038/s41467-023-43467-w",
+                  "source_part": "main",
+                  "locator": "Methods / Preparation of PTMG-HDI-BHDS, paragraph 26",
+                  "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                  "evidence_status": "quote_matched"
+                }
+              ],
+              "entity_id": "pei-bhds",
+              "evidence_status": "quote_matched"
+            },
+            {
+              "specimen_id": "bhds-monitoring-solution",
+              "label": "PTMG-HDI-BHDS polymerization-monitoring solution",
+              "evidence": [
+                {
+                  "chunk_id": "src-8bc608870b143b549de5",
+                  "quote": "The real-time polymerization process of PTMG-HDI-BHDS was monitored, and the average molecular weight (M_{n}) and viscosity (η) were measured with gel permeation chromatography (GPC) (Fig. 2b). The viscosity increased synchronously with the molecular weight during a reaction time of 8 h at 40 °C, and M_{n} and η ultimately reached 7.3 × 10⁵ g mol⁻¹ and 1.3 × 10⁴ cps, respectively, which were significantly higher than those of PTMG-HDI.",
+                  "paper_id": "10.1038/s41467-023-43467-w",
+                  "source_part": "main",
+                  "locator": "Results / Material fabrication and characterization of the SPEs, paragraph 8",
+                  "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                  "evidence_status": "quote_matched"
+                },
+                {
+                  "chunk_id": "src-f5a8a275fe65ec830001",
+                  "quote": "Gel permeation chromatography (GPC) was carried out in DMF on two PolyPore columns (Agilent) connected in series with a DAWN multiangle laser light scattering (MALLS) detector.",
+                  "paper_id": "10.1038/s41467-023-43467-w",
+                  "source_part": "main",
+                  "locator": "Methods / Material characterization, paragraph 29",
+                  "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                  "evidence_status": "quote_matched"
+                }
+              ],
+              "entity_id": "pei-bhds",
+              "evidence_status": "quote_matched"
+            },
+            {
+              "specimen_id": "bhds-film",
+              "label": "PTMG-HDI-BHDS film",
+              "evidence": [
+                {
+                  "chunk_id": "src-7c5b298f79cb980971cc",
+                  "quote": "The PTMG-HDI-BHDS solution was further cast on a polytetrafluoroethylene plate, and an optically transparent film was obtained after solvent evaporation (Supplementary Fig. 4).",
+                  "paper_id": "10.1038/s41467-023-43467-w",
+                  "source_part": "main",
+                  "locator": "Results / Material fabrication and characterization of the SPEs, paragraph 9",
+                  "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                  "evidence_status": "quote_matched"
+                }
+              ],
+              "entity_id": "pei-bhds",
+              "evidence_status": "quote_matched"
+            },
+            {
+              "specimen_id": "bhds-lifsi",
+              "label": "PTMG-HDI-BHDS/LiFSI",
+              "evidence": [
+                {
+                  "chunk_id": "src-6524f9582cedc0d6c138",
+                  "quote": "The PTMG-HDI and PTMG-HDI-BHDS polymer solutions were mixed with LiFSI in dimethylacetamide (DMAc) at a mass ratio of 2:1 (polymer: LiFSI) and stirred for 3 h. These viscous solutions were degassed under vacuum, cast into a Teflon mold, and then dried in a vacuum oven at 65 °C for 48 h to obtain the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes.",
+                  "paper_id": "10.1038/s41467-023-43467-w",
+                  "source_part": "main",
+                  "locator": "Methods / Preparation of the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes, paragraph 27",
+                  "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                  "evidence_status": "quote_matched"
+                }
+              ],
+              "entity_id": "pei-bhds",
+              "evidence_status": "quote_matched"
+            }
+          ],
+          "monomers": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-bhds",
+                "value": "Polytetrahydrofuran (PTMG)",
+                "role": "polymeric reactant / soft-segment diol",
+                "evidence": [
+                  {
+                    "chunk_id": "src-fc7163e473a711c15d85",
+                    "quote": "Polytetrahydrofuran (PTMG) with a low molecular weight (Mw=2,000 g mol⁻¹) and ether-oxygens was chosen as the soft segment to dissociate and conduct the lithium ions (Li⁺)³⁹.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Results / Structural design of SPEs and integrated SSLMBs, paragraph 6",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence_status": "quote_matched",
+                "semantic_review_status": "not_performed_by_validator"
+              },
+              {
+                "entity_id": "pei-bhds",
+                "value": "hexamethylene diisocyanate (HDI)",
+                "role": "diisocyanate monomer",
+                "evidence": [
+                  {
+                    "chunk_id": "src-fc7163e473a711c15d85",
+                    "quote": "The terminal hydroxyls of PTMG reacted readily with hexamethylene diisocyanate (HDI) to generate -NH-COO- groups (Fig. 1a).",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Results / Structural design of SPEs and integrated SSLMBs, paragraph 6",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence_status": "quote_matched",
+                "semantic_review_status": "not_performed_by_validator"
+              },
+              {
+                "entity_id": "pei-bhds",
+                "value": "2-hydroxyethyl disulfide (BHDS)",
+                "role": "disulfide-containing chain extender",
+                "evidence": [
+                  {
+                    "chunk_id": "src-fc7163e473a711c15d85",
+                    "quote": "On this basis, the poly(ether-urethane) with self-healing character (PTMG-HDI-BHDS) was synthesized by introducing 2-hydroxyethyl disulfide (BHDS) as a chain extender, and the hydroxyl groups of BHDS were polymerized with excess -N = C = O.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Results / Structural design of SPEs and integrated SSLMBs, paragraph 6",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence_status": "quote_matched",
+                "semantic_review_status": "not_performed_by_validator"
+              }
+            ]
+          },
+          "composition": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-bhds",
+                "value": "PTMG:HDI:BHDS = 1:2.4:1",
+                "basis": "monomer_feed_molar_ratio",
+                "specimen_id": "bhds-reaction-solution",
+                "evidence": [
+                  {
+                    "chunk_id": "src-d1659b2c731d650cec05",
+                    "quote": "The final molar ratio of the monomers (PTMG:HDI:BHDS) was 1:2.4:1.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Methods / Preparation of PTMG-HDI-BHDS, paragraph 26",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence_status": "quote_matched",
+                "semantic_review_status": "not_performed_by_validator"
+              },
+              {
+                "entity_id": "pei-bhds",
+                "value": "Briefly, 2.5 g (1.25 mmol) of PTMG, 500 μL (3.0 mmol) of HDI, and 5 μL of DBTDL were dissolved in 5 mL of CH₂Cl₂ and stirred at 40 °C for 1 h in a N₂-filled glove box, and then 200 μL (1.25 mmol) of BHDS was added to the above solution.",
+                "basis": "reported_reaction_input_amounts",
+                "specimen_id": "bhds-reaction-solution",
+                "evidence": [
+                  {
+                    "chunk_id": "src-d1659b2c731d650cec05",
+                    "quote": "Briefly, 2.5 g (1.25 mmol) of PTMG, 500 μL (3.0 mmol) of HDI, and 5 μL of DBTDL were dissolved in 5 mL of CH₂Cl₂ and stirred at 40 °C for 1 h in a N₂-filled glove box, and then 200 μL (1.25 mmol) of BHDS was added to the above solution.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Methods / Preparation of PTMG-HDI-BHDS, paragraph 26",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence_status": "quote_matched",
+                "semantic_review_status": "not_performed_by_validator"
+              },
+              {
+                "entity_id": "pei-bhds",
+                "value": "polymer:LiFSI = 2:1",
+                "basis": "polymer_salt_mass_ratio",
+                "specimen_id": "bhds-lifsi",
+                "evidence": [
+                  {
+                    "chunk_id": "src-6524f9582cedc0d6c138",
+                    "quote": "The PTMG-HDI and PTMG-HDI-BHDS polymer solutions were mixed with LiFSI in dimethylacetamide (DMAc) at a mass ratio of 2:1 (polymer: LiFSI) and stirred for 3 h.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Methods / Preparation of the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes, paragraph 27",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence_status": "quote_matched",
+                "semantic_review_status": "not_performed_by_validator"
+              }
+            ]
+          },
+          "synthesis_text": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-bhds",
+                "value": "The synthesis of PTMG-HDI-BHDS involved the introduction of the chain extender BHDS into the PTMG-HDI. Briefly, 2.5 g (1.25 mmol) of PTMG, 500 μL (3.0 mmol) of HDI, and 5 μL of DBTDL were dissolved in 5 mL of CH₂Cl₂ and stirred at 40 °C for 1 h in a N₂-filled glove box, and then 200 μL (1.25 mmol) of BHDS was added to the above solution. The final molar ratio of the monomers (PTMG:HDI:BHDS) was 1:2.4:1. Subsequently, 5 mL of DMAc was added into the reaction mixture every 2 h and repeated 3 times, and stirred for 12 h to obtain the PTMG-HDI-BHDS solution.",
+                "specimen_id": "bhds-reaction-solution",
+                "evidence": [
+                  {
+                    "chunk_id": "src-d1659b2c731d650cec05",
+                    "quote": "The synthesis of PTMG-HDI-BHDS involved the introduction of the chain extender BHDS into the PTMG-HDI. Briefly, 2.5 g (1.25 mmol) of PTMG, 500 μL (3.0 mmol) of HDI, and 5 μL of DBTDL were dissolved in 5 mL of CH₂Cl₂ and stirred at 40 °C for 1 h in a N₂-filled glove box, and then 200 μL (1.25 mmol) of BHDS was added to the above solution. The final molar ratio of the monomers (PTMG:HDI:BHDS) was 1:2.4:1. Subsequently, 5 mL of DMAc was added into the reaction mixture every 2 h and repeated 3 times, and stirred for 12 h to obtain the PTMG-HDI-BHDS solution.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Methods / Preparation of PTMG-HDI-BHDS, paragraph 26",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence_status": "quote_matched",
+                "semantic_review_status": "not_performed_by_validator"
+              },
+              {
+                "entity_id": "pei-bhds",
+                "value": "The PTMG-HDI-BHDS solution was further cast on a polytetrafluoroethylene plate, and an optically transparent film was obtained after solvent evaporation (Supplementary Fig. 4).",
+                "specimen_id": "bhds-film",
+                "evidence": [
+                  {
+                    "chunk_id": "src-7c5b298f79cb980971cc",
+                    "quote": "The PTMG-HDI-BHDS solution was further cast on a polytetrafluoroethylene plate, and an optically transparent film was obtained after solvent evaporation (Supplementary Fig. 4).",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Results / Material fabrication and characterization of the SPEs, paragraph 9",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence_status": "quote_matched",
+                "semantic_review_status": "not_performed_by_validator"
+              },
+              {
+                "entity_id": "pei-bhds",
+                "value": "The PTMG-HDI and PTMG-HDI-BHDS polymer solutions were mixed with LiFSI in dimethylacetamide (DMAc) at a mass ratio of 2:1 (polymer: LiFSI) and stirred for 3 h. These viscous solutions were degassed under vacuum, cast into a Teflon mold, and then dried in a vacuum oven at 65 °C for 48 h to obtain the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes.",
+                "specimen_id": "bhds-lifsi",
+                "evidence": [
+                  {
+                    "chunk_id": "src-6524f9582cedc0d6c138",
+                    "quote": "The PTMG-HDI and PTMG-HDI-BHDS polymer solutions were mixed with LiFSI in dimethylacetamide (DMAc) at a mass ratio of 2:1 (polymer: LiFSI) and stirred for 3 h. These viscous solutions were degassed under vacuum, cast into a Teflon mold, and then dried in a vacuum oven at 65 °C for 48 h to obtain the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Methods / Preparation of the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes, paragraph 27",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence_status": "quote_matched",
+                "semantic_review_status": "not_performed_by_validator"
+              }
+            ]
+          },
+          "properties": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-bhds",
+                "value": "88.3",
+                "property": "breaking strength",
+                "unit": "MPa",
+                "specimen_id": "bhds-film",
+                "specimen_evidence": [
+                  {
+                    "chunk_id": "src-7c5b298f79cb980971cc",
+                    "quote": "The PTMG-HDI-BHDS solution was further cast on a polytetrafluoroethylene plate, and an optically transparent film was obtained after solvent evaporation (Supplementary Fig. 4).",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Results / Material fabrication and characterization of the SPEs, paragraph 9",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "name": "reported mechanical strain rate",
+                    "value": "5 cm min⁻¹",
+                    "evidence": [
+                      {
+                        "chunk_id": "src-f5a8a275fe65ec830001",
+                        "quote": "Mechanical testing was carried out on an Instron 5565 testing stain using a strain rate of 5 cm min⁻¹.",
+                        "paper_id": "10.1038/s41467-023-43467-w",
+                        "source_part": "main",
+                        "locator": "Methods / Material characterization, paragraph 29",
+                        "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                        "evidence_status": "quote_matched"
+                      }
+                    ],
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence": [
+                  {
+                    "chunk_id": "src-115302e48390d0fe7a91",
+                    "quote": "The breaking strength and ultimate elongation of PTMG-HDI-BHDS were 88.3 MPa and 2000%, respectively, which were significantly higher than those of PEO (17.8 MPa) and PTMG-HDI (31.2 MPa) (Fig. 2d, 2e and Supplementary Fig. 6)^{48–50}.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Results / Material fabrication and characterization of the SPEs, paragraph 10",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence_status": "quote_matched",
+                "semantic_review_status": "not_performed_by_validator"
+              },
+              {
+                "entity_id": "pei-bhds",
+                "value": "2000%",
+                "property": "ultimate elongation",
+                "unit": "%",
+                "specimen_id": "bhds-film",
+                "specimen_evidence": [
+                  {
+                    "chunk_id": "src-7c5b298f79cb980971cc",
+                    "quote": "The PTMG-HDI-BHDS solution was further cast on a polytetrafluoroethylene plate, and an optically transparent film was obtained after solvent evaporation (Supplementary Fig. 4).",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Results / Material fabrication and characterization of the SPEs, paragraph 9",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "name": "reported mechanical strain rate",
+                    "value": "5 cm min⁻¹",
+                    "evidence": [
+                      {
+                        "chunk_id": "src-f5a8a275fe65ec830001",
+                        "quote": "Mechanical testing was carried out on an Instron 5565 testing stain using a strain rate of 5 cm min⁻¹.",
+                        "paper_id": "10.1038/s41467-023-43467-w",
+                        "source_part": "main",
+                        "locator": "Methods / Material characterization, paragraph 29",
+                        "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                        "evidence_status": "quote_matched"
+                      }
+                    ],
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence": [
+                  {
+                    "chunk_id": "src-115302e48390d0fe7a91",
+                    "quote": "The breaking strength and ultimate elongation of PTMG-HDI-BHDS were 88.3 MPa and 2000%, respectively, which were significantly higher than those of PEO (17.8 MPa) and PTMG-HDI (31.2 MPa) (Fig. 2d, 2e and Supplementary Fig. 6)^{48–50}.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Results / Material fabrication and characterization of the SPEs, paragraph 10",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence_status": "quote_matched",
+                "semantic_review_status": "not_performed_by_validator"
+              },
+              {
+                "entity_id": "pei-bhds",
+                "value": "7.3 × 10⁵",
+                "property": "number-average molecular weight (M_{n}) during polymerization",
+                "unit": "g mol⁻¹",
+                "specimen_id": "bhds-monitoring-solution",
+                "specimen_evidence": [
+                  {
+                    "chunk_id": "src-8bc608870b143b549de5",
+                    "quote": "The real-time polymerization process of PTMG-HDI-BHDS was monitored, and the average molecular weight (M_{n}) and viscosity (η) were measured with gel permeation chromatography (GPC) (Fig. 2b). The viscosity increased synchronously with the molecular weight during a reaction time of 8 h at 40 °C, and M_{n} and η ultimately reached 7.3 × 10⁵ g mol⁻¹ and 1.3 × 10⁴ cps, respectively, which were significantly higher than those of PTMG-HDI.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Results / Material fabrication and characterization of the SPEs, paragraph 8",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  },
+                  {
+                    "chunk_id": "src-f5a8a275fe65ec830001",
+                    "quote": "Gel permeation chromatography (GPC) was carried out in DMF on two PolyPore columns (Agilent) connected in series with a DAWN multiangle laser light scattering (MALLS) detector.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Methods / Material characterization, paragraph 29",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "name": "reaction time",
+                    "value": "8 h",
+                    "evidence": [
+                      {
+                        "chunk_id": "src-8bc608870b143b549de5",
+                        "quote": "The real-time polymerization process of PTMG-HDI-BHDS was monitored, and the average molecular weight (M_{n}) and viscosity (η) were measured with gel permeation chromatography (GPC) (Fig. 2b). The viscosity increased synchronously with the molecular weight during a reaction time of 8 h at 40 °C, and M_{n} and η ultimately reached 7.3 × 10⁵ g mol⁻¹ and 1.3 × 10⁴ cps, respectively, which were significantly higher than those of PTMG-HDI.",
+                        "paper_id": "10.1038/s41467-023-43467-w",
+                        "source_part": "main",
+                        "locator": "Results / Material fabrication and characterization of the SPEs, paragraph 8",
+                        "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                        "evidence_status": "quote_matched"
+                      }
+                    ],
+                    "evidence_status": "quote_matched"
+                  },
+                  {
+                    "name": "reaction temperature, not the GPC instrument temperature",
+                    "value": "40 °C",
+                    "evidence": [
+                      {
+                        "chunk_id": "src-8bc608870b143b549de5",
+                        "quote": "The real-time polymerization process of PTMG-HDI-BHDS was monitored, and the average molecular weight (M_{n}) and viscosity (η) were measured with gel permeation chromatography (GPC) (Fig. 2b). The viscosity increased synchronously with the molecular weight during a reaction time of 8 h at 40 °C, and M_{n} and η ultimately reached 7.3 × 10⁵ g mol⁻¹ and 1.3 × 10⁴ cps, respectively, which were significantly higher than those of PTMG-HDI.",
+                        "paper_id": "10.1038/s41467-023-43467-w",
+                        "source_part": "main",
+                        "locator": "Results / Material fabrication and characterization of the SPEs, paragraph 8",
+                        "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                        "evidence_status": "quote_matched"
+                      }
+                    ],
+                    "evidence_status": "quote_matched"
+                  },
+                  {
+                    "name": "GPC eluent",
+                    "value": "DMF",
+                    "evidence": [
+                      {
+                        "chunk_id": "src-f5a8a275fe65ec830001",
+                        "quote": "Gel permeation chromatography (GPC) was carried out in DMF on two PolyPore columns (Agilent) connected in series with a DAWN multiangle laser light scattering (MALLS) detector.",
+                        "paper_id": "10.1038/s41467-023-43467-w",
+                        "source_part": "main",
+                        "locator": "Methods / Material characterization, paragraph 29",
+                        "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                        "evidence_status": "quote_matched"
+                      }
+                    ],
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence": [
+                  {
+                    "chunk_id": "src-8bc608870b143b549de5",
+                    "quote": "The real-time polymerization process of PTMG-HDI-BHDS was monitored, and the average molecular weight (M_{n}) and viscosity (η) were measured with gel permeation chromatography (GPC) (Fig. 2b). The viscosity increased synchronously with the molecular weight during a reaction time of 8 h at 40 °C, and M_{n} and η ultimately reached 7.3 × 10⁵ g mol⁻¹ and 1.3 × 10⁴ cps, respectively, which were significantly higher than those of PTMG-HDI.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Results / Material fabrication and characterization of the SPEs, paragraph 8",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence_status": "quote_matched",
+                "semantic_review_status": "not_performed_by_validator"
+              },
+              {
+                "entity_id": "pei-bhds",
+                "value": "2.4 × 10⁻⁴",
+                "property": "ionic conductivity",
+                "unit": "S cm⁻¹",
+                "specimen_id": "bhds-lifsi",
+                "specimen_evidence": [
+                  {
+                    "chunk_id": "src-6524f9582cedc0d6c138",
+                    "quote": "The PTMG-HDI and PTMG-HDI-BHDS polymer solutions were mixed with LiFSI in dimethylacetamide (DMAc) at a mass ratio of 2:1 (polymer: LiFSI) and stirred for 3 h. These viscous solutions were degassed under vacuum, cast into a Teflon mold, and then dried in a vacuum oven at 65 °C for 48 h to obtain the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Methods / Preparation of the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes, paragraph 27",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  },
+                  {
+                    "chunk_id": "src-705d4d9258f66326a788",
+                    "quote": "The ionic conductivities of the solid composite electrolytes at different temperatures were measured by sandwiching the SPEs between two steel sheets in CR2032 cells and the frequency range was 0.1–10⁶ Hz.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Methods / Electrochemical characterization, paragraph 30",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "name": "temperature",
+                    "value": "30 °C",
+                    "evidence": [
+                      {
+                        "chunk_id": "src-85520225f19b69cfbf86",
+                        "quote": "PTMG-HDI-BHDS/LiFSI (2.4 × 10⁻⁴ S cm⁻¹) exhibited a significantly higher ionic conductivity than PTMG-HDI/LiFSI (6.5 × 10⁻⁵ S cm⁻¹) and PEO/LiFSI (1.2 × 10⁻⁵ S cm⁻¹) at 30 °C, indicating that the strong interfacial self-healing and adhesion significantly decreased the interfacial resistance of the SS@SPE, and the amorphous polymer skeleton enabled fast Li⁺ transport.",
+                        "paper_id": "10.1038/s41467-023-43467-w",
+                        "source_part": "main",
+                        "locator": "Results / Electrochemical characterization of the SPEs, paragraph 13",
+                        "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                        "evidence_status": "quote_matched"
+                      }
+                    ],
+                    "evidence_status": "quote_matched"
+                  },
+                  {
+                    "name": "impedance frequency range",
+                    "value": "0.1–10⁶ Hz",
+                    "evidence": [
+                      {
+                        "chunk_id": "src-705d4d9258f66326a788",
+                        "quote": "The ionic conductivities of the solid composite electrolytes at different temperatures were measured by sandwiching the SPEs between two steel sheets in CR2032 cells and the frequency range was 0.1–10⁶ Hz.",
+                        "paper_id": "10.1038/s41467-023-43467-w",
+                        "source_part": "main",
+                        "locator": "Methods / Electrochemical characterization, paragraph 30",
+                        "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                        "evidence_status": "quote_matched"
+                      }
+                    ],
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence": [
+                  {
+                    "chunk_id": "src-85520225f19b69cfbf86",
+                    "quote": "PTMG-HDI-BHDS/LiFSI (2.4 × 10⁻⁴ S cm⁻¹) exhibited a significantly higher ionic conductivity than PTMG-HDI/LiFSI (6.5 × 10⁻⁵ S cm⁻¹) and PEO/LiFSI (1.2 × 10⁻⁵ S cm⁻¹) at 30 °C, indicating that the strong interfacial self-healing and adhesion significantly decreased the interfacial resistance of the SS@SPE, and the amorphous polymer skeleton enabled fast Li⁺ transport.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Results / Electrochemical characterization of the SPEs, paragraph 13",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence_status": "quote_matched",
+                "semantic_review_status": "not_performed_by_validator"
+              },
+              {
+                "entity_id": "pei-bhds",
+                "value": "beyond 5.0",
+                "property": "electrochemical voltage limit reported by LSV",
+                "unit": "V",
+                "specimen_id": "bhds-lifsi",
+                "specimen_evidence": [
+                  {
+                    "chunk_id": "src-6524f9582cedc0d6c138",
+                    "quote": "The PTMG-HDI and PTMG-HDI-BHDS polymer solutions were mixed with LiFSI in dimethylacetamide (DMAc) at a mass ratio of 2:1 (polymer: LiFSI) and stirred for 3 h. These viscous solutions were degassed under vacuum, cast into a Teflon mold, and then dried in a vacuum oven at 65 °C for 48 h to obtain the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Methods / Preparation of the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes, paragraph 27",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  },
+                  {
+                    "chunk_id": "src-705d4d9258f66326a788",
+                    "quote": "The electrochemical stabilities of the SPEs were evaluated at a scan rate of 10 mV s⁻¹ from 0 to 6 V at room temperature.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Methods / Electrochemical characterization, paragraph 30",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "name": "LSV scan rate",
+                    "value": "10 mV s⁻¹",
+                    "evidence": [
+                      {
+                        "chunk_id": "src-705d4d9258f66326a788",
+                        "quote": "The electrochemical stabilities of the SPEs were evaluated at a scan rate of 10 mV s⁻¹ from 0 to 6 V at room temperature.",
+                        "paper_id": "10.1038/s41467-023-43467-w",
+                        "source_part": "main",
+                        "locator": "Methods / Electrochemical characterization, paragraph 30",
+                        "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                        "evidence_status": "quote_matched"
+                      }
+                    ],
+                    "evidence_status": "quote_matched"
+                  },
+                  {
+                    "name": "LSV scan range",
+                    "value": "0 to 6 V",
+                    "evidence": [
+                      {
+                        "chunk_id": "src-705d4d9258f66326a788",
+                        "quote": "The electrochemical stabilities of the SPEs were evaluated at a scan rate of 10 mV s⁻¹ from 0 to 6 V at room temperature.",
+                        "paper_id": "10.1038/s41467-023-43467-w",
+                        "source_part": "main",
+                        "locator": "Methods / Electrochemical characterization, paragraph 30",
+                        "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                        "evidence_status": "quote_matched"
+                      }
+                    ],
+                    "evidence_status": "quote_matched"
+                  },
+                  {
+                    "name": "temperature",
+                    "value": "room temperature",
+                    "evidence": [
+                      {
+                        "chunk_id": "src-705d4d9258f66326a788",
+                        "quote": "The electrochemical stabilities of the SPEs were evaluated at a scan rate of 10 mV s⁻¹ from 0 to 6 V at room temperature.",
+                        "paper_id": "10.1038/s41467-023-43467-w",
+                        "source_part": "main",
+                        "locator": "Methods / Electrochemical characterization, paragraph 30",
+                        "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                        "evidence_status": "quote_matched"
+                      }
+                    ],
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence": [
+                  {
+                    "chunk_id": "src-5d598cf3569a0bb57b72",
+                    "quote": "The linear sweep voltammograms (LSV) for the asymmetrical cells indicated that PTMG-HDI-BHDS/LiFSI displayed a wider electrochemical voltage beyond 5.0 V than PEO (3.8 V) and PTMG-HDI (4.1 V), which is valuable for high-voltage (e.g., LiNi_{0.8}Co_{0.1}Mn_{0.1}O₂) battery systems, the corresponding PEO and PTMG-HDI showed significantly poor compatibility (Fig. 3e and Supplementary Fig. 17).",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Results / Electrochemical characterization of the SPEs, paragraph 15",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence_status": "quote_matched",
+                "semantic_review_status": "not_performed_by_validator"
+              },
+              {
+                "entity_id": "pei-bhds",
+                "value": "0.81",
+                "property": "Li⁺ transference number",
+                "unit": null,
+                "specimen_id": "bhds-lifsi",
+                "specimen_evidence": [
+                  {
+                    "chunk_id": "src-6524f9582cedc0d6c138",
+                    "quote": "The PTMG-HDI and PTMG-HDI-BHDS polymer solutions were mixed with LiFSI in dimethylacetamide (DMAc) at a mass ratio of 2:1 (polymer: LiFSI) and stirred for 3 h. These viscous solutions were degassed under vacuum, cast into a Teflon mold, and then dried in a vacuum oven at 65 °C for 48 h to obtain the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Methods / Preparation of the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes, paragraph 27",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  },
+                  {
+                    "chunk_id": "src-705d4d9258f66326a788",
+                    "quote": "The Li⁺ transference number (t_{Li}⁺) was obtained using a symmetric Li||Li cell by a chronoamperometry test with a DC voltage amplitude of 50 mV. The EIS tests were taken before and after DC polarization.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Methods / Electrochemical characterization, paragraph 30",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "name": "DC polarization voltage",
+                    "value": "50 mV",
+                    "evidence": [
+                      {
+                        "chunk_id": "src-705d4d9258f66326a788",
+                        "quote": "The Li⁺ transference number (t_{Li}⁺) was obtained using a symmetric Li||Li cell by a chronoamperometry test with a DC voltage amplitude of 50 mV. The EIS tests were taken before and after DC polarization.",
+                        "paper_id": "10.1038/s41467-023-43467-w",
+                        "source_part": "main",
+                        "locator": "Methods / Electrochemical characterization, paragraph 30",
+                        "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                        "evidence_status": "quote_matched"
+                      }
+                    ],
+                    "evidence_status": "quote_matched"
+                  },
+                  {
+                    "name": "cell configuration",
+                    "value": "symmetric Li||Li cell",
+                    "evidence": [
+                      {
+                        "chunk_id": "src-705d4d9258f66326a788",
+                        "quote": "The Li⁺ transference number (t_{Li}⁺) was obtained using a symmetric Li||Li cell by a chronoamperometry test with a DC voltage amplitude of 50 mV. The EIS tests were taken before and after DC polarization.",
+                        "paper_id": "10.1038/s41467-023-43467-w",
+                        "source_part": "main",
+                        "locator": "Methods / Electrochemical characterization, paragraph 30",
+                        "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                        "evidence_status": "quote_matched"
+                      }
+                    ],
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence": [
+                  {
+                    "chunk_id": "src-5d598cf3569a0bb57b72",
+                    "quote": "In addition, the exceptionally high Li⁺ transference number (t_{Li}⁺ = 0.81) for PTMG-HDI-BHDS/LiFSI could inhibit the formation of space charge near the Li anode and reduce dendrite formation at a high current density (Fig. 3f).",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Results / Electrochemical characterization of the SPEs, paragraph 15",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence_status": "quote_matched",
+                "semantic_review_status": "not_performed_by_validator"
+              }
+            ]
+          },
+          "applications": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-bhds",
+                "value": "Electrolyte in experimentally assembled integrated SPAN|SPE|Li solid-state Li–S cells.",
+                "claim_type": "demonstrated",
+                "evidence": [
+                  {
+                    "chunk_id": "src-15c1ef1d47fb1a027978",
+                    "quote": "A PTMG-HDI-BHDS/LiFSI solution was used to wet the anode and cathode (Supplementary Fig. 26). The precursor solutions were cast onto the surface of the cathodes, and integrated SPAN@SPE and Li@SPE were formed simultaneously after solvent evaporation (Supplementary Fig. 27 and Supplementary Fig. 28). The SPAN|PTMG-HDI-BHDS|Li cells were assembled by simply fitting the integrated SPAN@SPE with Li@SPE.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Results / Electrochemical Performance of the solid-state Li-S batteries, paragraph 19",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence_status": "quote_matched",
+                "semantic_review_status": "not_performed_by_validator"
+              },
+              {
+                "entity_id": "pei-bhds",
+                "value": "Electrolyte and Li⁺ conductor in the integrated electrode/electrolyte layers.",
+                "claim_type": "demonstrated",
+                "evidence": [
+                  {
+                    "chunk_id": "src-1f566f112ee4678bc067",
+                    "quote": "Cross-sectional SEM images and EDS mapping of pouch cells indicated that SPAN@SPE and Li@SPE layers were well integrated without any visible delamination (Fig. 6a–c), which confirmed the utility of dual-integrated electrodes exhibiting interfacial self-healing in solid-state Li-S batteries. PTMG-HDI-BHDS/LiFSI served as both the electrolyte and Li⁺ conductor in SPAN@SPE, the S was mainly derived from SPAN and LiFSI, and LiFSI was distributed in both the SPAN@SPE layer and the Li@SPE layer, providing abundant channels for the transmission of Li⁺ ions⁴.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Results / Mechanistic analysis for the stable interfaces in solid-state pouch cells, paragraph 21",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence_status": "quote_matched",
+                "semantic_review_status": "not_performed_by_validator"
+              }
+            ]
+          },
+          "source_tag": {
+            "status": "reported",
+            "items": [
+              {
+                "entity_id": "pei-bhds",
+                "value": "author_synthesized",
+                "evidence": [
+                  {
+                    "chunk_id": "src-d1659b2c731d650cec05",
+                    "quote": "The synthesis of PTMG-HDI-BHDS involved the introduction of the chain extender BHDS into the PTMG-HDI.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Methods / Preparation of PTMG-HDI-BHDS, paragraph 26",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  },
+                  {
+                    "chunk_id": "src-2c611521b59dcd102e55",
+                    "quote": "In summary, we developed a facile route with which to construct poly(ether-urethane)-based electrolytes with self-healing properties, which were cast directly on electrode films to construct integrated solid-state electrodes/electrolytes.",
+                    "paper_id": "10.1038/s41467-023-43467-w",
+                    "source_part": "main",
+                    "locator": "Discussion, paragraph 23",
+                    "document_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e",
+                    "evidence_status": "quote_matched"
+                  }
+                ],
+                "evidence_status": "quote_matched",
+                "semantic_review_status": "not_performed_by_validator"
+              }
+            ]
+          },
+          "attribution_warnings": [
+            {
+              "reason": "specimen_form_ambiguous",
+              "entity_id": "pei-bhds",
+              "path": "properties.items[0]",
+              "property": "breaking strength",
+              "value": "88.3",
+              "specimen_label": "PTMG-HDI-BHDS film",
+              "related_specimen_labels": [
+                "PTMG-HDI-BHDS/LiFSI"
+              ],
+              "detail": "A bare polymer label and an additive-containing form coexist. Check the test/preparation context; the result has not been automatically reassigned."
+            },
+            {
+              "reason": "specimen_form_ambiguous",
+              "entity_id": "pei-bhds",
+              "path": "properties.items[1]",
+              "property": "ultimate elongation",
+              "value": "2000%",
+              "specimen_label": "PTMG-HDI-BHDS film",
+              "related_specimen_labels": [
+                "PTMG-HDI-BHDS/LiFSI"
+              ],
+              "detail": "A bare polymer label and an additive-containing form coexist. Check the test/preparation context; the result has not been automatically reassigned."
+            }
+          ]
+        }
+      ],
+      "discarded_entities": [],
+      "review_queue": [],
+      "validation_issues": [],
+      "attribution_warnings": [
+        {
+          "reason": "specimen_form_ambiguous",
+          "entity_id": "pei-bhds",
+          "path": "properties.items[0]",
+          "property": "breaking strength",
+          "value": "88.3",
+          "specimen_label": "PTMG-HDI-BHDS film",
+          "related_specimen_labels": [
+            "PTMG-HDI-BHDS/LiFSI"
+          ],
+          "detail": "A bare polymer label and an additive-containing form coexist. Check the test/preparation context; the result has not been automatically reassigned."
+        },
+        {
+          "reason": "specimen_form_ambiguous",
+          "entity_id": "pei-bhds",
+          "path": "properties.items[1]",
+          "property": "ultimate elongation",
+          "value": "2000%",
+          "specimen_label": "PTMG-HDI-BHDS film",
+          "related_specimen_labels": [
+            "PTMG-HDI-BHDS/LiFSI"
+          ],
+          "detail": "A bare polymer label and an additive-containing form coexist. Check the test/preparation context; the result has not been automatically reassigned."
+        }
+      ],
+      "statistics": {
+        "input_entities": 1,
+        "cards": 1,
+        "retained_polymers": 1,
+        "discarded_entities": 0,
+        "discarded_nonpolymers": 0,
+        "classification_review_entities": 0,
+        "review_queue": 0,
+        "validation_issues": 0,
+        "attribution_warnings": 2
+      },
+      "validation_scope": "Source quote containment and record links only; polymer classification, origin and semantic attribution are model/reviewer judgments, not verified by this validator."
+    }
+  ]
+}

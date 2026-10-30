@@ -31,6 +31,15 @@ def example(paper_id="paper-a", title="Example polymer paper", locator="Methods 
 
 
 class PolymerCardRenderTests(unittest.TestCase):
+    def test_record_scope_distinguishes_a_family_from_an_individual(self):
+        document, result, _ = example()
+        for kind, label in [("specific_polymer", "Specific polymer"), ("polymer_family", "Polymer family"), (None, "Scope unresolved")]:
+            result["cards"][0]["identity_kind"] = kind
+            for view in (render_html([result], [document], {}), render_markdown([result], [document], {})):
+                self.assertIn(label, view)
+        del result["cards"][0]["identity_kind"]
+        self.assertNotIn("Declared record type", render_html([result], [document], {}))
+
     def test_partial_run_is_prominent_but_success_and_legacy_runs_are_not_partial(self):
         document, result, _ = example()
         metadata = {"run_complete": False, "papers_completed": 1, "papers_requested": 3,

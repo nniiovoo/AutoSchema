@@ -21,6 +21,7 @@ FIELD_NAMES = (
 GROUP_STATUSES = {"reported", "not_found_in_provided_text", "needs_review", "conflicting"}
 SOURCE_TAGS = {"author_synthesized", "commercially_purchased"}
 APPLICATION_CLAIMS = {"demonstrated", "proposed", "unspecified"}
+IDENTITY_KINDS = {"specific_polymer", "polymer_family"}
 
 
 def _text(value: Any) -> str:
@@ -99,6 +100,90 @@ def _unit_literal(value: str, quote: str) -> bool:
             continue
         return True
     return False
+
+
+def _specimen_stem(label: str) -> str:
+    """Remove explicit state words, without interpreting a chemical name."""
+    text = _text(label)
+    text = re.sub(r"^(?i:neat|pure|salt[ -]free)\s+", "", text)
+    previous = None
+    while previous != text:
+        previous = text
+        text = re.sub(r"\s+(?i:film|membrane|solution|sample|specimen|electrolyte|polymer|neat)$", "", text)
+    return text
+
+
+def _explicit_neat_context(text: str, stem: str) -> bool:
+    if not stem:
+        return False
+    label = re.escape(stem)
+    before = r"(?<!\w)(?i:neat|salt[ -]free|pure(?:\s+polymer)?)\s+" + label + r"(?!\w)"
+    after = (r"(?<!\w)" + label + r"(?:\s+(?i:film|membrane|polymer|sample))?\s+"
+             r"(?i:without|with\s+no)\s+(?i:any\s+)?(?i:salt|additives)\b")
+    return re.search(before + "|" + after, text) is not None
+
+
+def _source_names_more_specific_form(text: str, stem: str, unit: Any) -> bool:
+    """Notice a source-named continuation even if no sibling was generated.
+
+    The complete selected label is the anchor: A/B is never split into A and B.
+    This is a conservative textual ambiguity check, not ingredient recognition.
+    Unit tokens and ordinary lower-case prose are insufficient to infer a form.
+    """
+    token = r"(?:\[[^\]\s]+\])+|[^\W\d_][\w⁺⁻−.-]*"
+    pattern = (r"(?<!\w)" + re.escape(stem) + r"(?:\s*/\s*|\s*\+\s*|\s+with\s+)"
+               + r"(?P<component>" + token + r")")
+    unit_tokens = set(re.findall(r"[^\W\d_]+", _text(unit)))
+    for match in re.finditer(pattern, text):
+        component = match["component"]
+        words = re.findall(r"[^\W\d_]+", component)
+        if words and all(word in unit_tokens for word in words):
+            continue
+        form_context = re.match(r"\s+(?i:film|membrane|electrolyte|solution|mixture|composite|sample)\b", text[match.end():])
+        if component[0].isupper() or component.startswith("[") or form_context:
+            return True
+    return False
+
+
+def _alternate_specimen_form_in_link_evidence(prop: Dict, specimens: List[Dict]) -> bool:
+    """Detect a stated preparation/form mismatch, not chemical equivalence.
+
+    Only the separate sample-link evidence is considered. Numerical Results
+    quotations often compare multiple materials, so they cannot safely provide
+    this guard's signal. A named additive form is more specific than its bare
+    prefix. An ambiguous preparation is held rather than automatically relinked.
+    """
+    by_id = {s["specimen_id"]: s for s in specimens}
+    chosen = by_id.get(prop.get("specimen_id"))
+    if chosen is None:
+        return False
+    base = _specimen_stem(chosen["label"])
+    if not base:
+        return False
+    quoted = " ".join(e["quote"] for e in prop.get("specimen_evidence", []))
+    if _explicit_neat_context(quoted, base):
+        return False
+    alternatives = []
+    for sid, specimen in by_id.items():
+        if sid == prop["specimen_id"]:
+            continue
+        label = _specimen_stem(specimen["label"])
+        if re.match(re.escape(base) + r"(?:\s*/\s*|\s*\+\s*|\s+with\s+)\S", label) is None:
+            continue
+        if re.search(r"(?<!\w)" + re.escape(label) + r"(?!\w)", quoted):
+            alternatives.append(label)
+    # The longest explicit form controls the mismatch signal. A bare prefix
+    # occurring elsewhere in a mixing paragraph does not establish a neat test.
+    return (max(alternatives, key=len, default=None) is not None
+            or _source_names_more_specific_form(quoted, base, prop.get("unit")))
+
+
+def _contains_numeric_observation(value: Any) -> bool:
+    if isinstance(value, (int, float)) and not isinstance(value, bool):
+        return True
+    # Ignore digits inside member names such as P3; catch scalar values,
+    # uncertainties and qualified numerical statements such as ~14,000%.
+    return re.search(r"(?<!\w)\d", _text(value)) is not None
 
 
 class _Invalid(ValueError):
@@ -192,7 +277,7 @@ def build_cards(document: Dict, response: Dict) -> Dict:
             resolved.append(item)
         return resolved
 
-    def fact(raw, entity, path, field=None, specimen_ids=None):
+    def fact(raw, entity, path, field=None, specimen_ids=None, specimens=None):
         if not isinstance(raw, dict) or not _scalar(raw.get("value")):
             raise _Invalid("fact_value_missing_or_invalid")
         if field in FIELD_NAMES and raw.get("entity_id") != entity["entity_id"]:
@@ -237,12 +322,19 @@ def build_cards(document: Dict, response: Dict) -> Dict:
                 raise _Invalid("property_name_missing")
             if not _text(raw.get("specimen_id")) or raw["specimen_id"] not in (specimen_ids or set()):
                 raise _Invalid("property_specimen_not_linked_to_polymer")
+            if entity.get("identity_kind") == "polymer_family" and _contains_numeric_observation(raw["value"]):
+                raise _Invalid("family_measurement_requires_specific_polymer")
+            if ("identity_kind" in entity and entity["identity_kind"] is None
+                    and _contains_numeric_observation(raw["value"])):
+                raise _Invalid("measurement_polymer_scope_unresolved")
             # Required in the new extraction schema; legacy replays may omit
             # this field. Source containment still cannot prove attribution.
             if "specimen_evidence" in raw:
                 if not isinstance(raw["specimen_evidence"], list) or not raw["specimen_evidence"]:
                     raise _Invalid("property_specimen_evidence_missing")
                 result["specimen_evidence"] = evidence(raw["specimen_evidence"])
+                if _alternate_specimen_form_in_link_evidence(result, specimens or []):
+                    raise _Invalid("property_sample_evidence_names_alternate_form")
             if "unit" not in raw or (raw["unit"] is not None and not _text(raw["unit"])):
                 raise _Invalid("property_unit_missing_or_invalid")
             if not any(_literal(raw["value"], e["quote"]) for e in ev):
@@ -293,6 +385,9 @@ def build_cards(document: Dict, response: Dict) -> Dict:
             ident_ev = evidence(entity.get("identity_evidence"))
             if not any(_literal(entity["name"], e["quote"]) for e in ident_ev):
                 raise _Invalid("entity_name_not_in_original_evidence")
+            kind = entity.get("identity_kind")
+            if kind is not None and (not isinstance(kind, str) or kind not in IDENTITY_KINDS):
+                raise _Invalid("identity_kind_invalid")
             classification = entity.get("classification")
             if not isinstance(classification, dict):
                 raise _Invalid("classification_missing")
@@ -304,6 +399,8 @@ def build_cards(document: Dict, response: Dict) -> Dict:
             if not _text(classification.get("reason")):
                 raise _Invalid("classification_reason_missing")
             class_ev = evidence(classification.get("evidence"))
+            if not member and kind in IDENTITY_KINDS:
+                raise _Invalid("nonpolymer_identity_kind_conflict")
         except _Invalid as exc:
             issue(entity, path + ".classification", str(exc), entity)
             classification_reviews += 1
@@ -316,6 +413,8 @@ def build_cards(document: Dict, response: Dict) -> Dict:
                                        "semantic_review_status": "not_performed_by_validator"},
                     "evidence_status": "quote_matched",
                     "semantic_review_status": "not_performed_by_validator"}
+        if "identity_kind" in entity:
+            identity["identity_kind"] = kind
         if not member:
             discarded.append({**identity, "decision": "discarded_nonpolymer"})
             continue
@@ -379,7 +478,7 @@ def build_cards(document: Dict, response: Dict) -> Dict:
             items = []
             for i, raw in enumerate(raw_group["items"]):
                 try:
-                    items.append(fact(raw, entity, group_path, field, specimen_ids))
+                    items.append(fact(raw, entity, group_path, field, specimen_ids, card["specimens"]))
                 except _Invalid as exc:
                     issue(entity, group_path + ".items[" + str(i) + "]", str(exc), raw)
                     invalid += 1

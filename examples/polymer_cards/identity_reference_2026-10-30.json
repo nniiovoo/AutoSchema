@@ -1,0 +1,833 @@
+{
+  "reference_version": "focused-identity-sample-reference-v1",
+  "created_date": "2026-10-30",
+  "origin": "Assistant focused primary-source check; not authenticated human annotation or exhaustive benchmark.",
+  "usage": "Evaluation only; do not feed these checked answers to the model in a test presented as independent.",
+  "papers": [
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "title": "Universally autonomous self-healing elastomer with high stretchability",
+      "source_files": [
+        {
+          "file_name": "guo-original.xml",
+          "document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        }
+      ]
+    },
+    {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "title": "Interfacial self-healing polymer electrolytes for long-cycle solid-state lithium-sulfur batteries",
+      "source_files": [
+        {
+          "file_name": "pei-original.xml",
+          "document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        }
+      ]
+    },
+    {
+      "paper_id": "10.3390/polym13234155",
+      "title": "Self-Healing of a Covalently Cross-Linked Polymer Electrolyte Membrane by Diels-Alder Cycloaddition and Electrolyte Embedding for Lithium Ion Batteries",
+      "source_files": [
+        {
+          "file_name": "chen-original.xml",
+          "document_sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        }
+      ]
+    }
+  ],
+  "guo_identities": [
+    {
+      "name": "P2",
+      "is_polymer": true,
+      "identity_evidence": [
+        {
+          "chunk_id": "src-f11f8aed81613a0e81fc",
+          "quote": "To investigate the origin of the remarkable mechanical properties of PDMS–SS–IP–BNB, different unit ratios of PDMS–SS–IP–BNB and their parent polymers (P1, P2: PDMS–SS–IP; P5: PDMS–IP–BNB) were synthesized.",
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "source_part": "main",
+          "locator": "Results / Rheological and mechanical properties, paragraph 12",
+          "document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        },
+        {
+          "chunk_id": "src-7fff0ff525a418c27c9f",
+          "quote": "¹H NMR indicated the successful synthesis of the PDMS–SS–IP–BNB polymers, as shown by the presence of characteristic peaks of PDMS, SS, IP, and BNB segments in the polymeric backbones (Supplementary Figs. 2 and 3). For P3, P4, P6, and P7, the Ar–H signals on the BNB units were very obvious when compared with that of P1 and P2 (Supplementary Fig. 3).",
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "source_part": "main",
+          "locator": "Results / Material characterization, paragraph 10",
+          "document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        }
+      ],
+      "scope": "specific formulation/member of the reported polymer series",
+      "exact_unit_proportion_status": "not_found_in_supplied_main_text",
+      "source_supported_structure": "PDMS–SS–IP; lacks BNB units",
+      "paper_id": "10.1038/s41467-020-15949-8"
+    },
+    {
+      "name": "P3",
+      "is_polymer": true,
+      "identity_evidence": [
+        {
+          "chunk_id": "src-abdf1ced28f9b1e9fb83",
+          "quote": "A typical polymerization procedure for P3 is described below. HO–PDMS–OH (23.0 g, 5.0 mmol) in a dried glass vessel equipped with a mechanical stirrer was heated in an oil bath at 100 °C under vacuum (<133 Pa) for 1 h to remove any moisture, and then cooled to 70 °C. IPDI (2.44 g, 11 mmol) and DBTDL (0.08 g) were dissolved in DMAc (20 mL), dropwise added into the vessel, and stirred for 3 h under a N₂ atmosphere. After the synthesis of the pre-polymer, 4,4^{′}-dithiodianiline (0.6 g, 2.5 mmol) and 4, 4^{′}-bis(hydroxymethyl)-2,2^{′}-bipyridine (0.465 g, 2.5 mmol) in 6 mL of dry DMAc were added to the pre-polymer solution. After stirring at 70 °C for another 3 h, the solution was added by methanol (3 mL), and further stirred for 30 min to ensure the consumption enough of isocyanate groups. Then, the solution was poured into a Poly tetra fluoroethylene (PTFE) plate that was subsequently put in a vacuum oven at 90 °C for 12 h to allow the reaction to complete. By dissolving the crude polymer in 40 mL of CH₂Cl₂ and then precipitating it into petroleum ether, we successfully obtained the purified P3 sample (16 g, yield 60%) as a yellow brown elastomer. The purification process was repeated three times.",
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "source_part": "main",
+          "locator": "Methods / Polymer synthesis, paragraph 29",
+          "document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        },
+        {
+          "chunk_id": "src-7fff0ff525a418c27c9f",
+          "quote": "¹H NMR indicated the successful synthesis of the PDMS–SS–IP–BNB polymers, as shown by the presence of characteristic peaks of PDMS, SS, IP, and BNB segments in the polymeric backbones (Supplementary Figs. 2 and 3). For P3, P4, P6, and P7, the Ar–H signals on the BNB units were very obvious when compared with that of P1 and P2 (Supplementary Fig. 3).",
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "source_part": "main",
+          "locator": "Results / Material characterization, paragraph 10",
+          "document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        }
+      ],
+      "scope": "specific formulation/member of the reported polymer series",
+      "exact_unit_proportion_status": "explicit reaction recipe in main Methods",
+      "paper_id": "10.1038/s41467-020-15949-8"
+    },
+    {
+      "name": "P4",
+      "is_polymer": true,
+      "identity_evidence": [
+        {
+          "chunk_id": "src-7fff0ff525a418c27c9f",
+          "quote": "¹H NMR indicated the successful synthesis of the PDMS–SS–IP–BNB polymers, as shown by the presence of characteristic peaks of PDMS, SS, IP, and BNB segments in the polymeric backbones (Supplementary Figs. 2 and 3). For P3, P4, P6, and P7, the Ar–H signals on the BNB units were very obvious when compared with that of P1 and P2 (Supplementary Fig. 3).",
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "source_part": "main",
+          "locator": "Results / Material characterization, paragraph 10",
+          "document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        }
+      ],
+      "scope": "specific formulation/member of the reported polymer series",
+      "exact_unit_proportion_status": "not_found_in_supplied_main_text",
+      "paper_id": "10.1038/s41467-020-15949-8"
+    },
+    {
+      "name": "P5",
+      "is_polymer": true,
+      "identity_evidence": [
+        {
+          "chunk_id": "src-f11f8aed81613a0e81fc",
+          "quote": "To investigate the origin of the remarkable mechanical properties of PDMS–SS–IP–BNB, different unit ratios of PDMS–SS–IP–BNB and their parent polymers (P1, P2: PDMS–SS–IP; P5: PDMS–IP–BNB) were synthesized.",
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "source_part": "main",
+          "locator": "Results / Rheological and mechanical properties, paragraph 12",
+          "document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        },
+        {
+          "chunk_id": "src-7fff0ff525a418c27c9f",
+          "quote": "¹H NMR indicated the successful synthesis of the PDMS–SS–IP–BNB polymers, as shown by the presence of characteristic peaks of PDMS, SS, IP, and BNB segments in the polymeric backbones (Supplementary Figs. 2 and 3). For P3, P4, P6, and P7, the Ar–H signals on the BNB units were very obvious when compared with that of P1 and P2 (Supplementary Fig. 3).",
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "source_part": "main",
+          "locator": "Results / Material characterization, paragraph 10",
+          "document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        }
+      ],
+      "scope": "specific formulation/member of the reported polymer series",
+      "exact_unit_proportion_status": "not_found_in_supplied_main_text",
+      "source_supported_structure": "PDMS–IP–BNB; lacks SS/disulfide units",
+      "paper_id": "10.1038/s41467-020-15949-8"
+    },
+    {
+      "name": "P6",
+      "is_polymer": true,
+      "identity_evidence": [
+        {
+          "chunk_id": "src-7fff0ff525a418c27c9f",
+          "quote": "¹H NMR indicated the successful synthesis of the PDMS–SS–IP–BNB polymers, as shown by the presence of characteristic peaks of PDMS, SS, IP, and BNB segments in the polymeric backbones (Supplementary Figs. 2 and 3). For P3, P4, P6, and P7, the Ar–H signals on the BNB units were very obvious when compared with that of P1 and P2 (Supplementary Fig. 3).",
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "source_part": "main",
+          "locator": "Results / Material characterization, paragraph 10",
+          "document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        }
+      ],
+      "scope": "specific formulation/member of the reported polymer series",
+      "exact_unit_proportion_status": "not_found_in_supplied_main_text",
+      "paper_id": "10.1038/s41467-020-15949-8"
+    },
+    {
+      "name": "P7",
+      "is_polymer": true,
+      "identity_evidence": [
+        {
+          "chunk_id": "src-7fff0ff525a418c27c9f",
+          "quote": "¹H NMR indicated the successful synthesis of the PDMS–SS–IP–BNB polymers, as shown by the presence of characteristic peaks of PDMS, SS, IP, and BNB segments in the polymeric backbones (Supplementary Figs. 2 and 3). For P3, P4, P6, and P7, the Ar–H signals on the BNB units were very obvious when compared with that of P1 and P2 (Supplementary Fig. 3).",
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "source_part": "main",
+          "locator": "Results / Material characterization, paragraph 10",
+          "document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        }
+      ],
+      "scope": "specific formulation/member of the reported polymer series",
+      "exact_unit_proportion_status": "not_found_in_supplied_main_text",
+      "paper_id": "10.1038/s41467-020-15949-8"
+    }
+  ],
+  "measurement_expectations": [
+    {
+      "claim_id": "guo-p3-gpc-pdi",
+      "entity_name": "P3",
+      "property": "Mw/Mn",
+      "value": "1.77",
+      "unit": null,
+      "specimen": "purified P3 sample, GPC measurement",
+      "conditions": [
+        {
+          "name": "method",
+          "value": "GPC"
+        },
+        {
+          "name": "eluent",
+          "value": "THF"
+        }
+      ],
+      "evidence": [
+        {
+          "chunk_id": "src-abdf1ced28f9b1e9fb83",
+          "quote": "By dissolving the crude polymer in 40 mL of CH₂Cl₂ and then precipitating it into petroleum ether, we successfully obtained the purified P3 sample (16 g, yield 60%) as a yellow brown elastomer. The purification process was repeated three times. GPC using THF as the eluent measured the average molecular weight as M_{n} = 63 KDa and M_{w} = 112 KDa, and M_{w}/M_{n} = 1.77.",
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "source_part": "main",
+          "locator": "Methods / Polymer synthesis, paragraph 29",
+          "document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        }
+      ],
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_labels": [
+        "P3"
+      ],
+      "specimen_require_any": [
+        "purified",
+        "GPC"
+      ],
+      "specimen_forbid": [
+        "film",
+        "tube",
+        "healed"
+      ],
+      "condition_value_terms": [
+        [
+          "GPC"
+        ],
+        [
+          "THF"
+        ]
+      ],
+      "evidence_chunk_ids_required": [
+        "src-abdf1ced28f9b1e9fb83"
+      ]
+    },
+    {
+      "claim_id": "guo-p3-healing-ambient",
+      "entity_name": "P3",
+      "property": "mechanical healing efficiency (fracture-strain recovery)",
+      "value": "93% ± 3%",
+      "unit": "%",
+      "specimen": "cut P3 film, healed at room temperature",
+      "conditions": [
+        {
+          "name": "healing temperature",
+          "value": "room temperature"
+        },
+        {
+          "name": "healing duration",
+          "value": "2 h"
+        }
+      ],
+      "evidence": [
+        {
+          "chunk_id": "src-848b57bcf6907681b207",
+          "quote": "After 1-h healing at room temperature, the trace of cut was almost invisible (Supplementary Fig. 14). One of the two pieces was dyed red to make the cut area more discernible. As shown in Fig. 3a, after a healing duration of 10 min at room temperature, the healed P3 film sustained a large strain and held a weight that was 526 times greater than the film weight. As expected, a longer healing time resulted in a higher recovered fracture strain (Supplementary Fig. 16a and b), When healed at room temperature for 2 h, the film had a recovered fracture strain of 1200% ± 50%, which showed a high healing efficiency (η) of 93% ± 3% (Supplementary Fig. 16b).",
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "source_part": "main",
+          "locator": "Results / Universally self-healing capability, paragraph 19",
+          "document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        },
+        {
+          "chunk_id": "src-b48dd634cfb0cbadc1e7",
+          "quote": "For the self-healing tests, the polymer films were cut into two pieces and put together to heal in different conditions. The healed polymer films were stretched following the same procedure to obtain the stress–strain curves. The mechanical healing efficiency, η, was defined as the ratio between the restored fracture strain relative to the original fracture strain.",
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "source_part": "main",
+          "locator": "Methods / Film preparation for self-healing and mechanical property testing, paragraph 32",
+          "document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        }
+      ],
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_labels": [
+        "P3"
+      ],
+      "specimen_require_any": [
+        "film"
+      ],
+      "specimen_forbid": [
+        "purified",
+        "GPC",
+        "tube",
+        "underwater",
+        "water-healed"
+      ],
+      "condition_value_terms": [
+        [
+          "room temperature",
+          "room-temperature",
+          "r.t.",
+          "ambient"
+        ],
+        [
+          "2 h",
+          "2h",
+          "2 hours",
+          "two hours"
+        ]
+      ],
+      "evidence_chunk_ids_required": [
+        "src-848b57bcf6907681b207",
+        "src-b48dd634cfb0cbadc1e7"
+      ]
+    },
+    {
+      "claim_id": "guo-p3-healing-water",
+      "entity_name": "P3",
+      "property": "mechanical healing efficiency (fracture-strain recovery)",
+      "value": "93% ± 2%",
+      "unit": "%",
+      "specimen": "severed P3 film healed in water",
+      "conditions": [
+        {
+          "name": "environment",
+          "value": "water"
+        },
+        {
+          "name": "healing duration",
+          "value": "24 h"
+        }
+      ],
+      "evidence": [
+        {
+          "chunk_id": "src-350106dc0f244b268362",
+          "quote": "When the severed P3 film was healed in water for 24 h, the resulting film could still be stretched up to 1230% ± 30% strain with 93% ± 2% healing efficiency.",
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "source_part": "main",
+          "locator": "Results / Universally self-healing capability, paragraph 21",
+          "document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        },
+        {
+          "chunk_id": "src-b48dd634cfb0cbadc1e7",
+          "quote": "For the self-healing tests, the polymer films were cut into two pieces and put together to heal in different conditions. The healed polymer films were stretched following the same procedure to obtain the stress–strain curves. The mechanical healing efficiency, η, was defined as the ratio between the restored fracture strain relative to the original fracture strain.",
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "source_part": "main",
+          "locator": "Methods / Film preparation for self-healing and mechanical property testing, paragraph 32",
+          "document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        }
+      ],
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_labels": [
+        "P3"
+      ],
+      "specimen_require_any": [
+        "film"
+      ],
+      "specimen_forbid": [
+        "purified",
+        "GPC",
+        "tube"
+      ],
+      "condition_value_terms": [
+        [
+          "water",
+          "underwater"
+        ],
+        [
+          "24 h",
+          "24h",
+          "24 hours",
+          "twenty-four hours"
+        ]
+      ],
+      "evidence_chunk_ids_required": [
+        "src-350106dc0f244b268362",
+        "src-b48dd634cfb0cbadc1e7"
+      ]
+    },
+    {
+      "claim_id": "guo-p4-stretch",
+      "entity_name": "P4",
+      "property": "stretchability",
+      "value": "14,000",
+      "unit": "%",
+      "specimen": "P4 film",
+      "conditions": [
+        {
+          "name": "loading rate",
+          "value": "10 mm min⁻¹"
+        }
+      ],
+      "evidence": [
+        {
+          "chunk_id": "src-f11f8aed81613a0e81fc",
+          "quote": "Figure 2 shows that the resulting PDMS–SS–IP–BNB film possessed a very high stretchability and good mechanical strength. Based on a reasonable ratio design, the film (P4) could be surprisingly stretched to nearly 140 times its original length at a loading rate of 10 mm min⁻¹ without rupture (Fig. 2a, b). Moreover, the P4 film also maintained a high stretchability even stretched much faster (Supplementary Fig. 9). To investigate the origin of the remarkable mechanical properties of PDMS–SS–IP–BNB, different unit ratios of PDMS–SS–IP–BNB and their parent polymers (P1, P2: PDMS–SS–IP; P5: PDMS–IP–BNB) were synthesized. As shown in Fig. 2b and c, the stress–strain curves of the polymer films all included an initial stiffening region (tension stress was proportional to strain), and a subsequent steady region (stress was almost constant) until rupture. It is a typical stress–strain curve of elastomer in the presence of interchain momentary bonds. P2 presents a lower stretchability (100%) in Fig. 2b; the lack of BNB units allowed for strong H-bonds of BNB–BNB crosslinks. The strain at break of the P5 film (lack of SS) was ca. 2,000%, higher than that of P2 but still much lower than that of P4 (14,000%). This result is also consistent with the lowest Young modulus (P4) among the polymers (Supplementary Table 2). We suggest that multiple non-covalent and covalent interactions were synergistically improve the material mechanical strength; furthermore, the strong H-bonds (BNB–BNB) played the most important role in high stretchability of PDMS–SS–IP–BNB.",
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "source_part": "main",
+          "locator": "Results / Rheological and mechanical properties, paragraph 12",
+          "document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        }
+      ],
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_labels": [
+        "P4"
+      ],
+      "specimen_require_any": [
+        "film"
+      ],
+      "specimen_forbid": [
+        "P3",
+        "purified",
+        "GPC",
+        "tube"
+      ],
+      "condition_value_terms": [
+        [
+          "10 mm min⁻¹",
+          "10 mm min−1",
+          "10 mm/min",
+          "10 mm min^-1"
+        ]
+      ],
+      "evidence_chunk_ids_required": [
+        "src-f11f8aed81613a0e81fc"
+      ],
+      "source_qualification_note": "The same paragraph also says nearly140 times original length; the reported percentage is approximate in experimental interpretation."
+    },
+    {
+      "claim_id": "pei-peo-voltage",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "entity_name": "poly(ethylene oxide) (PEO)",
+      "property": "electrochemical stability",
+      "value": "3.8",
+      "unit": "V",
+      "specimen": "PEO/LiFSI electrolyte",
+      "evidence": [
+        {
+          "chunk_id": "src-5d598cf3569a0bb57b72",
+          "quote": "The linear sweep voltammograms (LSV) for the asymmetrical cells indicated that PTMG-HDI-BHDS/LiFSI displayed a wider electrochemical voltage beyond 5.0 V than PEO (3.8 V) and PTMG-HDI (4.1 V), which is valuable for high-voltage (e.g., LiNi_{0.8}Co_{0.1}Mn_{0.1}O₂) battery systems, the corresponding PEO and PTMG-HDI showed significantly poor compatibility (Fig. 3e and Supplementary Fig. 17).",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "source_part": "main",
+          "locator": "Results / Electrochemical characterization of the SPEs, paragraph 15",
+          "document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        },
+        {
+          "chunk_id": "src-6524f9582cedc0d6c138",
+          "quote": "Poly(ethylene oxide) (PEO, Mw = 6 × 10⁵ g mol⁻¹) and lithium bis(fluorosulfonyl)imide (LiFSI) were dissolved in acetonitrile with a mass ratio of 2:1 (PEO: LiFSI) to form a uniform PEO/LiFSI solution. The PTMG-HDI and PTMG-HDI-BHDS polymer solutions were mixed with LiFSI in dimethylacetamide (DMAc) at a mass ratio of 2:1 (polymer: LiFSI) and stirred for 3 h. These viscous solutions were degassed under vacuum, cast into a Teflon mold, and then dried in a vacuum oven at 65 °C for 48 h to obtain the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes.",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "source_part": "main",
+          "locator": "Methods / Preparation of the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes, paragraph 27",
+          "document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        },
+        {
+          "chunk_id": "src-705d4d9258f66326a788",
+          "quote": "The electrochemical stabilities of the SPEs were evaluated at a scan rate of 10 mV s⁻¹ from 0 to 6 V at room temperature.",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "source_part": "main",
+          "locator": "Methods / Electrochemical characterization, paragraph 30",
+          "document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        }
+      ],
+      "entity_labels": [
+        "PEO",
+        "poly(ethylene oxide) (PEO)",
+        "poly(ethylene oxide)",
+        "Poly(ethylene oxide)"
+      ],
+      "specimen_require_any": [
+        "LiFSI"
+      ],
+      "specimen_forbid": [
+        "neat",
+        "salt-free",
+        "without salt"
+      ],
+      "condition_value_terms": [
+        [
+          "room temperature",
+          "room-temperature",
+          "r.t."
+        ]
+      ],
+      "evidence_chunk_ids_required": [
+        "src-5d598cf3569a0bb57b72",
+        "src-6524f9582cedc0d6c138",
+        "src-705d4d9258f66326a788"
+      ]
+    },
+    {
+      "claim_id": "pei-hdi-voltage",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "entity_name": "PTMG-HDI",
+      "property": "electrochemical stability",
+      "value": "4.1",
+      "unit": "V",
+      "specimen": "PTMG-HDI/LiFSI electrolyte",
+      "evidence": [
+        {
+          "chunk_id": "src-5d598cf3569a0bb57b72",
+          "quote": "The linear sweep voltammograms (LSV) for the asymmetrical cells indicated that PTMG-HDI-BHDS/LiFSI displayed a wider electrochemical voltage beyond 5.0 V than PEO (3.8 V) and PTMG-HDI (4.1 V), which is valuable for high-voltage (e.g., LiNi_{0.8}Co_{0.1}Mn_{0.1}O₂) battery systems, the corresponding PEO and PTMG-HDI showed significantly poor compatibility (Fig. 3e and Supplementary Fig. 17).",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "source_part": "main",
+          "locator": "Results / Electrochemical characterization of the SPEs, paragraph 15",
+          "document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        },
+        {
+          "chunk_id": "src-6524f9582cedc0d6c138",
+          "quote": "Poly(ethylene oxide) (PEO, Mw = 6 × 10⁵ g mol⁻¹) and lithium bis(fluorosulfonyl)imide (LiFSI) were dissolved in acetonitrile with a mass ratio of 2:1 (PEO: LiFSI) to form a uniform PEO/LiFSI solution. The PTMG-HDI and PTMG-HDI-BHDS polymer solutions were mixed with LiFSI in dimethylacetamide (DMAc) at a mass ratio of 2:1 (polymer: LiFSI) and stirred for 3 h. These viscous solutions were degassed under vacuum, cast into a Teflon mold, and then dried in a vacuum oven at 65 °C for 48 h to obtain the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes.",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "source_part": "main",
+          "locator": "Methods / Preparation of the PEO/LiFSI, PTMG-HDI/LiFSI, and PTMG-HDI-BHDS/LiFSI electrolytes, paragraph 27",
+          "document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        },
+        {
+          "chunk_id": "src-705d4d9258f66326a788",
+          "quote": "The electrochemical stabilities of the SPEs were evaluated at a scan rate of 10 mV s⁻¹ from 0 to 6 V at room temperature.",
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "source_part": "main",
+          "locator": "Methods / Electrochemical characterization, paragraph 30",
+          "document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        }
+      ],
+      "entity_labels": [
+        "PTMG-HDI"
+      ],
+      "specimen_require_any": [
+        "LiFSI"
+      ],
+      "specimen_forbid": [
+        "neat",
+        "salt-free",
+        "without salt"
+      ],
+      "condition_value_terms": [
+        [
+          "room temperature",
+          "room-temperature",
+          "r.t."
+        ]
+      ],
+      "evidence_chunk_ids_required": [
+        "src-5d598cf3569a0bb57b72",
+        "src-6524f9582cedc0d6c138",
+        "src-705d4d9258f66326a788"
+      ]
+    },
+    {
+      "claim_id": "chen-precursor-strength",
+      "paper_id": "10.3390/polym13234155",
+      "entity_name": "P(MMA-BA-(F-MA)) copolymer",
+      "entity_labels": [
+        "P(MMA-BA-(F-MA)) copolymer",
+        "P(MMA-BA-(F-MA))",
+        "self-healing polymer precursors",
+        "self-healing polymer precursor"
+      ],
+      "property": "tensile strength",
+      "value": "5",
+      "unit": "MPa",
+      "specimen": "self-healing polymer precursor",
+      "specimen_require_any": [
+        "precursor",
+        "copolymer"
+      ],
+      "specimen_forbid": [
+        "cross-linked",
+        "crosslinked",
+        "network",
+        "wet",
+        "liquid"
+      ],
+      "condition_value_terms": [],
+      "evidence_chunk_ids_required": [
+        "src-629027e6d27659cd9af9"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "src-629027e6d27659cd9af9",
+          "quote": "Firstly, we characterized the prepared self-healing polymer composite. By an emulsion polymerization method, we have been prepared self-healing polymer precursors. Gel permeation chromatography (GPC) data shows that the number-average molecular weight of the self-healing polymer precursors reaches 644,000 (Figure 2a). We can expect that the random copolymer will have excellent physical properties due to its high molecular weight. The tensile tests show that the tensile strength of the self-healing polymer precursors reaches 5 MPa. Not surprisingly, the tensile strength of the cross-linked polymer network reached 21 MPa after adding a suitable amount of the cross-linked agent BMI as shown in Figure 2b.",
+          "paper_id": "10.3390/polym13234155",
+          "source_part": "main",
+          "locator": "3. Results / 3.1. Synthesis and Characterization of SHP, paragraph 15",
+          "document_sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        }
+      ]
+    },
+    {
+      "claim_id": "chen-crosslinked-strength",
+      "paper_id": "10.3390/polym13234155",
+      "entity_name": "cross-linked polymer network",
+      "entity_labels": [
+        "cross-linked polymer network",
+        "self-healing polymer (SHP)",
+        "self-healing polymer electrolyte membrane",
+        "self-healing polymer electrolyte membranes",
+        "SHP",
+        "SHP electrolyte membranes",
+        "SHPEM"
+      ],
+      "property": "tensile strength",
+      "value": "21",
+      "unit": "MPa",
+      "specimen": "cross-linked polymer network",
+      "specimen_require_any": [
+        "cross-linked",
+        "crosslinked",
+        "network"
+      ],
+      "specimen_forbid": [
+        "precursor",
+        "wet",
+        "liquid",
+        "10 μL",
+        "10 µL"
+      ],
+      "condition_value_terms": [],
+      "evidence_chunk_ids_required": [
+        "src-629027e6d27659cd9af9"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "src-629027e6d27659cd9af9",
+          "quote": "Firstly, we characterized the prepared self-healing polymer composite. By an emulsion polymerization method, we have been prepared self-healing polymer precursors. Gel permeation chromatography (GPC) data shows that the number-average molecular weight of the self-healing polymer precursors reaches 644,000 (Figure 2a). We can expect that the random copolymer will have excellent physical properties due to its high molecular weight. The tensile tests show that the tensile strength of the self-healing polymer precursors reaches 5 MPa. Not surprisingly, the tensile strength of the cross-linked polymer network reached 21 MPa after adding a suitable amount of the cross-linked agent BMI as shown in Figure 2b.",
+          "paper_id": "10.3390/polym13234155",
+          "source_part": "main",
+          "locator": "3. Results / 3.1. Synthesis and Characterization of SHP, paragraph 15",
+          "document_sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        }
+      ]
+    },
+    {
+      "claim_id": "chen-wet-room-temperature-conductivity",
+      "paper_id": "10.3390/polym13234155",
+      "entity_name": "self-healing polymer electrolyte membrane",
+      "entity_labels": [
+        "cross-linked polymer network",
+        "self-healing polymer (SHP)",
+        "self-healing polymer electrolyte membrane",
+        "self-healing polymer electrolyte membranes",
+        "SHP",
+        "SHP electrolyte membranes",
+        "SHPEM"
+      ],
+      "property": "ionic conductivity",
+      "value": "approximate to 2.56 × 10⁻³",
+      "unit": "S·cm⁻¹",
+      "specimen": "SHP electrolyte membrane with10 μL liquid electrolyte, room-temperature measurement",
+      "specimen_require_any": [
+        "wet",
+        "liquid",
+        "plasticized",
+        "plasticised",
+        "10 μL",
+        "10 µL"
+      ],
+      "specimen_forbid": [
+        "dry",
+        "neat",
+        "salt-free"
+      ],
+      "condition_value_terms": [
+        [
+          "room temperature",
+          "room-temperature",
+          "r.t."
+        ],
+        [
+          "10 μL",
+          "10 µL",
+          "10μL",
+          "10µL",
+          "10 uL",
+          "10 microliters",
+          "10 microlitres"
+        ]
+      ],
+      "evidence_chunk_ids_required": [
+        "src-84988e5beedccc653dff"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "src-84988e5beedccc653dff",
+          "quote": "The ionic conductivity of the SHP electrolyte membranes with small amount of liquid electrolyte (10 μL) is approximate to 2.56 × 10⁻³ S·cm⁻¹ at room temperature, which is a little lower than that of the commercial PE films (2.76 × 10⁻³ S·cm⁻¹).",
+          "paper_id": "10.3390/polym13234155",
+          "source_part": "main",
+          "locator": "3. Results / 3.3. Electrochemical Performances of SHP Electrolyte Membranes, paragraph 23",
+          "document_sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        },
+        {
+          "chunk_id": "src-35900701ee1c30a4aa44",
+          "quote": "Electrochemical impedance spectroscopy (EIS) and interface stability were performed using a Solartron 1255 B Frequency Response Analyzer (Solartron Analytical Inc., Farnborough, Hampshire, UK) over the frequency range of 10⁻¹ to 10⁵ Hz with 10 mV amplitude from the cell SS/SHPEM/SS and Li/SHPEM/Li with liquid electrolyte.",
+          "paper_id": "10.3390/polym13234155",
+          "source_part": "main",
+          "locator": "2. Materials and Methods / 2.6. Characterizations and Electrochemical Tests, paragraph 12",
+          "document_sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc",
+          "text_transformations": [
+            "jats_script_notation_v1"
+          ]
+        }
+      ],
+      "comparison_note": "Separate this observation from the eight stated25–90°C conductivity series values; room temperature is not an invented30°C."
+    }
+  ],
+  "limits": [
+    "Main-text XML only; Supplementary Table 1 not supplied. Exact member ratios except P3 recipe must remain unknown.",
+    "Individual source labels should be grounded in explicit original passages, not inferred by automatically expanding P1–P7.",
+    "The named family is an author series umbrella, not proof every member contains the same SS/BNB units.",
+    "P3 GPC sample, ambient-healed film and underwater-healed film are distinct measurement subjects.",
+    "Original XML text underwent declared script-preserving conversion; quoted spans match supplied converted chunks."
+  ],
+  "review_expectations": [
+    {
+      "review_id": "chen-electrochemical-membrane-thickness-context",
+      "paper_id": "10.3390/polym13234155",
+      "kind": "potential_context_conflict",
+      "entity_labels": [
+        "cross-linked polymer network",
+        "self-healing polymer (SHP)",
+        "self-healing polymer electrolyte membrane",
+        "self-healing polymer electrolyte membranes",
+        "SHP",
+        "SHP electrolyte membranes",
+        "SHPEM"
+      ],
+      "observations": [
+        {
+          "value": "12",
+          "unit": "μm",
+          "context": "Methods: SHP electrolyte membrane used for electrochemical tests",
+          "evidence": [
+            {
+              "chunk_id": "src-35900701ee1c30a4aa44",
+              "quote": "For these electrochemical tests, the thickness of SHP electrolyte membranes and PE films are 12 μm and 15 μm, respectively.",
+              "paper_id": "10.3390/polym13234155",
+              "source_part": "main",
+              "locator": "2. Materials and Methods / 2.6. Characterizations and Electrochemical Tests, paragraph 12",
+              "document_sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc",
+              "text_transformations": [
+                "jats_script_notation_v1"
+              ]
+            }
+          ]
+        },
+        {
+          "value": "about 15",
+          "unit": "μm",
+          "context": "Results: all SHP membranes used in electrochemical-performance tests",
+          "evidence": [
+            {
+              "chunk_id": "src-51a89a11fdf0a55dd640",
+              "quote": "All the SHP electrolyte membranes used in electrochemical performance tests have a thickness of about 15 μm.",
+              "paper_id": "10.3390/polym13234155",
+              "source_part": "main",
+              "locator": "3. Results / 3.3. Electrochemical Performances of SHP Electrolyte Membranes, paragraph 21",
+              "document_sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc",
+              "text_transformations": [
+                "jats_script_notation_v1"
+              ]
+            }
+          ]
+        }
+      ],
+      "evidence_chunk_ids_required": [
+        "src-35900701ee1c30a4aa44",
+        "src-51a89a11fdf0a55dd640"
+      ],
+      "expected_behavior": "Preserve both original statements with their contexts and mark unresolved thickness/sample correspondence for review. Do not assert they are measurements on one identical physical specimen or silently select one.",
+      "evaluation_note": "A review/context expectation, not a scalar measurement accuracy claim."
+    }
+  ],
+  "criteria_interpretation": {
+    "condition_value_terms": "Each inner list is a set of alternative source-value spellings; check groups independently. Missing context means partial evidence alignment, not that the source numerical value is false.",
+    "specimen_require_any": "Use the selected measurement specimen label/state, with no inferred composition from a bare parent name.",
+    "specimen_forbid": "Apply to the selected specimen label/state, not unrelated words elsewhere in a multi-sample source quote.",
+    "evidence_chunk_ids_required": "These chunks supply numerical, preparation/test or metric-definition context. Count them on the particular measurement/sample, not just anywhere in the paper card.",
+    "numeric_representation": "Quotes remain original. This small reference is not a unit-conversion or scientific-accuracy benchmark; exact raw-format mismatches must not be relabeled as proven scientific mistakes."
+  }
+}

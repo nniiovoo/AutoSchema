@@ -1,0 +1,208 @@
+{
+  "evaluation_kind": "focused_source_expectation_check",
+  "reference_version": null,
+  "identities": [],
+  "measurements": [
+    {
+      "claim_id": "pei-bhds-strength",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "candidates": [
+        {
+          "path": "results[0].cards[4].properties.items[2]",
+          "entity_id": "p5",
+          "specimen_id": "p5-polymer",
+          "value": "88.3",
+          "unit": "MPa",
+          "reasons": [
+            "required_condition_missing:5 cm min⁻¹",
+            "required_evidence_chunk_missing:src-7c5b298f79cb980971cc",
+            "required_evidence_chunk_missing:src-f5a8a275fe65ec830001"
+          ],
+          "notes": [],
+          "match_kind": "raw_value_and_unit",
+          "legacy_scope_undeclared": true
+        }
+      ],
+      "status": "needs_source_review",
+      "matching_value_held_for_review": false
+    },
+    {
+      "claim_id": "pei-bhds-elongation",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "candidates": [
+        {
+          "path": "results[0].cards[4].properties.items[3]",
+          "entity_id": "p5",
+          "specimen_id": "p5-polymer",
+          "value": "2000%",
+          "unit": "%",
+          "reasons": [
+            "required_condition_missing:5 cm min⁻¹",
+            "required_evidence_chunk_missing:src-7c5b298f79cb980971cc",
+            "required_evidence_chunk_missing:src-f5a8a275fe65ec830001"
+          ],
+          "notes": [],
+          "match_kind": "raw_value_and_unit",
+          "legacy_scope_undeclared": true
+        }
+      ],
+      "status": "needs_source_review",
+      "matching_value_held_for_review": false
+    },
+    {
+      "claim_id": "pei-bhds-mn-monitoring",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "candidates": [
+        {
+          "path": "results[0].cards[4].properties.items[0]",
+          "entity_id": "p5",
+          "specimen_id": "p5-polymer",
+          "value": "7.3 × 10⁵",
+          "unit": "g mol⁻¹",
+          "reasons": [
+            "specimen_required_term_missing",
+            "required_condition_missing:DMF",
+            "required_evidence_chunk_missing:src-f5a8a275fe65ec830001"
+          ],
+          "notes": [],
+          "match_kind": "raw_value_and_unit",
+          "legacy_scope_undeclared": true
+        }
+      ],
+      "status": "needs_source_review",
+      "matching_value_held_for_review": false
+    },
+    {
+      "claim_id": "pei-bhds-conductivity",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "candidates": [
+        {
+          "path": "results[0].cards[4].properties.items[4]",
+          "entity_id": "p5",
+          "specimen_id": "p5-lifsi-electrolyte",
+          "value": "2.4 × 10⁻⁴",
+          "unit": "S cm⁻¹",
+          "reasons": [
+            "required_condition_missing:0.1–10⁶ Hz",
+            "required_evidence_chunk_missing:src-705d4d9258f66326a788"
+          ],
+          "notes": [],
+          "match_kind": "raw_value_and_unit",
+          "legacy_scope_undeclared": true
+        }
+      ],
+      "status": "needs_source_review",
+      "matching_value_held_for_review": false
+    },
+    {
+      "claim_id": "pei-bhds-lsv-limit",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "candidates": [
+        {
+          "path": "results[0].cards[4].properties.items[4]",
+          "entity_id": "p5",
+          "specimen_id": "p5-lifsi-electrolyte",
+          "value": "2.4 × 10⁻⁴",
+          "unit": "S cm⁻¹",
+          "reasons": [
+            "raw_value_or_unit_not_exact_reference",
+            "required_condition_missing:10 mV s⁻¹",
+            "required_condition_missing:0 to 6 V",
+            "required_condition_missing:room temperature",
+            "required_evidence_chunk_missing:src-5d598cf3569a0bb57b72",
+            "required_evidence_chunk_missing:src-705d4d9258f66326a788"
+          ],
+          "notes": [],
+          "match_kind": "source_related_value_variant",
+          "legacy_scope_undeclared": true
+        },
+        {
+          "path": "results[0].cards[4].properties.items[5]",
+          "entity_id": "p5",
+          "specimen_id": "p5-lifsi-electrolyte",
+          "value": "0.30",
+          "unit": "eV",
+          "reasons": [
+            "raw_value_or_unit_not_exact_reference",
+            "required_condition_missing:10 mV s⁻¹",
+            "required_condition_missing:0 to 6 V",
+            "required_condition_missing:room temperature",
+            "required_evidence_chunk_missing:src-5d598cf3569a0bb57b72",
+            "required_evidence_chunk_missing:src-705d4d9258f66326a788"
+          ],
+          "notes": [],
+          "match_kind": "source_related_value_variant",
+          "legacy_scope_undeclared": true
+        },
+        {
+          "path": "results[0].cards[4].properties.items[6]",
+          "entity_id": "p5",
+          "specimen_id": "p5-lifsi-electrolyte",
+          "value": "95.2%",
+          "unit": null,
+          "reasons": [
+            "raw_value_or_unit_not_exact_reference",
+            "required_condition_missing:10 mV s⁻¹",
+            "required_condition_missing:0 to 6 V",
+            "required_condition_missing:room temperature",
+            "required_evidence_chunk_missing:src-5d598cf3569a0bb57b72",
+            "required_evidence_chunk_missing:src-705d4d9258f66326a788"
+          ],
+          "notes": [],
+          "match_kind": "source_related_value_variant",
+          "legacy_scope_undeclared": true
+        },
+        {
+          "path": "results[0].cards[4].properties.items[7]",
+          "entity_id": "p5",
+          "specimen_id": "p5-lifsi-electrolyte",
+          "value": "0.81",
+          "unit": null,
+          "reasons": [
+            "raw_value_or_unit_not_exact_reference",
+            "required_condition_missing:10 mV s⁻¹",
+            "required_condition_missing:0 to 6 V",
+            "required_condition_missing:room temperature",
+            "required_evidence_chunk_missing:src-705d4d9258f66326a788"
+          ],
+          "notes": [],
+          "match_kind": "source_related_value_variant",
+          "legacy_scope_undeclared": true
+        }
+      ],
+      "status": "needs_source_review",
+      "matching_value_held_for_review": false
+    },
+    {
+      "claim_id": "pei-bhds-transference",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "candidates": [
+        {
+          "path": "results[0].cards[4].properties.items[7]",
+          "entity_id": "p5",
+          "specimen_id": "p5-lifsi-electrolyte",
+          "value": "0.81",
+          "unit": null,
+          "reasons": [
+            "required_condition_missing:50 mV",
+            "required_condition_missing:symmetric Li||Li cell",
+            "required_evidence_chunk_missing:src-705d4d9258f66326a788"
+          ],
+          "notes": [],
+          "match_kind": "raw_value_and_unit",
+          "legacy_scope_undeclared": true
+        }
+      ],
+      "status": "needs_source_review",
+      "matching_value_held_for_review": false
+    }
+  ],
+  "unevaluated_reference_sections": [],
+  "limits": [
+    "Selected expectation matches are not scientific accuracy, precision, recall, or exhaustive paper coverage.",
+    "Source containment and record structure are assumed from the validator run; scientific interpretation still needs source review.",
+    "Exact raw notation is compared with NFC/whitespace handling and nonduplicated units; equivalent numerical conversions are not inferred.",
+    "Legacy records without identity_kind are reported as undeclared, not assigned a new scope."
+  ],
+  "reference_artifact_sha256": "e34b50f553fe79a51b04f297b89c3fcbcc237a6797bf8d4aab2c1fa7e011e1b9"
+}

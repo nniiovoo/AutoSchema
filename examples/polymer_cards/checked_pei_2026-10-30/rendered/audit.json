@@ -1,0 +1,67 @@
+{
+  "contract_version": "polymer-cards-v1",
+  "run_metadata": {
+    "mode": "assistant_source_checked_reference_replay",
+    "model_calls": 0,
+    "review_origin": "Assistant source check with independent assistant source audit; not authenticated human annotation.",
+    "not_used_in_model_prompt": true,
+    "coverage": "selected_main_text_excerpts",
+    "source_manifest_sha256": "53de13b525abbfa58eee3c0ba121678dfebad34363ca44661a7a35b088923786",
+    "validation_code_sha256": "ad4b47a6ca3df6e8d6dc0603ac5e2f99c9dfedaba86536e1aaca8d8181d081e5",
+    "renderer_code_sha256": "842dd533fa266ed83ec76c568e11b2ebe3dce069c81b0afb48862e215d237971"
+  },
+  "counts": {
+    "papers": 1,
+    "retained_cards": 1,
+    "discarded_entities": 0,
+    "review_records": 0,
+    "validation_issues": 0,
+    "attribution_warnings": 2
+  },
+  "papers": [
+    {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "discarded_entities": [],
+      "review_queue": [],
+      "validation_issues": [],
+      "attribution_warnings": [
+        {
+          "reason": "specimen_form_ambiguous",
+          "entity_id": "pei-bhds",
+          "path": "properties.items[0]",
+          "property": "breaking strength",
+          "value": "88.3",
+          "specimen_label": "PTMG-HDI-BHDS film",
+          "related_specimen_labels": [
+            "PTMG-HDI-BHDS/LiFSI"
+          ],
+          "detail": "A bare polymer label and an additive-containing form coexist. Check the test/preparation context; the result has not been automatically reassigned."
+        },
+        {
+          "reason": "specimen_form_ambiguous",
+          "entity_id": "pei-bhds",
+          "path": "properties.items[1]",
+          "property": "ultimate elongation",
+          "value": "2000%",
+          "specimen_label": "PTMG-HDI-BHDS film",
+          "related_specimen_labels": [
+            "PTMG-HDI-BHDS/LiFSI"
+          ],
+          "detail": "A bare polymer label and an additive-containing form coexist. Check the test/preparation context; the result has not been automatically reassigned."
+        }
+      ],
+      "statistics": {
+        "input_entities": 1,
+        "cards": 1,
+        "retained_polymers": 1,
+        "discarded_entities": 0,
+        "discarded_nonpolymers": 0,
+        "classification_review_entities": 0,
+        "review_queue": 0,
+        "validation_issues": 0,
+        "attribution_warnings": 2
+      }
+    }
+  ],
+  "verification_limit": "Original evidence linkage and mechanical checks do not certify polymer classification or scientific attribution."
+}

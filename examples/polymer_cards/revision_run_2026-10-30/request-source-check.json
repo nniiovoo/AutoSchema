@@ -1,0 +1,24 @@
+{
+  "checked_references_supplied_to_model": false,
+  "request_checks": [
+    {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "current_policy_reconstruction_matches": true,
+      "capture_policy_reconstruction_matches": true,
+      "recorded_request_prompt_sha256": "c3ee0d6ac366633f2ec4ea0ed17637200b7f46222439f6ca47ae917465dab729"
+    },
+    {
+      "paper_id": "10.3390/polym13234155",
+      "current_policy_reconstruction_matches": false,
+      "capture_policy_reconstruction_matches": true,
+      "recorded_request_prompt_sha256": "d6a62eae81ab7e0f5502ecf675dd9c91f3b3653972ec79690c381bd71e9c4da6"
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "current_policy_reconstruction_matches": true,
+      "capture_policy_reconstruction_matches": true,
+      "recorded_request_prompt_sha256": "56548a6f05e1a9352fafd503426cafe15063533998f9a35a70af7e7f2b8526b1"
+    }
+  ],
+  "reconstruction_note": "Original request hashes are unchanged. Capture-policy reconstruction disables only the later-added omitted-sibling source-form fallback while rebuilding validator feedback; no API call, source change or checked answer is involved. Current-policy feedback differs for Chen after that guard was finalized."
+}

@@ -1,0 +1,206 @@
+{
+  "reference_origin": "assistant_source_checked_one_card_not_authenticated_human_gold",
+  "paper_id": "10.1038/s41467-023-43467-w",
+  "not_used_in_model_prompts": true,
+  "scope": "Six selected measurements and their explicit sample/method context from one Pei card; not complete-paper or overall accuracy.",
+  "comparison_policy": "NFC/whitespace-only value and unit matching; no numeric conversions or property-name matching. Exact reference-notation matches are narrower than scientific equivalence.",
+  "expected_group_keys": [
+    "monomers",
+    "composition",
+    "synthesis_text",
+    "properties",
+    "applications",
+    "source_tag"
+  ],
+  "group_scope": "The six groups are populated in this manually checked example; this is not a requirement to invent nonempty groups for every extracted polymer.",
+  "measurement_expectations": [
+    {
+      "claim_id": "pei-bhds-strength",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "entity_labels": [
+        "PTMG-HDI-BHDS"
+      ],
+      "value": "88.3",
+      "unit": "MPa",
+      "condition_value_terms": [
+        [
+          "5 cm min⁻¹"
+        ]
+      ],
+      "evidence_chunk_ids_required": [
+        "src-115302e48390d0fe7a91",
+        "src-7c5b298f79cb980971cc",
+        "src-f5a8a275fe65ec830001"
+      ],
+      "specimen_require_any": [
+        "film",
+        "matrix",
+        "neat",
+        "PTMG-HDI-BHDS"
+      ],
+      "specimen_forbid": [
+        "LiFSI",
+        "solution",
+        "GPC",
+        "polymerization"
+      ]
+    },
+    {
+      "claim_id": "pei-bhds-elongation",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "entity_labels": [
+        "PTMG-HDI-BHDS"
+      ],
+      "value": "2000%",
+      "unit": "%",
+      "condition_value_terms": [
+        [
+          "5 cm min⁻¹"
+        ]
+      ],
+      "evidence_chunk_ids_required": [
+        "src-115302e48390d0fe7a91",
+        "src-7c5b298f79cb980971cc",
+        "src-f5a8a275fe65ec830001"
+      ],
+      "specimen_require_any": [
+        "film",
+        "matrix",
+        "neat",
+        "PTMG-HDI-BHDS"
+      ],
+      "specimen_forbid": [
+        "LiFSI",
+        "solution",
+        "GPC",
+        "polymerization"
+      ]
+    },
+    {
+      "claim_id": "pei-bhds-mn-monitoring",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "entity_labels": [
+        "PTMG-HDI-BHDS"
+      ],
+      "value": "7.3 × 10⁵",
+      "unit": "g mol⁻¹",
+      "condition_value_terms": [
+        [
+          "8 h"
+        ],
+        [
+          "40 °C"
+        ],
+        [
+          "DMF"
+        ]
+      ],
+      "evidence_chunk_ids_required": [
+        "src-8bc608870b143b549de5",
+        "src-f5a8a275fe65ec830001"
+      ],
+      "specimen_require_any": [
+        "polymerization",
+        "monitoring",
+        "reaction",
+        "solution",
+        "GPC"
+      ],
+      "specimen_forbid": [
+        "LiFSI",
+        "film",
+        "electrolyte"
+      ]
+    },
+    {
+      "claim_id": "pei-bhds-conductivity",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "entity_labels": [
+        "PTMG-HDI-BHDS"
+      ],
+      "value": "2.4 × 10⁻⁴",
+      "unit": "S cm⁻¹",
+      "condition_value_terms": [
+        [
+          "30 °C"
+        ],
+        [
+          "0.1–10⁶ Hz"
+        ]
+      ],
+      "evidence_chunk_ids_required": [
+        "src-6524f9582cedc0d6c138",
+        "src-705d4d9258f66326a788",
+        "src-85520225f19b69cfbf86"
+      ],
+      "specimen_require_any": [
+        "LiFSI"
+      ],
+      "specimen_forbid": [
+        "neat",
+        "salt-free"
+      ]
+    },
+    {
+      "claim_id": "pei-bhds-lsv-limit",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "entity_labels": [
+        "PTMG-HDI-BHDS"
+      ],
+      "value": "beyond 5.0",
+      "unit": "V",
+      "condition_value_terms": [
+        [
+          "10 mV s⁻¹"
+        ],
+        [
+          "0 to 6 V"
+        ],
+        [
+          "room temperature"
+        ]
+      ],
+      "evidence_chunk_ids_required": [
+        "src-5d598cf3569a0bb57b72",
+        "src-6524f9582cedc0d6c138",
+        "src-705d4d9258f66326a788"
+      ],
+      "specimen_require_any": [
+        "LiFSI"
+      ],
+      "specimen_forbid": [
+        "neat",
+        "salt-free"
+      ]
+    },
+    {
+      "claim_id": "pei-bhds-transference",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "entity_labels": [
+        "PTMG-HDI-BHDS"
+      ],
+      "value": "0.81",
+      "unit": null,
+      "condition_value_terms": [
+        [
+          "50 mV"
+        ],
+        [
+          "symmetric Li||Li cell"
+        ]
+      ],
+      "evidence_chunk_ids_required": [
+        "src-5d598cf3569a0bb57b72",
+        "src-6524f9582cedc0d6c138",
+        "src-705d4d9258f66326a788"
+      ],
+      "specimen_require_any": [
+        "LiFSI"
+      ],
+      "specimen_forbid": [
+        "neat",
+        "salt-free"
+      ]
+    }
+  ]
+}

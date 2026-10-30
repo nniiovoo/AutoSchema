@@ -1,0 +1,20 @@
+{
+  "papers": [
+    {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "title": "Interfacial self-healing polymer electrolytes for long-cycle solid-state lithium-sulfur batteries",
+      "domains": [
+        "disulfide",
+        "batteries"
+      ],
+      "sources": [
+        {
+          "path": "source-excerpts.json",
+          "format": "json",
+          "source_part": "main",
+          "expected_sha256": "2f24270fa1b5d2e8a2b15d91b0b1a27f0e55ad4e244938bbbcfddb8ada2d200e"
+        }
+      ]
+    }
+  ]
+}

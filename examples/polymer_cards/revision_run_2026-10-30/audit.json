@@ -1,0 +1,842 @@
+{
+  "contract_version": "polymer-cards-v1",
+  "run_metadata": {
+    "contract_version": "polymer-cards-v1",
+    "created_at_utc": "2026-10-30T18:39:35.818009+00:00",
+    "mode": "live_model_revision",
+    "retention_rule": "polymer identity only; no application or completeness threshold",
+    "semantic_validation": "Original quote containment is mechanically checked; chemical interpretation and attribution still need source review.",
+    "source_manifest_sha256": "ea1f79f1412185f7668a8f27608ce42e0bd4d318051e3c7ca44b29e6cdfefd28",
+    "max_output_tokens_per_live_request": 24000,
+    "provider": "openai",
+    "model": "gpt-5.4",
+    "model_calls": 3,
+    "extraction_profile": {
+      "output_format": "json_schema",
+      "schema_name": "polymer_cards_strict_v2",
+      "schema_sha256": "b2d67f2c7dc1cc094127c6b98f94534efda41eac0c106f978bd7f4fe07cfe5f5",
+      "system_prompt_sha256": "36ae7c79d0e97d2e73db4dfdb11f466dc5e60f432f2fde7d50f5edf11d86edfc"
+    },
+    "request_timeout_seconds": 600,
+    "run_complete": true,
+    "papers_requested": 3,
+    "papers_completed": 3,
+    "model_calls_attempted": 3,
+    "repair_input_records_sha256": "639e39f287dc5db8a6b20280e3e8ea076b08e1a9df2936ec1b10a939148dc24c",
+    "repair_input_sources_sha256": "20aa6303c46c60cc325f2b9f9720f9fac42bfb061fa861b83e052105ea99f7e2",
+    "repair_note": "Saved model records were untrusted proposals; revisions use matching original sources and validation feedback. No checked evaluation reference is supplied.",
+    "post_run_revalidation": {
+      "performed_at_utc": "2026-10-30T18:55:06.718426+00:00",
+      "additional_model_calls": 0,
+      "kind": "automatic_revalidation_of_unchanged_model_revision",
+      "reason": "Omitted-sibling sample-evidence guard was finalized while provider requests were running; no response value, identity or sample link was manually changed.",
+      "input_artifact_hashes": {
+        "cards.json": "4a3e89cc04f3c27eb6b9da3842eda2840ee605be913aab1bb46b8267b63ba70d",
+        "raw-responses.json": "ae5a6fbed7d9970193739b1568214b2ad195be7635c67eba40bb9264d68e9fd1",
+        "sources.json": "20aa6303c46c60cc325f2b9f9720f9fac42bfb061fa861b83e052105ea99f7e2"
+      },
+      "validation_code_sha256": "ad4b47a6ca3df6e8d6dc0603ac5e2f99c9dfedaba86536e1aaca8d8181d081e5"
+    }
+  },
+  "counts": {
+    "papers": 3,
+    "retained_cards": 25,
+    "discarded_entities": 0,
+    "review_records": 17,
+    "validation_issues": 18,
+    "attribution_warnings": 4
+  },
+  "papers": [
+    {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "discarded_entities": [],
+      "review_queue": [
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p2",
+          "name": "poly(ethylene oxide) (PEO)",
+          "path": "entities[1].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p2",
+            "property": "molecular weight",
+            "value": "6 × 10⁵",
+            "unit": "g mol⁻¹",
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [],
+            "evidence": [
+              {
+                "chunk_id": "src-6524f9582cedc0d6c138",
+                "quote": "Poly(ethylene oxide) (PEO, Mw = 6 × 10⁵ g mol⁻¹) and lithium bis(fluorosulfonyl)imide (LiFSI) were dissolved in acetonitrile with a mass ratio of 2:1 (PEO: LiFSI) to form a uniform PEO/LiFSI solution."
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p3",
+          "name": "Polytetrahydrofuran (PTMG)",
+          "path": "entities[2].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p3",
+            "property": "molecular weight",
+            "value": "2,000",
+            "unit": "g mol⁻¹",
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [],
+            "evidence": [
+              {
+                "chunk_id": "src-fc7163e473a711c15d85",
+                "quote": "Polytetrahydrofuran (PTMG) with a low molecular weight (Mw=2,000 g mol⁻¹) and ether-oxygens was chosen as the soft segment to dissociate and conduct the lithium ions (Li⁺)³⁹."
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p3",
+          "name": "Polytetrahydrofuran (PTMG)",
+          "path": "entities[2].properties.items[1]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p3",
+            "property": "LUMO energy of the repeat unit",
+            "value": "1.35",
+            "unit": "eV",
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [],
+            "evidence": [
+              {
+                "chunk_id": "src-dbe01adf96fff2e99ab2",
+                "quote": "The LUMO energy of the repeat unit in PTMG (1.35 eV) was significantly higher than that of the PEO repeat unit (0.64 eV), indicating stronger electrochemical compatibility of PTMG-HDI-BHDS with the Li anode (Fig. 3d)⁵³."
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p3",
+          "name": "Polytetrahydrofuran (PTMG)",
+          "path": "entities[2].properties.items[2]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p3",
+            "property": "binding energy with Li⁺",
+            "value": "− 0.83",
+            "unit": "eV",
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [],
+            "evidence": [
+              {
+                "chunk_id": "src-dbe01adf96fff2e99ab2",
+                "quote": "The binding energy of PTMG (ΔE_{PTMG} = − 0.83 eV) with Li⁺ was higher than that of PEO (ΔE_{PEO} = − 0.75 eV), which accelerated the solvation and dissociation of Li⁺ with PTMG-HDI-BHDS."
+              }
+            ]
+          }
+        }
+      ],
+      "validation_issues": [
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p2",
+          "name": "poly(ethylene oxide) (PEO)",
+          "path": "entities[1].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p3",
+          "name": "Polytetrahydrofuran (PTMG)",
+          "path": "entities[2].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p3",
+          "name": "Polytetrahydrofuran (PTMG)",
+          "path": "entities[2].properties.items[1]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p3",
+          "name": "Polytetrahydrofuran (PTMG)",
+          "path": "entities[2].properties.items[2]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p3",
+          "name": "Polytetrahydrofuran (PTMG)",
+          "path": "entities[2].properties",
+          "reason": "reported_group_has_no_usable_items"
+        }
+      ],
+      "attribution_warnings": [
+        {
+          "reason": "specimen_form_ambiguous",
+          "entity_id": "p5",
+          "path": "properties.items[0]",
+          "property": "average molecular weight (M_{n})",
+          "value": "7.3 × 10⁵",
+          "specimen_label": "PTMG-HDI-BHDS solution",
+          "related_specimen_labels": [
+            "PTMG-HDI-BHDS/LiFSI"
+          ],
+          "detail": "A bare polymer label and an additive-containing form coexist. Check the test/preparation context; the result has not been automatically reassigned."
+        },
+        {
+          "reason": "specimen_form_ambiguous",
+          "entity_id": "p5",
+          "path": "properties.items[1]",
+          "property": "viscosity (η)",
+          "value": "1.3 × 10⁴",
+          "specimen_label": "PTMG-HDI-BHDS solution",
+          "related_specimen_labels": [
+            "PTMG-HDI-BHDS/LiFSI"
+          ],
+          "detail": "A bare polymer label and an additive-containing form coexist. Check the test/preparation context; the result has not been automatically reassigned."
+        },
+        {
+          "reason": "specimen_form_ambiguous",
+          "entity_id": "p5",
+          "path": "properties.items[2]",
+          "property": "breaking strength",
+          "value": "88.3",
+          "specimen_label": "PTMG-HDI-BHDS film",
+          "related_specimen_labels": [
+            "PTMG-HDI-BHDS/LiFSI"
+          ],
+          "detail": "A bare polymer label and an additive-containing form coexist. Check the test/preparation context; the result has not been automatically reassigned."
+        },
+        {
+          "reason": "specimen_form_ambiguous",
+          "entity_id": "p5",
+          "path": "properties.items[3]",
+          "property": "ultimate elongation",
+          "value": "2000%",
+          "specimen_label": "PTMG-HDI-BHDS film",
+          "related_specimen_labels": [
+            "PTMG-HDI-BHDS/LiFSI"
+          ],
+          "detail": "A bare polymer label and an additive-containing form coexist. Check the test/preparation context; the result has not been automatically reassigned."
+        }
+      ],
+      "statistics": {
+        "input_entities": 7,
+        "cards": 7,
+        "retained_polymers": 7,
+        "discarded_entities": 0,
+        "discarded_nonpolymers": 0,
+        "classification_review_entities": 0,
+        "review_queue": 4,
+        "validation_issues": 5,
+        "attribution_warnings": 4
+      }
+    },
+    {
+      "paper_id": "10.3390/polym13234155",
+      "discarded_entities": [],
+      "review_queue": [
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p1",
+          "name": "P(MMA-BA-(F-MA)) copolymer",
+          "path": "entities[0].role",
+          "reason": "quote_not_in_original_source",
+          "record": {
+            "value": "self-healing polymer precursor",
+            "evidence": [
+              {
+                "chunk_id": "src-189865c0a792b53247cf",
+                "quote": "2. Materials and Methods / 2.3. Preparation of the Self-Healing Polymer Precursor"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p4",
+          "name": "self-healing polymer electrolyte membrane",
+          "path": "entities[3].properties.items[1]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p4",
+            "property": "thermal stability",
+            "value": "280 °C",
+            "unit": "°C",
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [
+              {
+                "name": "atmosphere",
+                "value": "nitrogen",
+                "evidence": [
+                  {
+                    "chunk_id": "src-041c0cbabc7b1e822f87",
+                    "quote": "TGA results show that the SHP electrolyte membrane is thermally stable up to 280 °C in a nitrogen atmosphere."
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-041c0cbabc7b1e822f87",
+                "quote": "TGA results show that the SHP electrolyte membrane is thermally stable up to 280 °C in a nitrogen atmosphere."
+              },
+              {
+                "chunk_id": "src-88b44acd79dd1d6804d1",
+                "quote": "Figure S1 presents the thermogravimetric analysis (TGA) curves for the cross-linked self-healing polymer, confirming its high-temperature stability at 280 °C."
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p6",
+          "name": "commercial PE film",
+          "path": "entities[5].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p6",
+            "property": "electrochemical stability limit",
+            "value": "up to 4.5 V",
+            "unit": "V",
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [
+              {
+                "name": "reference",
+                "value": "vs. Li/Li⁺",
+                "evidence": [
+                  {
+                    "chunk_id": "src-51a89a11fdf0a55dd640",
+                    "quote": "However, the commercial PE film is only stable up to 4.5 V (vs. Li/Li⁺), as seen from the curve in Figure 5a."
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-51a89a11fdf0a55dd640",
+                "quote": "However, the commercial PE film is only stable up to 4.5 V (vs. Li/Li⁺), as seen from the curve in Figure 5a."
+              }
+            ]
+          }
+        }
+      ],
+      "validation_issues": [
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p1",
+          "name": "P(MMA-BA-(F-MA)) copolymer",
+          "path": "entities[0].role",
+          "reason": "quote_not_in_original_source"
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p4",
+          "name": "self-healing polymer electrolyte membrane",
+          "path": "entities[3].properties.items[1]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p6",
+          "name": "commercial PE film",
+          "path": "entities[5].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        }
+      ],
+      "attribution_warnings": [],
+      "statistics": {
+        "input_entities": 6,
+        "cards": 6,
+        "retained_polymers": 6,
+        "discarded_entities": 0,
+        "discarded_nonpolymers": 0,
+        "classification_review_entities": 0,
+        "review_queue": 3,
+        "validation_issues": 3,
+        "attribution_warnings": 0
+      }
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "discarded_entities": [],
+      "review_queue": [
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p2",
+          "name": "PDMS–SS–IP–BNB",
+          "path": "entities[1].composition.items[1]",
+          "reason": "composition_basis_missing",
+          "record": {
+            "entity_id": "p2",
+            "value": "linked by SS, BNB, and isophorone bisurea (IP) units of varying ratios",
+            "basis": null,
+            "specimen_id": null,
+            "evidence": [
+              {
+                "chunk_id": "src-08d3510e5447dda4de4b",
+                "quote": "PDMS–SS–IP–BNB polymers were thus linked by SS, BNB, and isophorone bisurea (IP) units of varying ratios (structures shown in Fig. 1 and Supplementary Fig. 1)."
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p4",
+          "name": "P2",
+          "path": "entities[3].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p4",
+            "property": "stretchability",
+            "value": "100%",
+            "unit": null,
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [],
+            "evidence": [
+              {
+                "chunk_id": "src-f11f8aed81613a0e81fc",
+                "quote": "P2 presents a lower stretchability (100%) in Fig. 2b; the lack of BNB units allowed for strong H-bonds of BNB–BNB crosslinks."
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p5",
+          "name": "P3",
+          "path": "entities[4].properties.items[8]",
+          "reason": "property_value_not_in_original_evidence",
+          "record": {
+            "entity_id": "p5",
+            "property": "fracture strain",
+            "value": "1230% ± 30%",
+            "unit": null,
+            "specimen_id": "p5-healed-film-water",
+            "specimen_evidence": [
+              {
+                "chunk_id": "src-b48dd634cfb0cbadc1e7",
+                "quote": "For the self-healing tests, the polymer films were cut into two pieces and put together to heal in different conditions. The healed polymer films were stretched following the same procedure to obtain the stress–strain curves. The mechanical healing efficiency, η, was defined as the ratio between the restored fracture strain relative to the original fracture strain."
+              },
+              {
+                "chunk_id": "src-350106dc0f244b268362",
+                "quote": "When the severed P3 film was healed in water for 24 h, the resulting film could still be stretched up to 1230% ± 30% strain with 93% ± 2% healing efficiency."
+              }
+            ],
+            "conditions": [
+              {
+                "name": "environment",
+                "value": "in water",
+                "evidence": [
+                  {
+                    "chunk_id": "src-350106dc0f244b268362",
+                    "quote": "When the severed P3 film was healed in water for 24 h, the resulting film could still be stretched up to 1230% ± 30% strain with 93% ± 2% healing efficiency."
+                  }
+                ]
+              },
+              {
+                "name": "healing_time",
+                "value": "24 h",
+                "evidence": [
+                  {
+                    "chunk_id": "src-350106dc0f244b268362",
+                    "quote": "When the severed P3 film was healed in water for 24 h, the resulting film could still be stretched up to 1230% ± 30% strain with 93% ± 2% healing efficiency."
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-350106dc0f244b268362",
+                "quote": "When the severed P3 film was healed in water for 24 h, the resulting film could still be stretched up to 1230% ± 30% strain with 93% ± 2% healing efficiency."
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p5",
+          "name": "P3",
+          "path": "entities[4].properties.items[10]",
+          "reason": "property_value_not_in_original_evidence",
+          "record": {
+            "entity_id": "p5",
+            "property": "healing efficiency",
+            "value": "89% ± 3%",
+            "unit": null,
+            "specimen_id": "p5-healed-film-saltwater",
+            "specimen_evidence": [
+              {
+                "chunk_id": "src-af56ac3ed0a23a924bc8",
+                "quote": "b Self-healing of P3 film in a 30% NaCl solution at −10 °C. P3 film is bisected and put together in a 30% NaCl solution at −10 °C. After 24 h self-healing, the film is removed and can be stretchable."
+              }
+            ],
+            "conditions": [
+              {
+                "name": "environment",
+                "value": "30% NaCl solution at −10 °C",
+                "evidence": [
+                  {
+                    "chunk_id": "src-af56ac3ed0a23a924bc8",
+                    "quote": "b Self-healing of P3 film in a 30% NaCl solution at −10 °C. P3 film is bisected and put together in a 30% NaCl solution at −10 °C. After 24 h self-healing, the film is removed and can be stretchable."
+                  }
+                ]
+              },
+              {
+                "name": "healing_time",
+                "value": "24 h",
+                "evidence": [
+                  {
+                    "chunk_id": "src-af56ac3ed0a23a924bc8",
+                    "quote": "After 24 h self-healing, the film is removed and can be stretchable."
+                  },
+                  {
+                    "chunk_id": "src-19de83c50e53d683bc32",
+                    "quote": "The self-healing efficiency could reach up to 89% ± 3% after 24 h (Fig. 3d, e)."
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-19de83c50e53d683bc32",
+                "quote": "The self-healing efficiency could reach up to 89% ± 3% after 24 h (Fig. 3d, e)."
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p5",
+          "name": "P3",
+          "path": "entities[4].properties.items[11]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p5",
+            "property": "healing efficiency",
+            "value": "86% ± 2%",
+            "unit": null,
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [
+              {
+                "name": "temperature",
+                "value": "4 °C",
+                "evidence": [
+                  {
+                    "chunk_id": "src-19de83c50e53d683bc32",
+                    "quote": "In addition, the healing took place under refrigerated conditions (4 °C) with a high efficiency of 86% ± 2%"
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-19de83c50e53d683bc32",
+                "quote": "In addition, the healing took place under refrigerated conditions (4 °C) with a high efficiency of 86% ± 2%"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p5",
+          "name": "P3",
+          "path": "entities[4].properties.items[12]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p5",
+            "property": "healing efficiency",
+            "value": "55% ± 3%",
+            "unit": null,
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [
+              {
+                "name": "temperature",
+                "value": "−20 °C",
+                "evidence": [
+                  {
+                    "chunk_id": "src-19de83c50e53d683bc32",
+                    "quote": "freezing conditions (−20 °C) with 55% ± 3% healing efficiency after 24 h"
+                  }
+                ]
+              },
+              {
+                "name": "healing_time",
+                "value": "24 h",
+                "evidence": [
+                  {
+                    "chunk_id": "src-19de83c50e53d683bc32",
+                    "quote": "freezing conditions (−20 °C) with 55% ± 3% healing efficiency after 24 h"
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-19de83c50e53d683bc32",
+                "quote": "freezing conditions (−20 °C) with 55% ± 3% healing efficiency after 24 h"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p5",
+          "name": "P3",
+          "path": "entities[4].properties.items[13]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p5",
+            "property": "healing efficiency",
+            "value": "52% ± 4%",
+            "unit": null,
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [
+              {
+                "name": "temperature",
+                "value": "−40 °C",
+                "evidence": [
+                  {
+                    "chunk_id": "src-19de83c50e53d683bc32",
+                    "quote": "even 52% ± 4% healing efficiency at −40 °C after 24 h"
+                  }
+                ]
+              },
+              {
+                "name": "healing_time",
+                "value": "24 h",
+                "evidence": [
+                  {
+                    "chunk_id": "src-19de83c50e53d683bc32",
+                    "quote": "even 52% ± 4% healing efficiency at −40 °C after 24 h"
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-19de83c50e53d683bc32",
+                "quote": "even 52% ± 4% healing efficiency at −40 °C after 24 h"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p5",
+          "name": "P3",
+          "path": "entities[4].properties.items[14]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p5",
+            "property": "healing efficiency",
+            "value": "more than 83% ± 4%",
+            "unit": null,
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [
+              {
+                "name": "environment",
+                "value": "pH = 0 or 14 solution",
+                "evidence": [
+                  {
+                    "chunk_id": "src-19de83c50e53d683bc32",
+                    "quote": "Furthermore, even in pH = 0 or 14 solution, the healing efficiency could reach more than 83% ± 4% after 24 h (Fig. 3d, e and Supplementary Video 2)."
+                  }
+                ]
+              },
+              {
+                "name": "healing_time",
+                "value": "24 h",
+                "evidence": [
+                  {
+                    "chunk_id": "src-19de83c50e53d683bc32",
+                    "quote": "Furthermore, even in pH = 0 or 14 solution, the healing efficiency could reach more than 83% ± 4% after 24 h (Fig. 3d, e and Supplementary Video 2)."
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-19de83c50e53d683bc32",
+                "quote": "Furthermore, even in pH = 0 or 14 solution, the healing efficiency could reach more than 83% ± 4% after 24 h (Fig. 3d, e and Supplementary Video 2)."
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p5",
+          "name": "P3",
+          "path": "entities[4].properties.items[15]",
+          "reason": "property_value_not_in_original_evidence",
+          "record": {
+            "entity_id": "p5",
+            "property": "notch-insensitive stretching strain",
+            "value": "1300%",
+            "unit": null,
+            "specimen_id": "p5-notched-film",
+            "specimen_evidence": [
+              {
+                "chunk_id": "src-ff90c7815b1740c544fe",
+                "quote": "f, g A notch-insensitive and highly stretchable elastomer film (P3). A notch (8 × 8 mm²) with 2 mm thickness, 20 mm length, and 16 mm width (left) was made in the P3 film, and the film was stretched at a loading rate of 10 mm min⁻¹."
+              },
+              {
+                "chunk_id": "src-64b8cc91509ada3d567a",
+                "quote": "Notably, when a big notch (7–8 mm) was introduced at the middle of the film (16 mm width), the film could achieve notch-insensitive stretching up to 1300% strain, which is similar to that of the original P3 film (Fig. 2f, g)."
+              }
+            ],
+            "conditions": [
+              {
+                "name": "notch_size",
+                "value": "7–8 mm",
+                "evidence": [
+                  {
+                    "chunk_id": "src-64b8cc91509ada3d567a",
+                    "quote": "Notably, when a big notch (7–8 mm) was introduced at the middle of the film (16 mm width), the film could achieve notch-insensitive stretching up to 1300% strain, which is similar to that of the original P3 film (Fig. 2f, g)."
+                  }
+                ]
+              },
+              {
+                "name": "loading rate",
+                "value": "10 mm min⁻¹",
+                "evidence": [
+                  {
+                    "chunk_id": "src-ff90c7815b1740c544fe",
+                    "quote": "A notch (8 × 8 mm²) with 2 mm thickness, 20 mm length, and 16 mm width (left) was made in the P3 film, and the film was stretched at a loading rate of 10 mm min⁻¹."
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-64b8cc91509ada3d567a",
+                "quote": "Notably, when a big notch (7–8 mm) was introduced at the middle of the film (16 mm width), the film could achieve notch-insensitive stretching up to 1300% strain, which is similar to that of the original P3 film (Fig. 2f, g)."
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p9",
+          "name": "P7",
+          "path": "entities[8].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p9",
+            "property": "glass transition temperature (T_{g})",
+            "value": "below −50 °C",
+            "unit": null,
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [],
+            "evidence": [
+              {
+                "chunk_id": "src-7fff0ff525a418c27c9f",
+                "quote": "In addition, using differential scanning calorimetry (DSC), the glass transition temperature (T_{g}) of the polymeric backbones of P3, P4, and P7 were all below −50 °C, which was highly important for achieving low modulus, toughness, and self-healing ability in the PDMS–SS–IP–BNB elastomer under ultralow temperatures (Supplementary Fig. 7)"
+              }
+            ]
+          }
+        }
+      ],
+      "validation_issues": [
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p2",
+          "name": "PDMS–SS–IP–BNB",
+          "path": "entities[1].composition.items[1]",
+          "reason": "composition_basis_missing"
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p4",
+          "name": "P2",
+          "path": "entities[3].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p5",
+          "name": "P3",
+          "path": "entities[4].properties.items[8]",
+          "reason": "property_value_not_in_original_evidence"
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p5",
+          "name": "P3",
+          "path": "entities[4].properties.items[10]",
+          "reason": "property_value_not_in_original_evidence"
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p5",
+          "name": "P3",
+          "path": "entities[4].properties.items[11]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p5",
+          "name": "P3",
+          "path": "entities[4].properties.items[12]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p5",
+          "name": "P3",
+          "path": "entities[4].properties.items[13]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p5",
+          "name": "P3",
+          "path": "entities[4].properties.items[14]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p5",
+          "name": "P3",
+          "path": "entities[4].properties.items[15]",
+          "reason": "property_value_not_in_original_evidence"
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p9",
+          "name": "P7",
+          "path": "entities[8].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        }
+      ],
+      "attribution_warnings": [],
+      "statistics": {
+        "input_entities": 12,
+        "cards": 12,
+        "retained_polymers": 12,
+        "discarded_entities": 0,
+        "discarded_nonpolymers": 0,
+        "classification_review_entities": 0,
+        "review_queue": 10,
+        "validation_issues": 10,
+        "attribution_warnings": 0
+      }
+    }
+  ],
+  "verification_limit": "Original evidence linkage and mechanical checks do not certify polymer classification or scientific attribution."
+}

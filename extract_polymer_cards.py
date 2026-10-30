@@ -23,7 +23,8 @@ def _bounded_int(value):
 
 
 def _protect_inputs(args, documents):
-    protected = {p.resolve() for p in (args.papers, args.records, args.env_file) if p is not None}
+    protected = {p.resolve() for p in (args.papers, args.records, args.env_file,
+                                      args.repair_records, args.repair_sources) if p is not None}
     protected.update(Path(s["path"]).resolve() for doc in documents for s in doc["source_files"])
     for name in OUTPUT_NAMES:
         output = args.out_dir / name
@@ -37,11 +38,54 @@ def _protect_inputs(args, documents):
             raise ValueError("Output files must not be hard links to source or local configuration files")
 
 
+def _ordered_responses(path, documents):
+    data = read_json(path)
+    if not isinstance(data, dict) or not isinstance(data.get("responses"), list):
+        raise ValueError("Records file must contain a responses list")
+    by_paper = {}
+    for response in data["responses"]:
+        if not isinstance(response, dict) or not isinstance(response.get("paper_id"), str) or response["paper_id"] in by_paper:
+            raise ValueError("Records need unique paper IDs")
+        by_paper[response["paper_id"]] = response
+    if set(by_paper) != {d["paper_id"] for d in documents}:
+        raise ValueError("Record papers must exactly match the source manifest")
+    return [by_paper[d["paper_id"]] for d in documents]
+
+
+def _verify_repair_sources(path, documents):
+    """Keep revision evidence bound to the same source representation as input."""
+    data = read_json(path)
+    supplied = data.get("documents") if isinstance(data, dict) else None
+    if not isinstance(supplied, list):
+        raise ValueError("Repair source snapshot must contain a documents list")
+    by_paper = {}
+    for document in supplied:
+        if (not isinstance(document, dict) or not isinstance(document.get("paper_id"), str)
+                or document["paper_id"] in by_paper):
+            raise ValueError("Repair source snapshot needs unique paper IDs")
+        by_paper[document["paper_id"]] = document
+    if set(by_paper) != {d["paper_id"] for d in documents}:
+        raise ValueError("Repair source papers must exactly match the source manifest")
+    keys = ("chunk_id", "text", "source_part", "locator", "document_sha256", "page",
+            "text_transformations", "original_document_sha256")
+    def source_signature(document):
+        chunks = document.get("chunks")
+        if not isinstance(chunks, list) or not chunks or not all(isinstance(c, dict) for c in chunks):
+            raise ValueError("Repair source snapshot needs its original source chunks")
+        return [{key: c.get(key) for key in keys} for c in chunks]
+    for document in documents:
+        if source_signature(document) != source_signature(by_paper[document["paper_id"]]):
+            raise ValueError("Repair source snapshot differs from the supplied paper text or source revision")
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Keep polymer entities and build six-field cards with original evidence; no application-performance filtering.")
     parser.add_argument("--papers", type=Path, required=True, help="Paper/source manifest with local PDF, JATS XML, text or JSON source excerpts.")
     parser.add_argument("--out-dir", type=Path, required=True)
-    parser.add_argument("--records", type=Path, help="Replay supplied responses JSON through source validation without model/API calls.")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--records", type=Path, help="Replay supplied responses JSON through source validation without model/API calls.")
+    mode.add_argument("--repair-records", type=Path, help="Use saved responses as untrusted proposals for a new, source-grounded model revision.")
+    parser.add_argument("--repair-sources", type=Path, help="Matching sources.json snapshot for --repair-records; checked answers are never used for revision.")
     parser.add_argument("--env-file", type=Path, help="Existing local model environment configuration; never copied into outputs.")
     parser.add_argument("--max-papers", type=_bounded_int, default=3, help="Maximum papers to process; default3 keeps the pilot bounded.")
     parser.add_argument("--max-output-tokens", type=_bounded_int, default=24000, help="Bound each live response; default and maximum24000 for full-paper cards.")
@@ -52,49 +96,52 @@ def main(argv=None):
             raise ValueError("Maximum output token limit is24000 per request")
         if args.request_timeout > 900:
             raise ValueError("Maximum request timeout is900 seconds")
+        if bool(args.repair_records) != bool(args.repair_sources):
+            raise ValueError("Source-grounded revision requires both --repair-records and --repair-sources")
         documents = load_documents(args.papers)
         if len(documents) > args.max_papers:
             raise ValueError("Manifest exceeds --max-papers; choose a smaller manifest or explicitly raise the limit")
         _protect_inputs(args, documents)
+        prior_responses = None
+        if args.repair_records:
+            _verify_repair_sources(args.repair_sources, documents)
+            prior_responses = _ordered_responses(args.repair_records, documents)
         from polymer_cards_lib.validation import build_cards
         from polymer_cards_lib.render import write_outputs
         metadata = {"contract_version": "polymer-cards-v1", "created_at_utc": datetime.now(timezone.utc).isoformat(),
-                    "mode": "curated_record_replay" if args.records else "live_model_extraction",
+                    "mode": "curated_record_replay" if args.records else "live_model_revision" if args.repair_records else "live_model_extraction",
                     "retention_rule": "polymer identity only; no application or completeness threshold",
                     "semantic_validation": "Original quote containment is mechanically checked; chemical interpretation and attribution still need source review.",
                     "source_manifest_sha256": hashlib.sha256(args.papers.read_bytes()).hexdigest(),
                     "max_output_tokens_per_live_request": args.max_output_tokens}
         if args.records:
-            data = read_json(args.records)
-            if not isinstance(data, dict) or not isinstance(data.get("responses"), list):
-                raise ValueError("Replay file must contain a responses list")
-            responses = data["responses"]
-            by_paper = {}
-            for response in responses:
-                if not isinstance(response, dict) or not isinstance(response.get("paper_id"), str) or response["paper_id"] in by_paper:
-                    raise ValueError("Replay responses need unique paper IDs")
-                by_paper[response["paper_id"]] = response
-            if set(by_paper) != {d["paper_id"] for d in documents}:
-                raise ValueError("Replay response papers must exactly match the source manifest")
-            responses = [by_paper[d["paper_id"]] for d in documents]
+            responses = _ordered_responses(args.records, documents)
             metadata["model_calls"] = 0
             metadata["input_records_sha256"] = hashlib.sha256(args.records.read_bytes()).hexdigest()
             metadata["replay_note"] = "Supplied records are inputs, not newly generated model extraction. See their provenance."
             raw = {"mode": metadata["mode"], "responses": responses}
         else:
-            from polymer_cards_lib.llm import ModelRequestError, create_client, extract_document
+            from polymer_cards_lib.llm import ModelRequestError, create_client, extract_document, revise_document
             from polymer_cards_lib.prompt import extraction_profile
             client, model, provider = create_client(args.env_file, request_timeout=args.request_timeout)
             metadata.update({"provider": provider, "model": model, "model_calls": 0,
                              "extraction_profile": extraction_profile(), "request_timeout_seconds": args.request_timeout,
                              "run_complete": False, "papers_requested": len(documents), "papers_completed": 0,
                              "model_calls_attempted": 0})
+            if args.repair_records:
+                metadata.update({"repair_input_records_sha256": hashlib.sha256(args.repair_records.read_bytes()).hexdigest(),
+                                 "repair_input_sources_sha256": hashlib.sha256(args.repair_sources.read_bytes()).hexdigest(),
+                                 "repair_note": "Saved model records were untrusted proposals; revisions use matching original sources and validation feedback. No checked evaluation reference is supplied."})
             responses, traces, results = [], [], []
             for index, document in enumerate(documents, 1):
-                print(f"Extracting paper {index}/{len(documents)}: {document['paper_id']}", file=sys.stderr, flush=True)
+                action = "Revising" if prior_responses is not None else "Extracting"
+                print(f"{action} paper {index}/{len(documents)}: {document['paper_id']}", file=sys.stderr, flush=True)
                 metadata["model_calls_attempted"] += 1
                 try:
-                    response, trace = extract_document(client, model, document, args.max_output_tokens)
+                    if prior_responses is not None:
+                        response, trace = revise_document(client, model, document, prior_responses[index - 1], args.max_output_tokens)
+                    else:
+                        response, trace = extract_document(client, model, document, args.max_output_tokens)
                     result = build_cards(document, response)
                 except (ModelRequestError, ValueError):
                     metadata["failed_paper_id"] = document["paper_id"]

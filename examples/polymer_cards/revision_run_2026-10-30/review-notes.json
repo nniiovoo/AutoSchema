@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-30",
+  "review_origin": "Assistant focused primary-source review, not authenticated human annotation or exhaustive checking.",
+  "raw_model_revision_unchanged": true,
+  "status": "Requested identity and focal sample-owner fixes demonstrated; protocol and coverage gaps remain.",
+  "per_card_notes": {
+    "10.1038/s41467-023-43467-w": {
+      "p1": [
+        "This is a declared polymer family, not an additional distinct measured formulation."
+      ],
+      "p2": [
+        "The 3.8 V result is now linked to PEO/LiFSI, consistent with the electrolyte preparation.",
+        "The full voltage case still needs room-temperature and LSV Methods context attached; conditions are empty. The corresponding Methods passage is src-705d4d9258f66326a788.",
+        "The nominal PEO molecular-weight observation is still withheld because its exact measurement/grade specimen is unresolved."
+      ],
+      "p3": [
+        "PTMG is retained as a polymeric reactant. Its measurements remain in review until their sample scope is resolved."
+      ],
+      "p4": [
+        "The 4.1 V result is now linked to PTMG-HDI/LiFSI. Its numerical comparator sentence and salt preparation are consistent.",
+        "Temperature and LSV test details still need to be attached; correct sample ownership is not complete protocol metadata."
+      ],
+      "p5": [
+        "Core values and sample forms match the source-checked reference: neat-film strength/elongation, solution monitoring, and salt-electrolyte measurements are separated.",
+        "The voltage remains beyond 5.0 V; it is not rewritten as an exact limit.",
+        "The six full-context reference cases still need Methods details: tensile rate, GPC eluent, EIS frequency range, LSV protocol and transference-cell/polarization conditions. These are missing metadata, not six wrong numerical values.",
+        "The separate source-checked Pei card contains these selected Methods details and explicit unknowns; it was not supplied to the model."
+      ]
+    },
+    "10.3390/polym13234155": {
+      "p1": [
+        "The 5 MPa observation remains with the precursor specimen. The role quote remains in review."
+      ],
+      "p4": [
+        "The 21 MPa result belongs to a cross-linked network specimen; the wetted room-temperature conductivity belongs to a separate specimen with 10 μL liquid electrolyte.",
+        "The source says approximate to 2.56 × 10⁻³ S·cm⁻¹; the qualifier is preserved.",
+        "Methods says SHP electrochemical membranes are 12 μm; Results says about 15 μm. Both statements still need an explicit contextual conflict note; do not assume one identical physical sample or silently choose one.",
+        "The temperature-series wet/dry context remains incomplete. External repair before cell assembly is not proof of autonomous repair inside an operating cell."
+      ]
+    },
+    "10.1038/s41467-020-15949-8": {
+      "p1": [
+        "This is a declared broad PDMS family. It is not a separately measured specific member."
+      ],
+      "p2": [
+        "The named family retains family information; member-specific numerical observations now belong to individual member cards. The exact composition-basis gap remains in review."
+      ],
+      "p4": [
+        "P2 identity is now explicitly source-grounded. Its 100% observation still lacks a valid measurement specimen and remains in review."
+      ],
+      "p5": [
+        "P3 now has explicit synthesis/identity evidence. Mw/Mn = 1.77 uses a purified GPC sample with THF context, not a film.",
+        "Ambient healing 93% ± 3% after two hours and underwater healing 93% ± 2% after 24 hours remain separate. The Methods definition is fracture-strain recovery, not strength recovery.",
+        "Percentage signs are retained in raw values, but several separate unit fields remain null; that metadata still needs structuring. Other held observations are visible in the audit."
+      ],
+      "p6": [
+        "P4 owns the stretch result and loading-rate context. The raw source phrase is nearly 140 times its original length.",
+        "The frozen reference uses the source’s 14,000% description. The exact-notation checker leaves this for review; no conversion or retrospective reference change was made. Source review confirms the owner is P4."
+      ],
+      "p7": [
+        "P5 is a separate control without disulfide units; do not inherit the full family chemistry or P3 recipe. Percentage unit metadata remains incomplete."
+      ],
+      "p8": [
+        "P6 has direct named source evidence. Its exact unit ratio is not established from the supplied main text."
+      ],
+      "p9": [
+        "P7 identity is now explicit; a measurement lacking a supported specimen remains in review."
+      ],
+      "p11": [
+        "This is a cited comparator family, not a newly measured material in this paper."
+      ],
+      "p12": [
+        "This is a cited comparator family, not a newly measured material in this paper."
+      ]
+    }
+  },
+  "global_limits": [
+    "25 records include 20 declared specific-polymer records and 5 family records; they are not 25 unique checked materials.",
+    "Pei PVDF is still omitted; extraction completeness has not been established.",
+    "No supplements or graph-only data were supplied. Exact ratios for Guo members other than the reported P3 recipe remain unknown.",
+    "No universal score, precision, recall or scientific-accuracy claim.",
+    "The manually source-checked reference is separate from model output and was used only for evaluation."
+  ]
+}
