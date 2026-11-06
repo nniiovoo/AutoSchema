@@ -1,0 +1,2393 @@
+{
+  "mode": "ordered_context_review_captures",
+  "steps": [
+    {
+      "directory": "polymer_cards_context_2026-11-06_guo",
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "capture": {
+        "proposals": {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "edits": [
+            {
+              "entity_id": "p2",
+              "property_index": 3,
+              "anchor_sha256": "c1c880b0cfc1c8f7898baa1cf4660385fdd4250b2cb45219ca06a9f1b9cb4ad0",
+              "specimen_id": "p2-film",
+              "specimen_evidence": [
+                {
+                  "chunk_id": "src-3c26b5356cd78c6d5409",
+                  "span_id": "spn-5cdebad2c3f4193294033c31039e89d8"
+                }
+              ],
+              "conditions": [
+                {
+                  "name": "method",
+                  "value": "differential scanning calorimetry (DSC)",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-7fff0ff525a418c27c9f",
+                      "span_id": "spn-5cd9ec6649a0ffcfbdea836cd018aaba"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-7fff0ff525a418c27c9f",
+                  "span_id": "spn-5cd9ec6649a0ffcfbdea836cd018aaba"
+                }
+              ],
+              "reason": "The source explicitly reports Tg for P3 and names DSC; the existing record lacked the supported P3 specimen link and method condition."
+            },
+            {
+              "entity_id": "p2",
+              "property_index": 6,
+              "anchor_sha256": "bfc35c5d32225b319cc787de2ab85e08f083af0b608dfbad977e6a978f6cc5a5",
+              "specimen_id": "p2-healed-film-water",
+              "specimen_evidence": [
+                {
+                  "chunk_id": "src-350106dc0f244b268362",
+                  "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+                }
+              ],
+              "conditions": [
+                {
+                  "name": "healing environment",
+                  "value": "water",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-350106dc0f244b268362",
+                      "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing time",
+                  "value": "24 h",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-350106dc0f244b268362",
+                      "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+                    }
+                  ]
+                },
+                {
+                  "name": "stretching speed",
+                  "value": "10 mm min⁻¹",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-af56ac3ed0a23a924bc8",
+                      "span_id": "spn-90e2f5b0eaa5daa099bdc8ca18006bb9"
+                    }
+                  ]
+                },
+                {
+                  "name": "sample size",
+                  "value": "60 × 20 × 1.0 mm³",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-af56ac3ed0a23a924bc8",
+                      "span_id": "spn-90e2f5b0eaa5daa099bdc8ca18006bb9"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-350106dc0f244b268362",
+                  "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+                },
+                {
+                  "chunk_id": "src-af56ac3ed0a23a924bc8",
+                  "span_id": "spn-bd6e02c1d80656efc083fb08eff85a72"
+                }
+              ],
+              "reason": "The reported 1230% strain is stated in Results, while the stress–strain measurement context for healed P3 films under universal conditions is established by Fig. 3d caption."
+            },
+            {
+              "entity_id": "p2",
+              "property_index": 11,
+              "anchor_sha256": "0977a44f7560a203d858e44a51d010a585377f947a8df215c9f0ca995e35b587",
+              "specimen_id": "p2-healed-film-saltwater",
+              "specimen_evidence": [
+                {
+                  "chunk_id": "src-af56ac3ed0a23a924bc8",
+                  "span_id": "spn-a0f2bdffb7d30f1a66dd24f5221356e7"
+                }
+              ],
+              "conditions": [
+                {
+                  "name": "healing environment",
+                  "value": "30% NaCl solution at −10 °C",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-af56ac3ed0a23a924bc8",
+                      "span_id": "spn-a0f2bdffb7d30f1a66dd24f5221356e7"
+                    },
+                    {
+                      "chunk_id": "src-19de83c50e53d683bc32",
+                      "span_id": "spn-b1a973b2dfd1470ce29546dadfb1ba3c"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing time",
+                  "value": "24 h",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-19de83c50e53d683bc32",
+                      "span_id": "spn-6ad1b2fe9b98f0d1f8368c13a9dd7a6a"
+                    }
+                  ]
+                },
+                {
+                  "name": "stretching speed",
+                  "value": "10 mm min⁻¹",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-af56ac3ed0a23a924bc8",
+                      "span_id": "spn-90e2f5b0eaa5daa099bdc8ca18006bb9"
+                    }
+                  ]
+                },
+                {
+                  "name": "sample size",
+                  "value": "60 × 20 × 1.0 mm³",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-af56ac3ed0a23a924bc8",
+                      "span_id": "spn-90e2f5b0eaa5daa099bdc8ca18006bb9"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing efficiency definition",
+                  "value": "ratio between the restored fracture strain relative to the original fracture strain",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-b48dd634cfb0cbadc1e7",
+                      "span_id": "spn-2b43e5c22d8888b06b5d955316b5e9b2"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-19de83c50e53d683bc32",
+                  "span_id": "spn-6ad1b2fe9b98f0d1f8368c13a9dd7a6a"
+                },
+                {
+                  "chunk_id": "src-af56ac3ed0a23a924bc8",
+                  "span_id": "spn-bd6e02c1d80656efc083fb08eff85a72"
+                }
+              ],
+              "reason": "The 89% value is reported in Results, and the Fig. 3d/3e caption supplies the associated healed-film stress–strain/self-healing test context used for these universal-condition measurements."
+            },
+            {
+              "entity_id": "p5",
+              "property_index": 0,
+              "anchor_sha256": "716fc92fd2618b3faec0a04d50828d7f01fc114913c01b5d8664dec0791757d0",
+              "specimen_id": null,
+              "specimen_evidence": [],
+              "conditions": [],
+              "evidence": [
+                {
+                  "chunk_id": "src-f11f8aed81613a0e81fc",
+                  "span_id": "spn-784b47ad0f9ff1ae54d74f3f9794e0f8"
+                }
+              ],
+              "reason": "The source reports P2 stretchability, but no declared P2 specimen in this entity establishes the exact tested form, so the specimen link should be left unresolved."
+            },
+            {
+              "entity_id": "p8",
+              "property_index": 0,
+              "anchor_sha256": "d7206287a99563909ddd387a389db662465758ac20bd2310a548c69cb87ecedf",
+              "specimen_id": null,
+              "specimen_evidence": [],
+              "conditions": [
+                {
+                  "name": "method",
+                  "value": "differential scanning calorimetry (DSC)",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-7fff0ff525a418c27c9f",
+                      "span_id": "spn-5cd9ec6649a0ffcfbdea836cd018aaba"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-7fff0ff525a418c27c9f",
+                  "span_id": "spn-5cd9ec6649a0ffcfbdea836cd018aaba"
+                }
+              ],
+              "reason": "The source explicitly reports Tg for P7 by DSC, but this entity has no declared specimen that establishes the exact tested form, so only the method condition can be supported."
+            }
+          ]
+        },
+        "trace": {
+          "raw_response_text": "{\"paper_id\":\"10.1038/s41467-020-15949-8\",\"edits\":[{\"entity_id\":\"p2\",\"property_index\":3,\"anchor_sha256\":\"c1c880b0cfc1c8f7898baa1cf4660385fdd4250b2cb45219ca06a9f1b9cb4ad0\",\"specimen_id\":\"p2-film\",\"specimen_evidence\":[{\"chunk_id\":\"src-3c26b5356cd78c6d5409\",\"span_id\":\"spn-5cdebad2c3f4193294033c31039e89d8\"}],\"conditions\":[{\"name\":\"method\",\"value\":\"differential scanning calorimetry (DSC)\",\"evidence\":[{\"chunk_id\":\"src-7fff0ff525a418c27c9f\",\"span_id\":\"spn-5cd9ec6649a0ffcfbdea836cd018aaba\"}]}],\"evidence\":[{\"chunk_id\":\"src-7fff0ff525a418c27c9f\",\"span_id\":\"spn-5cd9ec6649a0ffcfbdea836cd018aaba\"}],\"reason\":\"The source explicitly reports Tg for P3 and names DSC; the existing record lacked the supported P3 specimen link and method condition.\"},{\"entity_id\":\"p2\",\"property_index\":6,\"anchor_sha256\":\"bfc35c5d32225b319cc787de2ab85e08f083af0b608dfbad977e6a978f6cc5a5\",\"specimen_id\":\"p2-healed-film-water\",\"specimen_evidence\":[{\"chunk_id\":\"src-350106dc0f244b268362\",\"span_id\":\"spn-c39e65b92e390deaddeba7e35d621093\"}],\"conditions\":[{\"name\":\"healing environment\",\"value\":\"water\",\"evidence\":[{\"chunk_id\":\"src-350106dc0f244b268362\",\"span_id\":\"spn-c39e65b92e390deaddeba7e35d621093\"}]},{\"name\":\"healing time\",\"value\":\"24 h\",\"evidence\":[{\"chunk_id\":\"src-350106dc0f244b268362\",\"span_id\":\"spn-c39e65b92e390deaddeba7e35d621093\"}]},{\"name\":\"stretching speed\",\"value\":\"10 mm min⁻¹\",\"evidence\":[{\"chunk_id\":\"src-af56ac3ed0a23a924bc8\",\"span_id\":\"spn-90e2f5b0eaa5daa099bdc8ca18006bb9\"}]},{\"name\":\"sample size\",\"value\":\"60 × 20 × 1.0 mm³\",\"evidence\":[{\"chunk_id\":\"src-af56ac3ed0a23a924bc8\",\"span_id\":\"spn-90e2f5b0eaa5daa099bdc8ca18006bb9\"}]}],\"evidence\":[{\"chunk_id\":\"src-350106dc0f244b268362\",\"span_id\":\"spn-c39e65b92e390deaddeba7e35d621093\"},{\"chunk_id\":\"src-af56ac3ed0a23a924bc8\",\"span_id\":\"spn-bd6e02c1d80656efc083fb08eff85a72\"}],\"reason\":\"The reported 1230% strain is stated in Results, while the stress–strain measurement context for healed P3 films under universal conditions is established by Fig. 3d caption.\"},{\"entity_id\":\"p2\",\"property_index\":11,\"anchor_sha256\":\"0977a44f7560a203d858e44a51d010a585377f947a8df215c9f0ca995e35b587\",\"specimen_id\":\"p2-healed-film-saltwater\",\"specimen_evidence\":[{\"chunk_id\":\"src-af56ac3ed0a23a924bc8\",\"span_id\":\"spn-a0f2bdffb7d30f1a66dd24f5221356e7\"}],\"conditions\":[{\"name\":\"healing environment\",\"value\":\"30% NaCl solution at −10 °C\",\"evidence\":[{\"chunk_id\":\"src-af56ac3ed0a23a924bc8\",\"span_id\":\"spn-a0f2bdffb7d30f1a66dd24f5221356e7\"},{\"chunk_id\":\"src-19de83c50e53d683bc32\",\"span_id\":\"spn-b1a973b2dfd1470ce29546dadfb1ba3c\"}]},{\"name\":\"healing time\",\"value\":\"24 h\",\"evidence\":[{\"chunk_id\":\"src-19de83c50e53d683bc32\",\"span_id\":\"spn-6ad1b2fe9b98f0d1f8368c13a9dd7a6a\"}]},{\"name\":\"stretching speed\",\"value\":\"10 mm min⁻¹\",\"evidence\":[{\"chunk_id\":\"src-af56ac3ed0a23a924bc8\",\"span_id\":\"spn-90e2f5b0eaa5daa099bdc8ca18006bb9\"}]},{\"name\":\"sample size\",\"value\":\"60 × 20 × 1.0 mm³\",\"evidence\":[{\"chunk_id\":\"src-af56ac3ed0a23a924bc8\",\"span_id\":\"spn-90e2f5b0eaa5daa099bdc8ca18006bb9\"}]},{\"name\":\"healing efficiency definition\",\"value\":\"ratio between the restored fracture strain relative to the original fracture strain\",\"evidence\":[{\"chunk_id\":\"src-b48dd634cfb0cbadc1e7\",\"span_id\":\"spn-2b43e5c22d8888b06b5d955316b5e9b2\"}]}],\"evidence\":[{\"chunk_id\":\"src-19de83c50e53d683bc32\",\"span_id\":\"spn-6ad1b2fe9b98f0d1f8368c13a9dd7a6a\"},{\"chunk_id\":\"src-af56ac3ed0a23a924bc8\",\"span_id\":\"spn-bd6e02c1d80656efc083fb08eff85a72\"}],\"reason\":\"The 89% value is reported in Results, and the Fig. 3d/3e caption supplies the associated healed-film stress–strain/self-healing test context used for these universal-condition measurements.\"},{\"entity_id\":\"p5\",\"property_index\":0,\"anchor_sha256\":\"716fc92fd2618b3faec0a04d50828d7f01fc114913c01b5d8664dec0791757d0\",\"specimen_id\":null,\"specimen_evidence\":[],\"conditions\":[],\"evidence\":[{\"chunk_id\":\"src-f11f8aed81613a0e81fc\",\"span_id\":\"spn-784b47ad0f9ff1ae54d74f3f9794e0f8\"}],\"reason\":\"The source reports P2 stretchability, but no declared P2 specimen in this entity establishes the exact tested form, so the specimen link should be left unresolved.\"},{\"entity_id\":\"p8\",\"property_index\":0,\"anchor_sha256\":\"d7206287a99563909ddd387a389db662465758ac20bd2310a548c69cb87ecedf\",\"specimen_id\":null,\"specimen_evidence\":[],\"conditions\":[{\"name\":\"method\",\"value\":\"differential scanning calorimetry (DSC)\",\"evidence\":[{\"chunk_id\":\"src-7fff0ff525a418c27c9f\",\"span_id\":\"spn-5cd9ec6649a0ffcfbdea836cd018aaba\"}]}],\"evidence\":[{\"chunk_id\":\"src-7fff0ff525a418c27c9f\",\"span_id\":\"spn-5cd9ec6649a0ffcfbdea836cd018aaba\"}],\"reason\":\"The source explicitly reports Tg for P7 by DSC, but this entity has no declared specimen that establishes the exact tested form, so only the method condition can be supported.\"}]}",
+          "usage": {
+            "prompt_tokens": 69020,
+            "completion_tokens": 1799,
+            "total_tokens": 70819
+          },
+          "extraction_profile": {
+            "output_format": "json_schema",
+            "schema_name": "polymer_context_review_v1",
+            "schema_sha256": "4ceb0762994ed69f3d3eaa4aab3255c693661b3e7071df142751d09fd15acad9",
+            "system_prompt_sha256": "ca362f2af5cef67aacf6ed60cc8a9d93749344c4665736615cccca3eba1b4d69"
+          },
+          "request_prompt_sha256": "517766406749479b5bd038a6965ed13e480b42559d506fc2b300a75975e3fc1e",
+          "finish_reason": "stop",
+          "request_mode": "source_grounded_context_review",
+          "previous_response_sha256": "296c4430df9a2db9ad505c17f483e87e934574d45b026952555b02ea14b6c6a9"
+        }
+      },
+      "audit": {
+        "mode": "model_proposed_context_revision",
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "base_response_sha256": "296c4430df9a2db9ad505c17f483e87e934574d45b026952555b02ea14b6c6a9",
+        "applied_edits": 5,
+        "held_edits": [],
+        "edit_results": [
+          {
+            "proposal_index": 0,
+            "entity_id": "p2",
+            "property_index": 3,
+            "anchor_sha256": "c1c880b0cfc1c8f7898baa1cf4660385fdd4250b2cb45219ca06a9f1b9cb4ad0",
+            "changed_context_fields": [
+              "specimen_id",
+              "specimen_evidence",
+              "conditions"
+            ],
+            "reason": "The source explicitly reports Tg for P3 and names DSC; the existing record lacked the supported P3 specimen link and method condition.",
+            "property_path": "entities[1].properties.items[3]",
+            "validation_reasons": [],
+            "status": "applied_context_source_linked"
+          },
+          {
+            "proposal_index": 1,
+            "entity_id": "p2",
+            "property_index": 6,
+            "anchor_sha256": "bfc35c5d32225b319cc787de2ab85e08f083af0b608dfbad977e6a978f6cc5a5",
+            "changed_context_fields": [
+              "specimen_evidence",
+              "evidence"
+            ],
+            "reason": "The reported 1230% strain is stated in Results, while the stress–strain measurement context for healed P3 films under universal conditions is established by Fig. 3d caption.",
+            "property_path": "entities[1].properties.items[6]",
+            "validation_reasons": [
+              "property_value_not_in_original_evidence"
+            ],
+            "status": "applied_with_validation_review"
+          },
+          {
+            "proposal_index": 2,
+            "entity_id": "p2",
+            "property_index": 11,
+            "anchor_sha256": "0977a44f7560a203d858e44a51d010a585377f947a8df215c9f0ca995e35b587",
+            "changed_context_fields": [
+              "specimen_evidence",
+              "evidence"
+            ],
+            "reason": "The 89% value is reported in Results, and the Fig. 3d/3e caption supplies the associated healed-film stress–strain/self-healing test context used for these universal-condition measurements.",
+            "property_path": "entities[1].properties.items[11]",
+            "validation_reasons": [
+              "property_value_not_in_original_evidence"
+            ],
+            "status": "applied_with_validation_review"
+          },
+          {
+            "proposal_index": 3,
+            "entity_id": "p5",
+            "property_index": 0,
+            "anchor_sha256": "716fc92fd2618b3faec0a04d50828d7f01fc114913c01b5d8664dec0791757d0",
+            "changed_context_fields": [],
+            "reason": "The source reports P2 stretchability, but no declared P2 specimen in this entity establishes the exact tested form, so the specimen link should be left unresolved.",
+            "property_path": "entities[4].properties.items[0]",
+            "validation_reasons": [
+              "fact_specimen_not_linked_to_polymer"
+            ],
+            "status": "applied_with_validation_review"
+          },
+          {
+            "proposal_index": 4,
+            "entity_id": "p8",
+            "property_index": 0,
+            "anchor_sha256": "d7206287a99563909ddd387a389db662465758ac20bd2310a548c69cb87ecedf",
+            "changed_context_fields": [
+              "conditions"
+            ],
+            "reason": "The source explicitly reports Tg for P7 by DSC, but this entity has no declared specimen that establishes the exact tested form, so only the method condition can be supported.",
+            "property_path": "entities[7].properties.items[0]",
+            "validation_reasons": [
+              "fact_specimen_not_linked_to_polymer"
+            ],
+            "status": "applied_with_validation_review"
+          }
+        ],
+        "base_validation_issues": [
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p2",
+            "name": "P3",
+            "path": "entities[1].properties.items[3]",
+            "reason": "fact_specimen_not_linked_to_polymer"
+          },
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p2",
+            "name": "P3",
+            "path": "entities[1].properties.items[6]",
+            "reason": "property_value_not_in_original_evidence"
+          },
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p2",
+            "name": "P3",
+            "path": "entities[1].properties.items[11]",
+            "reason": "property_value_not_in_original_evidence"
+          },
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p5",
+            "name": "P2",
+            "path": "entities[4].properties.items[0]",
+            "reason": "fact_specimen_not_linked_to_polymer"
+          },
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p8",
+            "name": "P7",
+            "path": "entities[7].properties.items[0]",
+            "reason": "fact_specimen_not_linked_to_polymer"
+          }
+        ],
+        "base_statistics": {
+          "input_entities": 11,
+          "cards": 11,
+          "retained_polymers": 11,
+          "discarded_entities": 0,
+          "discarded_nonpolymers": 0,
+          "classification_review_entities": 0,
+          "review_queue": 5,
+          "validation_issues": 5,
+          "attribution_warnings": 0
+        },
+        "limits": [
+          "Only context fields can change; exact source selection does not establish scientific attribution."
+        ],
+        "immutable_fields_preserved": true,
+        "composed_response_sha256": "c672778e8c8956238c626ad65f002663ee7e6fdb1d92930974cbe4420fa53d08",
+        "validation_issues": [
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p2",
+            "name": "P3",
+            "path": "entities[1].properties.items[6]",
+            "reason": "property_value_not_in_original_evidence"
+          },
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p2",
+            "name": "P3",
+            "path": "entities[1].properties.items[11]",
+            "reason": "property_value_not_in_original_evidence"
+          },
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p5",
+            "name": "P2",
+            "path": "entities[4].properties.items[0]",
+            "reason": "fact_specimen_not_linked_to_polymer"
+          },
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p8",
+            "name": "P7",
+            "path": "entities[7].properties.items[0]",
+            "reason": "fact_specimen_not_linked_to_polymer"
+          }
+        ],
+        "result_statistics": {
+          "input_entities": 11,
+          "cards": 11,
+          "retained_polymers": 11,
+          "discarded_entities": 0,
+          "discarded_nonpolymers": 0,
+          "classification_review_entities": 0,
+          "review_queue": 4,
+          "validation_issues": 4,
+          "attribution_warnings": 0
+        }
+      },
+      "freeze": {
+        "prepared_at_utc": "2026-11-06T07:56:29.532756+00:00",
+        "mode": "source_grounded_context_review",
+        "software_tests_passed": 228,
+        "model_calls_at_freeze": 0,
+        "checked_answers_supplied": false,
+        "previous_response_supplied": true,
+        "base_response_origin": "this-task source-grounded revision of fresh extraction",
+        "base_file_sha256": "067df45e20d8889b76dee21064e908e54211b7c7843a478c6fdb9b9bc4fe2b61",
+        "source_file_sha256": "025c1c6f9ad5a00e5035c9dde1fcde305ea072c7a3480301786b6b001944aad2",
+        "code_and_reference_sha256": {
+          "polymer_cards_lib/context_review.py": "e72542a0f595a3dd5fce4af6df41a0afb787a6df850cc5eed76c4bbaeadcdde5",
+          "polymer_cards_lib/llm.py": "8ebd96213d4c880f6c846ff4147f9b5c6d97d7e8baa5897552f65bcaea33744e",
+          "polymer_cards_lib/prompt.py": "e31b8a57a57ba2c24c42f9dfcc37d3f1419781430510b17601514434ed7fe2df",
+          "polymer_cards_lib/repair.py": "d6195fcfa67a1908a2e5a299be9757af7d312e707e3922087ad84efb02f88a7d",
+          "polymer_cards_lib/evidence_spans.py": "f5bcb32b3cda5da75be8bcd75ba92dfd1ee717e43c05a46bd133cda555ddf5d6",
+          "polymer_cards_lib/validation.py": "6d16057f43ae0115f3477c4d8620f41f4d21378fe6790bdc8bca395bb7ef4df0",
+          "polymer_cards_lib/render.py": "174a255e2416dd5d818758501d1d0af6f8c926eabab2c2f033911b584977931f",
+          "polymer_cards_lib/sources.py": "c6f480cf531217de2ae1e5624f2c33984400fc5dcf5f8a94ae08908d22722270",
+          "polymer_cards_lib/evaluation.py": "a4d4fb929411afb754f11fd850a492a072e0cf3db6d93f91ff180eaf22e12fb7",
+          "examples/polymer_cards/condition_reference_2026-11-06/reference.json": "d1a93b5bddb6ca72fe0f4ec30a1ac1a323e4071ac19f061b4f790c20723c4a89"
+        },
+        "request_prompt_sha256": "517766406749479b5bd038a6965ed13e480b42559d506fc2b300a75975e3fc1e",
+        "system_prompt_sha256": "ca362f2af5cef67aacf6ed60cc8a9d93749344c4665736615cccca3eba1b4d69",
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "polymer_context_review_v1",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "paper_id": {
+                  "type": "string"
+                },
+                "edits": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/edit"
+                  }
+                }
+              },
+              "required": [
+                "paper_id",
+                "edits"
+              ],
+              "additionalProperties": false,
+              "$defs": {
+                "evidence": {
+                  "type": "object",
+                  "properties": {
+                    "chunk_id": {
+                      "type": "string"
+                    },
+                    "span_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "chunk_id",
+                    "span_id"
+                  ],
+                  "additionalProperties": false
+                },
+                "condition": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    },
+                    "evidence": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/evidence"
+                      }
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "value",
+                    "evidence"
+                  ],
+                  "additionalProperties": false
+                },
+                "edit": {
+                  "type": "object",
+                  "properties": {
+                    "entity_id": {
+                      "type": "string"
+                    },
+                    "property_index": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "anchor_sha256": {
+                      "type": "string"
+                    },
+                    "specimen_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "specimen_evidence": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/evidence"
+                      }
+                    },
+                    "conditions": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/condition"
+                      }
+                    },
+                    "evidence": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/evidence"
+                      }
+                    },
+                    "reason": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "entity_id",
+                    "property_index",
+                    "anchor_sha256",
+                    "specimen_id",
+                    "specimen_evidence",
+                    "conditions",
+                    "evidence",
+                    "reason"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "max_output_tokens": 16000,
+        "request_timeout_seconds": 900,
+        "automatic_retries": 0
+      },
+      "historical_code_files_verified": {
+        "polymer_cards_lib/context_review.py": "e72542a0f595a3dd5fce4af6df41a0afb787a6df850cc5eed76c4bbaeadcdde5",
+        "polymer_cards_lib/llm.py": "8ebd96213d4c880f6c846ff4147f9b5c6d97d7e8baa5897552f65bcaea33744e"
+      },
+      "source_audit_hypotheses_supplied": false,
+      "strict_focus": false
+    },
+    {
+      "directory": "polymer_cards_context_focused_2026-11-06_guo",
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "capture": {
+        "proposals": {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "edits": [
+            {
+              "entity_id": "p2",
+              "property_index": 0,
+              "anchor_sha256": "5588b7f2f52d3bcfce9cc20055414e924cbf45c7b45797ce18aa5589e2b51091",
+              "specimen_id": "p2-gpc-sample",
+              "specimen_evidence": [
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-4d39264781660f3c8cb5ceeb1d1a3d41"
+                },
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                }
+              ],
+              "conditions": [
+                {
+                  "name": "method",
+                  "value": "gel permeation chromatography (GPC)",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                      "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                    }
+                  ]
+                },
+                {
+                  "name": "eluent",
+                  "value": "THF",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                      "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                }
+              ],
+              "reason": "Source explicitly names GPC for this molecular-weight measurement; add technique as method condition."
+            },
+            {
+              "entity_id": "p2",
+              "property_index": 1,
+              "anchor_sha256": "b0f10dcb4e2106122fb6173f6c1ea0911e9acde95c7e00f00c64f88b23742c87",
+              "specimen_id": "p2-gpc-sample",
+              "specimen_evidence": [
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-4d39264781660f3c8cb5ceeb1d1a3d41"
+                },
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                }
+              ],
+              "conditions": [
+                {
+                  "name": "method",
+                  "value": "gel permeation chromatography (GPC)",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                      "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                    }
+                  ]
+                },
+                {
+                  "name": "eluent",
+                  "value": "THF",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                      "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                }
+              ],
+              "reason": "Source explicitly names GPC for this molecular-weight measurement; add technique as method condition."
+            },
+            {
+              "entity_id": "p2",
+              "property_index": 2,
+              "anchor_sha256": "aba50a0e1ed2c20e9387958a1a97ebaabdf67f8f083622da4c12554ab8728022",
+              "specimen_id": "p2-gpc-sample",
+              "specimen_evidence": [
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-4d39264781660f3c8cb5ceeb1d1a3d41"
+                },
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                }
+              ],
+              "conditions": [
+                {
+                  "name": "method",
+                  "value": "gel permeation chromatography (GPC)",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                      "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                    }
+                  ]
+                },
+                {
+                  "name": "eluent",
+                  "value": "THF",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                      "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                }
+              ],
+              "reason": "Source explicitly names GPC for this PDI measurement context; add technique as method condition."
+            },
+            {
+              "entity_id": "p2",
+              "property_index": 3,
+              "anchor_sha256": "c1c880b0cfc1c8f7898baa1cf4660385fdd4250b2cb45219ca06a9f1b9cb4ad0",
+              "specimen_id": null,
+              "specimen_evidence": [],
+              "conditions": [
+                {
+                  "name": "method",
+                  "value": "differential scanning calorimetry (DSC)",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-7fff0ff525a418c27c9f",
+                      "span_id": "spn-5cd9ec6649a0ffcfbdea836cd018aaba"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-7fff0ff525a418c27c9f",
+                  "span_id": "spn-5cd9ec6649a0ffcfbdea836cd018aaba"
+                }
+              ],
+              "reason": "Source reports Tg for polymeric backbones of P3, P4, and P7, but existing specimen p2-film is only a prepared film specimen and does not establish the tested DSC subject exactly."
+            },
+            {
+              "entity_id": "p2",
+              "property_index": 6,
+              "anchor_sha256": "bfc35c5d32225b319cc787de2ab85e08f083af0b608dfbad977e6a978f6cc5a5",
+              "specimen_id": "p2-healed-film-water",
+              "specimen_evidence": [
+                {
+                  "chunk_id": "src-350106dc0f244b268362",
+                  "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+                }
+              ],
+              "conditions": [
+                {
+                  "name": "healing environment",
+                  "value": "water",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-350106dc0f244b268362",
+                      "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing time",
+                  "value": "24 h",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-350106dc0f244b268362",
+                      "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+                    }
+                  ]
+                },
+                {
+                  "name": "stretching speed",
+                  "value": "10 mm min⁻¹",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-bf623a19fffc11e5efc2",
+                      "span_id": "spn-bb8a8f917e4a9d6b54b37a1220415cfc"
+                    }
+                  ]
+                },
+                {
+                  "name": "specimen dimensions",
+                  "value": "20 × 14 × 1 mm³",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-bf623a19fffc11e5efc2",
+                      "span_id": "spn-adada2467d5369154926a033f77f5d40"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-350106dc0f244b268362",
+                  "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+                }
+              ],
+              "reason": "Caption sample-size condition belongs to Fig. 3e healing-efficiency panel, not the Fig. 3d fracture-strain readout; use same tensile procedure from Methods instead."
+            },
+            {
+              "entity_id": "p2",
+              "property_index": 7,
+              "anchor_sha256": "87e24cf7a73b159f4cb4b6b32458ee4f0fcea6602b38a7288e9123c38294600a",
+              "specimen_id": "p2-healed-film-water",
+              "specimen_evidence": [
+                {
+                  "chunk_id": "src-350106dc0f244b268362",
+                  "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+                }
+              ],
+              "conditions": [
+                {
+                  "name": "healing environment",
+                  "value": "water",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-350106dc0f244b268362",
+                      "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing time",
+                  "value": "24 h",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-350106dc0f244b268362",
+                      "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing efficiency definition",
+                  "value": "ratio between the restored fracture strain relative to the original fracture strain",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-b48dd634cfb0cbadc1e7",
+                      "span_id": "spn-2b43e5c22d8888b06b5d955316b5e9b2"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-350106dc0f244b268362",
+                  "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+                }
+              ],
+              "reason": "Water-healed 93% efficiency is reported in paragraph text, but caption geometry/sample-size belongs to a different panel and duration set; remove unsupported carried-over test geometry conditions."
+            },
+            {
+              "entity_id": "p2",
+              "property_index": 8,
+              "anchor_sha256": "27c5ce5bc8eb7a208715ad9d872fce9cdc2ea37690f403b2e833acd354ccbb67",
+              "specimen_id": null,
+              "specimen_evidence": [],
+              "conditions": [
+                {
+                  "name": "healing environment",
+                  "value": "4 °C",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-19de83c50e53d683bc32",
+                      "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing time",
+                  "value": "24 h",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-19de83c50e53d683bc32",
+                      "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing efficiency definition",
+                  "value": "ratio between the restored fracture strain relative to the original fracture strain",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-b48dd634cfb0cbadc1e7",
+                      "span_id": "spn-2b43e5c22d8888b06b5d955316b5e9b2"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-19de83c50e53d683bc32",
+                  "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+                }
+              ],
+              "reason": "The 4 °C efficiency is for P3, but no declared specimen specifically establishes this refrigerated healed form; leave specimen unresolved rather than borrowing room-temperature healed specimen."
+            },
+            {
+              "entity_id": "p2",
+              "property_index": 9,
+              "anchor_sha256": "276e117fc6782fd1c30645c5ec2ed69ee9b1a81fdf20e91ade009aa5de2a032e",
+              "specimen_id": null,
+              "specimen_evidence": [],
+              "conditions": [
+                {
+                  "name": "healing environment",
+                  "value": "−20 °C",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-19de83c50e53d683bc32",
+                      "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing time",
+                  "value": "24 h",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-19de83c50e53d683bc32",
+                      "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing efficiency definition",
+                  "value": "ratio between the restored fracture strain relative to the original fracture strain",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-b48dd634cfb0cbadc1e7",
+                      "span_id": "spn-2b43e5c22d8888b06b5d955316b5e9b2"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-19de83c50e53d683bc32",
+                  "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+                }
+              ],
+              "reason": "The −20 °C efficiency is for P3, but no declared specimen specifically establishes this freezing-healed form; leave specimen unresolved rather than borrowing room-temperature healed specimen."
+            },
+            {
+              "entity_id": "p2",
+              "property_index": 10,
+              "anchor_sha256": "4e49c0b724cea2b4c4eeee33507138499d0738336042ef57037330de755787ee",
+              "specimen_id": null,
+              "specimen_evidence": [],
+              "conditions": [
+                {
+                  "name": "healing environment",
+                  "value": "−40 °C",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-19de83c50e53d683bc32",
+                      "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing time",
+                  "value": "24 h",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-19de83c50e53d683bc32",
+                      "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing efficiency definition",
+                  "value": "ratio between the restored fracture strain relative to the original fracture strain",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-b48dd634cfb0cbadc1e7",
+                      "span_id": "spn-2b43e5c22d8888b06b5d955316b5e9b2"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-19de83c50e53d683bc32",
+                  "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+                }
+              ],
+              "reason": "The −40 °C efficiency is for P3, but no declared specimen specifically establishes this ultralow-temperature healed form; leave specimen unresolved rather than borrowing room-temperature healed specimen."
+            },
+            {
+              "entity_id": "p5",
+              "property_index": 0,
+              "anchor_sha256": "716fc92fd2618b3faec0a04d50828d7f01fc114913c01b5d8664dec0791757d0",
+              "specimen_id": null,
+              "specimen_evidence": [],
+              "conditions": [],
+              "evidence": [
+                {
+                  "chunk_id": "src-f11f8aed81613a0e81fc",
+                  "span_id": "spn-784b47ad0f9ff1ae54d74f3f9794e0f8"
+                },
+                {
+                  "chunk_id": "src-f11f8aed81613a0e81fc",
+                  "span_id": "spn-dd419d05d157651dedf05ca250c9fae3"
+                }
+              ],
+              "reason": "No declared P2 specimen exists to support an exact tested form, so specimen must remain unresolved; added adjacent qualifier evidence to keep the source context complete."
+            },
+            {
+              "entity_id": "p8",
+              "property_index": 0,
+              "anchor_sha256": "d7206287a99563909ddd387a389db662465758ac20bd2310a548c69cb87ecedf",
+              "specimen_id": null,
+              "specimen_evidence": [],
+              "conditions": [
+                {
+                  "name": "method",
+                  "value": "differential scanning calorimetry (DSC)",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-7fff0ff525a418c27c9f",
+                      "span_id": "spn-5cd9ec6649a0ffcfbdea836cd018aaba"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-7fff0ff525a418c27c9f",
+                  "span_id": "spn-5cd9ec6649a0ffcfbdea836cd018aaba"
+                }
+              ],
+              "reason": "Keep specimen unresolved because no declared P7 specimen establishes the exact DSC-tested form; method condition remains supported."
+            }
+          ]
+        },
+        "trace": {
+          "raw_response_text": "{\"paper_id\":\"10.1038/s41467-020-15949-8\",\"edits\":[{\"entity_id\":\"p2\",\"property_index\":0,\"anchor_sha256\":\"5588b7f2f52d3bcfce9cc20055414e924cbf45c7b45797ce18aa5589e2b51091\",\"specimen_id\":\"p2-gpc-sample\",\"specimen_evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-4d39264781660f3c8cb5ceeb1d1a3d41\"},{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}],\"conditions\":[{\"name\":\"method\",\"value\":\"gel permeation chromatography (GPC)\",\"evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}]},{\"name\":\"eluent\",\"value\":\"THF\",\"evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}]}],\"evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}],\"reason\":\"Source explicitly names GPC for this molecular-weight measurement; add technique as method condition.\"},{\"entity_id\":\"p2\",\"property_index\":1,\"anchor_sha256\":\"b0f10dcb4e2106122fb6173f6c1ea0911e9acde95c7e00f00c64f88b23742c87\",\"specimen_id\":\"p2-gpc-sample\",\"specimen_evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-4d39264781660f3c8cb5ceeb1d1a3d41\"},{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}],\"conditions\":[{\"name\":\"method\",\"value\":\"gel permeation chromatography (GPC)\",\"evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}]},{\"name\":\"eluent\",\"value\":\"THF\",\"evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}]}],\"evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}],\"reason\":\"Source explicitly names GPC for this molecular-weight measurement; add technique as method condition.\"},{\"entity_id\":\"p2\",\"property_index\":2,\"anchor_sha256\":\"aba50a0e1ed2c20e9387958a1a97ebaabdf67f8f083622da4c12554ab8728022\",\"specimen_id\":\"p2-gpc-sample\",\"specimen_evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-4d39264781660f3c8cb5ceeb1d1a3d41\"},{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}],\"conditions\":[{\"name\":\"method\",\"value\":\"gel permeation chromatography (GPC)\",\"evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}]},{\"name\":\"eluent\",\"value\":\"THF\",\"evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}]}],\"evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}],\"reason\":\"Source explicitly names GPC for this PDI measurement context; add technique as method condition.\"},{\"entity_id\":\"p2\",\"property_index\":3,\"anchor_sha256\":\"c1c880b0cfc1c8f7898baa1cf4660385fdd4250b2cb45219ca06a9f1b9cb4ad0\",\"specimen_id\":null,\"specimen_evidence\":[],\"conditions\":[{\"name\":\"method\",\"value\":\"differential scanning calorimetry (DSC)\",\"evidence\":[{\"chunk_id\":\"src-7fff0ff525a418c27c9f\",\"span_id\":\"spn-5cd9ec6649a0ffcfbdea836cd018aaba\"}]}],\"evidence\":[{\"chunk_id\":\"src-7fff0ff525a418c27c9f\",\"span_id\":\"spn-5cd9ec6649a0ffcfbdea836cd018aaba\"}],\"reason\":\"Source reports Tg for polymeric backbones of P3, P4, and P7, but existing specimen p2-film is only a prepared film specimen and does not establish the tested DSC subject exactly.\"},{\"entity_id\":\"p2\",\"property_index\":6,\"anchor_sha256\":\"bfc35c5d32225b319cc787de2ab85e08f083af0b608dfbad977e6a978f6cc5a5\",\"specimen_id\":\"p2-healed-film-water\",\"specimen_evidence\":[{\"chunk_id\":\"src-350106dc0f244b268362\",\"span_id\":\"spn-c39e65b92e390deaddeba7e35d621093\"}],\"conditions\":[{\"name\":\"healing environment\",\"value\":\"water\",\"evidence\":[{\"chunk_id\":\"src-350106dc0f244b268362\",\"span_id\":\"spn-c39e65b92e390deaddeba7e35d621093\"}]},{\"name\":\"healing time\",\"value\":\"24 h\",\"evidence\":[{\"chunk_id\":\"src-350106dc0f244b268362\",\"span_id\":\"spn-c39e65b92e390deaddeba7e35d621093\"}]},{\"name\":\"stretching speed\",\"value\":\"10 mm min⁻¹\",\"evidence\":[{\"chunk_id\":\"src-bf623a19fffc11e5efc2\",\"span_id\":\"spn-bb8a8f917e4a9d6b54b37a1220415cfc\"}]},{\"name\":\"specimen dimensions\",\"value\":\"20 × 14 × 1 mm³\",\"evidence\":[{\"chunk_id\":\"src-bf623a19fffc11e5efc2\",\"span_id\":\"spn-adada2467d5369154926a033f77f5d40\"}]}],\"evidence\":[{\"chunk_id\":\"src-350106dc0f244b268362\",\"span_id\":\"spn-c39e65b92e390deaddeba7e35d621093\"}],\"reason\":\"Caption sample-size condition belongs to Fig. 3e healing-efficiency panel, not the Fig. 3d fracture-strain readout; use same tensile procedure from Methods instead.\"},{\"entity_id\":\"p2\",\"property_index\":7,\"anchor_sha256\":\"87e24cf7a73b159f4cb4b6b32458ee4f0fcea6602b38a7288e9123c38294600a\",\"specimen_id\":\"p2-healed-film-water\",\"specimen_evidence\":[{\"chunk_id\":\"src-350106dc0f244b268362\",\"span_id\":\"spn-c39e65b92e390deaddeba7e35d621093\"}],\"conditions\":[{\"name\":\"healing environment\",\"value\":\"water\",\"evidence\":[{\"chunk_id\":\"src-350106dc0f244b268362\",\"span_id\":\"spn-c39e65b92e390deaddeba7e35d621093\"}]},{\"name\":\"healing time\",\"value\":\"24 h\",\"evidence\":[{\"chunk_id\":\"src-350106dc0f244b268362\",\"span_id\":\"spn-c39e65b92e390deaddeba7e35d621093\"}]},{\"name\":\"healing efficiency definition\",\"value\":\"ratio between the restored fracture strain relative to the original fracture strain\",\"evidence\":[{\"chunk_id\":\"src-b48dd634cfb0cbadc1e7\",\"span_id\":\"spn-2b43e5c22d8888b06b5d955316b5e9b2\"}]}],\"evidence\":[{\"chunk_id\":\"src-350106dc0f244b268362\",\"span_id\":\"spn-c39e65b92e390deaddeba7e35d621093\"}],\"reason\":\"Water-healed 93% efficiency is reported in paragraph text, but caption geometry/sample-size belongs to a different panel and duration set; remove unsupported carried-over test geometry conditions.\"},{\"entity_id\":\"p2\",\"property_index\":8,\"anchor_sha256\":\"27c5ce5bc8eb7a208715ad9d872fce9cdc2ea37690f403b2e833acd354ccbb67\",\"specimen_id\":null,\"specimen_evidence\":[],\"conditions\":[{\"name\":\"healing environment\",\"value\":\"4 °C\",\"evidence\":[{\"chunk_id\":\"src-19de83c50e53d683bc32\",\"span_id\":\"spn-24f4fb4977bd92a88aa6c7f4b751ccc0\"}]},{\"name\":\"healing time\",\"value\":\"24 h\",\"evidence\":[{\"chunk_id\":\"src-19de83c50e53d683bc32\",\"span_id\":\"spn-24f4fb4977bd92a88aa6c7f4b751ccc0\"}]},{\"name\":\"healing efficiency definition\",\"value\":\"ratio between the restored fracture strain relative to the original fracture strain\",\"evidence\":[{\"chunk_id\":\"src-b48dd634cfb0cbadc1e7\",\"span_id\":\"spn-2b43e5c22d8888b06b5d955316b5e9b2\"}]}],\"evidence\":[{\"chunk_id\":\"src-19de83c50e53d683bc32\",\"span_id\":\"spn-24f4fb4977bd92a88aa6c7f4b751ccc0\"}],\"reason\":\"The 4 °C efficiency is for P3, but no declared specimen specifically establishes this refrigerated healed form; leave specimen unresolved rather than borrowing room-temperature healed specimen.\"},{\"entity_id\":\"p2\",\"property_index\":9,\"anchor_sha256\":\"276e117fc6782fd1c30645c5ec2ed69ee9b1a81fdf20e91ade009aa5de2a032e\",\"specimen_id\":null,\"specimen_evidence\":[],\"conditions\":[{\"name\":\"healing environment\",\"value\":\"−20 °C\",\"evidence\":[{\"chunk_id\":\"src-19de83c50e53d683bc32\",\"span_id\":\"spn-24f4fb4977bd92a88aa6c7f4b751ccc0\"}]},{\"name\":\"healing time\",\"value\":\"24 h\",\"evidence\":[{\"chunk_id\":\"src-19de83c50e53d683bc32\",\"span_id\":\"spn-24f4fb4977bd92a88aa6c7f4b751ccc0\"}]},{\"name\":\"healing efficiency definition\",\"value\":\"ratio between the restored fracture strain relative to the original fracture strain\",\"evidence\":[{\"chunk_id\":\"src-b48dd634cfb0cbadc1e7\",\"span_id\":\"spn-2b43e5c22d8888b06b5d955316b5e9b2\"}]}],\"evidence\":[{\"chunk_id\":\"src-19de83c50e53d683bc32\",\"span_id\":\"spn-24f4fb4977bd92a88aa6c7f4b751ccc0\"}],\"reason\":\"The −20 °C efficiency is for P3, but no declared specimen specifically establishes this freezing-healed form; leave specimen unresolved rather than borrowing room-temperature healed specimen.\"},{\"entity_id\":\"p2\",\"property_index\":10,\"anchor_sha256\":\"4e49c0b724cea2b4c4eeee33507138499d0738336042ef57037330de755787ee\",\"specimen_id\":null,\"specimen_evidence\":[],\"conditions\":[{\"name\":\"healing environment\",\"value\":\"−40 °C\",\"evidence\":[{\"chunk_id\":\"src-19de83c50e53d683bc32\",\"span_id\":\"spn-24f4fb4977bd92a88aa6c7f4b751ccc0\"}]},{\"name\":\"healing time\",\"value\":\"24 h\",\"evidence\":[{\"chunk_id\":\"src-19de83c50e53d683bc32\",\"span_id\":\"spn-24f4fb4977bd92a88aa6c7f4b751ccc0\"}]},{\"name\":\"healing efficiency definition\",\"value\":\"ratio between the restored fracture strain relative to the original fracture strain\",\"evidence\":[{\"chunk_id\":\"src-b48dd634cfb0cbadc1e7\",\"span_id\":\"spn-2b43e5c22d8888b06b5d955316b5e9b2\"}]}],\"evidence\":[{\"chunk_id\":\"src-19de83c50e53d683bc32\",\"span_id\":\"spn-24f4fb4977bd92a88aa6c7f4b751ccc0\"}],\"reason\":\"The −40 °C efficiency is for P3, but no declared specimen specifically establishes this ultralow-temperature healed form; leave specimen unresolved rather than borrowing room-temperature healed specimen.\"},{\"entity_id\":\"p5\",\"property_index\":0,\"anchor_sha256\":\"716fc92fd2618b3faec0a04d50828d7f01fc114913c01b5d8664dec0791757d0\",\"specimen_id\":null,\"specimen_evidence\":[],\"conditions\":[],\"evidence\":[{\"chunk_id\":\"src-f11f8aed81613a0e81fc\",\"span_id\":\"spn-784b47ad0f9ff1ae54d74f3f9794e0f8\"},{\"chunk_id\":\"src-f11f8aed81613a0e81fc\",\"span_id\":\"spn-dd419d05d157651dedf05ca250c9fae3\"}],\"reason\":\"No declared P2 specimen exists to support an exact tested form, so specimen must remain unresolved; added adjacent qualifier evidence to keep the source context complete.\"},{\"entity_id\":\"p8\",\"property_index\":0,\"anchor_sha256\":\"d7206287a99563909ddd387a389db662465758ac20bd2310a548c69cb87ecedf\",\"specimen_id\":null,\"specimen_evidence\":[],\"conditions\":[{\"name\":\"method\",\"value\":\"differential scanning calorimetry (DSC)\",\"evidence\":[{\"chunk_id\":\"src-7fff0ff525a418c27c9f\",\"span_id\":\"spn-5cd9ec6649a0ffcfbdea836cd018aaba\"}]}],\"evidence\":[{\"chunk_id\":\"src-7fff0ff525a418c27c9f\",\"span_id\":\"spn-5cd9ec6649a0ffcfbdea836cd018aaba\"}],\"reason\":\"Keep specimen unresolved because no declared P7 specimen establishes the exact DSC-tested form; method condition remains supported.\"}]}",
+          "usage": {
+            "prompt_tokens": 69811,
+            "completion_tokens": 3584,
+            "total_tokens": 73395
+          },
+          "extraction_profile": {
+            "output_format": "json_schema",
+            "schema_name": "polymer_context_review_v1",
+            "schema_sha256": "4ceb0762994ed69f3d3eaa4aab3255c693661b3e7071df142751d09fd15acad9",
+            "system_prompt_sha256": "ca362f2af5cef67aacf6ed60cc8a9d93749344c4665736615cccca3eba1b4d69"
+          },
+          "request_prompt_sha256": "b7fbc93d725464bcea711c2eb4e97cda6e6ebade918c057ede29ef6d98093d6c",
+          "finish_reason": "stop",
+          "request_mode": "source_grounded_context_review",
+          "previous_response_sha256": "c672778e8c8956238c626ad65f002663ee7e6fdb1d92930974cbe4420fa53d08",
+          "source_audit_focus_sha256": "727de63bf6519ba45bb0f06bf848436242ec93de092951597bf29e4b9b3d23a7"
+        }
+      },
+      "audit": {
+        "mode": "model_proposed_context_revision",
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "base_response_sha256": "c672778e8c8956238c626ad65f002663ee7e6fdb1d92930974cbe4420fa53d08",
+        "applied_edits": 4,
+        "held_edits": [
+          {
+            "proposal_index": 0,
+            "reason": "context_edit_introduces_new_validation_issue",
+            "record": {
+              "entity_id": "p2",
+              "property_index": 0,
+              "anchor_sha256": "5588b7f2f52d3bcfce9cc20055414e924cbf45c7b45797ce18aa5589e2b51091",
+              "specimen_id": "p2-gpc-sample",
+              "specimen_evidence": [
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-4d39264781660f3c8cb5ceeb1d1a3d41"
+                },
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                }
+              ],
+              "conditions": [
+                {
+                  "name": "method",
+                  "value": "gel permeation chromatography (GPC)",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                      "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                    }
+                  ]
+                },
+                {
+                  "name": "eluent",
+                  "value": "THF",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                      "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                }
+              ],
+              "reason": "Source explicitly names GPC for this molecular-weight measurement; add technique as method condition."
+            },
+            "new_validation_reasons": [
+              "condition_value_not_in_original_evidence"
+            ]
+          },
+          {
+            "proposal_index": 1,
+            "reason": "context_edit_introduces_new_validation_issue",
+            "record": {
+              "entity_id": "p2",
+              "property_index": 1,
+              "anchor_sha256": "b0f10dcb4e2106122fb6173f6c1ea0911e9acde95c7e00f00c64f88b23742c87",
+              "specimen_id": "p2-gpc-sample",
+              "specimen_evidence": [
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-4d39264781660f3c8cb5ceeb1d1a3d41"
+                },
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                }
+              ],
+              "conditions": [
+                {
+                  "name": "method",
+                  "value": "gel permeation chromatography (GPC)",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                      "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                    }
+                  ]
+                },
+                {
+                  "name": "eluent",
+                  "value": "THF",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                      "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                }
+              ],
+              "reason": "Source explicitly names GPC for this molecular-weight measurement; add technique as method condition."
+            },
+            "new_validation_reasons": [
+              "condition_value_not_in_original_evidence"
+            ]
+          },
+          {
+            "proposal_index": 2,
+            "reason": "context_edit_introduces_new_validation_issue",
+            "record": {
+              "entity_id": "p2",
+              "property_index": 2,
+              "anchor_sha256": "aba50a0e1ed2c20e9387958a1a97ebaabdf67f8f083622da4c12554ab8728022",
+              "specimen_id": "p2-gpc-sample",
+              "specimen_evidence": [
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-4d39264781660f3c8cb5ceeb1d1a3d41"
+                },
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                }
+              ],
+              "conditions": [
+                {
+                  "name": "method",
+                  "value": "gel permeation chromatography (GPC)",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                      "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                    }
+                  ]
+                },
+                {
+                  "name": "eluent",
+                  "value": "THF",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                      "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                }
+              ],
+              "reason": "Source explicitly names GPC for this PDI measurement context; add technique as method condition."
+            },
+            "new_validation_reasons": [
+              "condition_value_not_in_original_evidence"
+            ]
+          },
+          {
+            "proposal_index": 3,
+            "reason": "context_edit_introduces_new_validation_issue",
+            "record": {
+              "entity_id": "p2",
+              "property_index": 3,
+              "anchor_sha256": "c1c880b0cfc1c8f7898baa1cf4660385fdd4250b2cb45219ca06a9f1b9cb4ad0",
+              "specimen_id": null,
+              "specimen_evidence": [],
+              "conditions": [
+                {
+                  "name": "method",
+                  "value": "differential scanning calorimetry (DSC)",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-7fff0ff525a418c27c9f",
+                      "span_id": "spn-5cd9ec6649a0ffcfbdea836cd018aaba"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-7fff0ff525a418c27c9f",
+                  "span_id": "spn-5cd9ec6649a0ffcfbdea836cd018aaba"
+                }
+              ],
+              "reason": "Source reports Tg for polymeric backbones of P3, P4, and P7, but existing specimen p2-film is only a prepared film specimen and does not establish the tested DSC subject exactly."
+            },
+            "new_validation_reasons": [
+              "fact_specimen_not_linked_to_polymer"
+            ]
+          },
+          {
+            "proposal_index": 6,
+            "reason": "context_edit_introduces_new_validation_issue",
+            "record": {
+              "entity_id": "p2",
+              "property_index": 8,
+              "anchor_sha256": "27c5ce5bc8eb7a208715ad9d872fce9cdc2ea37690f403b2e833acd354ccbb67",
+              "specimen_id": null,
+              "specimen_evidence": [],
+              "conditions": [
+                {
+                  "name": "healing environment",
+                  "value": "4 °C",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-19de83c50e53d683bc32",
+                      "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing time",
+                  "value": "24 h",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-19de83c50e53d683bc32",
+                      "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing efficiency definition",
+                  "value": "ratio between the restored fracture strain relative to the original fracture strain",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-b48dd634cfb0cbadc1e7",
+                      "span_id": "spn-2b43e5c22d8888b06b5d955316b5e9b2"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-19de83c50e53d683bc32",
+                  "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+                }
+              ],
+              "reason": "The 4 °C efficiency is for P3, but no declared specimen specifically establishes this refrigerated healed form; leave specimen unresolved rather than borrowing room-temperature healed specimen."
+            },
+            "new_validation_reasons": [
+              "fact_specimen_not_linked_to_polymer"
+            ]
+          },
+          {
+            "proposal_index": 7,
+            "reason": "context_edit_introduces_new_validation_issue",
+            "record": {
+              "entity_id": "p2",
+              "property_index": 9,
+              "anchor_sha256": "276e117fc6782fd1c30645c5ec2ed69ee9b1a81fdf20e91ade009aa5de2a032e",
+              "specimen_id": null,
+              "specimen_evidence": [],
+              "conditions": [
+                {
+                  "name": "healing environment",
+                  "value": "−20 °C",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-19de83c50e53d683bc32",
+                      "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing time",
+                  "value": "24 h",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-19de83c50e53d683bc32",
+                      "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing efficiency definition",
+                  "value": "ratio between the restored fracture strain relative to the original fracture strain",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-b48dd634cfb0cbadc1e7",
+                      "span_id": "spn-2b43e5c22d8888b06b5d955316b5e9b2"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-19de83c50e53d683bc32",
+                  "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+                }
+              ],
+              "reason": "The −20 °C efficiency is for P3, but no declared specimen specifically establishes this freezing-healed form; leave specimen unresolved rather than borrowing room-temperature healed specimen."
+            },
+            "new_validation_reasons": [
+              "fact_specimen_not_linked_to_polymer"
+            ]
+          },
+          {
+            "proposal_index": 8,
+            "reason": "context_edit_introduces_new_validation_issue",
+            "record": {
+              "entity_id": "p2",
+              "property_index": 10,
+              "anchor_sha256": "4e49c0b724cea2b4c4eeee33507138499d0738336042ef57037330de755787ee",
+              "specimen_id": null,
+              "specimen_evidence": [],
+              "conditions": [
+                {
+                  "name": "healing environment",
+                  "value": "−40 °C",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-19de83c50e53d683bc32",
+                      "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing time",
+                  "value": "24 h",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-19de83c50e53d683bc32",
+                      "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing efficiency definition",
+                  "value": "ratio between the restored fracture strain relative to the original fracture strain",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-b48dd634cfb0cbadc1e7",
+                      "span_id": "spn-2b43e5c22d8888b06b5d955316b5e9b2"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-19de83c50e53d683bc32",
+                  "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+                }
+              ],
+              "reason": "The −40 °C efficiency is for P3, but no declared specimen specifically establishes this ultralow-temperature healed form; leave specimen unresolved rather than borrowing room-temperature healed specimen."
+            },
+            "new_validation_reasons": [
+              "fact_specimen_not_linked_to_polymer"
+            ]
+          }
+        ],
+        "edit_results": [
+          {
+            "proposal_index": 4,
+            "entity_id": "p2",
+            "property_index": 6,
+            "anchor_sha256": "bfc35c5d32225b319cc787de2ab85e08f083af0b608dfbad977e6a978f6cc5a5",
+            "changed_context_fields": [
+              "conditions",
+              "evidence"
+            ],
+            "reason": "Caption sample-size condition belongs to Fig. 3e healing-efficiency panel, not the Fig. 3d fracture-strain readout; use same tensile procedure from Methods instead.",
+            "property_path": "entities[1].properties.items[6]",
+            "validation_reasons": [
+              "property_value_not_in_original_evidence"
+            ],
+            "status": "applied_with_validation_review"
+          },
+          {
+            "proposal_index": 5,
+            "entity_id": "p2",
+            "property_index": 7,
+            "anchor_sha256": "87e24cf7a73b159f4cb4b6b32458ee4f0fcea6602b38a7288e9123c38294600a",
+            "changed_context_fields": [
+              "specimen_evidence",
+              "conditions"
+            ],
+            "reason": "Water-healed 93% efficiency is reported in paragraph text, but caption geometry/sample-size belongs to a different panel and duration set; remove unsupported carried-over test geometry conditions.",
+            "property_path": "entities[1].properties.items[7]",
+            "validation_reasons": [],
+            "status": "applied_context_source_linked"
+          },
+          {
+            "proposal_index": 9,
+            "entity_id": "p5",
+            "property_index": 0,
+            "anchor_sha256": "716fc92fd2618b3faec0a04d50828d7f01fc114913c01b5d8664dec0791757d0",
+            "changed_context_fields": [
+              "evidence"
+            ],
+            "reason": "No declared P2 specimen exists to support an exact tested form, so specimen must remain unresolved; added adjacent qualifier evidence to keep the source context complete.",
+            "property_path": "entities[4].properties.items[0]",
+            "validation_reasons": [
+              "fact_specimen_not_linked_to_polymer"
+            ],
+            "status": "applied_with_validation_review"
+          },
+          {
+            "proposal_index": 10,
+            "entity_id": "p8",
+            "property_index": 0,
+            "anchor_sha256": "d7206287a99563909ddd387a389db662465758ac20bd2310a548c69cb87ecedf",
+            "changed_context_fields": [],
+            "reason": "Keep specimen unresolved because no declared P7 specimen establishes the exact DSC-tested form; method condition remains supported.",
+            "property_path": "entities[7].properties.items[0]",
+            "validation_reasons": [
+              "fact_specimen_not_linked_to_polymer"
+            ],
+            "status": "applied_with_validation_review"
+          }
+        ],
+        "base_validation_issues": [
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p2",
+            "name": "P3",
+            "path": "entities[1].properties.items[6]",
+            "reason": "property_value_not_in_original_evidence"
+          },
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p2",
+            "name": "P3",
+            "path": "entities[1].properties.items[11]",
+            "reason": "property_value_not_in_original_evidence"
+          },
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p5",
+            "name": "P2",
+            "path": "entities[4].properties.items[0]",
+            "reason": "fact_specimen_not_linked_to_polymer"
+          },
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p8",
+            "name": "P7",
+            "path": "entities[7].properties.items[0]",
+            "reason": "fact_specimen_not_linked_to_polymer"
+          }
+        ],
+        "base_statistics": {
+          "input_entities": 11,
+          "cards": 11,
+          "retained_polymers": 11,
+          "discarded_entities": 0,
+          "discarded_nonpolymers": 0,
+          "classification_review_entities": 0,
+          "review_queue": 4,
+          "validation_issues": 4,
+          "attribution_warnings": 0
+        },
+        "limits": [
+          "Only context fields can change; exact source selection does not establish scientific attribution."
+        ],
+        "immutable_fields_preserved": true,
+        "composed_response_sha256": "844454a669f1a172868a38044d025431f3ecb61c7d3d196cb88e51d6dca59971",
+        "validation_issues": [
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p2",
+            "name": "P3",
+            "path": "entities[1].properties.items[6]",
+            "reason": "property_value_not_in_original_evidence"
+          },
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p2",
+            "name": "P3",
+            "path": "entities[1].properties.items[11]",
+            "reason": "property_value_not_in_original_evidence"
+          },
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p5",
+            "name": "P2",
+            "path": "entities[4].properties.items[0]",
+            "reason": "fact_specimen_not_linked_to_polymer"
+          },
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p8",
+            "name": "P7",
+            "path": "entities[7].properties.items[0]",
+            "reason": "fact_specimen_not_linked_to_polymer"
+          }
+        ],
+        "result_statistics": {
+          "input_entities": 11,
+          "cards": 11,
+          "retained_polymers": 11,
+          "discarded_entities": 0,
+          "discarded_nonpolymers": 0,
+          "classification_review_entities": 0,
+          "review_queue": 4,
+          "validation_issues": 4,
+          "attribution_warnings": 0
+        }
+      },
+      "freeze": {
+        "prepared_at_utc": "2026-11-06T08:05:06.758805+00:00",
+        "mode": "source_audit_focused_context_review",
+        "software_tests_passed": 230,
+        "model_calls_at_freeze": 0,
+        "checked_reference_answers_supplied": false,
+        "source_audit_hypotheses_supplied": true,
+        "previous_response_supplied": true,
+        "base_response_origin": "previous context composition of this-task model revision",
+        "base_file_sha256": "256ad99b831a399944dd76fe24e133414e8b476196e7259ad0c90ce73aa886c6",
+        "source_file_sha256": "025c1c6f9ad5a00e5035c9dde1fcde305ea072c7a3480301786b6b001944aad2",
+        "focus_file_sha256": "2d1e9eb6a6c14bc9e94925a3388dd80f57aa3eefea59f586e0db53bc3d06b059",
+        "code_and_reference_sha256": {
+          "polymer_cards_lib/context_review.py": "7376e65622b3d279b192e642b5f6c310cd346edb779afba1487e484936b25c34",
+          "polymer_cards_lib/llm.py": "a29d58565957e9a56692a8dc6c2b32eae03271f1808c47a41bbac57f6ac27ad6",
+          "polymer_cards_lib/prompt.py": "e31b8a57a57ba2c24c42f9dfcc37d3f1419781430510b17601514434ed7fe2df",
+          "polymer_cards_lib/repair.py": "d6195fcfa67a1908a2e5a299be9757af7d312e707e3922087ad84efb02f88a7d",
+          "polymer_cards_lib/evidence_spans.py": "f5bcb32b3cda5da75be8bcd75ba92dfd1ee717e43c05a46bd133cda555ddf5d6",
+          "polymer_cards_lib/validation.py": "6d16057f43ae0115f3477c4d8620f41f4d21378fe6790bdc8bca395bb7ef4df0",
+          "polymer_cards_lib/render.py": "174a255e2416dd5d818758501d1d0af6f8c926eabab2c2f033911b584977931f",
+          "polymer_cards_lib/sources.py": "c6f480cf531217de2ae1e5624f2c33984400fc5dcf5f8a94ae08908d22722270",
+          "polymer_cards_lib/evaluation.py": "a4d4fb929411afb754f11fd850a492a072e0cf3db6d93f91ff180eaf22e12fb7",
+          "examples/polymer_cards/condition_reference_2026-11-06/reference.json": "d1a93b5bddb6ca72fe0f4ec30a1ac1a323e4071ac19f061b4f790c20723c4a89"
+        },
+        "request_prompt_sha256": "b7fbc93d725464bcea711c2eb4e97cda6e6ebade918c057ede29ef6d98093d6c",
+        "system_prompt_sha256": "ca362f2af5cef67aacf6ed60cc8a9d93749344c4665736615cccca3eba1b4d69",
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "polymer_context_review_v1",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "paper_id": {
+                  "type": "string"
+                },
+                "edits": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/edit"
+                  }
+                }
+              },
+              "required": [
+                "paper_id",
+                "edits"
+              ],
+              "additionalProperties": false,
+              "$defs": {
+                "evidence": {
+                  "type": "object",
+                  "properties": {
+                    "chunk_id": {
+                      "type": "string"
+                    },
+                    "span_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "chunk_id",
+                    "span_id"
+                  ],
+                  "additionalProperties": false
+                },
+                "condition": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    },
+                    "evidence": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/evidence"
+                      }
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "value",
+                    "evidence"
+                  ],
+                  "additionalProperties": false
+                },
+                "edit": {
+                  "type": "object",
+                  "properties": {
+                    "entity_id": {
+                      "type": "string"
+                    },
+                    "property_index": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "anchor_sha256": {
+                      "type": "string"
+                    },
+                    "specimen_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "specimen_evidence": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/evidence"
+                      }
+                    },
+                    "conditions": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/condition"
+                      }
+                    },
+                    "evidence": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/evidence"
+                      }
+                    },
+                    "reason": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "entity_id",
+                    "property_index",
+                    "anchor_sha256",
+                    "specimen_id",
+                    "specimen_evidence",
+                    "conditions",
+                    "evidence",
+                    "reason"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "max_output_tokens": 16000,
+        "request_timeout_seconds": 900,
+        "automatic_retries": 0
+      },
+      "historical_code_files_verified": {
+        "polymer_cards_lib/context_review.py": "7376e65622b3d279b192e642b5f6c310cd346edb779afba1487e484936b25c34",
+        "polymer_cards_lib/llm.py": "a29d58565957e9a56692a8dc6c2b32eae03271f1808c47a41bbac57f6ac27ad6"
+      },
+      "source_audit_hypotheses_supplied": true,
+      "strict_focus": false
+    },
+    {
+      "directory": "polymer_cards_context_scoped_2026-11-06_guo",
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "capture": {
+        "proposals": {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "edits": [
+            {
+              "entity_id": "p2",
+              "property_index": 0,
+              "anchor_sha256": "5588b7f2f52d3bcfce9cc20055414e924cbf45c7b45797ce18aa5589e2b51091",
+              "specimen_id": "p2-gpc-sample",
+              "specimen_evidence": [
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-4d39264781660f3c8cb5ceeb1d1a3d41"
+                },
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                }
+              ],
+              "conditions": [
+                {
+                  "name": "method",
+                  "value": "GPC",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                      "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                    }
+                  ]
+                },
+                {
+                  "name": "eluent",
+                  "value": "THF",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                      "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                }
+              ],
+              "reason": "Source explicitly names GPC and THF for this molecular-weight measurement; add the named technique as a method condition."
+            },
+            {
+              "entity_id": "p2",
+              "property_index": 1,
+              "anchor_sha256": "b0f10dcb4e2106122fb6173f6c1ea0911e9acde95c7e00f00c64f88b23742c87",
+              "specimen_id": "p2-gpc-sample",
+              "specimen_evidence": [
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-4d39264781660f3c8cb5ceeb1d1a3d41"
+                },
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                }
+              ],
+              "conditions": [
+                {
+                  "name": "method",
+                  "value": "GPC",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                      "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                    }
+                  ]
+                },
+                {
+                  "name": "eluent",
+                  "value": "THF",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                      "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                }
+              ],
+              "reason": "Source explicitly names GPC and THF for this molecular-weight measurement; add the named technique as a method condition."
+            },
+            {
+              "entity_id": "p2",
+              "property_index": 2,
+              "anchor_sha256": "aba50a0e1ed2c20e9387958a1a97ebaabdf67f8f083622da4c12554ab8728022",
+              "specimen_id": "p2-gpc-sample",
+              "specimen_evidence": [
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-4d39264781660f3c8cb5ceeb1d1a3d41"
+                },
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                }
+              ],
+              "conditions": [
+                {
+                  "name": "method",
+                  "value": "GPC",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                      "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                    }
+                  ]
+                },
+                {
+                  "name": "eluent",
+                  "value": "THF",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                      "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                  "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+                }
+              ],
+              "reason": "Source explicitly names GPC and THF for this PDI measurement context; add the named technique as a method condition."
+            },
+            {
+              "entity_id": "p2",
+              "property_index": 7,
+              "anchor_sha256": "87e24cf7a73b159f4cb4b6b32458ee4f0fcea6602b38a7288e9123c38294600a",
+              "specimen_id": "p2-healed-film-water",
+              "specimen_evidence": [
+                {
+                  "chunk_id": "src-350106dc0f244b268362",
+                  "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+                }
+              ],
+              "conditions": [
+                {
+                  "name": "healing environment",
+                  "value": "water",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-350106dc0f244b268362",
+                      "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing time",
+                  "value": "24 h",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-350106dc0f244b268362",
+                      "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+                    }
+                  ]
+                },
+                {
+                  "name": "healing efficiency definition",
+                  "value": "ratio between the restored fracture strain relative to the original fracture strain",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-b48dd634cfb0cbadc1e7",
+                      "span_id": "spn-2b43e5c22d8888b06b5d955316b5e9b2"
+                    }
+                  ]
+                },
+                {
+                  "name": "method",
+                  "value": "Mechanical tensile-stress experiments",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-bf623a19fffc11e5efc2",
+                      "span_id": "spn-06e350c5e9ed1f3c00011e4baf18cdf1"
+                    }
+                  ]
+                },
+                {
+                  "name": "test temperature",
+                  "value": "room temperature (20 °C)",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-bf623a19fffc11e5efc2",
+                      "span_id": "spn-06e350c5e9ed1f3c00011e4baf18cdf1"
+                    }
+                  ]
+                },
+                {
+                  "name": "stretching speed",
+                  "value": "10 mm min⁻¹",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-af56ac3ed0a23a924bc8",
+                      "span_id": "spn-83e92b978559527574bf5ada9108e261"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-350106dc0f244b268362",
+                  "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+                },
+                {
+                  "chunk_id": "src-b48dd634cfb0cbadc1e7",
+                  "span_id": "spn-9161f5570776c9bfd76f8192590db533"
+                }
+              ],
+              "reason": "Methods state healed films were stretched following the same tensile procedure; add attributable post-healing test method and temperature, and retain explicitly captioned stretching speed without reintroducing uncertain geometry."
+            },
+            {
+              "entity_id": "p6",
+              "property_index": 0,
+              "anchor_sha256": "76672a3ac303ef0e1f4e16e830df310a8be0f09a63806052e6390f4c92eb3abe",
+              "specimen_id": "p6-film",
+              "specimen_evidence": [
+                {
+                  "chunk_id": "src-f11f8aed81613a0e81fc",
+                  "span_id": "spn-3ce5e79cc3f61dec62230c268654c8b9"
+                },
+                {
+                  "chunk_id": "src-f11f8aed81613a0e81fc",
+                  "span_id": "spn-880c4bdd46c7912c54196d5f0efb8ccd"
+                }
+              ],
+              "conditions": [
+                {
+                  "name": "method",
+                  "value": "Mechanical tensile-stress experiments",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-bf623a19fffc11e5efc2",
+                      "span_id": "spn-06e350c5e9ed1f3c00011e4baf18cdf1"
+                    }
+                  ]
+                },
+                {
+                  "name": "test temperature",
+                  "value": "room temperature (20 °C)",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-bf623a19fffc11e5efc2",
+                      "span_id": "spn-06e350c5e9ed1f3c00011e4baf18cdf1"
+                    }
+                  ]
+                },
+                {
+                  "name": "stretching speed",
+                  "value": "10 mm min⁻¹",
+                  "evidence": [
+                    {
+                      "chunk_id": "src-bf623a19fffc11e5efc2",
+                      "span_id": "spn-bb8a8f917e4a9d6b54b37a1220415cfc"
+                    }
+                  ]
+                }
+              ],
+              "evidence": [
+                {
+                  "chunk_id": "src-f11f8aed81613a0e81fc",
+                  "span_id": "spn-3ce5e79cc3f61dec62230c268654c8b9"
+                },
+                {
+                  "chunk_id": "src-f11f8aed81613a0e81fc",
+                  "span_id": "spn-880c4bdd46c7912c54196d5f0efb8ccd"
+                }
+              ],
+              "reason": "This strain-at-break value comes from tensile testing of P5 film; Methods explicitly provide the mechanical test, room-temperature setting, and default 10 mm min−1 rate for uniaxial tensile measurements."
+            }
+          ]
+        },
+        "trace": {
+          "raw_response_text": "{\"paper_id\":\"10.1038/s41467-020-15949-8\",\"edits\":[{\"entity_id\":\"p2\",\"property_index\":0,\"anchor_sha256\":\"5588b7f2f52d3bcfce9cc20055414e924cbf45c7b45797ce18aa5589e2b51091\",\"specimen_id\":\"p2-gpc-sample\",\"specimen_evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-4d39264781660f3c8cb5ceeb1d1a3d41\"},{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}],\"conditions\":[{\"name\":\"method\",\"value\":\"GPC\",\"evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}]},{\"name\":\"eluent\",\"value\":\"THF\",\"evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}]}],\"evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}],\"reason\":\"Source explicitly names GPC and THF for this molecular-weight measurement; add the named technique as a method condition.\"},{\"entity_id\":\"p2\",\"property_index\":1,\"anchor_sha256\":\"b0f10dcb4e2106122fb6173f6c1ea0911e9acde95c7e00f00c64f88b23742c87\",\"specimen_id\":\"p2-gpc-sample\",\"specimen_evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-4d39264781660f3c8cb5ceeb1d1a3d41\"},{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}],\"conditions\":[{\"name\":\"method\",\"value\":\"GPC\",\"evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}]},{\"name\":\"eluent\",\"value\":\"THF\",\"evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}]}],\"evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}],\"reason\":\"Source explicitly names GPC and THF for this molecular-weight measurement; add the named technique as a method condition.\"},{\"entity_id\":\"p2\",\"property_index\":2,\"anchor_sha256\":\"aba50a0e1ed2c20e9387958a1a97ebaabdf67f8f083622da4c12554ab8728022\",\"specimen_id\":\"p2-gpc-sample\",\"specimen_evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-4d39264781660f3c8cb5ceeb1d1a3d41\"},{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}],\"conditions\":[{\"name\":\"method\",\"value\":\"GPC\",\"evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}]},{\"name\":\"eluent\",\"value\":\"THF\",\"evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}]}],\"evidence\":[{\"chunk_id\":\"src-abdf1ced28f9b1e9fb83\",\"span_id\":\"spn-78422d67a804883249dfc32d32236f7a\"}],\"reason\":\"Source explicitly names GPC and THF for this PDI measurement context; add the named technique as a method condition.\"},{\"entity_id\":\"p2\",\"property_index\":7,\"anchor_sha256\":\"87e24cf7a73b159f4cb4b6b32458ee4f0fcea6602b38a7288e9123c38294600a\",\"specimen_id\":\"p2-healed-film-water\",\"specimen_evidence\":[{\"chunk_id\":\"src-350106dc0f244b268362\",\"span_id\":\"spn-c39e65b92e390deaddeba7e35d621093\"}],\"conditions\":[{\"name\":\"healing environment\",\"value\":\"water\",\"evidence\":[{\"chunk_id\":\"src-350106dc0f244b268362\",\"span_id\":\"spn-c39e65b92e390deaddeba7e35d621093\"}]},{\"name\":\"healing time\",\"value\":\"24 h\",\"evidence\":[{\"chunk_id\":\"src-350106dc0f244b268362\",\"span_id\":\"spn-c39e65b92e390deaddeba7e35d621093\"}]},{\"name\":\"healing efficiency definition\",\"value\":\"ratio between the restored fracture strain relative to the original fracture strain\",\"evidence\":[{\"chunk_id\":\"src-b48dd634cfb0cbadc1e7\",\"span_id\":\"spn-2b43e5c22d8888b06b5d955316b5e9b2\"}]},{\"name\":\"method\",\"value\":\"Mechanical tensile-stress experiments\",\"evidence\":[{\"chunk_id\":\"src-bf623a19fffc11e5efc2\",\"span_id\":\"spn-06e350c5e9ed1f3c00011e4baf18cdf1\"}]},{\"name\":\"test temperature\",\"value\":\"room temperature (20 °C)\",\"evidence\":[{\"chunk_id\":\"src-bf623a19fffc11e5efc2\",\"span_id\":\"spn-06e350c5e9ed1f3c00011e4baf18cdf1\"}]},{\"name\":\"stretching speed\",\"value\":\"10 mm min⁻¹\",\"evidence\":[{\"chunk_id\":\"src-af56ac3ed0a23a924bc8\",\"span_id\":\"spn-83e92b978559527574bf5ada9108e261\"}]}],\"evidence\":[{\"chunk_id\":\"src-350106dc0f244b268362\",\"span_id\":\"spn-c39e65b92e390deaddeba7e35d621093\"},{\"chunk_id\":\"src-b48dd634cfb0cbadc1e7\",\"span_id\":\"spn-9161f5570776c9bfd76f8192590db533\"}],\"reason\":\"Methods state healed films were stretched following the same tensile procedure; add attributable post-healing test method and temperature, and retain explicitly captioned stretching speed without reintroducing uncertain geometry.\"},{\"entity_id\":\"p6\",\"property_index\":0,\"anchor_sha256\":\"76672a3ac303ef0e1f4e16e830df310a8be0f09a63806052e6390f4c92eb3abe\",\"specimen_id\":\"p6-film\",\"specimen_evidence\":[{\"chunk_id\":\"src-f11f8aed81613a0e81fc\",\"span_id\":\"spn-3ce5e79cc3f61dec62230c268654c8b9\"},{\"chunk_id\":\"src-f11f8aed81613a0e81fc\",\"span_id\":\"spn-880c4bdd46c7912c54196d5f0efb8ccd\"}],\"conditions\":[{\"name\":\"method\",\"value\":\"Mechanical tensile-stress experiments\",\"evidence\":[{\"chunk_id\":\"src-bf623a19fffc11e5efc2\",\"span_id\":\"spn-06e350c5e9ed1f3c00011e4baf18cdf1\"}]},{\"name\":\"test temperature\",\"value\":\"room temperature (20 °C)\",\"evidence\":[{\"chunk_id\":\"src-bf623a19fffc11e5efc2\",\"span_id\":\"spn-06e350c5e9ed1f3c00011e4baf18cdf1\"}]},{\"name\":\"stretching speed\",\"value\":\"10 mm min⁻¹\",\"evidence\":[{\"chunk_id\":\"src-bf623a19fffc11e5efc2\",\"span_id\":\"spn-bb8a8f917e4a9d6b54b37a1220415cfc\"}]}],\"evidence\":[{\"chunk_id\":\"src-f11f8aed81613a0e81fc\",\"span_id\":\"spn-3ce5e79cc3f61dec62230c268654c8b9\"},{\"chunk_id\":\"src-f11f8aed81613a0e81fc\",\"span_id\":\"spn-880c4bdd46c7912c54196d5f0efb8ccd\"}],\"reason\":\"This strain-at-break value comes from tensile testing of P5 film; Methods explicitly provide the mechanical test, room-temperature setting, and default 10 mm min−1 rate for uniaxial tensile measurements.\"}]}",
+          "usage": {
+            "prompt_tokens": 59042,
+            "completion_tokens": 2199,
+            "total_tokens": 61241
+          },
+          "extraction_profile": {
+            "output_format": "json_schema",
+            "schema_name": "polymer_context_review_v1",
+            "schema_sha256": "4ceb0762994ed69f3d3eaa4aab3255c693661b3e7071df142751d09fd15acad9",
+            "system_prompt_sha256": "ca362f2af5cef67aacf6ed60cc8a9d93749344c4665736615cccca3eba1b4d69"
+          },
+          "request_prompt_sha256": "8ba84b524c3aa96f5a05a9cbfa74b0a6bf78b3dcefb2d30c06973455ae9d5a3e",
+          "finish_reason": "stop",
+          "request_mode": "source_grounded_context_review",
+          "previous_response_sha256": "844454a669f1a172868a38044d025431f3ecb61c7d3d196cb88e51d6dca59971",
+          "source_audit_focus_sha256": "f781e4b577794c4fd73fe987fe2501a4626393d4a9e867907b0c6764fb155fe1",
+          "strict_focus": true
+        }
+      },
+      "audit": {
+        "mode": "model_proposed_context_revision",
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "base_response_sha256": "844454a669f1a172868a38044d025431f3ecb61c7d3d196cb88e51d6dca59971",
+        "applied_edits": 5,
+        "held_edits": [],
+        "edit_results": [
+          {
+            "proposal_index": 0,
+            "entity_id": "p2",
+            "property_index": 0,
+            "anchor_sha256": "5588b7f2f52d3bcfce9cc20055414e924cbf45c7b45797ce18aa5589e2b51091",
+            "changed_context_fields": [
+              "conditions"
+            ],
+            "reason": "Source explicitly names GPC and THF for this molecular-weight measurement; add the named technique as a method condition.",
+            "property_path": "entities[1].properties.items[0]",
+            "validation_reasons": [],
+            "status": "applied_context_source_linked"
+          },
+          {
+            "proposal_index": 1,
+            "entity_id": "p2",
+            "property_index": 1,
+            "anchor_sha256": "b0f10dcb4e2106122fb6173f6c1ea0911e9acde95c7e00f00c64f88b23742c87",
+            "changed_context_fields": [
+              "conditions"
+            ],
+            "reason": "Source explicitly names GPC and THF for this molecular-weight measurement; add the named technique as a method condition.",
+            "property_path": "entities[1].properties.items[1]",
+            "validation_reasons": [],
+            "status": "applied_context_source_linked"
+          },
+          {
+            "proposal_index": 2,
+            "entity_id": "p2",
+            "property_index": 2,
+            "anchor_sha256": "aba50a0e1ed2c20e9387958a1a97ebaabdf67f8f083622da4c12554ab8728022",
+            "changed_context_fields": [
+              "conditions"
+            ],
+            "reason": "Source explicitly names GPC and THF for this PDI measurement context; add the named technique as a method condition.",
+            "property_path": "entities[1].properties.items[2]",
+            "validation_reasons": [],
+            "status": "applied_context_source_linked"
+          },
+          {
+            "proposal_index": 3,
+            "entity_id": "p2",
+            "property_index": 7,
+            "anchor_sha256": "87e24cf7a73b159f4cb4b6b32458ee4f0fcea6602b38a7288e9123c38294600a",
+            "changed_context_fields": [
+              "conditions",
+              "evidence"
+            ],
+            "reason": "Methods state healed films were stretched following the same tensile procedure; add attributable post-healing test method and temperature, and retain explicitly captioned stretching speed without reintroducing uncertain geometry.",
+            "property_path": "entities[1].properties.items[7]",
+            "validation_reasons": [],
+            "status": "applied_context_source_linked"
+          },
+          {
+            "proposal_index": 4,
+            "entity_id": "p6",
+            "property_index": 0,
+            "anchor_sha256": "76672a3ac303ef0e1f4e16e830df310a8be0f09a63806052e6390f4c92eb3abe",
+            "changed_context_fields": [
+              "conditions"
+            ],
+            "reason": "This strain-at-break value comes from tensile testing of P5 film; Methods explicitly provide the mechanical test, room-temperature setting, and default 10 mm min−1 rate for uniaxial tensile measurements.",
+            "property_path": "entities[5].properties.items[0]",
+            "validation_reasons": [],
+            "status": "applied_context_source_linked"
+          }
+        ],
+        "base_validation_issues": [
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p2",
+            "name": "P3",
+            "path": "entities[1].properties.items[6]",
+            "reason": "property_value_not_in_original_evidence"
+          },
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p2",
+            "name": "P3",
+            "path": "entities[1].properties.items[11]",
+            "reason": "property_value_not_in_original_evidence"
+          },
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p5",
+            "name": "P2",
+            "path": "entities[4].properties.items[0]",
+            "reason": "fact_specimen_not_linked_to_polymer"
+          },
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p8",
+            "name": "P7",
+            "path": "entities[7].properties.items[0]",
+            "reason": "fact_specimen_not_linked_to_polymer"
+          }
+        ],
+        "base_statistics": {
+          "input_entities": 11,
+          "cards": 11,
+          "retained_polymers": 11,
+          "discarded_entities": 0,
+          "discarded_nonpolymers": 0,
+          "classification_review_entities": 0,
+          "review_queue": 4,
+          "validation_issues": 4,
+          "attribution_warnings": 0
+        },
+        "limits": [
+          "Only context fields can change; exact source selection does not establish scientific attribution."
+        ],
+        "strict_context_scope": {
+          "mode": "specified_targets_only",
+          "targets": [
+            {
+              "entity_id": "p2",
+              "property_index": 0,
+              "reason": "A named chromatographic technique is reported in the cited source context but is absent from structured method conditions. Verify the technique and include it only if attributable, retaining the existing measurement sample distinction.",
+              "anchor_sha256": "5588b7f2f52d3bcfce9cc20055414e924cbf45c7b45797ce18aa5589e2b51091",
+              "status": "unverified_source_audit_hypothesis"
+            },
+            {
+              "entity_id": "p2",
+              "property_index": 1,
+              "reason": "A named chromatographic technique is reported in the cited source context but is absent from structured method conditions. Verify the technique and include it only if attributable, retaining the existing measurement sample distinction.",
+              "anchor_sha256": "b0f10dcb4e2106122fb6173f6c1ea0911e9acde95c7e00f00c64f88b23742c87",
+              "status": "unverified_source_audit_hypothesis"
+            },
+            {
+              "entity_id": "p2",
+              "property_index": 2,
+              "reason": "A named chromatographic technique is reported in the cited source context but is absent from structured method conditions. Verify the technique and include it only if attributable, retaining the existing measurement sample distinction.",
+              "anchor_sha256": "aba50a0e1ed2c20e9387958a1a97ebaabdf67f8f083622da4c12554ab8728022",
+              "status": "unverified_source_audit_hypothesis"
+            },
+            {
+              "entity_id": "p2",
+              "property_index": 7,
+              "reason": "Earlier unsupported geometry was removed. Verify the post-healing measurement procedure and the source’s explicit same-procedure Methods link; add only the attributable measurement context and omit uncertain geometry.",
+              "anchor_sha256": "87e24cf7a73b159f4cb4b6b32458ee4f0fcea6602b38a7288e9123c38294600a",
+              "status": "unverified_source_audit_hypothesis"
+            },
+            {
+              "entity_id": "p6",
+              "property_index": 0,
+              "reason": "This measured strain property has no test conditions. Check the original mechanical-testing Methods and attach only the procedure attributable to its specimen. Ensure selected evidence includes the complete source qualifier.",
+              "anchor_sha256": "76672a3ac303ef0e1f4e16e830df310a8be0f09a63806052e6390f4c92eb3abe",
+              "status": "unverified_source_audit_hypothesis"
+            }
+          ]
+        },
+        "immutable_fields_preserved": true,
+        "composed_response_sha256": "9148a17c7662d83137c73ed778f066e6e5e638b49257d9893b2ccd423de3d14c",
+        "validation_issues": [
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p2",
+            "name": "P3",
+            "path": "entities[1].properties.items[6]",
+            "reason": "property_value_not_in_original_evidence"
+          },
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p2",
+            "name": "P3",
+            "path": "entities[1].properties.items[11]",
+            "reason": "property_value_not_in_original_evidence"
+          },
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p5",
+            "name": "P2",
+            "path": "entities[4].properties.items[0]",
+            "reason": "fact_specimen_not_linked_to_polymer"
+          },
+          {
+            "paper_id": "10.1038/s41467-020-15949-8",
+            "entity_id": "p8",
+            "name": "P7",
+            "path": "entities[7].properties.items[0]",
+            "reason": "fact_specimen_not_linked_to_polymer"
+          }
+        ],
+        "result_statistics": {
+          "input_entities": 11,
+          "cards": 11,
+          "retained_polymers": 11,
+          "discarded_entities": 0,
+          "discarded_nonpolymers": 0,
+          "classification_review_entities": 0,
+          "review_queue": 4,
+          "validation_issues": 4,
+          "attribution_warnings": 0
+        }
+      },
+      "freeze": {
+        "prepared_at_utc": "2026-11-06T08:18:19.358579+00:00",
+        "mode": "strictly_scoped_source_audit_context_review",
+        "strict_focus": true,
+        "software_tests_passed": 232,
+        "model_calls_at_freeze": 0,
+        "checked_reference_answers_supplied": false,
+        "source_audit_hypotheses_supplied": true,
+        "previous_response_supplied": true,
+        "base_response_origin": "previous focused context composition",
+        "base_file_sha256": "aded39f46da12ee29636b9a6629a5549d3e79b63a312ab628895048f59681419",
+        "source_file_sha256": "025c1c6f9ad5a00e5035c9dde1fcde305ea072c7a3480301786b6b001944aad2",
+        "focus_file_sha256": "6569bc20dff69477455a00a329f8474e94010b0ac8754ffd3c21c3c5eb3ff6f7",
+        "code_and_reference_sha256": {
+          "polymer_cards_lib/context_review.py": "451463c8e7b1370653d06f078f6c7c980beeb37bbb7cc9db981455c295437e42",
+          "polymer_cards_lib/llm.py": "007f46478dae92dea4f132309d2b154e046bd0216539a688a0370f147e000a3d",
+          "polymer_cards_lib/prompt.py": "e31b8a57a57ba2c24c42f9dfcc37d3f1419781430510b17601514434ed7fe2df",
+          "polymer_cards_lib/repair.py": "d6195fcfa67a1908a2e5a299be9757af7d312e707e3922087ad84efb02f88a7d",
+          "polymer_cards_lib/evidence_spans.py": "f5bcb32b3cda5da75be8bcd75ba92dfd1ee717e43c05a46bd133cda555ddf5d6",
+          "polymer_cards_lib/validation.py": "6d16057f43ae0115f3477c4d8620f41f4d21378fe6790bdc8bca395bb7ef4df0",
+          "polymer_cards_lib/render.py": "174a255e2416dd5d818758501d1d0af6f8c926eabab2c2f033911b584977931f",
+          "polymer_cards_lib/sources.py": "c6f480cf531217de2ae1e5624f2c33984400fc5dcf5f8a94ae08908d22722270",
+          "polymer_cards_lib/evaluation.py": "a4d4fb929411afb754f11fd850a492a072e0cf3db6d93f91ff180eaf22e12fb7",
+          "examples/polymer_cards/condition_reference_2026-11-06/reference.json": "d1a93b5bddb6ca72fe0f4ec30a1ac1a323e4071ac19f061b4f790c20723c4a89"
+        },
+        "request_prompt_sha256": "8ba84b524c3aa96f5a05a9cbfa74b0a6bf78b3dcefb2d30c06973455ae9d5a3e",
+        "system_prompt_sha256": "ca362f2af5cef67aacf6ed60cc8a9d93749344c4665736615cccca3eba1b4d69",
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "polymer_context_review_v1",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "paper_id": {
+                  "type": "string"
+                },
+                "edits": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/edit"
+                  }
+                }
+              },
+              "required": [
+                "paper_id",
+                "edits"
+              ],
+              "additionalProperties": false,
+              "$defs": {
+                "evidence": {
+                  "type": "object",
+                  "properties": {
+                    "chunk_id": {
+                      "type": "string"
+                    },
+                    "span_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "chunk_id",
+                    "span_id"
+                  ],
+                  "additionalProperties": false
+                },
+                "condition": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    },
+                    "evidence": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/evidence"
+                      }
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "value",
+                    "evidence"
+                  ],
+                  "additionalProperties": false
+                },
+                "edit": {
+                  "type": "object",
+                  "properties": {
+                    "entity_id": {
+                      "type": "string"
+                    },
+                    "property_index": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "anchor_sha256": {
+                      "type": "string"
+                    },
+                    "specimen_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "specimen_evidence": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/evidence"
+                      }
+                    },
+                    "conditions": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/condition"
+                      }
+                    },
+                    "evidence": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/evidence"
+                      }
+                    },
+                    "reason": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "entity_id",
+                    "property_index",
+                    "anchor_sha256",
+                    "specimen_id",
+                    "specimen_evidence",
+                    "conditions",
+                    "evidence",
+                    "reason"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "max_output_tokens": 16000,
+        "request_timeout_seconds": 900,
+        "automatic_retries": 0
+      },
+      "historical_code_files_verified": {},
+      "source_audit_hypotheses_supplied": true,
+      "strict_focus": true
+    }
+  ]
+}

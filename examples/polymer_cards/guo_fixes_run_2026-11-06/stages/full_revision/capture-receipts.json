@@ -1,0 +1,46 @@
+{
+  "captures": [
+    {
+      "capture_directory": "polymer_cards_spans_review_2026-11-06_pei",
+      "raw_responses_sha256": "f87fb2c2677664e7cd61252c27ff1c50a200bd6b6a23bc39fe3fde2440df4838",
+      "cards_sha256": "a8aac0ebd9c12ecadd40f91860d8866181fb04d30def81d644939ffdbd07aa34",
+      "sources_sha256": "60a7ed7805cc71cc26f94767a1829eee8a77579f6124bfc77a155b026108e07d",
+      "freeze_sha256": "c673c16b129f348cb4ba8462c7245016ebe3019d8c5d48a74b876aeebee0c594",
+      "attempted_calls": 1,
+      "completed_calls": 1,
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "repair_input_records_sha256": "b2a9c7383136af6765d1a240c1e7dcd68f4b227d9573dcc8d6c56f2adaf233f8",
+      "repair_input_sources_sha256": "60a7ed7805cc71cc26f94767a1829eee8a77579f6124bfc77a155b026108e07d"
+    },
+    {
+      "capture_directory": "polymer_cards_spans_review_2026-11-06_chen",
+      "raw_responses_sha256": "0b367efb3fdb58e456a9412ab443d26471395e4e883748060ce65dd94bfec53e",
+      "cards_sha256": "51422f007520a9bbabde0be706a38391463fe0e7055e4ee32ab356aa6448db41",
+      "sources_sha256": "b8faa77095ed0168b6ebf83885d2ecd4572feac5eefab0a896f2e594da0022c7",
+      "freeze_sha256": "aa542e521b3f0dd7253a1f91807758c99ad2597e7c3e55eb9f449130ca9affc8",
+      "attempted_calls": 1,
+      "completed_calls": 1,
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "repair_input_records_sha256": "721b2e240690add7a2295f2ea7aae294b7de2f5618b7a7e6087dca138ddf3b2d",
+      "repair_input_sources_sha256": "b8faa77095ed0168b6ebf83885d2ecd4572feac5eefab0a896f2e594da0022c7"
+    },
+    {
+      "capture_directory": "polymer_cards_spans_review_2026-11-06_guo",
+      "raw_responses_sha256": "067df45e20d8889b76dee21064e908e54211b7c7843a478c6fdb9b9bc4fe2b61",
+      "cards_sha256": "a2dbaa2b43e271355896b3053793b98806e941cef3bbc76ce1fe9ec93f9ab0e7",
+      "sources_sha256": "025c1c6f9ad5a00e5035c9dde1fcde305ea072c7a3480301786b6b001944aad2",
+      "freeze_sha256": "47f27f99940f1a13de710f07cd5bb7f59feae1842e3a3605c33e3d8320a1ca03",
+      "attempted_calls": 1,
+      "completed_calls": 1,
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "repair_input_records_sha256": "2290506321bcda6015796baa0645e32af8d2d2c8197a7f22176ac9f29fd737ec",
+      "repair_input_sources_sha256": "025c1c6f9ad5a00e5035c9dde1fcde305ea072c7a3480301786b6b001944aad2"
+    }
+  ],
+  "completed_results_preserved_exactly": true,
+  "assembly_model_calls": 0,
+  "mode": "live_model_revision"
+}

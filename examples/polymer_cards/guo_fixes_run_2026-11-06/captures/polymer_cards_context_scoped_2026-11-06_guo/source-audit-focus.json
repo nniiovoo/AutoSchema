@@ -1,0 +1,27 @@
+[
+  {
+    "entity_id": "p2",
+    "property_index": 0,
+    "reason": "A named chromatographic technique is reported in the cited source context but is absent from structured method conditions. Verify the technique and include it only if attributable, retaining the existing measurement sample distinction."
+  },
+  {
+    "entity_id": "p2",
+    "property_index": 1,
+    "reason": "A named chromatographic technique is reported in the cited source context but is absent from structured method conditions. Verify the technique and include it only if attributable, retaining the existing measurement sample distinction."
+  },
+  {
+    "entity_id": "p2",
+    "property_index": 2,
+    "reason": "A named chromatographic technique is reported in the cited source context but is absent from structured method conditions. Verify the technique and include it only if attributable, retaining the existing measurement sample distinction."
+  },
+  {
+    "entity_id": "p2",
+    "property_index": 7,
+    "reason": "Earlier unsupported geometry was removed. Verify the post-healing measurement procedure and the source’s explicit same-procedure Methods link; add only the attributable measurement context and omit uncertain geometry."
+  },
+  {
+    "entity_id": "p6",
+    "property_index": 0,
+    "reason": "This measured strain property has no test conditions. Check the original mechanical-testing Methods and attach only the procedure attributable to its specimen. Ensure selected evidence includes the complete source qualifier."
+  }
+]

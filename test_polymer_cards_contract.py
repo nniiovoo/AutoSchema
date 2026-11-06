@@ -40,7 +40,7 @@ class PolymerCardContractTests(unittest.TestCase):
 
     def test_live_schema_requires_evidence_linked_property_conflicts(self):
         output = prompt.build_response_format()["json_schema"]
-        self.assertEqual("polymer_cards_strict_v3", output["name"])
+        self.assertEqual("polymer_cards_strict_v4", output["name"])
         defs = output["schema"]["$defs"]
         self.assertIn("conflicts", defs["properties_group"]["required"])
         conflict = defs["property_conflict"]

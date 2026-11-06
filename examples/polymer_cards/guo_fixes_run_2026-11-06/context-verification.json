@@ -1,0 +1,78 @@
+{
+  "verification_kind": "anchored_context_composition_and_exact_source_support",
+  "targeted_paper_ids": [
+    "10.1038/s41467-020-15949-8"
+  ],
+  "actual_context_model_calls": 3,
+  "context_chain": [
+    {
+      "capture_directory": "polymer_cards_context_2026-11-06_guo",
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "request_prompt_sha256": "517766406749479b5bd038a6965ed13e480b42559d506fc2b300a75975e3fc1e",
+      "custom_profile": {
+        "output_format": "json_schema",
+        "schema_name": "polymer_context_review_v1",
+        "schema_sha256": "4ceb0762994ed69f3d3eaa4aab3255c693661b3e7071df142751d09fd15acad9",
+        "system_prompt_sha256": "ca362f2af5cef67aacf6ed60cc8a9d93749344c4665736615cccca3eba1b4d69"
+      },
+      "historical_code_files_verified": {
+        "polymer_cards_lib/context_review.py": "e72542a0f595a3dd5fce4af6df41a0afb787a6df850cc5eed76c4bbaeadcdde5",
+        "polymer_cards_lib/llm.py": "8ebd96213d4c880f6c846ff4147f9b5c6d97d7e8baa5897552f65bcaea33744e"
+      },
+      "strict_focus": false,
+      "unverified_source_audit_hypotheses_supplied": false
+    },
+    {
+      "capture_directory": "polymer_cards_context_focused_2026-11-06_guo",
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "request_prompt_sha256": "b7fbc93d725464bcea711c2eb4e97cda6e6ebade918c057ede29ef6d98093d6c",
+      "custom_profile": {
+        "output_format": "json_schema",
+        "schema_name": "polymer_context_review_v1",
+        "schema_sha256": "4ceb0762994ed69f3d3eaa4aab3255c693661b3e7071df142751d09fd15acad9",
+        "system_prompt_sha256": "ca362f2af5cef67aacf6ed60cc8a9d93749344c4665736615cccca3eba1b4d69"
+      },
+      "historical_code_files_verified": {
+        "polymer_cards_lib/context_review.py": "7376e65622b3d279b192e642b5f6c310cd346edb779afba1487e484936b25c34",
+        "polymer_cards_lib/llm.py": "a29d58565957e9a56692a8dc6c2b32eae03271f1808c47a41bbac57f6ac27ad6"
+      },
+      "strict_focus": false,
+      "unverified_source_audit_hypotheses_supplied": true
+    },
+    {
+      "capture_directory": "polymer_cards_context_scoped_2026-11-06_guo",
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "request_prompt_sha256": "8ba84b524c3aa96f5a05a9cbfa74b0a6bf78b3dcefb2d30c06973455ae9d5a3e",
+      "custom_profile": {
+        "output_format": "json_schema",
+        "schema_name": "polymer_context_review_v1",
+        "schema_sha256": "4ceb0762994ed69f3d3eaa4aab3255c693661b3e7071df142751d09fd15acad9",
+        "system_prompt_sha256": "ca362f2af5cef67aacf6ed60cc8a9d93749344c4665736615cccca3eba1b4d69"
+      },
+      "historical_code_files_verified": {},
+      "strict_focus": true,
+      "unverified_source_audit_hypotheses_supplied": true
+    }
+  ],
+  "context_requests_custom_profiles_and_raw_provider_json_verified": true,
+  "deterministic_context_chain_reproduced": true,
+  "base_provider_records_preserved": true,
+  "all_immutable_claims_units_identities_and_order_preserved": true,
+  "untargeted_raw_responses_unchanged": true,
+  "applied_context_edit_occurrences": 14,
+  "held_context_edit_occurrences": 7,
+  "retained_source_support_counts": {
+    "direct_selected_reference_occurrences": 681,
+    "source_exact_reference_occurrences": 694,
+    "derived_adjacent_union_occurrences": 13
+  },
+  "all_unions_use_already_selected_same_list_spans_with_no_nonwhitespace_gaps": true,
+  "code_and_reference_freezes_verified": true,
+  "all_three_reference_hashes_unchanged": true,
+  "model_calls_made_by_verifier": 0,
+  "limits": [
+    "Exact retrieval and immutable anchors do not verify scientific context interpretation.",
+    "Context review is not fresh extraction and cannot change unsupported numbers or missing entities.",
+    "Applied edit occurrences may revisit the same property in sequential reviews."
+  ]
+}

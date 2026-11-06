@@ -1,0 +1,49 @@
+{
+  "catalog_version": "source-spans-v1",
+  "raw_reference_counts": {
+    "evidence_reference_occurrences": 682,
+    "span_selection_occurrences": 682,
+    "valid_span_selection_occurrences": 682,
+    "unique_reference_proposals": 184
+  },
+  "raw_reference_counts_by_paper": [
+    {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "evidence_reference_occurrences": 263,
+      "span_selection_occurrences": 263,
+      "valid_span_selection_occurrences": 263,
+      "unique_reference_proposals": 72
+    },
+    {
+      "paper_id": "10.3390/polym13234155",
+      "evidence_reference_occurrences": 194,
+      "span_selection_occurrences": 194,
+      "valid_span_selection_occurrences": 194,
+      "unique_reference_proposals": 52
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "evidence_reference_occurrences": 225,
+      "span_selection_occurrences": 225,
+      "valid_span_selection_occurrences": 225,
+      "unique_reference_proposals": 60
+    }
+  ],
+  "invalid_or_non_v4_raw_selections": [],
+  "retained_reference_counts": {
+    "evidence_reference_occurrences": 491,
+    "source_exact_span_occurrences": 491
+  },
+  "all_retained_provenance_offsets_and_slices_verified": true,
+  "v4_raw_references_all_closed_span_selections": true,
+  "legacy_model_quote_authorship_metric": "not_applicable_to_source_span_selection",
+  "baseline_model_authored_quote_counts": {
+    "legacy_quote_reference_occurrences": 542,
+    "model_authored_quote_occurrences_matching_source": 488
+  },
+  "limits": [
+    "Server retrieval of exact source text is not evidence that the model copied a quotation verbatim.",
+    "Valid IDs and exact source slices do not prove scientific attribution or completeness.",
+    "Reference occurrences count repetitions; they are not independent scientific facts."
+  ]
+}

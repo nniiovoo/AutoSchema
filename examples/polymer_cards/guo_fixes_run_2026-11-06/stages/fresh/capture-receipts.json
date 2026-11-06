@@ -1,0 +1,48 @@
+{
+  "captures": [
+    {
+      "capture_directory": "polymer_cards_spans_2026-11-06_pei",
+      "mode": "live_model_extraction",
+      "raw_responses_sha256": "b2a9c7383136af6765d1a240c1e7dcd68f4b227d9573dcc8d6c56f2adaf233f8",
+      "cards_sha256": "05d843702022d0263fcc1f1d6fa374a4cb212943640e585f1d1b9e5919245172",
+      "sources_sha256": "60a7ed7805cc71cc26f94767a1829eee8a77579f6124bfc77a155b026108e07d",
+      "freeze_sha256": "cfb0a10570c03d1bde88ddb36e9e446f2402fdeb3b41c1d70c6a2c9f4221b04b",
+      "request_cap": 48000,
+      "attempted_calls": 1,
+      "completed_calls": 1,
+      "failed_paper_id": null,
+      "model": "gpt-5.4",
+      "provider": "openai"
+    },
+    {
+      "capture_directory": "polymer_cards_spans_2026-11-06_chen",
+      "mode": "live_model_extraction",
+      "raw_responses_sha256": "721b2e240690add7a2295f2ea7aae294b7de2f5618b7a7e6087dca138ddf3b2d",
+      "cards_sha256": "539a265139d3a7c6867521e25654566a18de3ae3f72dcb6803e7e75f7b3400ca",
+      "sources_sha256": "b8faa77095ed0168b6ebf83885d2ecd4572feac5eefab0a896f2e594da0022c7",
+      "freeze_sha256": "384c76d58c3bcacb43bcc8facfba1d5985fcb7f84e5ded512a0d8806792b82b0",
+      "request_cap": 48000,
+      "attempted_calls": 1,
+      "completed_calls": 1,
+      "failed_paper_id": null,
+      "model": "gpt-5.4",
+      "provider": "openai"
+    },
+    {
+      "capture_directory": "polymer_cards_spans_2026-11-06_guo",
+      "mode": "live_model_extraction",
+      "raw_responses_sha256": "2290506321bcda6015796baa0645e32af8d2d2c8197a7f22176ac9f29fd737ec",
+      "cards_sha256": "53e940a1c1c602ea2c7342bb87c6ac44cb1ef474850a61a71631507debdfa7ba",
+      "sources_sha256": "025c1c6f9ad5a00e5035c9dde1fcde305ea072c7a3480301786b6b001944aad2",
+      "freeze_sha256": "7db700ad597072bd38bef54d2f467394cae18b1b2abd500f7759f090cd11b705",
+      "request_cap": 48000,
+      "attempted_calls": 1,
+      "completed_calls": 1,
+      "failed_paper_id": null,
+      "model": "gpt-5.4",
+      "provider": "openai"
+    }
+  ],
+  "completed_results_preserved_exactly": true,
+  "only_cli_token_budget_bound_changed_between_batches": true
+}

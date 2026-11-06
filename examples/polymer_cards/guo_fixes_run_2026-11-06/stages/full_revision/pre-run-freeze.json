@@ -1,0 +1,170 @@
+{
+  "prepared_at_utc": "2026-11-06T07:37:21.773757+00:00",
+  "mode": "source_grounded_model_revision_of_new_fresh_extraction",
+  "baseline_commit": "1e97bb10e80858aacddafce0664b3b9779710312",
+  "source_files_sha256": {
+    "extract_polymer_cards.py": "80c52ecce3ec10369caab1e64b9fbfde38037bc04a7c1e0d9702e4c76e30d782",
+    "polymer_cards_lib/prompt.py": "e31b8a57a57ba2c24c42f9dfcc37d3f1419781430510b17601514434ed7fe2df",
+    "polymer_cards_lib/repair.py": "d6195fcfa67a1908a2e5a299be9757af7d312e707e3922087ad84efb02f88a7d",
+    "polymer_cards_lib/llm.py": "f6726b9e16a02f436daa57cbcd72193247cf585314d6c501685e4b330d21f933",
+    "polymer_cards_lib/evidence_spans.py": "fa0c7fa8024b975873a7cab0919860ef9ffd290d85adfc22f9f530de520a78bb",
+    "polymer_cards_lib/sources.py": "c6f480cf531217de2ae1e5624f2c33984400fc5dcf5f8a94ae08908d22722270",
+    "polymer_cards_lib/validation.py": "6c5d7640977217b0b88e40b5ae933aff0ec67e466c56292b2ae74405950c5966",
+    "polymer_cards_lib/render.py": "cc455907cf94cba05925be5b018444de9eb59b47b2aba0149db6ed3679de55b3",
+    "polymer_cards_lib/evaluation.py": "a4d4fb929411afb754f11fd850a492a072e0cf3db6d93f91ff180eaf22e12fb7",
+    "examples/polymer_cards/condition_reference_2026-11-06/reference.json": "d1a93b5bddb6ca72fe0f4ec30a1ac1a323e4071ac19f061b4f790c20723c4a89",
+    "examples/polymer_cards/identity_reference_2026-10-30.json": "bfdac32f92df0c69451e7e49614df4e451fee4966e95a0a20f4e370a48580f98",
+    "examples/polymer_cards/checked_pei_2026-10-30/evaluation-cases.json": "e34b50f553fe79a51b04f297b89c3fcbcc237a6797bf8d4aab2c1fa7e011e1b9"
+  },
+  "extraction_profile": {
+    "output_format": "json_schema",
+    "schema_name": "polymer_cards_strict_v4",
+    "schema_sha256": "94dc3b82256ebec06dc9d2672338834f3201e3f8fadf1d578ced49336f5959bd",
+    "system_prompt_sha256": "6a25b93731625dfe4e4b83630f197708bec407cc3f5ed511c15c4b9f93136a2d"
+  },
+  "software_tests_passed": 206,
+  "checked_references_supplied_to_model": false,
+  "previous_model_responses_supplied": true,
+  "previous_response_origin": "this-task fresh source-span extraction, not checked data",
+  "max_output_tokens_per_request": 48000,
+  "request_timeout_seconds": 900,
+  "automatic_retries": 0,
+  "revision_input_files": {
+    "records": "prior-records.json",
+    "sources": "prior-sources.json"
+  },
+  "expected_user_prompt_sha256": {
+    "10.1038/s41467-023-43467-w": "bf727735e6a681af19c8f8f57dcb8138fee47aa24af44c2d2b5eb8f852cd419e",
+    "10.3390/polym13234155": "8d60d0bfbcbdc87525a8f2b94dda470d055db4eb33f8832e3004ea292520ec50",
+    "10.1038/s41467-020-15949-8": "30d6eb5fff7d1f96d93a4431f19264074c7d9d14bc607c3d8747dfc6a349d17a"
+  },
+  "prior_records_sha256": "2290506321bcda6015796baa0645e32af8d2d2c8197a7f22176ac9f29fd737ec",
+  "prior_sources_sha256": "025c1c6f9ad5a00e5035c9dde1fcde305ea072c7a3480301786b6b001944aad2",
+  "freeze_kind": "verified_revision_capture_freeze_aggregation",
+  "note": "Individual pre-request freezes are preserved. This combined receipt was assembled after the calls.",
+  "source_capture_freezes": [
+    {
+      "prepared_at_utc": "2026-11-06T07:37:19.871076+00:00",
+      "mode": "source_grounded_model_revision_of_new_fresh_extraction",
+      "baseline_commit": "1e97bb10e80858aacddafce0664b3b9779710312",
+      "source_files_sha256": {
+        "extract_polymer_cards.py": "80c52ecce3ec10369caab1e64b9fbfde38037bc04a7c1e0d9702e4c76e30d782",
+        "polymer_cards_lib/prompt.py": "e31b8a57a57ba2c24c42f9dfcc37d3f1419781430510b17601514434ed7fe2df",
+        "polymer_cards_lib/repair.py": "d6195fcfa67a1908a2e5a299be9757af7d312e707e3922087ad84efb02f88a7d",
+        "polymer_cards_lib/llm.py": "f6726b9e16a02f436daa57cbcd72193247cf585314d6c501685e4b330d21f933",
+        "polymer_cards_lib/evidence_spans.py": "fa0c7fa8024b975873a7cab0919860ef9ffd290d85adfc22f9f530de520a78bb",
+        "polymer_cards_lib/sources.py": "c6f480cf531217de2ae1e5624f2c33984400fc5dcf5f8a94ae08908d22722270",
+        "polymer_cards_lib/validation.py": "6c5d7640977217b0b88e40b5ae933aff0ec67e466c56292b2ae74405950c5966",
+        "polymer_cards_lib/render.py": "cc455907cf94cba05925be5b018444de9eb59b47b2aba0149db6ed3679de55b3",
+        "polymer_cards_lib/evaluation.py": "a4d4fb929411afb754f11fd850a492a072e0cf3db6d93f91ff180eaf22e12fb7",
+        "examples/polymer_cards/condition_reference_2026-11-06/reference.json": "d1a93b5bddb6ca72fe0f4ec30a1ac1a323e4071ac19f061b4f790c20723c4a89",
+        "examples/polymer_cards/identity_reference_2026-10-30.json": "bfdac32f92df0c69451e7e49614df4e451fee4966e95a0a20f4e370a48580f98",
+        "examples/polymer_cards/checked_pei_2026-10-30/evaluation-cases.json": "e34b50f553fe79a51b04f297b89c3fcbcc237a6797bf8d4aab2c1fa7e011e1b9"
+      },
+      "extraction_profile": {
+        "output_format": "json_schema",
+        "schema_name": "polymer_cards_strict_v4",
+        "schema_sha256": "94dc3b82256ebec06dc9d2672338834f3201e3f8fadf1d578ced49336f5959bd",
+        "system_prompt_sha256": "6a25b93731625dfe4e4b83630f197708bec407cc3f5ed511c15c4b9f93136a2d"
+      },
+      "software_tests_passed": 206,
+      "checked_references_supplied_to_model": false,
+      "previous_model_responses_supplied": true,
+      "previous_response_origin": "this-task fresh source-span extraction, not checked data",
+      "max_output_tokens_per_request": 48000,
+      "request_timeout_seconds": 900,
+      "automatic_retries": 0,
+      "revision_input_files": {
+        "records": "prior-records.json",
+        "sources": "prior-sources.json"
+      },
+      "expected_user_prompt_sha256": {
+        "10.1038/s41467-023-43467-w": "bf727735e6a681af19c8f8f57dcb8138fee47aa24af44c2d2b5eb8f852cd419e"
+      },
+      "prior_records_sha256": "b2a9c7383136af6765d1a240c1e7dcd68f4b227d9573dcc8d6c56f2adaf233f8",
+      "prior_sources_sha256": "60a7ed7805cc71cc26f94767a1829eee8a77579f6124bfc77a155b026108e07d"
+    },
+    {
+      "prepared_at_utc": "2026-11-06T07:37:21.069526+00:00",
+      "mode": "source_grounded_model_revision_of_new_fresh_extraction",
+      "baseline_commit": "1e97bb10e80858aacddafce0664b3b9779710312",
+      "source_files_sha256": {
+        "extract_polymer_cards.py": "80c52ecce3ec10369caab1e64b9fbfde38037bc04a7c1e0d9702e4c76e30d782",
+        "polymer_cards_lib/prompt.py": "e31b8a57a57ba2c24c42f9dfcc37d3f1419781430510b17601514434ed7fe2df",
+        "polymer_cards_lib/repair.py": "d6195fcfa67a1908a2e5a299be9757af7d312e707e3922087ad84efb02f88a7d",
+        "polymer_cards_lib/llm.py": "f6726b9e16a02f436daa57cbcd72193247cf585314d6c501685e4b330d21f933",
+        "polymer_cards_lib/evidence_spans.py": "fa0c7fa8024b975873a7cab0919860ef9ffd290d85adfc22f9f530de520a78bb",
+        "polymer_cards_lib/sources.py": "c6f480cf531217de2ae1e5624f2c33984400fc5dcf5f8a94ae08908d22722270",
+        "polymer_cards_lib/validation.py": "6c5d7640977217b0b88e40b5ae933aff0ec67e466c56292b2ae74405950c5966",
+        "polymer_cards_lib/render.py": "cc455907cf94cba05925be5b018444de9eb59b47b2aba0149db6ed3679de55b3",
+        "polymer_cards_lib/evaluation.py": "a4d4fb929411afb754f11fd850a492a072e0cf3db6d93f91ff180eaf22e12fb7",
+        "examples/polymer_cards/condition_reference_2026-11-06/reference.json": "d1a93b5bddb6ca72fe0f4ec30a1ac1a323e4071ac19f061b4f790c20723c4a89",
+        "examples/polymer_cards/identity_reference_2026-10-30.json": "bfdac32f92df0c69451e7e49614df4e451fee4966e95a0a20f4e370a48580f98",
+        "examples/polymer_cards/checked_pei_2026-10-30/evaluation-cases.json": "e34b50f553fe79a51b04f297b89c3fcbcc237a6797bf8d4aab2c1fa7e011e1b9"
+      },
+      "extraction_profile": {
+        "output_format": "json_schema",
+        "schema_name": "polymer_cards_strict_v4",
+        "schema_sha256": "94dc3b82256ebec06dc9d2672338834f3201e3f8fadf1d578ced49336f5959bd",
+        "system_prompt_sha256": "6a25b93731625dfe4e4b83630f197708bec407cc3f5ed511c15c4b9f93136a2d"
+      },
+      "software_tests_passed": 206,
+      "checked_references_supplied_to_model": false,
+      "previous_model_responses_supplied": true,
+      "previous_response_origin": "this-task fresh source-span extraction, not checked data",
+      "max_output_tokens_per_request": 48000,
+      "request_timeout_seconds": 900,
+      "automatic_retries": 0,
+      "revision_input_files": {
+        "records": "prior-records.json",
+        "sources": "prior-sources.json"
+      },
+      "expected_user_prompt_sha256": {
+        "10.3390/polym13234155": "8d60d0bfbcbdc87525a8f2b94dda470d055db4eb33f8832e3004ea292520ec50"
+      },
+      "prior_records_sha256": "721b2e240690add7a2295f2ea7aae294b7de2f5618b7a7e6087dca138ddf3b2d",
+      "prior_sources_sha256": "b8faa77095ed0168b6ebf83885d2ecd4572feac5eefab0a896f2e594da0022c7"
+    },
+    {
+      "prepared_at_utc": "2026-11-06T07:37:21.773757+00:00",
+      "mode": "source_grounded_model_revision_of_new_fresh_extraction",
+      "baseline_commit": "1e97bb10e80858aacddafce0664b3b9779710312",
+      "source_files_sha256": {
+        "extract_polymer_cards.py": "80c52ecce3ec10369caab1e64b9fbfde38037bc04a7c1e0d9702e4c76e30d782",
+        "polymer_cards_lib/prompt.py": "e31b8a57a57ba2c24c42f9dfcc37d3f1419781430510b17601514434ed7fe2df",
+        "polymer_cards_lib/repair.py": "d6195fcfa67a1908a2e5a299be9757af7d312e707e3922087ad84efb02f88a7d",
+        "polymer_cards_lib/llm.py": "f6726b9e16a02f436daa57cbcd72193247cf585314d6c501685e4b330d21f933",
+        "polymer_cards_lib/evidence_spans.py": "fa0c7fa8024b975873a7cab0919860ef9ffd290d85adfc22f9f530de520a78bb",
+        "polymer_cards_lib/sources.py": "c6f480cf531217de2ae1e5624f2c33984400fc5dcf5f8a94ae08908d22722270",
+        "polymer_cards_lib/validation.py": "6c5d7640977217b0b88e40b5ae933aff0ec67e466c56292b2ae74405950c5966",
+        "polymer_cards_lib/render.py": "cc455907cf94cba05925be5b018444de9eb59b47b2aba0149db6ed3679de55b3",
+        "polymer_cards_lib/evaluation.py": "a4d4fb929411afb754f11fd850a492a072e0cf3db6d93f91ff180eaf22e12fb7",
+        "examples/polymer_cards/condition_reference_2026-11-06/reference.json": "d1a93b5bddb6ca72fe0f4ec30a1ac1a323e4071ac19f061b4f790c20723c4a89",
+        "examples/polymer_cards/identity_reference_2026-10-30.json": "bfdac32f92df0c69451e7e49614df4e451fee4966e95a0a20f4e370a48580f98",
+        "examples/polymer_cards/checked_pei_2026-10-30/evaluation-cases.json": "e34b50f553fe79a51b04f297b89c3fcbcc237a6797bf8d4aab2c1fa7e011e1b9"
+      },
+      "extraction_profile": {
+        "output_format": "json_schema",
+        "schema_name": "polymer_cards_strict_v4",
+        "schema_sha256": "94dc3b82256ebec06dc9d2672338834f3201e3f8fadf1d578ced49336f5959bd",
+        "system_prompt_sha256": "6a25b93731625dfe4e4b83630f197708bec407cc3f5ed511c15c4b9f93136a2d"
+      },
+      "software_tests_passed": 206,
+      "checked_references_supplied_to_model": false,
+      "previous_model_responses_supplied": true,
+      "previous_response_origin": "this-task fresh source-span extraction, not checked data",
+      "max_output_tokens_per_request": 48000,
+      "request_timeout_seconds": 900,
+      "automatic_retries": 0,
+      "revision_input_files": {
+        "records": "prior-records.json",
+        "sources": "prior-sources.json"
+      },
+      "expected_user_prompt_sha256": {
+        "10.1038/s41467-020-15949-8": "30d6eb5fff7d1f96d93a4431f19264074c7d9d14bc607c3d8747dfc6a349d17a"
+      },
+      "prior_records_sha256": "2290506321bcda6015796baa0645e32af8d2d2c8197a7f22176ac9f29fd737ec",
+      "prior_sources_sha256": "025c1c6f9ad5a00e5035c9dde1fcde305ea072c7a3480301786b6b001944aad2"
+    }
+  ]
+}

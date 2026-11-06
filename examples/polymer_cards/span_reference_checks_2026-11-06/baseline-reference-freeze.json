@@ -1,0 +1,31 @@
+{
+  "created_at_utc": "2026-11-06T07:16:08.799338+00:00",
+  "purpose": "Freeze previous fresh extraction baseline and unchanged checked references before source-span implementation",
+  "prior_run": "outputs/polymer_cards_fresh_2026-11-06_complete",
+  "baseline_tests_passed": 176,
+  "model_calls": 0,
+  "reference_files": {
+    "examples/polymer_cards/condition_reference_2026-11-06/reference.json": "d1a93b5bddb6ca72fe0f4ec30a1ac1a323e4071ac19f061b4f790c20723c4a89",
+    "examples/polymer_cards/identity_reference_2026-10-30.json": "bfdac32f92df0c69451e7e49614df4e451fee4966e95a0a20f4e370a48580f98",
+    "examples/polymer_cards/checked_pei_2026-10-30/evaluation-cases.json": "e34b50f553fe79a51b04f297b89c3fcbcc237a6797bf8d4aab2c1fa7e011e1b9"
+  },
+  "baseline_files": {
+    "cards.json": "57407d38ff3c024e75bf20ad12cfb8a71f79c104c12e9fc66da16a91f4897e69",
+    "raw-responses.json": "e7336fb05af3d6e5ad6934060463b1b7a69d2ff0e76478bd8fdc68ad1b2bb9b7",
+    "sources.json": "20aa6303c46c60cc325f2b9f9720f9fac42bfb061fa861b83e052105ea99f7e2",
+    "evaluation/conditions-evaluation.json": "47bf4756c553a2e16ff99d641a5377435a784215ff0c85c379cf64bc9b66c030",
+    "evaluation/comparison.json": "f0a9fee9bcb592817204aa3eb14344991b8a881243bc3f57b148a384fbfd4e64"
+  },
+  "baseline_selected_checks": {
+    "measurement_matches": 8,
+    "measurement_review": 9,
+    "identity_matches": 5,
+    "identity_review": 1,
+    "conflict_matches": 1
+  },
+  "manual_limits": [
+    "P4 nearly140times vs frozenpercentage is representation review, noforcedconversion",
+    "Chen precursor plural label is evaluatorlexical limitation",
+    "Counts are selectedsourcechecks, not scientificaccuracy"
+  ]
+}

@@ -91,13 +91,35 @@ def revise_document(client, model, document, previous_response, max_output_token
     return parsed, trace
 
 
-def _request(client, model, user_prompt, max_output_tokens):
+def review_context_document(client, model, document, previous_response, max_output_tokens=16000, *, review_focus=None, strict_focus=False):
+    """Request anchored context proposals; do not rewrite the base extraction."""
+    from polymer_cards_lib.context_review import (CONTEXT_REVIEW_SYSTEM_PROMPT,
+        build_context_review_prompt, build_context_response_format)
+    parsed, trace = _request(client, model, build_context_review_prompt(document, previous_response, review_focus=review_focus, strict_focus=strict_focus),
+                             max_output_tokens, system_prompt=CONTEXT_REVIEW_SYSTEM_PROMPT,
+                             response_format=build_context_response_format())
+    previous_bytes = json.dumps(previous_response, ensure_ascii=False, sort_keys=True,
+                                separators=(",", ":"), allow_nan=False).encode("utf-8")
+    trace.update({"request_mode": "source_grounded_context_review",
+                  "previous_response_sha256": hashlib.sha256(previous_bytes).hexdigest()})
+    if review_focus is not None:
+        focus_bytes = json.dumps(review_focus, ensure_ascii=False, sort_keys=True,
+                                 separators=(",", ":"), allow_nan=False).encode("utf-8")
+        trace["source_audit_focus_sha256"] = hashlib.sha256(focus_bytes).hexdigest()
+    if strict_focus:
+        trace["strict_focus"] = True
+    return parsed, trace
+
+
+def _request(client, model, user_prompt, max_output_tokens, *, system_prompt=None, response_format=None):
+    actual_system = build_system_prompt() if system_prompt is None else system_prompt
+    actual_format = build_response_format() if response_format is None else response_format
     try:
         response = client.chat.completions.create(
             model=model,
-            messages=[{"role": "system", "content": build_system_prompt()},
+            messages=[{"role": "system", "content": actual_system},
                       {"role": "user", "content": user_prompt}],
-            response_format=build_response_format(),
+            response_format=actual_format,
             max_completion_tokens=max_output_tokens,
         )
     except Exception as exc:
@@ -123,7 +145,13 @@ def _request(client, model, user_prompt, max_output_tokens):
         raise ModelRequestError("Model returned invalid strict JSON; no fabricated or partial records accepted") from None
     usage = getattr(response, "usage", None)
     safe_usage = {name: getattr(usage, name, None) for name in ("prompt_tokens", "completion_tokens", "total_tokens")}
+    schema_bytes = json.dumps(actual_format["json_schema"]["schema"], sort_keys=True,
+                              separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+    actual_profile = {"output_format": actual_format["type"],
+                      "schema_name": actual_format["json_schema"]["name"],
+                      "schema_sha256": hashlib.sha256(schema_bytes).hexdigest(),
+                      "system_prompt_sha256": hashlib.sha256(actual_system.encode("utf-8")).hexdigest()}
     return parsed, {"raw_response_text": raw_text, "usage": safe_usage,
-                    "extraction_profile": extraction_profile(),
+                    "extraction_profile": actual_profile,
                     "request_prompt_sha256": hashlib.sha256(user_prompt.encode("utf-8")).hexdigest(),
                     "finish_reason": getattr(choice, "finish_reason", None)}

@@ -1,0 +1,151 @@
+{
+  "prepared_at_utc": "2026-11-06T08:18:19.358579+00:00",
+  "mode": "strictly_scoped_source_audit_context_review",
+  "strict_focus": true,
+  "software_tests_passed": 232,
+  "model_calls_at_freeze": 0,
+  "checked_reference_answers_supplied": false,
+  "source_audit_hypotheses_supplied": true,
+  "previous_response_supplied": true,
+  "base_response_origin": "previous focused context composition",
+  "base_file_sha256": "aded39f46da12ee29636b9a6629a5549d3e79b63a312ab628895048f59681419",
+  "source_file_sha256": "025c1c6f9ad5a00e5035c9dde1fcde305ea072c7a3480301786b6b001944aad2",
+  "focus_file_sha256": "6569bc20dff69477455a00a329f8474e94010b0ac8754ffd3c21c3c5eb3ff6f7",
+  "code_and_reference_sha256": {
+    "polymer_cards_lib/context_review.py": "451463c8e7b1370653d06f078f6c7c980beeb37bbb7cc9db981455c295437e42",
+    "polymer_cards_lib/llm.py": "007f46478dae92dea4f132309d2b154e046bd0216539a688a0370f147e000a3d",
+    "polymer_cards_lib/prompt.py": "e31b8a57a57ba2c24c42f9dfcc37d3f1419781430510b17601514434ed7fe2df",
+    "polymer_cards_lib/repair.py": "d6195fcfa67a1908a2e5a299be9757af7d312e707e3922087ad84efb02f88a7d",
+    "polymer_cards_lib/evidence_spans.py": "f5bcb32b3cda5da75be8bcd75ba92dfd1ee717e43c05a46bd133cda555ddf5d6",
+    "polymer_cards_lib/validation.py": "6d16057f43ae0115f3477c4d8620f41f4d21378fe6790bdc8bca395bb7ef4df0",
+    "polymer_cards_lib/render.py": "174a255e2416dd5d818758501d1d0af6f8c926eabab2c2f033911b584977931f",
+    "polymer_cards_lib/sources.py": "c6f480cf531217de2ae1e5624f2c33984400fc5dcf5f8a94ae08908d22722270",
+    "polymer_cards_lib/evaluation.py": "a4d4fb929411afb754f11fd850a492a072e0cf3db6d93f91ff180eaf22e12fb7",
+    "examples/polymer_cards/condition_reference_2026-11-06/reference.json": "d1a93b5bddb6ca72fe0f4ec30a1ac1a323e4071ac19f061b4f790c20723c4a89"
+  },
+  "request_prompt_sha256": "8ba84b524c3aa96f5a05a9cbfa74b0a6bf78b3dcefb2d30c06973455ae9d5a3e",
+  "system_prompt_sha256": "ca362f2af5cef67aacf6ed60cc8a9d93749344c4665736615cccca3eba1b4d69",
+  "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+      "name": "polymer_context_review_v1",
+      "strict": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "paper_id": {
+            "type": "string"
+          },
+          "edits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/edit"
+            }
+          }
+        },
+        "required": [
+          "paper_id",
+          "edits"
+        ],
+        "additionalProperties": false,
+        "$defs": {
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "chunk_id": {
+                "type": "string"
+              },
+              "span_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "chunk_id",
+              "span_id"
+            ],
+            "additionalProperties": false
+          },
+          "condition": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              },
+              "evidence": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/evidence"
+                }
+              }
+            },
+            "required": [
+              "name",
+              "value",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          "edit": {
+            "type": "object",
+            "properties": {
+              "entity_id": {
+                "type": "string"
+              },
+              "property_index": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "anchor_sha256": {
+                "type": "string"
+              },
+              "specimen_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "specimen_evidence": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/evidence"
+                }
+              },
+              "conditions": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/condition"
+                }
+              },
+              "evidence": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/evidence"
+                }
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "entity_id",
+              "property_index",
+              "anchor_sha256",
+              "specimen_id",
+              "specimen_evidence",
+              "conditions",
+              "evidence",
+              "reason"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    }
+  },
+  "max_output_tokens": 16000,
+  "request_timeout_seconds": 900,
+  "automatic_retries": 0
+}

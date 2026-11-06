@@ -1,0 +1,202 @@
+{
+  "mode": "model_proposed_context_revision",
+  "paper_id": "10.1038/s41467-020-15949-8",
+  "base_response_sha256": "844454a669f1a172868a38044d025431f3ecb61c7d3d196cb88e51d6dca59971",
+  "applied_edits": 5,
+  "held_edits": [],
+  "edit_results": [
+    {
+      "proposal_index": 0,
+      "entity_id": "p2",
+      "property_index": 0,
+      "anchor_sha256": "5588b7f2f52d3bcfce9cc20055414e924cbf45c7b45797ce18aa5589e2b51091",
+      "changed_context_fields": [
+        "conditions"
+      ],
+      "reason": "Source explicitly names GPC and THF for this molecular-weight measurement; add the named technique as a method condition.",
+      "property_path": "entities[1].properties.items[0]",
+      "validation_reasons": [],
+      "status": "applied_context_source_linked"
+    },
+    {
+      "proposal_index": 1,
+      "entity_id": "p2",
+      "property_index": 1,
+      "anchor_sha256": "b0f10dcb4e2106122fb6173f6c1ea0911e9acde95c7e00f00c64f88b23742c87",
+      "changed_context_fields": [
+        "conditions"
+      ],
+      "reason": "Source explicitly names GPC and THF for this molecular-weight measurement; add the named technique as a method condition.",
+      "property_path": "entities[1].properties.items[1]",
+      "validation_reasons": [],
+      "status": "applied_context_source_linked"
+    },
+    {
+      "proposal_index": 2,
+      "entity_id": "p2",
+      "property_index": 2,
+      "anchor_sha256": "aba50a0e1ed2c20e9387958a1a97ebaabdf67f8f083622da4c12554ab8728022",
+      "changed_context_fields": [
+        "conditions"
+      ],
+      "reason": "Source explicitly names GPC and THF for this PDI measurement context; add the named technique as a method condition.",
+      "property_path": "entities[1].properties.items[2]",
+      "validation_reasons": [],
+      "status": "applied_context_source_linked"
+    },
+    {
+      "proposal_index": 3,
+      "entity_id": "p2",
+      "property_index": 7,
+      "anchor_sha256": "87e24cf7a73b159f4cb4b6b32458ee4f0fcea6602b38a7288e9123c38294600a",
+      "changed_context_fields": [
+        "conditions",
+        "evidence"
+      ],
+      "reason": "Methods state healed films were stretched following the same tensile procedure; add attributable post-healing test method and temperature, and retain explicitly captioned stretching speed without reintroducing uncertain geometry.",
+      "property_path": "entities[1].properties.items[7]",
+      "validation_reasons": [],
+      "status": "applied_context_source_linked"
+    },
+    {
+      "proposal_index": 4,
+      "entity_id": "p6",
+      "property_index": 0,
+      "anchor_sha256": "76672a3ac303ef0e1f4e16e830df310a8be0f09a63806052e6390f4c92eb3abe",
+      "changed_context_fields": [
+        "conditions"
+      ],
+      "reason": "This strain-at-break value comes from tensile testing of P5 film; Methods explicitly provide the mechanical test, room-temperature setting, and default 10 mm min−1 rate for uniaxial tensile measurements.",
+      "property_path": "entities[5].properties.items[0]",
+      "validation_reasons": [],
+      "status": "applied_context_source_linked"
+    }
+  ],
+  "base_validation_issues": [
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_id": "p2",
+      "name": "P3",
+      "path": "entities[1].properties.items[6]",
+      "reason": "property_value_not_in_original_evidence"
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_id": "p2",
+      "name": "P3",
+      "path": "entities[1].properties.items[11]",
+      "reason": "property_value_not_in_original_evidence"
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_id": "p5",
+      "name": "P2",
+      "path": "entities[4].properties.items[0]",
+      "reason": "fact_specimen_not_linked_to_polymer"
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_id": "p8",
+      "name": "P7",
+      "path": "entities[7].properties.items[0]",
+      "reason": "fact_specimen_not_linked_to_polymer"
+    }
+  ],
+  "base_statistics": {
+    "input_entities": 11,
+    "cards": 11,
+    "retained_polymers": 11,
+    "discarded_entities": 0,
+    "discarded_nonpolymers": 0,
+    "classification_review_entities": 0,
+    "review_queue": 4,
+    "validation_issues": 4,
+    "attribution_warnings": 0
+  },
+  "limits": [
+    "Only context fields can change; exact source selection does not establish scientific attribution."
+  ],
+  "strict_context_scope": {
+    "mode": "specified_targets_only",
+    "targets": [
+      {
+        "entity_id": "p2",
+        "property_index": 0,
+        "reason": "A named chromatographic technique is reported in the cited source context but is absent from structured method conditions. Verify the technique and include it only if attributable, retaining the existing measurement sample distinction.",
+        "anchor_sha256": "5588b7f2f52d3bcfce9cc20055414e924cbf45c7b45797ce18aa5589e2b51091",
+        "status": "unverified_source_audit_hypothesis"
+      },
+      {
+        "entity_id": "p2",
+        "property_index": 1,
+        "reason": "A named chromatographic technique is reported in the cited source context but is absent from structured method conditions. Verify the technique and include it only if attributable, retaining the existing measurement sample distinction.",
+        "anchor_sha256": "b0f10dcb4e2106122fb6173f6c1ea0911e9acde95c7e00f00c64f88b23742c87",
+        "status": "unverified_source_audit_hypothesis"
+      },
+      {
+        "entity_id": "p2",
+        "property_index": 2,
+        "reason": "A named chromatographic technique is reported in the cited source context but is absent from structured method conditions. Verify the technique and include it only if attributable, retaining the existing measurement sample distinction.",
+        "anchor_sha256": "aba50a0e1ed2c20e9387958a1a97ebaabdf67f8f083622da4c12554ab8728022",
+        "status": "unverified_source_audit_hypothesis"
+      },
+      {
+        "entity_id": "p2",
+        "property_index": 7,
+        "reason": "Earlier unsupported geometry was removed. Verify the post-healing measurement procedure and the source’s explicit same-procedure Methods link; add only the attributable measurement context and omit uncertain geometry.",
+        "anchor_sha256": "87e24cf7a73b159f4cb4b6b32458ee4f0fcea6602b38a7288e9123c38294600a",
+        "status": "unverified_source_audit_hypothesis"
+      },
+      {
+        "entity_id": "p6",
+        "property_index": 0,
+        "reason": "This measured strain property has no test conditions. Check the original mechanical-testing Methods and attach only the procedure attributable to its specimen. Ensure selected evidence includes the complete source qualifier.",
+        "anchor_sha256": "76672a3ac303ef0e1f4e16e830df310a8be0f09a63806052e6390f4c92eb3abe",
+        "status": "unverified_source_audit_hypothesis"
+      }
+    ]
+  },
+  "immutable_fields_preserved": true,
+  "composed_response_sha256": "9148a17c7662d83137c73ed778f066e6e5e638b49257d9893b2ccd423de3d14c",
+  "validation_issues": [
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_id": "p2",
+      "name": "P3",
+      "path": "entities[1].properties.items[6]",
+      "reason": "property_value_not_in_original_evidence"
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_id": "p2",
+      "name": "P3",
+      "path": "entities[1].properties.items[11]",
+      "reason": "property_value_not_in_original_evidence"
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_id": "p5",
+      "name": "P2",
+      "path": "entities[4].properties.items[0]",
+      "reason": "fact_specimen_not_linked_to_polymer"
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_id": "p8",
+      "name": "P7",
+      "path": "entities[7].properties.items[0]",
+      "reason": "fact_specimen_not_linked_to_polymer"
+    }
+  ],
+  "result_statistics": {
+    "input_entities": 11,
+    "cards": 11,
+    "retained_polymers": 11,
+    "discarded_entities": 0,
+    "discarded_nonpolymers": 0,
+    "classification_review_entities": 0,
+    "review_queue": 4,
+    "validation_issues": 4,
+    "attribution_warnings": 0
+  }
+}

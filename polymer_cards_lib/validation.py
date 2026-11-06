@@ -145,6 +145,26 @@ def _source_names_more_specific_form(text: str, stem: str, unit: Any) -> bool:
     return False
 
 
+def _without_explicit_cell_stacks(text: str, stem: str) -> str:
+    """Exclude a bounded electrode/membrane/electrode stack from form checks.
+
+    This is a limited lexical exception, not an inferred material link. Both
+    outer layers must use explicit electrode labels and the nearby text must
+    call the construction a cell. Other preparations in that sentence or
+    paragraph remain available to the additive-form guard.
+    """
+    electrode = r"(?:stainless\s+steel(?:\s*\(SS\))?|SS|Li|lithium|Cu|copper|Al|aluminium|aluminum|Pt|platinum|Au|gold|Ni|nickel)"
+    stack = re.compile(r"(?<!\w)" + electrode + r"\s*/\s*" + re.escape(stem)
+                       + r"\s*/\s*" + electrode + r"(?![\w⁺⁻+−/–—-]|\.\w)")
+    context = r"(?:asymmetric|symmetric|electrochemical|blocking)\s+cell"
+    def replace(match):
+        before, after = text[:match.start()], text[match.end():]
+        introduced = re.search(r"\b" + context + r"\b[^.!?;\n]{0,80}$", before, flags=re.I)
+        followed = re.match(r"[^.!?;\n]{0,40}\b" + context + r"\b", after, flags=re.I)
+        return stem if introduced or followed else match[0]
+    return stack.sub(replace, text)
+
+
 def _alternate_specimen_form_in_link_evidence(prop: Dict, specimens: List[Dict]) -> bool:
     """Detect a stated preparation/form mismatch, not chemical equivalence.
 
@@ -163,6 +183,7 @@ def _alternate_specimen_form_in_link_evidence(prop: Dict, specimens: List[Dict])
     quoted = " ".join(e["quote"] for e in prop.get("specimen_evidence", []))
     if _explicit_neat_context(quoted, base):
         return False
+    quoted = _without_explicit_cell_stacks(quoted, base)
     alternatives = []
     for sid, specimen in by_id.items():
         if sid == prop["specimen_id"]:
@@ -239,6 +260,7 @@ def build_cards(document: Dict, response: Dict) -> Dict:
     review_queue: List[Dict] = []
     issues: List[Dict] = []
     classification_reviews = 0
+    span_catalog = None
     ids = Counter(e.get("entity_id") for e in entities
                   if isinstance(e, dict) and isinstance(e.get("entity_id"), str))
 
@@ -251,6 +273,7 @@ def build_cards(document: Dict, response: Dict) -> Dict:
             review_queue.append({**item, "record": deepcopy(record)})
 
     def evidence(refs):
+        nonlocal span_catalog
         if not isinstance(refs, list) or not refs:
             raise _Invalid("original_evidence_missing")
         resolved = []
@@ -260,21 +283,46 @@ def build_cards(document: Dict, response: Dict) -> Dict:
             chunk = chunks.get(ref["chunk_id"])
             if chunk is None:
                 raise _Invalid("unknown_source_chunk")
-            if not _text(ref.get("quote")) or _text(ref["quote"]) not in _text(chunk["text"]):
+            selected = None
+            if "span_id" in ref:
+                # Live v4 selects original source ranges. Never let a model
+                # supply a replacement quote, offsets or provenance alongside
+                # its choice; the raw ID remains preserved in the response.
+                if set(ref) != {"chunk_id", "span_id"}:
+                    raise _Invalid("source_span_reference_has_untrusted_fields")
+                from polymer_cards_lib.evidence_spans import build_span_catalog, resolve_span
+                try:
+                    if span_catalog is None:
+                        span_catalog = build_span_catalog(document)
+                    selected = resolve_span(document, ref["chunk_id"], ref["span_id"], catalog=span_catalog)
+                except ValueError:
+                    raise _Invalid("invalid_source_span_selection") from None
+                quote = selected["quote"]
+            else:
+                quote = ref.get("quote")
+            if not _text(quote) or _text(quote) not in _text(chunk["text"]):
                 raise _Invalid("quote_not_in_original_source")
             if "paper_id" in ref and ref["paper_id"] != paper_id:
                 raise _Invalid("evidence_paper_mismatch")
             for key in ("source_part", "locator", "document_sha256", "page", "text_transformations"):
                 if key in ref and ref[key] != chunk.get(key):
                     raise _Invalid("evidence_source_metadata_mismatch:" + key)
-            item = {"chunk_id": ref["chunk_id"], "quote": ref["quote"], "paper_id": paper_id,
+            item = {"chunk_id": ref["chunk_id"], "quote": quote, "paper_id": paper_id,
                     "source_part": chunk["source_part"], "locator": chunk["locator"],
                     "document_sha256": chunk["document_sha256"], "evidence_status": "quote_matched"}
+            if selected is not None:
+                item.update(selected)
             if "page" in chunk:
                 item["page"] = chunk["page"]
             if chunk.get("text_transformations"):
                 item["text_transformations"] = deepcopy(chunk["text_transformations"])
             resolved.append(item)
+        if any(ref.get("evidence_origin") == "source_span_selection" for ref in resolved):
+            from polymer_cards_lib.evidence_spans import combine_adjacent_spans
+            try:
+                resolved.extend(combine_adjacent_spans(document, resolved, catalog=span_catalog))
+            except ValueError:
+                raise _Invalid("invalid_adjacent_source_span_support") from None
         return resolved
 
     def fact(raw, entity, path, field=None, specimen_ids=None, specimens=None):

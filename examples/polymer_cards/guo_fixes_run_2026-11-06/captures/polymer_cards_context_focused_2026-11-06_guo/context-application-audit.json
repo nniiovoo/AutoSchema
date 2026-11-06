@@ -1,0 +1,503 @@
+{
+  "mode": "model_proposed_context_revision",
+  "paper_id": "10.1038/s41467-020-15949-8",
+  "base_response_sha256": "c672778e8c8956238c626ad65f002663ee7e6fdb1d92930974cbe4420fa53d08",
+  "applied_edits": 4,
+  "held_edits": [
+    {
+      "proposal_index": 0,
+      "reason": "context_edit_introduces_new_validation_issue",
+      "record": {
+        "entity_id": "p2",
+        "property_index": 0,
+        "anchor_sha256": "5588b7f2f52d3bcfce9cc20055414e924cbf45c7b45797ce18aa5589e2b51091",
+        "specimen_id": "p2-gpc-sample",
+        "specimen_evidence": [
+          {
+            "chunk_id": "src-abdf1ced28f9b1e9fb83",
+            "span_id": "spn-4d39264781660f3c8cb5ceeb1d1a3d41"
+          },
+          {
+            "chunk_id": "src-abdf1ced28f9b1e9fb83",
+            "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+          }
+        ],
+        "conditions": [
+          {
+            "name": "method",
+            "value": "gel permeation chromatography (GPC)",
+            "evidence": [
+              {
+                "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+              }
+            ]
+          },
+          {
+            "name": "eluent",
+            "value": "THF",
+            "evidence": [
+              {
+                "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+              }
+            ]
+          }
+        ],
+        "evidence": [
+          {
+            "chunk_id": "src-abdf1ced28f9b1e9fb83",
+            "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+          }
+        ],
+        "reason": "Source explicitly names GPC for this molecular-weight measurement; add technique as method condition."
+      },
+      "new_validation_reasons": [
+        "condition_value_not_in_original_evidence"
+      ]
+    },
+    {
+      "proposal_index": 1,
+      "reason": "context_edit_introduces_new_validation_issue",
+      "record": {
+        "entity_id": "p2",
+        "property_index": 1,
+        "anchor_sha256": "b0f10dcb4e2106122fb6173f6c1ea0911e9acde95c7e00f00c64f88b23742c87",
+        "specimen_id": "p2-gpc-sample",
+        "specimen_evidence": [
+          {
+            "chunk_id": "src-abdf1ced28f9b1e9fb83",
+            "span_id": "spn-4d39264781660f3c8cb5ceeb1d1a3d41"
+          },
+          {
+            "chunk_id": "src-abdf1ced28f9b1e9fb83",
+            "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+          }
+        ],
+        "conditions": [
+          {
+            "name": "method",
+            "value": "gel permeation chromatography (GPC)",
+            "evidence": [
+              {
+                "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+              }
+            ]
+          },
+          {
+            "name": "eluent",
+            "value": "THF",
+            "evidence": [
+              {
+                "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+              }
+            ]
+          }
+        ],
+        "evidence": [
+          {
+            "chunk_id": "src-abdf1ced28f9b1e9fb83",
+            "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+          }
+        ],
+        "reason": "Source explicitly names GPC for this molecular-weight measurement; add technique as method condition."
+      },
+      "new_validation_reasons": [
+        "condition_value_not_in_original_evidence"
+      ]
+    },
+    {
+      "proposal_index": 2,
+      "reason": "context_edit_introduces_new_validation_issue",
+      "record": {
+        "entity_id": "p2",
+        "property_index": 2,
+        "anchor_sha256": "aba50a0e1ed2c20e9387958a1a97ebaabdf67f8f083622da4c12554ab8728022",
+        "specimen_id": "p2-gpc-sample",
+        "specimen_evidence": [
+          {
+            "chunk_id": "src-abdf1ced28f9b1e9fb83",
+            "span_id": "spn-4d39264781660f3c8cb5ceeb1d1a3d41"
+          },
+          {
+            "chunk_id": "src-abdf1ced28f9b1e9fb83",
+            "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+          }
+        ],
+        "conditions": [
+          {
+            "name": "method",
+            "value": "gel permeation chromatography (GPC)",
+            "evidence": [
+              {
+                "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+              }
+            ]
+          },
+          {
+            "name": "eluent",
+            "value": "THF",
+            "evidence": [
+              {
+                "chunk_id": "src-abdf1ced28f9b1e9fb83",
+                "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+              }
+            ]
+          }
+        ],
+        "evidence": [
+          {
+            "chunk_id": "src-abdf1ced28f9b1e9fb83",
+            "span_id": "spn-78422d67a804883249dfc32d32236f7a"
+          }
+        ],
+        "reason": "Source explicitly names GPC for this PDI measurement context; add technique as method condition."
+      },
+      "new_validation_reasons": [
+        "condition_value_not_in_original_evidence"
+      ]
+    },
+    {
+      "proposal_index": 3,
+      "reason": "context_edit_introduces_new_validation_issue",
+      "record": {
+        "entity_id": "p2",
+        "property_index": 3,
+        "anchor_sha256": "c1c880b0cfc1c8f7898baa1cf4660385fdd4250b2cb45219ca06a9f1b9cb4ad0",
+        "specimen_id": null,
+        "specimen_evidence": [],
+        "conditions": [
+          {
+            "name": "method",
+            "value": "differential scanning calorimetry (DSC)",
+            "evidence": [
+              {
+                "chunk_id": "src-7fff0ff525a418c27c9f",
+                "span_id": "spn-5cd9ec6649a0ffcfbdea836cd018aaba"
+              }
+            ]
+          }
+        ],
+        "evidence": [
+          {
+            "chunk_id": "src-7fff0ff525a418c27c9f",
+            "span_id": "spn-5cd9ec6649a0ffcfbdea836cd018aaba"
+          }
+        ],
+        "reason": "Source reports Tg for polymeric backbones of P3, P4, and P7, but existing specimen p2-film is only a prepared film specimen and does not establish the tested DSC subject exactly."
+      },
+      "new_validation_reasons": [
+        "fact_specimen_not_linked_to_polymer"
+      ]
+    },
+    {
+      "proposal_index": 6,
+      "reason": "context_edit_introduces_new_validation_issue",
+      "record": {
+        "entity_id": "p2",
+        "property_index": 8,
+        "anchor_sha256": "27c5ce5bc8eb7a208715ad9d872fce9cdc2ea37690f403b2e833acd354ccbb67",
+        "specimen_id": null,
+        "specimen_evidence": [],
+        "conditions": [
+          {
+            "name": "healing environment",
+            "value": "4 °C",
+            "evidence": [
+              {
+                "chunk_id": "src-19de83c50e53d683bc32",
+                "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+              }
+            ]
+          },
+          {
+            "name": "healing time",
+            "value": "24 h",
+            "evidence": [
+              {
+                "chunk_id": "src-19de83c50e53d683bc32",
+                "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+              }
+            ]
+          },
+          {
+            "name": "healing efficiency definition",
+            "value": "ratio between the restored fracture strain relative to the original fracture strain",
+            "evidence": [
+              {
+                "chunk_id": "src-b48dd634cfb0cbadc1e7",
+                "span_id": "spn-2b43e5c22d8888b06b5d955316b5e9b2"
+              }
+            ]
+          }
+        ],
+        "evidence": [
+          {
+            "chunk_id": "src-19de83c50e53d683bc32",
+            "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+          }
+        ],
+        "reason": "The 4 °C efficiency is for P3, but no declared specimen specifically establishes this refrigerated healed form; leave specimen unresolved rather than borrowing room-temperature healed specimen."
+      },
+      "new_validation_reasons": [
+        "fact_specimen_not_linked_to_polymer"
+      ]
+    },
+    {
+      "proposal_index": 7,
+      "reason": "context_edit_introduces_new_validation_issue",
+      "record": {
+        "entity_id": "p2",
+        "property_index": 9,
+        "anchor_sha256": "276e117fc6782fd1c30645c5ec2ed69ee9b1a81fdf20e91ade009aa5de2a032e",
+        "specimen_id": null,
+        "specimen_evidence": [],
+        "conditions": [
+          {
+            "name": "healing environment",
+            "value": "−20 °C",
+            "evidence": [
+              {
+                "chunk_id": "src-19de83c50e53d683bc32",
+                "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+              }
+            ]
+          },
+          {
+            "name": "healing time",
+            "value": "24 h",
+            "evidence": [
+              {
+                "chunk_id": "src-19de83c50e53d683bc32",
+                "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+              }
+            ]
+          },
+          {
+            "name": "healing efficiency definition",
+            "value": "ratio between the restored fracture strain relative to the original fracture strain",
+            "evidence": [
+              {
+                "chunk_id": "src-b48dd634cfb0cbadc1e7",
+                "span_id": "spn-2b43e5c22d8888b06b5d955316b5e9b2"
+              }
+            ]
+          }
+        ],
+        "evidence": [
+          {
+            "chunk_id": "src-19de83c50e53d683bc32",
+            "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+          }
+        ],
+        "reason": "The −20 °C efficiency is for P3, but no declared specimen specifically establishes this freezing-healed form; leave specimen unresolved rather than borrowing room-temperature healed specimen."
+      },
+      "new_validation_reasons": [
+        "fact_specimen_not_linked_to_polymer"
+      ]
+    },
+    {
+      "proposal_index": 8,
+      "reason": "context_edit_introduces_new_validation_issue",
+      "record": {
+        "entity_id": "p2",
+        "property_index": 10,
+        "anchor_sha256": "4e49c0b724cea2b4c4eeee33507138499d0738336042ef57037330de755787ee",
+        "specimen_id": null,
+        "specimen_evidence": [],
+        "conditions": [
+          {
+            "name": "healing environment",
+            "value": "−40 °C",
+            "evidence": [
+              {
+                "chunk_id": "src-19de83c50e53d683bc32",
+                "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+              }
+            ]
+          },
+          {
+            "name": "healing time",
+            "value": "24 h",
+            "evidence": [
+              {
+                "chunk_id": "src-19de83c50e53d683bc32",
+                "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+              }
+            ]
+          },
+          {
+            "name": "healing efficiency definition",
+            "value": "ratio between the restored fracture strain relative to the original fracture strain",
+            "evidence": [
+              {
+                "chunk_id": "src-b48dd634cfb0cbadc1e7",
+                "span_id": "spn-2b43e5c22d8888b06b5d955316b5e9b2"
+              }
+            ]
+          }
+        ],
+        "evidence": [
+          {
+            "chunk_id": "src-19de83c50e53d683bc32",
+            "span_id": "spn-24f4fb4977bd92a88aa6c7f4b751ccc0"
+          }
+        ],
+        "reason": "The −40 °C efficiency is for P3, but no declared specimen specifically establishes this ultralow-temperature healed form; leave specimen unresolved rather than borrowing room-temperature healed specimen."
+      },
+      "new_validation_reasons": [
+        "fact_specimen_not_linked_to_polymer"
+      ]
+    }
+  ],
+  "edit_results": [
+    {
+      "proposal_index": 4,
+      "entity_id": "p2",
+      "property_index": 6,
+      "anchor_sha256": "bfc35c5d32225b319cc787de2ab85e08f083af0b608dfbad977e6a978f6cc5a5",
+      "changed_context_fields": [
+        "conditions",
+        "evidence"
+      ],
+      "reason": "Caption sample-size condition belongs to Fig. 3e healing-efficiency panel, not the Fig. 3d fracture-strain readout; use same tensile procedure from Methods instead.",
+      "property_path": "entities[1].properties.items[6]",
+      "validation_reasons": [
+        "property_value_not_in_original_evidence"
+      ],
+      "status": "applied_with_validation_review"
+    },
+    {
+      "proposal_index": 5,
+      "entity_id": "p2",
+      "property_index": 7,
+      "anchor_sha256": "87e24cf7a73b159f4cb4b6b32458ee4f0fcea6602b38a7288e9123c38294600a",
+      "changed_context_fields": [
+        "specimen_evidence",
+        "conditions"
+      ],
+      "reason": "Water-healed 93% efficiency is reported in paragraph text, but caption geometry/sample-size belongs to a different panel and duration set; remove unsupported carried-over test geometry conditions.",
+      "property_path": "entities[1].properties.items[7]",
+      "validation_reasons": [],
+      "status": "applied_context_source_linked"
+    },
+    {
+      "proposal_index": 9,
+      "entity_id": "p5",
+      "property_index": 0,
+      "anchor_sha256": "716fc92fd2618b3faec0a04d50828d7f01fc114913c01b5d8664dec0791757d0",
+      "changed_context_fields": [
+        "evidence"
+      ],
+      "reason": "No declared P2 specimen exists to support an exact tested form, so specimen must remain unresolved; added adjacent qualifier evidence to keep the source context complete.",
+      "property_path": "entities[4].properties.items[0]",
+      "validation_reasons": [
+        "fact_specimen_not_linked_to_polymer"
+      ],
+      "status": "applied_with_validation_review"
+    },
+    {
+      "proposal_index": 10,
+      "entity_id": "p8",
+      "property_index": 0,
+      "anchor_sha256": "d7206287a99563909ddd387a389db662465758ac20bd2310a548c69cb87ecedf",
+      "changed_context_fields": [],
+      "reason": "Keep specimen unresolved because no declared P7 specimen establishes the exact DSC-tested form; method condition remains supported.",
+      "property_path": "entities[7].properties.items[0]",
+      "validation_reasons": [
+        "fact_specimen_not_linked_to_polymer"
+      ],
+      "status": "applied_with_validation_review"
+    }
+  ],
+  "base_validation_issues": [
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_id": "p2",
+      "name": "P3",
+      "path": "entities[1].properties.items[6]",
+      "reason": "property_value_not_in_original_evidence"
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_id": "p2",
+      "name": "P3",
+      "path": "entities[1].properties.items[11]",
+      "reason": "property_value_not_in_original_evidence"
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_id": "p5",
+      "name": "P2",
+      "path": "entities[4].properties.items[0]",
+      "reason": "fact_specimen_not_linked_to_polymer"
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_id": "p8",
+      "name": "P7",
+      "path": "entities[7].properties.items[0]",
+      "reason": "fact_specimen_not_linked_to_polymer"
+    }
+  ],
+  "base_statistics": {
+    "input_entities": 11,
+    "cards": 11,
+    "retained_polymers": 11,
+    "discarded_entities": 0,
+    "discarded_nonpolymers": 0,
+    "classification_review_entities": 0,
+    "review_queue": 4,
+    "validation_issues": 4,
+    "attribution_warnings": 0
+  },
+  "limits": [
+    "Only context fields can change; exact source selection does not establish scientific attribution."
+  ],
+  "immutable_fields_preserved": true,
+  "composed_response_sha256": "844454a669f1a172868a38044d025431f3ecb61c7d3d196cb88e51d6dca59971",
+  "validation_issues": [
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_id": "p2",
+      "name": "P3",
+      "path": "entities[1].properties.items[6]",
+      "reason": "property_value_not_in_original_evidence"
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_id": "p2",
+      "name": "P3",
+      "path": "entities[1].properties.items[11]",
+      "reason": "property_value_not_in_original_evidence"
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_id": "p5",
+      "name": "P2",
+      "path": "entities[4].properties.items[0]",
+      "reason": "fact_specimen_not_linked_to_polymer"
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "entity_id": "p8",
+      "name": "P7",
+      "path": "entities[7].properties.items[0]",
+      "reason": "fact_specimen_not_linked_to_polymer"
+    }
+  ],
+  "result_statistics": {
+    "input_entities": 11,
+    "cards": 11,
+    "retained_polymers": 11,
+    "discarded_entities": 0,
+    "discarded_nonpolymers": 0,
+    "classification_review_entities": 0,
+    "review_queue": 4,
+    "validation_issues": 4,
+    "attribution_warnings": 0
+  }
+}

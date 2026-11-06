@@ -1,0 +1,166 @@
+{
+  "comparison_kind": "previous_fresh_vs_fresh_source_span_extraction",
+  "baseline_mode": "live_model_extraction",
+  "fresh_mode": "live_model_extraction",
+  "baseline_metrics": {
+    "totals": {
+      "cards": 21,
+      "review_records": 41,
+      "identity_review_records": 3,
+      "other_field_review_records": 38,
+      "validation_flags": 50,
+      "declared_polymer_family": 3,
+      "retained_property_items": 49,
+      "retained_conflict_notes": 1,
+      "declared_specific_polymer": 18
+    },
+    "papers": [
+      {
+        "paper_id": "10.1038/s41467-023-43467-w",
+        "cards": 7,
+        "review_records": 8,
+        "identity_review_records": 0,
+        "other_field_review_records": 8,
+        "validation_flags": 9
+      },
+      {
+        "paper_id": "10.3390/polym13234155",
+        "cards": 5,
+        "review_records": 4,
+        "identity_review_records": 0,
+        "other_field_review_records": 4,
+        "validation_flags": 7
+      },
+      {
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "cards": 9,
+        "review_records": 29,
+        "identity_review_records": 3,
+        "other_field_review_records": 26,
+        "validation_flags": 34
+      }
+    ]
+  },
+  "fresh_metrics": {
+    "totals": {
+      "cards": 26,
+      "review_records": 27,
+      "identity_review_records": 1,
+      "other_field_review_records": 26,
+      "validation_flags": 34,
+      "declared_specific_polymer": 23,
+      "retained_property_items": 53,
+      "retained_conflict_notes": 0,
+      "declared_polymer_family": 3
+    },
+    "papers": [
+      {
+        "paper_id": "10.1038/s41467-023-43467-w",
+        "cards": 5,
+        "review_records": 11,
+        "identity_review_records": 0,
+        "other_field_review_records": 11,
+        "validation_flags": 11
+      },
+      {
+        "paper_id": "10.3390/polym13234155",
+        "cards": 10,
+        "review_records": 3,
+        "identity_review_records": 1,
+        "other_field_review_records": 2,
+        "validation_flags": 3
+      },
+      {
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "cards": 11,
+        "review_records": 13,
+        "identity_review_records": 0,
+        "other_field_review_records": 13,
+        "validation_flags": 20
+      }
+    ]
+  },
+  "baseline_selected_checks": {
+    "identities": {
+      "matched_focused_expectation": 5,
+      "needs_source_review": 1
+    },
+    "measurements": {
+      "needs_source_review": 9,
+      "matched_focused_expectation": 8
+    },
+    "conflicts": {
+      "matched_focused_expectation": 1
+    }
+  },
+  "fresh_selected_checks": {
+    "identities": {
+      "matched_focused_expectation": 6
+    },
+    "measurements": {
+      "needs_source_review": 6,
+      "matched_focused_expectation": 11
+    },
+    "conflicts": {
+      "needs_source_review": 1
+    }
+  },
+  "other_frozen_baseline_checks": {
+    "focused": {
+      "identities": {
+        "matched_focused_expectation": 5,
+        "needs_source_review": 1
+      },
+      "measurements": {
+        "needs_source_review": 6,
+        "matched_focused_expectation": 3
+      },
+      "conflicts": {}
+    },
+    "pei": {
+      "identities": {},
+      "measurements": {
+        "matched_focused_expectation": 6
+      },
+      "conflicts": {}
+    }
+  },
+  "other_frozen_fresh_checks": {
+    "focused": {
+      "identities": {
+        "matched_focused_expectation": 6
+      },
+      "measurements": {
+        "needs_source_review": 4,
+        "matched_focused_expectation": 5
+      },
+      "conflicts": {}
+    },
+    "pei": {
+      "identities": {},
+      "measurements": {
+        "matched_focused_expectation": 6
+      },
+      "conflicts": {}
+    }
+  },
+  "reference_sha256": {
+    "conditions": "d1a93b5bddb6ca72fe0f4ec30a1ac1a323e4071ac19f061b4f790c20723c4a89",
+    "focused": "bfdac32f92df0c69451e7e49614df4e451fee4966e95a0a20f4e370a48580f98",
+    "pei": "e34b50f553fe79a51b04f297b89c3fcbcc237a6797bf8d4aab2c1fa7e011e1b9"
+  },
+  "completed_model_calls_in_capture": 3,
+  "model_calls_attempted_in_capture": 3,
+  "successful_call_returned_usage": {
+    "prompt_tokens": 170101,
+    "completion_tokens": 50245,
+    "total_tokens": 220346
+  },
+  "model_calls_made_by_comparison": 0,
+  "limits": [
+    "Selected-case matches are not overall scientific accuracy or exhaustive coverage.",
+    "The previous fresh run and this source-span run have different extraction mechanisms.",
+    "Source-span retrieval integrity must not be reported as perfect model quotation fidelity.",
+    "Card and review counts can change with record granularity and validation behavior."
+  ]
+}

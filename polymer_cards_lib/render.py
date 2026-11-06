@@ -123,13 +123,27 @@ def _transformation_note(reference: Dict) -> str:
 
 def _evidence_status(reference: Dict) -> str:
     converted = bool(_transformation_note(reference))
-    if reference.get("evidence_status") == "quote_matched":
+    if reference.get("evidence_origin") in {"source_span_selection", "source_span_selection_union"} and reference.get("evidence_status") == "quote_matched":
+        status = ("Adjacent selected source passages combined exactly" if reference["evidence_origin"] == "source_span_selection_union"
+                  else "Selected source passage retrieved exactly") + (" from converted source text" if converted else "")
+    elif reference.get("evidence_status") == "quote_matched":
         status = "Quote matched to converted source text" if converted else "Original quote matched to source"
     else:
         status = "Evidence reference to converted source text" if converted else "Original evidence reference"
     if not reference["source_reference_resolved"]:
         status += "; source chunk is unavailable in this view"
     return status
+
+
+def _span_selection_note(reference: Dict) -> str:
+    origin = reference.get("evidence_origin")
+    if origin not in {"source_span_selection", "source_span_selection_union"}:
+        return ""
+    label = ("Adjacent passage selections: " + _display(reference.get("span_ids")) if origin == "source_span_selection_union"
+             else "Passage selection: " + _display(reference.get("span_id")))
+    return (label + ". Source characters ["
+            + _display(reference.get("source_start")) + ", " + _display(reference.get("source_end"))
+            + ") in the unchanged chunk (Unicode character offsets).")
 
 
 def _evidence_html(evidence: Any, document: Dict, label: str = "Original evidence") -> str:
@@ -140,12 +154,14 @@ def _evidence_html(evidence: Any, document: Dict, label: str = "Original evidenc
     for ref in refs:
         status = _evidence_status(ref)
         conversion = _transformation_note(ref)
+        selection = _span_selection_note(ref)
         digest = ("<p class=\"source-id\">Source SHA-256: " + _h(ref["document_sha256"]) + "</p>"
                   if ref.get("document_sha256") else "")
         entries.append(
             "<li><p class=\"location\">" + _h(_location(ref)) + "</p>"
             + '<blockquote class="quote">' + _paragraph(ref.get("quote", "")) + "</blockquote>"
             + '<p class="source-id">' + _h(status) + "</p>"
+            + ('<p class="source-id">' + _h(selection) + '</p>' if selection else '')
             + ('<p class="source-id">' + _h(conversion) + '</p>' if conversion else '')
             + digest + "</li>"
         )
@@ -358,6 +374,9 @@ def _evidence_md(evidence: Any, document: Dict, label: str = "Original evidence"
         conversion = _transformation_note(ref)
         if conversion:
             lines.append(_md(conversion))
+        selection = _span_selection_note(ref)
+        if selection:
+            lines.append(_md(selection))
         if ref.get("document_sha256"):
             lines.append("Source SHA-256: " + _md(ref["document_sha256"]))
     return "\n".join(lines) + "\n"

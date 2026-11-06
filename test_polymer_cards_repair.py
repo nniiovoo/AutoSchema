@@ -29,7 +29,7 @@ def fixture():
 class PolymerCardRepairTests(unittest.TestCase):
     def test_v2_schema_requires_explicit_nullable_identity_scope(self):
         output = prompt.build_response_format()["json_schema"]
-        self.assertEqual("polymer_cards_strict_v3", output["name"])
+        self.assertEqual("polymer_cards_strict_v4", output["name"])
         entity = output["schema"]["$defs"]["entity"]
         self.assertIn("identity_kind", entity["required"])
         self.assertEqual(["specific_polymer", "polymer_family", None], entity["properties"]["identity_kind"]["enum"])

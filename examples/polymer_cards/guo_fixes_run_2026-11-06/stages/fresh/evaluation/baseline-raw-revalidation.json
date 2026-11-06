@@ -1,0 +1,836 @@
+{
+  "mode": "automatic_revalidation_of_unchanged_legacy_raw_responses",
+  "additional_model_calls": 0,
+  "raw_responses_sha256": "e7336fb05af3d6e5ad6934060463b1b7a69d2ff0e76478bd8fdc68ad1b2bb9b7",
+  "metrics": {
+    "totals": {
+      "cards": 21,
+      "review_records": 40,
+      "identity_review_records": 3,
+      "other_field_review_records": 37,
+      "validation_flags": 49,
+      "declared_polymer_family": 3,
+      "retained_property_items": 50,
+      "retained_conflict_notes": 1,
+      "declared_specific_polymer": 18
+    },
+    "papers": [
+      {
+        "paper_id": "10.1038/s41467-023-43467-w",
+        "cards": 7,
+        "review_records": 8,
+        "identity_review_records": 0,
+        "other_field_review_records": 8,
+        "validation_flags": 9
+      },
+      {
+        "paper_id": "10.3390/polym13234155",
+        "cards": 5,
+        "review_records": 3,
+        "identity_review_records": 0,
+        "other_field_review_records": 3,
+        "validation_flags": 6
+      },
+      {
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "cards": 9,
+        "review_records": 29,
+        "identity_review_records": 3,
+        "other_field_review_records": 26,
+        "validation_flags": 34
+      }
+    ]
+  },
+  "selected_evaluation": {
+    "evaluation_kind": "focused_source_expectation_check",
+    "reference_version": "conditions-units-context-reference-v1",
+    "identities": [
+      {
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "name": "P2",
+        "candidates": [
+          {
+            "path": "results[2].cards[1]",
+            "reasons": [],
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "matched_focused_expectation",
+        "identity_held_for_review": false
+      },
+      {
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "name": "P3",
+        "candidates": [
+          {
+            "path": "results[2].cards[2]",
+            "reasons": [],
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "matched_focused_expectation",
+        "identity_held_for_review": false
+      },
+      {
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "name": "P4",
+        "candidates": [
+          {
+            "path": "results[2].cards[3]",
+            "reasons": [],
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "matched_focused_expectation",
+        "identity_held_for_review": false
+      },
+      {
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "name": "P5",
+        "candidates": [
+          {
+            "path": "results[2].cards[4]",
+            "reasons": [],
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "matched_focused_expectation",
+        "identity_held_for_review": false
+      },
+      {
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "name": "P6",
+        "candidates": [
+          {
+            "path": "results[2].cards[5]",
+            "reasons": [],
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "matched_focused_expectation",
+        "identity_held_for_review": false
+      },
+      {
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "name": "P7",
+        "candidates": [],
+        "status": "needs_source_review",
+        "identity_held_for_review": true
+      }
+    ],
+    "measurements": [
+      {
+        "claim_id": "guo-p3-gpc-pdi",
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "candidates": [],
+        "status": "needs_source_review",
+        "matching_value_held_for_review": true
+      },
+      {
+        "claim_id": "guo-p3-healing-ambient",
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "candidates": [
+          {
+            "path": "results[2].cards[2].properties.items[0]",
+            "entity_id": "p4",
+            "specimen_id": "p4-healed-film",
+            "value": "93% ± 3%",
+            "unit": "%",
+            "reasons": [
+              "required_condition_missing:10 mm min⁻¹|10 mm min−1|10 mm/min|10 mm min^-1",
+              "required_evidence_chunk_missing:src-bf623a19fffc11e5efc2"
+            ],
+            "notes": [],
+            "match_kind": "raw_value_and_unit",
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "needs_source_review",
+        "matching_value_held_for_review": false
+      },
+      {
+        "claim_id": "guo-p3-healing-water",
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "candidates": [
+          {
+            "path": "results[2].cards[2].properties.items[2]",
+            "entity_id": "p4",
+            "specimen_id": "p4-water-healed-film",
+            "value": "93% ± 2%",
+            "unit": "%",
+            "reasons": [
+              "required_condition_missing:10 mm min⁻¹|10 mm min−1|10 mm/min|10 mm min^-1",
+              "required_evidence_chunk_missing:src-bf623a19fffc11e5efc2"
+            ],
+            "notes": [],
+            "match_kind": "raw_value_and_unit",
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "needs_source_review",
+        "matching_value_held_for_review": false
+      },
+      {
+        "claim_id": "guo-p4-stretch",
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "candidates": [
+          {
+            "path": "results[2].cards[3].properties.items[0]",
+            "entity_id": "p5",
+            "specimen_id": "p5-film",
+            "value": "nearly 140 times its original length",
+            "unit": null,
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "required_unit_field_missing"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "needs_source_review",
+        "matching_value_held_for_review": false
+      },
+      {
+        "claim_id": "pei-peo-voltage",
+        "paper_id": "10.1038/s41467-023-43467-w",
+        "candidates": [
+          {
+            "path": "results[0].cards[1].properties.items[0]",
+            "entity_id": "p2",
+            "specimen_id": "p2-lifsi-electrolyte",
+            "value": "1.2 × 10⁻⁵",
+            "unit": "S cm⁻¹",
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "required_unit_field_not_exact_reference",
+              "required_condition_missing:room temperature|room-temperature|r.t.",
+              "required_condition_missing:10 mV s⁻¹|10 mV/s|10 mV s−1|10 mV s^-1",
+              "required_condition_missing:0 to 6 V|0–6 V|0-6 V|0 to 6V",
+              "required_evidence_chunk_missing:src-5d598cf3569a0bb57b72"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "needs_source_review",
+        "matching_value_held_for_review": true
+      },
+      {
+        "claim_id": "pei-hdi-voltage",
+        "paper_id": "10.1038/s41467-023-43467-w",
+        "candidates": [
+          {
+            "path": "results[0].cards[2].properties.items[0]",
+            "entity_id": "p3",
+            "specimen_id": "p3-lifsi-electrolyte",
+            "value": "6.5 × 10⁻⁵",
+            "unit": "S cm⁻¹",
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "required_unit_field_not_exact_reference",
+              "required_condition_missing:room temperature|room-temperature|r.t.",
+              "required_condition_missing:10 mV s⁻¹|10 mV/s|10 mV s−1|10 mV s^-1",
+              "required_condition_missing:0 to 6 V|0–6 V|0-6 V|0 to 6V",
+              "required_evidence_chunk_missing:src-5d598cf3569a0bb57b72"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          },
+          {
+            "path": "results[0].cards[2].properties.items[1]",
+            "entity_id": "p3",
+            "specimen_id": "p3-lifsi-electrolyte",
+            "value": "68.5%",
+            "unit": "%",
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "required_unit_field_not_exact_reference",
+              "required_condition_missing:room temperature|room-temperature|r.t.",
+              "required_condition_missing:10 mV s⁻¹|10 mV/s|10 mV s−1|10 mV s^-1",
+              "required_condition_missing:0 to 6 V|0–6 V|0-6 V|0 to 6V",
+              "required_evidence_chunk_missing:src-5d598cf3569a0bb57b72",
+              "required_evidence_chunk_missing:src-705d4d9258f66326a788"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          },
+          {
+            "path": "results[0].cards[3].properties.items[4]",
+            "entity_id": "p4",
+            "specimen_id": "p4-lifsi-electrolyte",
+            "value": "2.4 × 10⁻⁴",
+            "unit": "S cm⁻¹",
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "required_unit_field_not_exact_reference",
+              "required_condition_missing:room temperature|room-temperature|r.t.",
+              "required_condition_missing:10 mV s⁻¹|10 mV/s|10 mV s−1|10 mV s^-1",
+              "required_condition_missing:0 to 6 V|0–6 V|0-6 V|0 to 6V",
+              "required_evidence_chunk_missing:src-5d598cf3569a0bb57b72"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          },
+          {
+            "path": "results[0].cards[3].properties.items[5]",
+            "entity_id": "p4",
+            "specimen_id": "p4-lifsi-electrolyte",
+            "value": "0.30",
+            "unit": "eV",
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "required_unit_field_not_exact_reference",
+              "required_condition_missing:room temperature|room-temperature|r.t.",
+              "required_condition_missing:10 mV s⁻¹|10 mV/s|10 mV s−1|10 mV s^-1",
+              "required_condition_missing:0 to 6 V|0–6 V|0-6 V|0 to 6V",
+              "required_evidence_chunk_missing:src-5d598cf3569a0bb57b72",
+              "required_evidence_chunk_missing:src-705d4d9258f66326a788"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          },
+          {
+            "path": "results[0].cards[3].properties.items[6]",
+            "entity_id": "p4",
+            "specimen_id": "p4-lifsi-electrolyte",
+            "value": "95.2%",
+            "unit": "%",
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "required_unit_field_not_exact_reference",
+              "required_condition_missing:room temperature|room-temperature|r.t.",
+              "required_condition_missing:10 mV s⁻¹|10 mV/s|10 mV s−1|10 mV s^-1",
+              "required_condition_missing:0 to 6 V|0–6 V|0-6 V|0 to 6V",
+              "required_evidence_chunk_missing:src-5d598cf3569a0bb57b72",
+              "required_evidence_chunk_missing:src-705d4d9258f66326a788"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          },
+          {
+            "path": "results[0].cards[3].properties.items[7]",
+            "entity_id": "p4",
+            "specimen_id": "p4-lifsi-electrolyte",
+            "value": "beyond 5.0 V",
+            "unit": "V",
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          },
+          {
+            "path": "results[0].cards[3].properties.items[8]",
+            "entity_id": "p4",
+            "specimen_id": "p4-lifsi-electrolyte",
+            "value": "0.81",
+            "unit": null,
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "required_unit_field_missing",
+              "required_condition_missing:room temperature|room-temperature|r.t.",
+              "required_condition_missing:10 mV s⁻¹|10 mV/s|10 mV s−1|10 mV s^-1",
+              "required_condition_missing:0 to 6 V|0–6 V|0-6 V|0 to 6V"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "needs_source_review",
+        "matching_value_held_for_review": true
+      },
+      {
+        "claim_id": "chen-precursor-strength",
+        "paper_id": "10.3390/polym13234155",
+        "candidates": [
+          {
+            "path": "results[1].cards[0].properties.items[1]",
+            "entity_id": "p1",
+            "specimen_id": "p1-precursor-specimen",
+            "value": "5",
+            "unit": "MPa",
+            "reasons": [
+              "specimen_required_term_missing"
+            ],
+            "notes": [],
+            "match_kind": "raw_value_and_unit",
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "needs_source_review",
+        "matching_value_held_for_review": false
+      },
+      {
+        "claim_id": "chen-crosslinked-strength",
+        "paper_id": "10.3390/polym13234155",
+        "candidates": [
+          {
+            "path": "results[1].cards[1].properties.items[0]",
+            "entity_id": "p2",
+            "specimen_id": "p2-crosslinked-network",
+            "value": "21",
+            "unit": "MPa",
+            "reasons": [],
+            "notes": [],
+            "match_kind": "raw_value_and_unit",
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "matched_focused_expectation",
+        "matching_value_held_for_review": false
+      },
+      {
+        "claim_id": "chen-wet-room-temperature-conductivity",
+        "paper_id": "10.3390/polym13234155",
+        "candidates": [
+          {
+            "path": "results[1].cards[1].properties.items[1]",
+            "entity_id": "p2",
+            "specimen_id": "p2-crosslinked-network",
+            "value": "280",
+            "unit": "°C",
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "required_unit_field_not_exact_reference",
+              "specimen_required_term_missing",
+              "required_condition_missing:room temperature|room-temperature|r.t.",
+              "required_condition_missing:10 μL|10 µL|10μL|10µL|10 uL|10 microliters|10 microlitres",
+              "required_condition_missing:10⁻¹ to 10⁵ Hz|10⁻¹–10⁵ Hz|10^-1 to 10^5 Hz|10−1 to 10⁵ Hz|0.1 to 100000 Hz",
+              "required_condition_missing:10 mV",
+              "required_condition_missing:SS/SHPEM/SS|SS||SHPEM||SS|SS/SHP/SS|SS discs|stainless steel",
+              "required_evidence_chunk_missing:src-84988e5beedccc653dff"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          },
+          {
+            "path": "results[1].cards[2].properties.items[1]",
+            "entity_id": "p3",
+            "specimen_id": "p3-shpem",
+            "value": "12",
+            "unit": "μm",
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "required_unit_field_not_exact_reference",
+              "specimen_required_term_missing",
+              "required_condition_missing:room temperature|room-temperature|r.t.",
+              "required_condition_missing:10 μL|10 µL|10μL|10µL|10 uL|10 microliters|10 microlitres",
+              "required_condition_missing:10⁻¹ to 10⁵ Hz|10⁻¹–10⁵ Hz|10^-1 to 10^5 Hz|10−1 to 10⁵ Hz|0.1 to 100000 Hz",
+              "required_condition_missing:10 mV",
+              "required_condition_missing:SS/SHPEM/SS|SS||SHPEM||SS|SS/SHP/SS|SS discs|stainless steel",
+              "required_evidence_chunk_missing:src-84988e5beedccc653dff"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          },
+          {
+            "path": "results[1].cards[2].properties.items[3]",
+            "entity_id": "p3",
+            "specimen_id": "p3-shpem",
+            "value": "16",
+            "unit": "mm",
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "required_unit_field_not_exact_reference",
+              "specimen_required_term_missing",
+              "required_condition_missing:room temperature|room-temperature|r.t.",
+              "required_condition_missing:10 μL|10 µL|10μL|10µL|10 uL|10 microliters|10 microlitres",
+              "required_condition_missing:10⁻¹ to 10⁵ Hz|10⁻¹–10⁵ Hz|10^-1 to 10^5 Hz|10−1 to 10⁵ Hz|0.1 to 100000 Hz",
+              "required_condition_missing:10 mV",
+              "required_condition_missing:SS/SHPEM/SS|SS||SHPEM||SS|SS/SHP/SS|SS discs|stainless steel",
+              "required_evidence_chunk_missing:src-84988e5beedccc653dff"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          },
+          {
+            "path": "results[1].cards[2].properties.items[6]",
+            "entity_id": "p3",
+            "specimen_id": "p3-shpem",
+            "value": "1.69 × 10⁻⁴",
+            "unit": "S·cm⁻¹",
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "specimen_required_term_missing",
+              "required_condition_missing:room temperature|room-temperature|r.t.",
+              "required_condition_missing:10 μL|10 µL|10μL|10µL|10 uL|10 microliters|10 microlitres",
+              "required_condition_missing:SS/SHPEM/SS|SS||SHPEM||SS|SS/SHP/SS|SS discs|stainless steel"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          },
+          {
+            "path": "results[1].cards[2].properties.items[7]",
+            "entity_id": "p3",
+            "specimen_id": "p3-shpem",
+            "value": "2.69 × 10⁻⁴",
+            "unit": "S·cm⁻¹",
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "specimen_required_term_missing",
+              "required_condition_missing:room temperature|room-temperature|r.t.",
+              "required_condition_missing:10 μL|10 µL|10μL|10µL|10 uL|10 microliters|10 microlitres",
+              "required_condition_missing:SS/SHPEM/SS|SS||SHPEM||SS|SS/SHP/SS|SS discs|stainless steel"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          },
+          {
+            "path": "results[1].cards[2].properties.items[8]",
+            "entity_id": "p3",
+            "specimen_id": "p3-shpem",
+            "value": "4.17 × 10⁻⁴",
+            "unit": "S·cm⁻¹",
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "specimen_required_term_missing",
+              "required_condition_missing:room temperature|room-temperature|r.t.",
+              "required_condition_missing:10 μL|10 µL|10μL|10µL|10 uL|10 microliters|10 microlitres",
+              "required_condition_missing:SS/SHPEM/SS|SS||SHPEM||SS|SS/SHP/SS|SS discs|stainless steel"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          },
+          {
+            "path": "results[1].cards[2].properties.items[9]",
+            "entity_id": "p3",
+            "specimen_id": "p3-shpem",
+            "value": "6.61 × 10⁻⁴",
+            "unit": "S·cm⁻¹",
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "specimen_required_term_missing",
+              "required_condition_missing:room temperature|room-temperature|r.t.",
+              "required_condition_missing:10 μL|10 µL|10μL|10µL|10 uL|10 microliters|10 microlitres",
+              "required_condition_missing:SS/SHPEM/SS|SS||SHPEM||SS|SS/SHP/SS|SS discs|stainless steel"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          },
+          {
+            "path": "results[1].cards[2].properties.items[10]",
+            "entity_id": "p3",
+            "specimen_id": "p3-shpem",
+            "value": "9.33 × 10⁻⁴",
+            "unit": "S·cm⁻¹",
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "specimen_required_term_missing",
+              "required_condition_missing:room temperature|room-temperature|r.t.",
+              "required_condition_missing:10 μL|10 µL|10μL|10µL|10 uL|10 microliters|10 microlitres",
+              "required_condition_missing:SS/SHPEM/SS|SS||SHPEM||SS|SS/SHP/SS|SS discs|stainless steel"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          },
+          {
+            "path": "results[1].cards[2].properties.items[11]",
+            "entity_id": "p3",
+            "specimen_id": "p3-shpem",
+            "value": "1.32 × 10⁻³",
+            "unit": "S·cm⁻¹",
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "specimen_required_term_missing",
+              "required_condition_missing:room temperature|room-temperature|r.t.",
+              "required_condition_missing:10 μL|10 µL|10μL|10µL|10 uL|10 microliters|10 microlitres",
+              "required_condition_missing:SS/SHPEM/SS|SS||SHPEM||SS|SS/SHP/SS|SS discs|stainless steel"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          },
+          {
+            "path": "results[1].cards[2].properties.items[12]",
+            "entity_id": "p3",
+            "specimen_id": "p3-shpem",
+            "value": "1.86 × 10⁻³",
+            "unit": "S·cm⁻¹",
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "specimen_required_term_missing",
+              "required_condition_missing:room temperature|room-temperature|r.t.",
+              "required_condition_missing:10 μL|10 µL|10μL|10µL|10 uL|10 microliters|10 microlitres",
+              "required_condition_missing:SS/SHPEM/SS|SS||SHPEM||SS|SS/SHP/SS|SS discs|stainless steel"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          },
+          {
+            "path": "results[1].cards[2].properties.items[13]",
+            "entity_id": "p3",
+            "specimen_id": "p3-shpem",
+            "value": "2.34 × 10⁻³",
+            "unit": "S·cm⁻¹",
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "specimen_required_term_missing",
+              "required_condition_missing:room temperature|room-temperature|r.t.",
+              "required_condition_missing:10 μL|10 µL|10μL|10µL|10 uL|10 microliters|10 microlitres",
+              "required_condition_missing:SS/SHPEM/SS|SS||SHPEM||SS|SS/SHP/SS|SS discs|stainless steel"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          },
+          {
+            "path": "results[1].cards[2].properties.items[14]",
+            "entity_id": "p3",
+            "specimen_id": "p3-shpem-10uL-plasticized",
+            "value": "2.56 × 10⁻³",
+            "unit": "S·cm⁻¹",
+            "reasons": [
+              "raw_value_or_unit_not_exact_reference",
+              "required_condition_missing:10 μL|10 µL|10μL|10µL|10 uL|10 microliters|10 microlitres",
+              "required_condition_missing:SS/SHPEM/SS|SS||SHPEM||SS|SS/SHP/SS|SS discs|stainless steel"
+            ],
+            "notes": [],
+            "match_kind": "source_related_value_variant",
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "needs_source_review",
+        "matching_value_held_for_review": false
+      },
+      {
+        "claim_id": "pei-bhds-strength",
+        "paper_id": "10.1038/s41467-023-43467-w",
+        "candidates": [
+          {
+            "path": "results[0].cards[3].properties.items[2]",
+            "entity_id": "p4",
+            "specimen_id": "p4-film",
+            "value": "88.3",
+            "unit": "MPa",
+            "reasons": [],
+            "notes": [],
+            "match_kind": "raw_value_and_unit",
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "matched_focused_expectation",
+        "matching_value_held_for_review": false
+      },
+      {
+        "claim_id": "pei-bhds-elongation",
+        "paper_id": "10.1038/s41467-023-43467-w",
+        "candidates": [
+          {
+            "path": "results[0].cards[3].properties.items[3]",
+            "entity_id": "p4",
+            "specimen_id": "p4-film",
+            "value": "2000%",
+            "unit": "%",
+            "reasons": [],
+            "notes": [],
+            "match_kind": "raw_value_and_unit",
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "matched_focused_expectation",
+        "matching_value_held_for_review": false
+      },
+      {
+        "claim_id": "pei-bhds-mn-monitoring",
+        "paper_id": "10.1038/s41467-023-43467-w",
+        "candidates": [
+          {
+            "path": "results[0].cards[3].properties.items[0]",
+            "entity_id": "p4",
+            "specimen_id": "p4-solution",
+            "value": "7.3 × 10⁵",
+            "unit": "g mol⁻¹",
+            "reasons": [],
+            "notes": [],
+            "match_kind": "raw_value_and_unit",
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "matched_focused_expectation",
+        "matching_value_held_for_review": false
+      },
+      {
+        "claim_id": "pei-bhds-conductivity",
+        "paper_id": "10.1038/s41467-023-43467-w",
+        "candidates": [
+          {
+            "path": "results[0].cards[3].properties.items[4]",
+            "entity_id": "p4",
+            "specimen_id": "p4-lifsi-electrolyte",
+            "value": "2.4 × 10⁻⁴",
+            "unit": "S cm⁻¹",
+            "reasons": [],
+            "notes": [],
+            "match_kind": "raw_value_and_unit",
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "matched_focused_expectation",
+        "matching_value_held_for_review": false
+      },
+      {
+        "claim_id": "pei-bhds-lsv-limit",
+        "paper_id": "10.1038/s41467-023-43467-w",
+        "candidates": [
+          {
+            "path": "results[0].cards[3].properties.items[7]",
+            "entity_id": "p4",
+            "specimen_id": "p4-lifsi-electrolyte",
+            "value": "beyond 5.0 V",
+            "unit": "V",
+            "reasons": [],
+            "notes": [],
+            "match_kind": "raw_value_and_unit",
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "matched_focused_expectation",
+        "matching_value_held_for_review": false
+      },
+      {
+        "claim_id": "pei-bhds-transference",
+        "paper_id": "10.1038/s41467-023-43467-w",
+        "candidates": [
+          {
+            "path": "results[0].cards[3].properties.items[8]",
+            "entity_id": "p4",
+            "specimen_id": "p4-lifsi-electrolyte",
+            "value": "0.81",
+            "unit": null,
+            "reasons": [],
+            "notes": [],
+            "match_kind": "raw_value_and_unit",
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "matched_focused_expectation",
+        "matching_value_held_for_review": false
+      },
+      {
+        "claim_id": "guo-p3-recovered-strain-ambient",
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "candidates": [
+          {
+            "path": "results[2].cards[2].properties.items[1]",
+            "entity_id": "p4",
+            "specimen_id": "p4-healed-film",
+            "value": "1200% ± 50%",
+            "unit": "%",
+            "reasons": [
+              "required_condition_missing:10 mm min⁻¹|10 mm min−1|10 mm/min|10 mm min^-1",
+              "required_evidence_chunk_missing:src-bf623a19fffc11e5efc2"
+            ],
+            "notes": [],
+            "match_kind": "raw_value_and_unit",
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "needs_source_review",
+        "matching_value_held_for_review": false
+      },
+      {
+        "claim_id": "guo-p5-strain-break",
+        "paper_id": "10.1038/s41467-020-15949-8",
+        "candidates": [
+          {
+            "path": "results[2].cards[4].properties.items[0]",
+            "entity_id": "p6",
+            "specimen_id": "p6-film",
+            "value": "ca. 2,000%",
+            "unit": "%",
+            "reasons": [],
+            "notes": [],
+            "match_kind": "raw_value_and_unit",
+            "legacy_scope_undeclared": false
+          }
+        ],
+        "status": "matched_focused_expectation",
+        "matching_value_held_for_review": false
+      }
+    ],
+    "conflicts": [
+      {
+        "claim_id": "chen-electrochemical-membrane-thickness-context",
+        "paper_id": "10.3390/polym13234155",
+        "candidates": [
+          {
+            "path": "results[1].cards[2].properties.conflicts[0]",
+            "entity_id": "p3",
+            "reasons": [],
+            "observations": [
+              {
+                "observation_index": 0,
+                "value": "12",
+                "unit": "μm",
+                "candidates": [
+                  {
+                    "path": "results[1].cards[2].properties.items[1]",
+                    "entity_id": "p3",
+                    "specimen_id": "p3-shpem",
+                    "value": "12",
+                    "unit": "μm",
+                    "reasons": [],
+                    "notes": [],
+                    "match_kind": "raw_value_and_unit",
+                    "legacy_scope_undeclared": false
+                  }
+                ],
+                "matched": true
+              },
+              {
+                "observation_index": 1,
+                "value": "about 15",
+                "unit": "μm",
+                "candidates": [
+                  {
+                    "path": "results[1].cards[2].properties.items[2]",
+                    "entity_id": "p3",
+                    "specimen_id": "p3-shp-electrolyte-membrane-15um",
+                    "value": "about 15",
+                    "unit": "μm",
+                    "reasons": [],
+                    "notes": [],
+                    "match_kind": "raw_value_and_unit",
+                    "legacy_scope_undeclared": false
+                  }
+                ],
+                "matched": true
+              }
+            ]
+          }
+        ],
+        "status": "matched_focused_expectation"
+      }
+    ],
+    "unevaluated_reference_sections": [
+      "review_expectations"
+    ],
+    "limits": [
+      "Selected expectation matches are not scientific accuracy, precision, recall, or exhaustive paper coverage.",
+      "Source containment and record structure are assumed from the validator run; scientific interpretation still needs source review.",
+      "Exact raw notation is compared with NFC/whitespace handling and nonduplicated units; equivalent numerical conversions are not inferred.",
+      "Legacy records without identity_kind are reported as undeclared, not assigned a new scope.",
+      "Conflict checks require selected observations and an explicit source-linked note; they do not resolve discrepancies or prove the note's scientific interpretation."
+    ]
+  },
+  "note": "Separate code-only check; old quoted references remain strict and are not repaired into source-span selections."
+}

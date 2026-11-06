@@ -1,0 +1,1364 @@
+{
+  "contract_version": "polymer-cards-v1",
+  "run_metadata": {
+    "contract_version": "polymer-cards-v1",
+    "created_at_utc": "2026-11-06T08:31:38.387313+00:00",
+    "mode": "anchored_context_composition",
+    "run_kind": "Guo context review plus all-three-paper revalidation",
+    "composition_note": "Targeted context review chain; other paper responses are unchanged. All three are revalidated under current policy.",
+    "provider": "openai",
+    "model": "gpt-5.4",
+    "model_calls": 3,
+    "model_calls_attempted": 3,
+    "model_papers_targeted_this_stage": 1,
+    "papers_revalidated": 3,
+    "run_complete": true,
+    "prior_fresh_model_calls": 3,
+    "prior_full_revision_model_calls": 3,
+    "extraction_profile": {
+      "output_format": "json_schema",
+      "schema_name": "polymer_context_review_v1",
+      "schema_sha256": "4ceb0762994ed69f3d3eaa4aab3255c693661b3e7071df142751d09fd15acad9",
+      "system_prompt_sha256": "ca362f2af5cef67aacf6ed60cc8a9d93749344c4665736615cccca3eba1b4d69"
+    },
+    "checked_answers_supplied": false,
+    "source_audit_hypotheses_supplied": true,
+    "immutable_claims_preserved": true,
+    "automatic_retries": 0,
+    "retention_rule": "polymer identity only; no application or completeness threshold"
+  },
+  "counts": {
+    "papers": 3,
+    "retained_cards": 27,
+    "discarded_entities": 0,
+    "review_records": 25,
+    "validation_issues": 28,
+    "attribution_warnings": 4
+  },
+  "papers": [
+    {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "discarded_entities": [],
+      "review_queue": [
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p2",
+          "name": "PTMG-HDI-BHDS",
+          "path": "entities[1].properties.items[11]",
+          "reason": "condition_value_not_in_original_evidence",
+          "record": {
+            "entity_id": "p2",
+            "property": "overpotential",
+            "value": "49",
+            "unit": "mV",
+            "specimen_id": "p2-li-symmetric-coin",
+            "specimen_evidence": [
+              {
+                "chunk_id": "src-6ccaa9993a61c1adcf42",
+                "span_id": "spn-b57305c4330fdc3094500e6b6c750076"
+              }
+            ],
+            "conditions": [
+              {
+                "name": "current density",
+                "value": "0.1 mA cm⁻²",
+                "evidence": [
+                  {
+                    "chunk_id": "src-6ccaa9993a61c1adcf42",
+                    "span_id": "spn-7afe0cf2cc732d33bfdbc9814bddad2f"
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-6ccaa9993a61c1adcf42",
+                "span_id": "spn-7afe0cf2cc732d33bfdbc9814bddad2f"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p2",
+          "name": "PTMG-HDI-BHDS",
+          "path": "entities[1].properties.items[12]",
+          "reason": "condition_value_not_in_original_evidence",
+          "record": {
+            "entity_id": "p2",
+            "property": "overpotential",
+            "value": "74",
+            "unit": "mV",
+            "specimen_id": "p2-li-symmetric-coin",
+            "specimen_evidence": [
+              {
+                "chunk_id": "src-6ccaa9993a61c1adcf42",
+                "span_id": "spn-b57305c4330fdc3094500e6b6c750076"
+              }
+            ],
+            "conditions": [
+              {
+                "name": "current density",
+                "value": "0.2 mA cm⁻²",
+                "evidence": [
+                  {
+                    "chunk_id": "src-6ccaa9993a61c1adcf42",
+                    "span_id": "spn-7afe0cf2cc732d33bfdbc9814bddad2f"
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-6ccaa9993a61c1adcf42",
+                "span_id": "spn-7afe0cf2cc732d33bfdbc9814bddad2f"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p2",
+          "name": "PTMG-HDI-BHDS",
+          "path": "entities[1].properties.items[13]",
+          "reason": "condition_value_not_in_original_evidence",
+          "record": {
+            "entity_id": "p2",
+            "property": "overpotential",
+            "value": "113",
+            "unit": "mV",
+            "specimen_id": "p2-li-symmetric-coin",
+            "specimen_evidence": [
+              {
+                "chunk_id": "src-6ccaa9993a61c1adcf42",
+                "span_id": "spn-b57305c4330fdc3094500e6b6c750076"
+              }
+            ],
+            "conditions": [
+              {
+                "name": "current density",
+                "value": "0.4 mA cm⁻²",
+                "evidence": [
+                  {
+                    "chunk_id": "src-6ccaa9993a61c1adcf42",
+                    "span_id": "spn-7afe0cf2cc732d33bfdbc9814bddad2f"
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-6ccaa9993a61c1adcf42",
+                "span_id": "spn-7afe0cf2cc732d33bfdbc9814bddad2f"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p2",
+          "name": "PTMG-HDI-BHDS",
+          "path": "entities[1].properties.items[14]",
+          "reason": "condition_value_not_in_original_evidence",
+          "record": {
+            "entity_id": "p2",
+            "property": "overpotential",
+            "value": "172",
+            "unit": "mV",
+            "specimen_id": "p2-li-symmetric-coin",
+            "specimen_evidence": [
+              {
+                "chunk_id": "src-6ccaa9993a61c1adcf42",
+                "span_id": "spn-b57305c4330fdc3094500e6b6c750076"
+              }
+            ],
+            "conditions": [
+              {
+                "name": "current density",
+                "value": "0.6 mA cm⁻²",
+                "evidence": [
+                  {
+                    "chunk_id": "src-6ccaa9993a61c1adcf42",
+                    "span_id": "spn-7afe0cf2cc732d33bfdbc9814bddad2f"
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-6ccaa9993a61c1adcf42",
+                "span_id": "spn-7afe0cf2cc732d33bfdbc9814bddad2f"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p2",
+          "name": "PTMG-HDI-BHDS",
+          "path": "entities[1].properties.items[15]",
+          "reason": "condition_value_not_in_original_evidence",
+          "record": {
+            "entity_id": "p2",
+            "property": "overpotential",
+            "value": "233",
+            "unit": "mV",
+            "specimen_id": "p2-li-symmetric-coin",
+            "specimen_evidence": [
+              {
+                "chunk_id": "src-6ccaa9993a61c1adcf42",
+                "span_id": "spn-b57305c4330fdc3094500e6b6c750076"
+              }
+            ],
+            "conditions": [
+              {
+                "name": "current density",
+                "value": "0.8 mA cm⁻²",
+                "evidence": [
+                  {
+                    "chunk_id": "src-6ccaa9993a61c1adcf42",
+                    "span_id": "spn-7afe0cf2cc732d33bfdbc9814bddad2f"
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-6ccaa9993a61c1adcf42",
+                "span_id": "spn-7afe0cf2cc732d33bfdbc9814bddad2f"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p2",
+          "name": "PTMG-HDI-BHDS",
+          "path": "entities[1].properties.items[24]",
+          "reason": "condition_value_not_in_original_evidence",
+          "record": {
+            "entity_id": "p2",
+            "property": "discharge capacity",
+            "value": "641",
+            "unit": "mAh g_{SPAN}⁻¹",
+            "specimen_id": "p2-span-cell",
+            "specimen_evidence": [
+              {
+                "chunk_id": "src-15c1ef1d47fb1a027978",
+                "span_id": "spn-c21e5d38e5adba86f998cdc0fd1b7de8"
+              }
+            ],
+            "conditions": [
+              {
+                "name": "rate",
+                "value": "0.1 C",
+                "evidence": [
+                  {
+                    "chunk_id": "src-15c1ef1d47fb1a027978",
+                    "span_id": "spn-ed02e8c6a5f00cd481cb3d8eccb9833f"
+                  }
+                ]
+              },
+              {
+                "name": "temperature",
+                "value": "30 °C",
+                "evidence": [
+                  {
+                    "chunk_id": "src-15c1ef1d47fb1a027978",
+                    "span_id": "spn-822bdcbef902e56e4c83f1e98d974069"
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-15c1ef1d47fb1a027978",
+                "span_id": "spn-ed02e8c6a5f00cd481cb3d8eccb9833f"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p2",
+          "name": "PTMG-HDI-BHDS",
+          "path": "entities[1].properties.items[25]",
+          "reason": "condition_value_not_in_original_evidence",
+          "record": {
+            "entity_id": "p2",
+            "property": "discharge capacity",
+            "value": "557",
+            "unit": "mAh g_{SPAN}⁻¹",
+            "specimen_id": "p2-span-cell",
+            "specimen_evidence": [
+              {
+                "chunk_id": "src-15c1ef1d47fb1a027978",
+                "span_id": "spn-c21e5d38e5adba86f998cdc0fd1b7de8"
+              }
+            ],
+            "conditions": [
+              {
+                "name": "rate",
+                "value": "1.0 C",
+                "evidence": [
+                  {
+                    "chunk_id": "src-15c1ef1d47fb1a027978",
+                    "span_id": "spn-ed02e8c6a5f00cd481cb3d8eccb9833f"
+                  }
+                ]
+              },
+              {
+                "name": "temperature",
+                "value": "30 °C",
+                "evidence": [
+                  {
+                    "chunk_id": "src-15c1ef1d47fb1a027978",
+                    "span_id": "spn-822bdcbef902e56e4c83f1e98d974069"
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-15c1ef1d47fb1a027978",
+                "span_id": "spn-ed02e8c6a5f00cd481cb3d8eccb9833f"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p2",
+          "name": "PTMG-HDI-BHDS",
+          "path": "entities[1].properties.items[32]",
+          "reason": "condition_value_not_in_original_evidence",
+          "record": {
+            "entity_id": "p2",
+            "property": "reversible capacity",
+            "value": "812 mAh g_{S}⁻¹",
+            "unit": "mAh g_{S}⁻¹",
+            "specimen_id": "p2-scb-cell",
+            "specimen_evidence": [
+              {
+                "chunk_id": "src-783e554cd36a57dab52c",
+                "span_id": "spn-fd471e5a938bc17b4beaaf7b70ee374a"
+              }
+            ],
+            "conditions": [
+              {
+                "name": "areal capacity",
+                "value": "ca. 1.6 mAh cm⁻²",
+                "evidence": [
+                  {
+                    "chunk_id": "src-783e554cd36a57dab52c",
+                    "span_id": "spn-8233cf1d3c38e327613b3725df72c9d4"
+                  }
+                ]
+              },
+              {
+                "name": "cycles",
+                "value": "350 cycles",
+                "evidence": [
+                  {
+                    "chunk_id": "src-783e554cd36a57dab52c",
+                    "span_id": "spn-8233cf1d3c38e327613b3725df72c9d4"
+                  }
+                ]
+              },
+              {
+                "name": "rate",
+                "value": "0.3 C",
+                "evidence": [
+                  {
+                    "chunk_id": "src-783e554cd36a57dab52c",
+                    "span_id": "spn-8233cf1d3c38e327613b3725df72c9d4"
+                  }
+                ]
+              },
+              {
+                "name": "temperature",
+                "value": "30 °C",
+                "evidence": [
+                  {
+                    "chunk_id": "src-15c1ef1d47fb1a027978",
+                    "span_id": "spn-822bdcbef902e56e4c83f1e98d974069"
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-783e554cd36a57dab52c",
+                "span_id": "spn-fd471e5a938bc17b4beaaf7b70ee374a"
+              },
+              {
+                "chunk_id": "src-783e554cd36a57dab52c",
+                "span_id": "spn-8233cf1d3c38e327613b3725df72c9d4"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p3",
+          "name": "PEO",
+          "path": "entities[2].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p3",
+            "property": "molecular weight (Mw)",
+            "value": "6 × 10⁵",
+            "unit": "g mol⁻¹",
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [],
+            "evidence": [
+              {
+                "chunk_id": "src-6524f9582cedc0d6c138",
+                "span_id": "spn-391c5bfddc456913fa3ebffb3d0b2c20"
+              }
+            ]
+          }
+        }
+      ],
+      "validation_issues": [
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p2",
+          "name": "PTMG-HDI-BHDS",
+          "path": "entities[1].properties.items[11]",
+          "reason": "condition_value_not_in_original_evidence"
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p2",
+          "name": "PTMG-HDI-BHDS",
+          "path": "entities[1].properties.items[12]",
+          "reason": "condition_value_not_in_original_evidence"
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p2",
+          "name": "PTMG-HDI-BHDS",
+          "path": "entities[1].properties.items[13]",
+          "reason": "condition_value_not_in_original_evidence"
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p2",
+          "name": "PTMG-HDI-BHDS",
+          "path": "entities[1].properties.items[14]",
+          "reason": "condition_value_not_in_original_evidence"
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p2",
+          "name": "PTMG-HDI-BHDS",
+          "path": "entities[1].properties.items[15]",
+          "reason": "condition_value_not_in_original_evidence"
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p2",
+          "name": "PTMG-HDI-BHDS",
+          "path": "entities[1].properties.items[24]",
+          "reason": "condition_value_not_in_original_evidence"
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p2",
+          "name": "PTMG-HDI-BHDS",
+          "path": "entities[1].properties.items[25]",
+          "reason": "condition_value_not_in_original_evidence"
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p2",
+          "name": "PTMG-HDI-BHDS",
+          "path": "entities[1].properties.items[32]",
+          "reason": "condition_value_not_in_original_evidence"
+        },
+        {
+          "paper_id": "10.1038/s41467-023-43467-w",
+          "entity_id": "p3",
+          "name": "PEO",
+          "path": "entities[2].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        }
+      ],
+      "attribution_warnings": [
+        {
+          "reason": "specimen_form_ambiguous",
+          "entity_id": "p2",
+          "path": "properties.items[0]",
+          "property": "number-average molecular weight (M_{n})",
+          "value": "7.3 × 10⁵",
+          "specimen_label": "PTMG-HDI-BHDS solution",
+          "related_specimen_labels": [
+            "PTMG-HDI-BHDS/LiFSI electrolyte"
+          ],
+          "detail": "A bare polymer label and an additive-containing form coexist. Check the test/preparation context; the result has not been automatically reassigned."
+        },
+        {
+          "reason": "specimen_form_ambiguous",
+          "entity_id": "p2",
+          "path": "properties.items[1]",
+          "property": "viscosity",
+          "value": "1.3 × 10⁴",
+          "specimen_label": "PTMG-HDI-BHDS solution",
+          "related_specimen_labels": [
+            "PTMG-HDI-BHDS/LiFSI electrolyte"
+          ],
+          "detail": "A bare polymer label and an additive-containing form coexist. Check the test/preparation context; the result has not been automatically reassigned."
+        },
+        {
+          "reason": "specimen_form_ambiguous",
+          "entity_id": "p2",
+          "path": "properties.items[2]",
+          "property": "breaking strength",
+          "value": "88.3",
+          "specimen_label": "PTMG-HDI-BHDS film",
+          "related_specimen_labels": [
+            "PTMG-HDI-BHDS/LiFSI electrolyte"
+          ],
+          "detail": "A bare polymer label and an additive-containing form coexist. Check the test/preparation context; the result has not been automatically reassigned."
+        },
+        {
+          "reason": "specimen_form_ambiguous",
+          "entity_id": "p2",
+          "path": "properties.items[3]",
+          "property": "ultimate elongation",
+          "value": "2000%",
+          "specimen_label": "PTMG-HDI-BHDS film",
+          "related_specimen_labels": [
+            "PTMG-HDI-BHDS/LiFSI electrolyte"
+          ],
+          "detail": "A bare polymer label and an additive-containing form coexist. Check the test/preparation context; the result has not been automatically reassigned."
+        }
+      ],
+      "statistics": {
+        "input_entities": 5,
+        "cards": 5,
+        "retained_polymers": 5,
+        "discarded_entities": 0,
+        "discarded_nonpolymers": 0,
+        "classification_review_entities": 0,
+        "review_queue": 9,
+        "validation_issues": 9,
+        "attribution_warnings": 4
+      }
+    },
+    {
+      "paper_id": "10.3390/polym13234155",
+      "discarded_entities": [],
+      "review_queue": [
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p2",
+          "name": "SHPEM",
+          "path": "entities[1].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p2",
+            "property": "tensile strength",
+            "value": "21",
+            "unit": "MPa",
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [],
+            "evidence": [
+              {
+                "chunk_id": "src-629027e6d27659cd9af9",
+                "span_id": "spn-55b4381f83d9f50dfd2b14100490cb81"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p2",
+          "name": "SHPEM",
+          "path": "entities[1].properties.items[1]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p2",
+            "property": "thermal stability",
+            "value": "280",
+            "unit": "°C",
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [
+              {
+                "name": "atmosphere",
+                "value": "N₂ atmosphere",
+                "evidence": [
+                  {
+                    "chunk_id": "src-35900701ee1c30a4aa44",
+                    "span_id": "spn-07b5dee86311ebebcd072e4ada5274c0"
+                  }
+                ]
+              },
+              {
+                "name": "temperature range",
+                "value": "from room temperature to 400 °C",
+                "evidence": [
+                  {
+                    "chunk_id": "src-35900701ee1c30a4aa44",
+                    "span_id": "spn-07b5dee86311ebebcd072e4ada5274c0"
+                  }
+                ]
+              },
+              {
+                "name": "heating rate",
+                "value": "10 °C·min⁻¹",
+                "evidence": [
+                  {
+                    "chunk_id": "src-35900701ee1c30a4aa44",
+                    "span_id": "spn-07b5dee86311ebebcd072e4ada5274c0"
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-88b44acd79dd1d6804d1",
+                "span_id": "spn-7a98bc5bd9a7fd21fa4c52e1c23fb5aa"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p2",
+          "name": "SHPEM",
+          "path": "entities[1].properties.items[2]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p2",
+            "property": "average pore diameter",
+            "value": "1.0",
+            "unit": "μm",
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [],
+            "evidence": [
+              {
+                "chunk_id": "src-88b44acd79dd1d6804d1",
+                "span_id": "spn-41529c3a94833780bee6ec1610284b64"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p2",
+          "name": "SHPEM",
+          "path": "entities[1].properties.items[5]",
+          "reason": "condition_value_not_in_original_evidence",
+          "record": {
+            "entity_id": "p2",
+            "property": "decomposition potential",
+            "value": "about 4.8",
+            "unit": "V",
+            "specimen_id": "p2-shpem-electrochem",
+            "specimen_evidence": [
+              {
+                "chunk_id": "src-51a89a11fdf0a55dd640",
+                "span_id": "spn-55f2f59782b11215b8bdc170a8621387"
+              }
+            ],
+            "conditions": [
+              {
+                "name": "reference",
+                "value": "vs. Li/Li⁺",
+                "evidence": [
+                  {
+                    "chunk_id": "src-51a89a11fdf0a55dd640",
+                    "span_id": "spn-e769b614e1a19b817fc1b6690a3c61fe"
+                  },
+                  {
+                    "chunk_id": "src-51a89a11fdf0a55dd640",
+                    "span_id": "spn-3d731ae7e3647ba0b187ae1bc1d78c23"
+                  }
+                ]
+              },
+              {
+                "name": "cell configuration",
+                "value": "SS/SHPEM/Li",
+                "evidence": [
+                  {
+                    "chunk_id": "src-51a89a11fdf0a55dd640",
+                    "span_id": "spn-55f2f59782b11215b8bdc170a8621387"
+                  }
+                ]
+              },
+              {
+                "name": "scan rate",
+                "value": "5 mV·s⁻¹",
+                "evidence": [
+                  {
+                    "chunk_id": "src-858250e551672a5bd2cc",
+                    "span_id": "spn-8637b8f64c484d783eb05e138ee879e1"
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-51a89a11fdf0a55dd640",
+                "span_id": "spn-e769b614e1a19b817fc1b6690a3c61fe"
+              },
+              {
+                "chunk_id": "src-51a89a11fdf0a55dd640",
+                "span_id": "spn-3d731ae7e3647ba0b187ae1bc1d78c23"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p2",
+          "name": "SHPEM",
+          "path": "entities[1].properties.items[15]",
+          "reason": "unknown_source_chunk",
+          "record": {
+            "entity_id": "p2",
+            "property": "charge capacity",
+            "value": "158",
+            "unit": "mAh·g⁻¹",
+            "specimen_id": "p2-shpem-electrochem",
+            "specimen_evidence": [
+              {
+                "chunk_id": "src-b769abf92146621c84ee",
+                "span_id": "spn-28398c85f6ef9802e95f39c59f4f7228"
+              },
+              {
+                "chunk_id": "src-2ee92276d044064cbb715d2e0a0c909e",
+                "span_id": "spn-45f4a892e222430c365abd08e41ca204"
+              }
+            ],
+            "conditions": [
+              {
+                "name": "cycle",
+                "value": "first cycle",
+                "evidence": [
+                  {
+                    "chunk_id": "src-b769abf92146621c84ee",
+                    "span_id": "spn-f8e082f0a6207d11415f368f49035e53"
+                  }
+                ]
+              },
+              {
+                "name": "voltage range",
+                "value": "between 4.3 V and 3.0 V",
+                "evidence": [
+                  {
+                    "chunk_id": "src-b769abf92146621c84ee",
+                    "span_id": "spn-f8e082f0a6207d11415f368f49035e53"
+                  },
+                  {
+                    "chunk_id": "src-35900701ee1c30a4aa44",
+                    "span_id": "spn-0931830a7a7ae7e589b905868dcb95fa"
+                  }
+                ]
+              },
+              {
+                "name": "current rate",
+                "value": "0.1C rate",
+                "evidence": [
+                  {
+                    "chunk_id": "src-b769abf92146621c84ee",
+                    "span_id": "spn-f8e082f0a6207d11415f368f49035e53"
+                  }
+                ]
+              },
+              {
+                "name": "constant current",
+                "value": "14 mA·g⁻¹",
+                "evidence": [
+                  {
+                    "chunk_id": "src-b769abf92146621c84ee",
+                    "span_id": "spn-f8e082f0a6207d11415f368f49035e53"
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-b769abf92146621c84ee",
+                "span_id": "spn-f8e082f0a6207d11415f368f49035e53"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p3",
+          "name": "commercial PE film",
+          "path": "entities[2].aliases[1]",
+          "reason": "alias_not_in_original_evidence",
+          "record": {
+            "value": "PE membranes",
+            "evidence": [
+              {
+                "chunk_id": "src-30cb3530c892a8a65b54",
+                "span_id": "spn-6fc052e0a3034488fd2567b27765e741"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p3",
+          "name": "commercial PE film",
+          "path": "entities[2].properties.items[0]",
+          "reason": "property_value_not_in_original_evidence",
+          "record": {
+            "entity_id": "p3",
+            "property": "electrochemical stability limit",
+            "value": "4.5",
+            "unit": "V",
+            "specimen_id": "p3-pe-film-electrochem",
+            "specimen_evidence": [
+              {
+                "chunk_id": "src-858250e551672a5bd2cc",
+                "span_id": "spn-8637b8f64c484d783eb05e138ee879e1"
+              },
+              {
+                "chunk_id": "src-35900701ee1c30a4aa44",
+                "span_id": "spn-13c534ca44ef87dcf29861f8c90683c3"
+              }
+            ],
+            "conditions": [
+              {
+                "name": "reference",
+                "value": "vs. Li/Li⁺",
+                "evidence": [
+                  {
+                    "chunk_id": "src-51a89a11fdf0a55dd640",
+                    "span_id": "spn-ee6eadd21324354779bb5c44df3e2d7f"
+                  },
+                  {
+                    "chunk_id": "src-51a89a11fdf0a55dd640",
+                    "span_id": "spn-3da85f330a1e22def249062207438f02"
+                  }
+                ]
+              },
+              {
+                "name": "scan rate",
+                "value": "5 mV·s⁻¹",
+                "evidence": [
+                  {
+                    "chunk_id": "src-858250e551672a5bd2cc",
+                    "span_id": "spn-8637b8f64c484d783eb05e138ee879e1"
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-51a89a11fdf0a55dd640",
+                "span_id": "spn-ee6eadd21324354779bb5c44df3e2d7f"
+              },
+              {
+                "chunk_id": "src-51a89a11fdf0a55dd640",
+                "span_id": "spn-3da85f330a1e22def249062207438f02"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p8",
+          "name": "PEs (SIPE-5)",
+          "path": "entities[7].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p8",
+            "property": "thermal stability",
+            "value": "good thermal stability",
+            "unit": null,
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [],
+            "evidence": [
+              {
+                "chunk_id": "src-4e4b252e4b8fe249f1d2",
+                "span_id": "spn-895c1a7ba194ada6c91005acb669a429"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p8",
+          "name": "PEs (SIPE-5)",
+          "path": "entities[7].properties.items[1]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p8",
+            "property": "ionic conductivity",
+            "value": "comparatively high ionic conductivity",
+            "unit": null,
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [],
+            "evidence": [
+              {
+                "chunk_id": "src-4e4b252e4b8fe249f1d2",
+                "span_id": "spn-895c1a7ba194ada6c91005acb669a429"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p8",
+          "name": "PEs (SIPE-5)",
+          "path": "entities[7].properties.items[2]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p8",
+            "property": "lithium-ion transference properties",
+            "value": "high lithium-ion transference properties",
+            "unit": null,
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [],
+            "evidence": [
+              {
+                "chunk_id": "src-4e4b252e4b8fe249f1d2",
+                "span_id": "spn-895c1a7ba194ada6c91005acb669a429"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p9",
+          "name": "self-healable solid polymeric electrolytes (SHSPEs)",
+          "path": "entities[8].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p9",
+            "property": "electrochemical characteristics",
+            "value": "excellent electrochemical characteristics",
+            "unit": null,
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [],
+            "evidence": [
+              {
+                "chunk_id": "src-4e4b252e4b8fe249f1d2",
+                "span_id": "spn-8465138b2d770296f2b4e7e39175bb6f"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p9",
+          "name": "self-healable solid polymeric electrolytes (SHSPEs)",
+          "path": "entities[8].properties.items[1]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p9",
+            "property": "self-repairing capability",
+            "value": "fast self-repairing capability",
+            "unit": null,
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [],
+            "evidence": [
+              {
+                "chunk_id": "src-4e4b252e4b8fe249f1d2",
+                "span_id": "spn-8465138b2d770296f2b4e7e39175bb6f"
+              }
+            ]
+          }
+        }
+      ],
+      "validation_issues": [
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p2",
+          "name": "SHPEM",
+          "path": "entities[1].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p2",
+          "name": "SHPEM",
+          "path": "entities[1].properties.items[1]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p2",
+          "name": "SHPEM",
+          "path": "entities[1].properties.items[2]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p2",
+          "name": "SHPEM",
+          "path": "entities[1].properties.items[5]",
+          "reason": "condition_value_not_in_original_evidence"
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p2",
+          "name": "SHPEM",
+          "path": "entities[1].properties.items[15]",
+          "reason": "unknown_source_chunk"
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p2",
+          "name": "SHPEM",
+          "path": "entities[1].properties.conflicts[0]",
+          "reason": "unresolved_source_property_conflict"
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p3",
+          "name": "commercial PE film",
+          "path": "entities[2].aliases[1]",
+          "reason": "alias_not_in_original_evidence"
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p3",
+          "name": "commercial PE film",
+          "path": "entities[2].properties.items[0]",
+          "reason": "property_value_not_in_original_evidence"
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p8",
+          "name": "PEs (SIPE-5)",
+          "path": "entities[7].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p8",
+          "name": "PEs (SIPE-5)",
+          "path": "entities[7].properties.items[1]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p8",
+          "name": "PEs (SIPE-5)",
+          "path": "entities[7].properties.items[2]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p8",
+          "name": "PEs (SIPE-5)",
+          "path": "entities[7].properties",
+          "reason": "reported_group_has_no_usable_items"
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p9",
+          "name": "self-healable solid polymeric electrolytes (SHSPEs)",
+          "path": "entities[8].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p9",
+          "name": "self-healable solid polymeric electrolytes (SHSPEs)",
+          "path": "entities[8].properties.items[1]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        },
+        {
+          "paper_id": "10.3390/polym13234155",
+          "entity_id": "p9",
+          "name": "self-healable solid polymeric electrolytes (SHSPEs)",
+          "path": "entities[8].properties",
+          "reason": "reported_group_has_no_usable_items"
+        }
+      ],
+      "attribution_warnings": [],
+      "statistics": {
+        "input_entities": 11,
+        "cards": 11,
+        "retained_polymers": 11,
+        "discarded_entities": 0,
+        "discarded_nonpolymers": 0,
+        "classification_review_entities": 0,
+        "review_queue": 12,
+        "validation_issues": 15,
+        "attribution_warnings": 0
+      }
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "discarded_entities": [],
+      "review_queue": [
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p2",
+          "name": "P3",
+          "path": "entities[1].properties.items[6]",
+          "reason": "property_value_not_in_original_evidence",
+          "record": {
+            "entity_id": "p2",
+            "property": "fracture strain",
+            "value": "1230% ± 30%",
+            "unit": "%",
+            "specimen_id": "p2-healed-film-water",
+            "specimen_evidence": [
+              {
+                "chunk_id": "src-350106dc0f244b268362",
+                "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+              }
+            ],
+            "conditions": [
+              {
+                "name": "healing environment",
+                "value": "water",
+                "evidence": [
+                  {
+                    "chunk_id": "src-350106dc0f244b268362",
+                    "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+                  }
+                ]
+              },
+              {
+                "name": "healing time",
+                "value": "24 h",
+                "evidence": [
+                  {
+                    "chunk_id": "src-350106dc0f244b268362",
+                    "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+                  }
+                ]
+              },
+              {
+                "name": "stretching speed",
+                "value": "10 mm min⁻¹",
+                "evidence": [
+                  {
+                    "chunk_id": "src-bf623a19fffc11e5efc2",
+                    "span_id": "spn-bb8a8f917e4a9d6b54b37a1220415cfc"
+                  }
+                ]
+              },
+              {
+                "name": "specimen dimensions",
+                "value": "20 × 14 × 1 mm³",
+                "evidence": [
+                  {
+                    "chunk_id": "src-bf623a19fffc11e5efc2",
+                    "span_id": "spn-adada2467d5369154926a033f77f5d40"
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-350106dc0f244b268362",
+                "span_id": "spn-c39e65b92e390deaddeba7e35d621093"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p2",
+          "name": "P3",
+          "path": "entities[1].properties.items[11]",
+          "reason": "property_value_not_in_original_evidence",
+          "record": {
+            "entity_id": "p2",
+            "property": "healing efficiency",
+            "value": "89% ± 3%",
+            "unit": "%",
+            "specimen_id": "p2-healed-film-saltwater",
+            "specimen_evidence": [
+              {
+                "chunk_id": "src-af56ac3ed0a23a924bc8",
+                "span_id": "spn-a0f2bdffb7d30f1a66dd24f5221356e7"
+              }
+            ],
+            "conditions": [
+              {
+                "name": "healing environment",
+                "value": "30% NaCl solution at −10 °C",
+                "evidence": [
+                  {
+                    "chunk_id": "src-af56ac3ed0a23a924bc8",
+                    "span_id": "spn-a0f2bdffb7d30f1a66dd24f5221356e7"
+                  },
+                  {
+                    "chunk_id": "src-19de83c50e53d683bc32",
+                    "span_id": "spn-b1a973b2dfd1470ce29546dadfb1ba3c"
+                  }
+                ]
+              },
+              {
+                "name": "healing time",
+                "value": "24 h",
+                "evidence": [
+                  {
+                    "chunk_id": "src-19de83c50e53d683bc32",
+                    "span_id": "spn-6ad1b2fe9b98f0d1f8368c13a9dd7a6a"
+                  }
+                ]
+              },
+              {
+                "name": "stretching speed",
+                "value": "10 mm min⁻¹",
+                "evidence": [
+                  {
+                    "chunk_id": "src-af56ac3ed0a23a924bc8",
+                    "span_id": "spn-90e2f5b0eaa5daa099bdc8ca18006bb9"
+                  }
+                ]
+              },
+              {
+                "name": "sample size",
+                "value": "60 × 20 × 1.0 mm³",
+                "evidence": [
+                  {
+                    "chunk_id": "src-af56ac3ed0a23a924bc8",
+                    "span_id": "spn-90e2f5b0eaa5daa099bdc8ca18006bb9"
+                  }
+                ]
+              },
+              {
+                "name": "healing efficiency definition",
+                "value": "ratio between the restored fracture strain relative to the original fracture strain",
+                "evidence": [
+                  {
+                    "chunk_id": "src-b48dd634cfb0cbadc1e7",
+                    "span_id": "spn-2b43e5c22d8888b06b5d955316b5e9b2"
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-19de83c50e53d683bc32",
+                "span_id": "spn-6ad1b2fe9b98f0d1f8368c13a9dd7a6a"
+              },
+              {
+                "chunk_id": "src-af56ac3ed0a23a924bc8",
+                "span_id": "spn-bd6e02c1d80656efc083fb08eff85a72"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p5",
+          "name": "P2",
+          "path": "entities[4].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p5",
+            "property": "stretchability",
+            "value": "100%",
+            "unit": "%",
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [],
+            "evidence": [
+              {
+                "chunk_id": "src-f11f8aed81613a0e81fc",
+                "span_id": "spn-784b47ad0f9ff1ae54d74f3f9794e0f8"
+              },
+              {
+                "chunk_id": "src-f11f8aed81613a0e81fc",
+                "span_id": "spn-dd419d05d157651dedf05ca250c9fae3"
+              }
+            ]
+          }
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p8",
+          "name": "P7",
+          "path": "entities[7].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer",
+          "record": {
+            "entity_id": "p8",
+            "property": "glass transition temperature",
+            "value": "below −50 °C",
+            "unit": "°C",
+            "specimen_id": null,
+            "specimen_evidence": [],
+            "conditions": [
+              {
+                "name": "method",
+                "value": "differential scanning calorimetry (DSC)",
+                "evidence": [
+                  {
+                    "chunk_id": "src-7fff0ff525a418c27c9f",
+                    "span_id": "spn-5cd9ec6649a0ffcfbdea836cd018aaba"
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              {
+                "chunk_id": "src-7fff0ff525a418c27c9f",
+                "span_id": "spn-5cd9ec6649a0ffcfbdea836cd018aaba"
+              }
+            ]
+          }
+        }
+      ],
+      "validation_issues": [
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p2",
+          "name": "P3",
+          "path": "entities[1].properties.items[6]",
+          "reason": "property_value_not_in_original_evidence"
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p2",
+          "name": "P3",
+          "path": "entities[1].properties.items[11]",
+          "reason": "property_value_not_in_original_evidence"
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p5",
+          "name": "P2",
+          "path": "entities[4].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        },
+        {
+          "paper_id": "10.1038/s41467-020-15949-8",
+          "entity_id": "p8",
+          "name": "P7",
+          "path": "entities[7].properties.items[0]",
+          "reason": "fact_specimen_not_linked_to_polymer"
+        }
+      ],
+      "attribution_warnings": [],
+      "statistics": {
+        "input_entities": 11,
+        "cards": 11,
+        "retained_polymers": 11,
+        "discarded_entities": 0,
+        "discarded_nonpolymers": 0,
+        "classification_review_entities": 0,
+        "review_queue": 4,
+        "validation_issues": 4,
+        "attribution_warnings": 0
+      }
+    }
+  ],
+  "verification_limit": "Original evidence linkage and mechanical checks do not certify polymer classification or scientific attribution."
+}

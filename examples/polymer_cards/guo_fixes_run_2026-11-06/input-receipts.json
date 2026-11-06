@@ -1,0 +1,38 @@
+{
+  "base_raw_sha256": "c788455a63c14a38e8e88332af63d3e1369eaee13939aacb74bfccfef7c0ab4c",
+  "context_capture_files": [
+    {
+      "directory": "polymer_cards_context_2026-11-06_guo",
+      "files": {
+        "base-responses.json": "067df45e20d8889b76dee21064e908e54211b7c7843a478c6fdb9b9bc4fe2b61",
+        "base-sources.json": "025c1c6f9ad5a00e5035c9dde1fcde305ea072c7a3480301786b6b001944aad2",
+        "context-proposals.json": "b509b2e83c07e2e5da9ef9e23a3f697b35ff3716b4d7eb9d6dd2d36637929db5",
+        "composed-responses.json": "256ad99b831a399944dd76fe24e133414e8b476196e7259ad0c90ce73aa886c6",
+        "context-application-audit.json": "b70d244c1b9a414ae0b7ad2442fa5b12e7a13c0d8f4a492b9812a866d4734609",
+        "pre-run-freeze.json": "61c2c1114fd3e15537799ca9d57f67a0f3f6e309b5618ee775eec6349811d163"
+      }
+    },
+    {
+      "directory": "polymer_cards_context_focused_2026-11-06_guo",
+      "files": {
+        "base-responses.json": "256ad99b831a399944dd76fe24e133414e8b476196e7259ad0c90ce73aa886c6",
+        "base-sources.json": "025c1c6f9ad5a00e5035c9dde1fcde305ea072c7a3480301786b6b001944aad2",
+        "context-proposals.json": "7a379053ad8a8841fff64cf2edab0a516399380f1c4701ed693f7168093c120b",
+        "composed-responses.json": "aded39f46da12ee29636b9a6629a5549d3e79b63a312ab628895048f59681419",
+        "context-application-audit.json": "577c86d2fefd11e97082fe3db3330b686bee57cfd1267bfb9f5020e3bea06172",
+        "pre-run-freeze.json": "968b7a4962a0b403461de368e20fe4d2600c45593ca55e7394597fac8da16418"
+      }
+    },
+    {
+      "directory": "polymer_cards_context_scoped_2026-11-06_guo",
+      "files": {
+        "base-responses.json": "aded39f46da12ee29636b9a6629a5549d3e79b63a312ab628895048f59681419",
+        "base-sources.json": "025c1c6f9ad5a00e5035c9dde1fcde305ea072c7a3480301786b6b001944aad2",
+        "context-proposals.json": "6518f6da50212a208b9e97c92df0e1f256415979a15bb00e28766db7693f759f",
+        "composed-responses.json": "1aad337dac344a456f1f24aed541587c6e978868711c55ff50f8f10c359c9592",
+        "context-application-audit.json": "8a90afe8062948eda539456d42355d96277200bb45db128ed3e2dafd72c3a1b1",
+        "pre-run-freeze.json": "727d363fd984632171449d04ea9a259f6bd95bb1d47e12b990f0d32188a3b605"
+      }
+    }
+  ]
+}

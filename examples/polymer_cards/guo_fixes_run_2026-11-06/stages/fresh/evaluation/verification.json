@@ -1,0 +1,55 @@
+{
+  "verification_kind": "saved_source_span_run_and_unchanged_reference_verification",
+  "baseline_fresh_run_hashes_verified": true,
+  "all_three_reference_hashes_unchanged": true,
+  "all_original_source_chunks_equal_previous_fresh_snapshot": true,
+  "all_actual_user_requests_reconstructed": true,
+  "all_raw_provider_json_unchanged": true,
+  "all_validated_results_rebuilt_exactly": true,
+  "source_only_request_freezes": [
+    {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "user_prompt_sha256": "2ee4a524bb1b792b988716463f29e5e2314c15054a753de6bb08ed120fd5723f",
+      "source_span_catalog_count": 355,
+      "source_span_catalog_sha256": "6f31e1f12aa6011a3f71323f5ae98e756acaeb34b4fb522b222bb85ae1da4228",
+      "raw_json_and_validation_rebuild_match": true
+    },
+    {
+      "paper_id": "10.3390/polym13234155",
+      "user_prompt_sha256": "0e9cbfc3626c9ff7e86f05ef0918107c130f0d656d6cbad5d34cdc9d499f4fc2",
+      "source_span_catalog_count": 218,
+      "source_span_catalog_sha256": "1abfeb8b57f8d0f36bc15f76b435a4f7642d1c6c757896baa880ee3338c35dd1",
+      "raw_json_and_validation_rebuild_match": true
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "user_prompt_sha256": "068f4d4dbf51c54c8f5f7a20141d3e899f4947e9d92dbf1587fb729e287b0439",
+      "source_span_catalog_count": 335,
+      "source_span_catalog_sha256": "0e8b567e9ffcb95ee8ed0b5621b1b8d035475a62177a79de149639362bffb87b",
+      "raw_json_and_validation_rebuild_match": true
+    }
+  ],
+  "original_capture_hash_checks": [
+    {
+      "capture_directory": "polymer_cards_spans_2026-11-06_pei",
+      "hashes_verified": true
+    },
+    {
+      "capture_directory": "polymer_cards_spans_2026-11-06_chen",
+      "hashes_verified": true
+    },
+    {
+      "capture_directory": "polymer_cards_spans_2026-11-06_guo",
+      "hashes_verified": true
+    }
+  ],
+  "capture_files_independently_available_and_verified": true,
+  "extraction_profile": {
+    "output_format": "json_schema",
+    "schema_name": "polymer_cards_strict_v4",
+    "schema_sha256": "94dc3b82256ebec06dc9d2672338834f3201e3f8fadf1d578ced49336f5959bd",
+    "system_prompt_sha256": "6a25b93731625dfe4e4b83630f197708bec407cc3f5ed511c15c4b9f93136a2d"
+  },
+  "model_calls_made_by_verifier": 0,
+  "checked_answers_or_prior_records_supplied_to_extraction": false
+}

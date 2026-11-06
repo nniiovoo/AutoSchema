@@ -1,0 +1,130 @@
+{
+  "evaluation_kind": "focused_source_expectation_check",
+  "reference_version": null,
+  "identities": [],
+  "measurements": [
+    {
+      "claim_id": "pei-bhds-strength",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "candidates": [
+        {
+          "path": "results[0].cards[1].properties.items[2]",
+          "entity_id": "p2",
+          "specimen_id": "p2-film",
+          "value": "88.3",
+          "unit": "MPa",
+          "reasons": [],
+          "notes": [],
+          "match_kind": "raw_value_and_unit",
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "matched_focused_expectation",
+      "matching_value_held_for_review": false
+    },
+    {
+      "claim_id": "pei-bhds-elongation",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "candidates": [
+        {
+          "path": "results[0].cards[1].properties.items[3]",
+          "entity_id": "p2",
+          "specimen_id": "p2-film",
+          "value": "2000%",
+          "unit": "%",
+          "reasons": [],
+          "notes": [],
+          "match_kind": "raw_value_and_unit",
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "matched_focused_expectation",
+      "matching_value_held_for_review": false
+    },
+    {
+      "claim_id": "pei-bhds-mn-monitoring",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "candidates": [
+        {
+          "path": "results[0].cards[1].properties.items[0]",
+          "entity_id": "p2",
+          "specimen_id": "p2-solution",
+          "value": "7.3 × 10⁵",
+          "unit": "g mol⁻¹",
+          "reasons": [],
+          "notes": [],
+          "match_kind": "raw_value_and_unit",
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "matched_focused_expectation",
+      "matching_value_held_for_review": false
+    },
+    {
+      "claim_id": "pei-bhds-conductivity",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "candidates": [
+        {
+          "path": "results[0].cards[1].properties.items[4]",
+          "entity_id": "p2",
+          "specimen_id": "p2-lifsi-electrolyte",
+          "value": "2.4 × 10⁻⁴",
+          "unit": "S cm⁻¹",
+          "reasons": [],
+          "notes": [],
+          "match_kind": "raw_value_and_unit",
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "matched_focused_expectation",
+      "matching_value_held_for_review": false
+    },
+    {
+      "claim_id": "pei-bhds-lsv-limit",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "candidates": [
+        {
+          "path": "results[0].cards[1].properties.items[7]",
+          "entity_id": "p2",
+          "specimen_id": "p2-lifsi-electrolyte",
+          "value": "beyond 5.0 V",
+          "unit": "V",
+          "reasons": [],
+          "notes": [],
+          "match_kind": "raw_value_and_unit",
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "matched_focused_expectation",
+      "matching_value_held_for_review": false
+    },
+    {
+      "claim_id": "pei-bhds-transference",
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "candidates": [
+        {
+          "path": "results[0].cards[1].properties.items[8]",
+          "entity_id": "p2",
+          "specimen_id": "p2-lifsi-electrolyte",
+          "value": "0.81",
+          "unit": null,
+          "reasons": [],
+          "notes": [],
+          "match_kind": "raw_value_and_unit",
+          "legacy_scope_undeclared": false
+        }
+      ],
+      "status": "matched_focused_expectation",
+      "matching_value_held_for_review": false
+    }
+  ],
+  "conflicts": [],
+  "unevaluated_reference_sections": [],
+  "limits": [
+    "Selected expectation matches are not scientific accuracy, precision, recall, or exhaustive paper coverage.",
+    "Source containment and record structure are assumed from the validator run; scientific interpretation still needs source review.",
+    "Exact raw notation is compared with NFC/whitespace handling and nonduplicated units; equivalent numerical conversions are not inferred.",
+    "Legacy records without identity_kind are reported as undeclared, not assigned a new scope.",
+    "Conflict checks require selected observations and an explicit source-linked note; they do not resolve discrepancies or prove the note's scientific interpretation."
+  ]
+}
