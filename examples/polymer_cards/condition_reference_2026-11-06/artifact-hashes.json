@@ -1,0 +1,14 @@
+{
+  "created_date": "2026-11-06",
+  "kind": "evaluation_only_reference_artifacts",
+  "files": {
+    "README.md": "339100a1dea6c88e401422b68d02a2a84cb670ef4b6adec7b3f55cab6e4686aa",
+    "assemble_runs.py": "d9a4e18c9f279b2629457ba1a4fea44029db98ff8b5f5423dc6931c618520856",
+    "baseline-evaluation.json": "452b4d8d994f58691db385601ecd5e6d9e01f58385467f69d3305ceb380cd51a",
+    "compare_run.py": "f109b2cd682079f072a448674546eb78a6c4568e2607e64f4d3237b841d08c27",
+    "reference.json": "d1a93b5bddb6ca72fe0f4ec30a1ac1a323e4071ac19f061b4f790c20723c4a89",
+    "source-check.json": "cbd9a6807bd8f4a85ff51a71b07e3b0e686bce7e02c996647c33af07f42afe31",
+    "source-excerpts.json": "6dc5e4c2ea4732178f6a791e3ccd698e6dc207d7ed86ba95354f43fa8e5032b5",
+    "verify_reference.py": "ae5e2944fb47ce4b22a6138b11c21e50fadd3764ba6503eaa325ba05cb931f19"
+  }
+}

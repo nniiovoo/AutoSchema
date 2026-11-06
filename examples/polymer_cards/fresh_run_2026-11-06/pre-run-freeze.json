@@ -1,0 +1,99 @@
+{
+  "prepared_at_utc": "2026-11-06T06:52:43.565207+00:00",
+  "mode": "fresh_source_only_extraction_remaining_papers",
+  "source_files_sha256": {
+    "extract_polymer_cards.py": "80c52ecce3ec10369caab1e64b9fbfde38037bc04a7c1e0d9702e4c76e30d782",
+    "polymer_cards_lib/prompt.py": "6631cf18b85d411af1d8f7a9dffd75676d6e8935792178d1e99cda80fe08e690",
+    "polymer_cards_lib/llm.py": "f6726b9e16a02f436daa57cbcd72193247cf585314d6c501685e4b330d21f933",
+    "polymer_cards_lib/sources.py": "c6f480cf531217de2ae1e5624f2c33984400fc5dcf5f8a94ae08908d22722270",
+    "polymer_cards_lib/validation.py": "0f1bbd7bda8596ef9046f24bdd77662763a1b6b7fe0cce5bc202ecc15cb9bea9",
+    "polymer_cards_lib/render.py": "e470adb062ffe327dc5d403fb77ba55d6c633fab1f3e38d467e80dfb11455613",
+    "polymer_cards_lib/evaluation.py": "a4d4fb929411afb754f11fd850a492a072e0cf3db6d93f91ff180eaf22e12fb7",
+    "examples/polymer_cards/condition_reference_2026-11-06/reference.json": "d1a93b5bddb6ca72fe0f4ec30a1ac1a323e4071ac19f061b4f790c20723c4a89"
+  },
+  "extraction_profile": {
+    "output_format": "json_schema",
+    "schema_name": "polymer_cards_strict_v3",
+    "schema_sha256": "22d462364c0ce5d21f8e8bcca071101f412629e8e7803aa80c56fd4719ada720",
+    "system_prompt_sha256": "b20804caf5c03a4449f729ebef3a6f6fae7544c02798b0b8732d25a7fb5a373d"
+  },
+  "software_tests_passed": 176,
+  "checked_references_supplied_to_model": false,
+  "previous_model_responses_supplied": false,
+  "max_output_tokens_per_request": 48000,
+  "automatic_retries": 0,
+  "reason": "Explicit retry of truncated Chen request and first Guo extraction; no prior proposals or checked answers supplied. Completed Pei request is preserved in its separate capture.",
+  "expected_user_prompt_sha256": {
+    "10.1038/s41467-023-43467-w": "bba6f1a6c9ea8bf981b3b99e5ca2111cda1925f864f3e0be03af2e14fb515aae",
+    "10.3390/polym13234155": "3ae4be2cbbf387c2925ad7c5984e011a0551f77f2efb13db4c87e4fb551426b3",
+    "10.1038/s41467-020-15949-8": "55165416ecf2202d44af1896148cbf702fdf8bc9c7f4e318d5c251210971e06b"
+  },
+  "freeze_kind": "verified_capture_freeze_aggregation",
+  "note": "Individual pre-request freezes are preserved separately. This receipt verifies their combination; it was not created before the first Pei request.",
+  "source_capture_freezes": [
+    {
+      "prepared_at_utc": "2026-11-06T06:45:20.530467+00:00",
+      "mode": "fresh_source_only_extraction",
+      "baseline_commit": "dc33bd66e2843e4dcd5ed825a5c085e195748f4d",
+      "source_files_sha256": {
+        "extract_polymer_cards.py": "f1a432c97d390f3532e81b1c88caba3cf389ab68d2280118a7f05e8db218206e",
+        "polymer_cards_lib/prompt.py": "6631cf18b85d411af1d8f7a9dffd75676d6e8935792178d1e99cda80fe08e690",
+        "polymer_cards_lib/llm.py": "f6726b9e16a02f436daa57cbcd72193247cf585314d6c501685e4b330d21f933",
+        "polymer_cards_lib/sources.py": "c6f480cf531217de2ae1e5624f2c33984400fc5dcf5f8a94ae08908d22722270",
+        "polymer_cards_lib/validation.py": "0f1bbd7bda8596ef9046f24bdd77662763a1b6b7fe0cce5bc202ecc15cb9bea9",
+        "polymer_cards_lib/render.py": "e470adb062ffe327dc5d403fb77ba55d6c633fab1f3e38d467e80dfb11455613",
+        "polymer_cards_lib/evaluation.py": "a4d4fb929411afb754f11fd850a492a072e0cf3db6d93f91ff180eaf22e12fb7",
+        "examples/polymer_cards/condition_reference_2026-11-06/reference.json": "d1a93b5bddb6ca72fe0f4ec30a1ac1a323e4071ac19f061b4f790c20723c4a89"
+      },
+      "extraction_profile": {
+        "output_format": "json_schema",
+        "schema_name": "polymer_cards_strict_v3",
+        "schema_sha256": "22d462364c0ce5d21f8e8bcca071101f412629e8e7803aa80c56fd4719ada720",
+        "system_prompt_sha256": "b20804caf5c03a4449f729ebef3a6f6fae7544c02798b0b8732d25a7fb5a373d"
+      },
+      "software_tests_passed": 174,
+      "checked_references_supplied_to_model": false,
+      "previous_model_responses_supplied": false,
+      "model_calls_at_freeze": 0,
+      "max_output_tokens_per_request": 24000,
+      "automatic_retries": 0,
+      "sources_equal_previous_snapshot": true,
+      "expected_user_prompt_sha256": {
+        "10.1038/s41467-023-43467-w": "bba6f1a6c9ea8bf981b3b99e5ca2111cda1925f864f3e0be03af2e14fb515aae",
+        "10.3390/polym13234155": "3ae4be2cbbf387c2925ad7c5984e011a0551f77f2efb13db4c87e4fb551426b3",
+        "10.1038/s41467-020-15949-8": "55165416ecf2202d44af1896148cbf702fdf8bc9c7f4e318d5c251210971e06b"
+      },
+      "earlier_auth_failure_receipt": "../polymer_cards_fresh_2026-11-06_failed_auth/failed-attempt.json"
+    },
+    {
+      "prepared_at_utc": "2026-11-06T06:52:43.565207+00:00",
+      "mode": "fresh_source_only_extraction_remaining_papers",
+      "source_files_sha256": {
+        "extract_polymer_cards.py": "80c52ecce3ec10369caab1e64b9fbfde38037bc04a7c1e0d9702e4c76e30d782",
+        "polymer_cards_lib/prompt.py": "6631cf18b85d411af1d8f7a9dffd75676d6e8935792178d1e99cda80fe08e690",
+        "polymer_cards_lib/llm.py": "f6726b9e16a02f436daa57cbcd72193247cf585314d6c501685e4b330d21f933",
+        "polymer_cards_lib/sources.py": "c6f480cf531217de2ae1e5624f2c33984400fc5dcf5f8a94ae08908d22722270",
+        "polymer_cards_lib/validation.py": "0f1bbd7bda8596ef9046f24bdd77662763a1b6b7fe0cce5bc202ecc15cb9bea9",
+        "polymer_cards_lib/render.py": "e470adb062ffe327dc5d403fb77ba55d6c633fab1f3e38d467e80dfb11455613",
+        "polymer_cards_lib/evaluation.py": "a4d4fb929411afb754f11fd850a492a072e0cf3db6d93f91ff180eaf22e12fb7",
+        "examples/polymer_cards/condition_reference_2026-11-06/reference.json": "d1a93b5bddb6ca72fe0f4ec30a1ac1a323e4071ac19f061b4f790c20723c4a89"
+      },
+      "extraction_profile": {
+        "output_format": "json_schema",
+        "schema_name": "polymer_cards_strict_v3",
+        "schema_sha256": "22d462364c0ce5d21f8e8bcca071101f412629e8e7803aa80c56fd4719ada720",
+        "system_prompt_sha256": "b20804caf5c03a4449f729ebef3a6f6fae7544c02798b0b8732d25a7fb5a373d"
+      },
+      "software_tests_passed": 176,
+      "checked_references_supplied_to_model": false,
+      "previous_model_responses_supplied": false,
+      "max_output_tokens_per_request": 48000,
+      "automatic_retries": 0,
+      "reason": "Explicit retry of truncated Chen request and first Guo extraction; no prior proposals or checked answers supplied. Completed Pei request is preserved in its separate capture.",
+      "expected_user_prompt_sha256": {
+        "10.3390/polym13234155": "3ae4be2cbbf387c2925ad7c5984e011a0551f77f2efb13db4c87e4fb551426b3",
+        "10.1038/s41467-020-15949-8": "55165416ecf2202d44af1896148cbf702fdf8bc9c7f4e318d5c251210971e06b"
+      }
+    }
+  ]
+}

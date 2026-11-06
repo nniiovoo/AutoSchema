@@ -1,0 +1,38 @@
+{
+  "created_date": "2026-11-06",
+  "origin": "Local deterministic source-span/hash check by assistant; not scientific accuracy.",
+  "source_snapshot_sha256": "20aa6303c46c60cc325f2b9f9720f9fac42bfb061fa861b83e052105ea99f7e2",
+  "frozen_reference_inputs": [
+    {
+      "path": "examples/polymer_cards/identity_reference_2026-10-30.json",
+      "sha256": "bfdac32f92df0c69451e7e49614df4e451fee4966e95a0a20f4e370a48580f98"
+    },
+    {
+      "path": "examples/polymer_cards/checked_pei_2026-10-30/evaluation-cases.json",
+      "sha256": "e34b50f553fe79a51b04f297b89c3fcbcc237a6797bf8d4aab2c1fa7e011e1b9"
+    }
+  ],
+  "original_document_hashes_verified": [
+    {
+      "paper_id": "10.1038/s41467-023-43467-w",
+      "document_sha256": "ffc5376b77b6b81e29c52134d1f96d0185752dd35d35cb48172b661b13c8e1a8"
+    },
+    {
+      "paper_id": "10.3390/polym13234155",
+      "document_sha256": "cfd69ea12c067601a053396289614766ecd9d617fe86497483e61c116407fadc"
+    },
+    {
+      "paper_id": "10.1038/s41467-020-15949-8",
+      "document_sha256": "b6e614f9b777ddcb51109ddfa334540b3cf9a0acd27d62cfa80d29caea3a6bd4"
+    }
+  ],
+  "reference_sha256": "d1a93b5bddb6ca72fe0f4ec30a1ac1a323e4071ac19f061b4f790c20723c4a89",
+  "source_excerpts_sha256": "6dc5e4c2ea4732178f6a791e3ccd698e6dc207d7ed86ba95354f43fa8e5032b5",
+  "measurement_cases": 17,
+  "identity_cases": 6,
+  "conflict_cases": 1,
+  "selected_source_chunks": 19,
+  "explicit_quote_spans_matched": true,
+  "model_calls": 0,
+  "checked_answers_supplied_to_model": false
+}

@@ -1,0 +1,16 @@
+{
+  "attempted_at_utc": "2026-11-06T06:42:10.105333+00:00",
+  "mode": "live_model_extraction",
+  "command_exit_code": 3,
+  "requested_papers": 3,
+  "model_requests_attempted": 1,
+  "model_requests_completed": 0,
+  "papers_completed": 0,
+  "failed_paper_id": "10.1038/s41467-023-43467-w",
+  "safe_failure": "Live model request failed (HTTP 401); no provider error text was logged",
+  "provider_failure_response_saved": false,
+  "automatic_retries": 0,
+  "fresh_results_available": false,
+  "additional_requests_before_access_restored": 0,
+  "note": "No new model cards or scientific comparison results were produced; pre-run code/reference checks remain available."
+}

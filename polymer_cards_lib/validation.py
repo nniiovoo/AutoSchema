@@ -341,6 +341,12 @@ def build_cards(document: Dict, response: Dict) -> Dict:
                 raise _Invalid("property_value_not_in_original_evidence")
             if raw["unit"] is not None and not any(_unit_literal(raw["unit"], e["quote"]) for e in ev):
                 raise _Invalid("property_unit_not_in_original_evidence")
+            if (raw["unit"] is None and _contains_numeric_observation(raw["value"])
+                    and re.search(r"\d\s*%", _text(raw["value"]))):
+                # Preserve the submitted record for review, rather than
+                # silently filling a required unit from the raw value. A null
+                # unit remains valid for genuinely dimensionless quantities.
+                raise _Invalid("property_unit_field_missing_for_explicit_percent")
             conditions = raw.get("conditions")
             if not isinstance(conditions, list):
                 raise _Invalid("property_conditions_must_be_a_list")
@@ -361,7 +367,29 @@ def build_cards(document: Dict, response: Dict) -> Dict:
                 checked_conditions.append({**deepcopy(condition), "evidence": cev,
                                            "evidence_status": "quote_matched"})
             result["conditions"] = checked_conditions
+            if _contains_numeric_observation(raw["value"]):
+                # Presence is not completeness: the validator cannot infer
+                # every applicable protocol or decide which Methods belongs
+                # to a measurement. Expose empty capture without inventing it.
+                result["conditions_review_status"] = ("captured_not_scientifically_verified"
+                                                      if checked_conditions else "not_captured")
         return result
+
+    def property_conflict(raw, specimen_ids):
+        required = {"property", "description", "specimen_ids", "evidence"}
+        if (not isinstance(raw, dict) or set(raw) != required
+                or not _text(raw.get("property")) or not _text(raw.get("description"))):
+            raise _Invalid("property_conflict_invalid")
+        refs = raw["specimen_ids"]
+        if (not isinstance(refs, list) or not refs
+                or not all(isinstance(sid, str) and _text(sid) for sid in refs)
+                or len(set(refs)) != len(refs)):
+            raise _Invalid("conflict_specimen_ids_missing_or_invalid")
+        if any(sid not in specimen_ids for sid in refs):
+            raise _Invalid("conflict_specimen_not_linked_to_polymer")
+        return {**deepcopy(raw), "evidence": evidence(raw["evidence"]),
+                "evidence_status": "quote_matched",
+                "semantic_review_status": "not_performed_by_validator"}
 
     for index, entity in enumerate(entities):
         path = "entities[" + str(index) + "]"
@@ -507,6 +535,33 @@ def build_cards(document: Dict, response: Dict) -> Dict:
             card[field] = {"status": status, "items": items}
             if invalid:
                 card[field]["invalid_items_count"] = invalid
+            if field == "properties" and "conflicts" in raw_group:
+                # Conflicts can span source-qualified specimens, so they must
+                # survive even when same-specimen duplicate checks do not
+                # trigger. Neither the fact values nor the notes are resolved
+                # by choosing one observation, averaging, or merging samples.
+                conflicts = raw_group["conflicts"]
+                card[field]["conflicts"] = []
+                invalid_conflicts = 0
+                if not isinstance(conflicts, list):
+                    issue(entity, group_path + ".conflicts", "invalid_property_conflicts_list", conflicts)
+                    invalid_conflicts += 1
+                    conflicts = []
+                for ci, raw_conflict in enumerate(conflicts):
+                    try:
+                        checked = property_conflict(raw_conflict, specimen_ids)
+                        card[field]["conflicts"].append(checked)
+                        issue(entity, group_path + ".conflicts[" + str(ci) + "]",
+                              "unresolved_source_property_conflict", raw_conflict, review=False)
+                    except _Invalid as exc:
+                        issue(entity, group_path + ".conflicts[" + str(ci) + "]", str(exc), raw_conflict)
+                        invalid_conflicts += 1
+                if invalid_conflicts:
+                    card[field]["invalid_conflicts_count"] = invalid_conflicts
+                    if card[field]["status"] != "conflicting":
+                        card[field]["status"] = "needs_review"
+                if card[field]["conflicts"]:
+                    card[field]["status"] = "conflicting"
         cards.append(card)
 
     attribution_warnings = _attribution_warnings(cards)

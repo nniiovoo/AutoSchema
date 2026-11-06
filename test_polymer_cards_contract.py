@@ -38,6 +38,63 @@ class PolymerCardContractTests(unittest.TestCase):
         self.assertIn("conditions", prop["required"])
         self.assertEqual(prompt.extraction_profile(), trace["extraction_profile"])
 
+    def test_live_schema_requires_evidence_linked_property_conflicts(self):
+        output = prompt.build_response_format()["json_schema"]
+        self.assertEqual("polymer_cards_strict_v3", output["name"])
+        defs = output["schema"]["$defs"]
+        self.assertIn("conflicts", defs["properties_group"]["required"])
+        conflict = defs["property_conflict"]
+        self.assertEqual({"property", "description", "specimen_ids", "evidence"}, set(conflict["required"]))
+        self.assertEqual("array", conflict["properties"]["specimen_ids"]["type"])
+        self.assertNotIn("conflicts", defs["composition_group"]["properties"])
+        _, response = prompt.worked_example()
+        self.assertEqual([], response["entities"][0]["properties"]["conflicts"])
+
+    def test_conflict_instructions_require_known_specimens_without_resolving_their_relation(self):
+        document, response = prompt.worked_example()
+        entity = response["entities"][0]
+        entity["properties"]["conflicts"] = [{
+            "property": "breaking strength", "description": "The correspondence remains unresolved.",
+            "specimen_ids": [], "evidence": entity["properties"]["items"][0]["evidence"],
+        }]
+        result = build_cards(document, response)
+        self.assertIn("conflict_specimen_ids_missing_or_invalid", [r["reason"] for r in result["review_queue"]])
+        self.assertNotIn("may be empty", prompt.SYSTEM_PROMPT)
+        self.assertIn("at least one", prompt.SYSTEM_PROMPT)
+        self.assertIn("never invent a specimen ID", prompt.SYSTEM_PROMPT)
+        self.assertIn("relationship is uncertain in description", prompt.SYSTEM_PROMPT)
+
+    def test_fresh_request_indexes_source_methods_without_replacing_source_chunks(self):
+        document = {"paper_id": "synthetic", "title": "Synthetic example", "domains": [], "chunks": [
+            {"chunk_id": "intro", "text": "P1 is a polymer.", "locator": "Introduction", "source_part": "main"},
+            {"chunk_id": "protocol", "text": "P1 film tensile tests used a crosshead speed of 7 mm min−1.",
+             "locator": "Methods / Characterization", "source_part": "main"},
+            {"chunk_id": "result", "text": "P1 film has strength 12 MPa.", "locator": "Results", "source_part": "main"},
+        ]}
+        before = deepcopy(document)
+        extract_document(self.client, "configured-model", document)
+        user = self.request["messages"][1]["content"]
+        payload = json.loads(user.split("\n", 1)[1])
+        self.assertEqual(document["chunks"], payload["chunks"])
+        entries = payload["method_context_index"]
+        self.assertIn("protocol", [entry["chunk_id"] for entry in entries])
+        self.assertNotIn("intro", [entry["chunk_id"] for entry in entries])
+        self.assertEqual(before, document)
+        self.assertTrue(all(set(entry) <= {"chunk_id", "locator", "protocol_terms"} for entry in entries))
+        self.assertIn("not evidence that", payload["method_context_index_scope"])
+        self.assertNotIn("reference", payload)
+        self.assertNotIn("previous_response", payload)
+
+    def test_synthetic_example_attaches_testing_methods_to_results_separately(self):
+        document, response = prompt.worked_example()
+        properties = response["entities"][0]["properties"]["items"]
+        self.assertIn("example-testing-methods", [c["chunk_id"] for c in document["chunks"]])
+        for prop in properties:
+            conditions = prop["conditions"]
+            self.assertGreaterEqual(len(conditions), 2)
+            self.assertTrue(any(any(e["chunk_id"] == "example-testing-methods" for e in c["evidence"])
+                                for c in conditions))
+
     def test_every_schema_object_is_closed_and_requires_its_declared_keys(self):
         def check(value):
             if isinstance(value, dict):

@@ -189,9 +189,22 @@ def _fact_html(fact: Dict, document: Dict, card: Dict, group: str = "") -> str:
                           + _evidence_html(condition.get("evidence"), document) + "</li>")
     if conditions:
         detail += '<p class="condition-heading">Test conditions</p><ul>' + "".join(conditions) + "</ul>"
+    elif group == "properties" and re.search(r"\d", _display(value)):
+        detail += '<p class="missing">Test conditions: none captured — check the Methods and sample context.</p>'
+    if group == "properties" and fact.get("unit") is None:
+        detail += '<p class="fact-detail">Unit: not specified or dimensionless; inspect the original evidence.</p>'
     if "specimen_evidence" in fact:
         detail += _evidence_html(fact["specimen_evidence"], document, "Sample-link evidence")
     return '<li class="fact"><p>' + text + "</p>" + detail + _evidence_html(fact.get("evidence"), document) + "</li>"
+
+
+def _conflict_html(conflict: Dict, document: Dict, card: Dict) -> str:
+    specimens = ", ".join(_specimen_label(card, sid) for sid in conflict.get("specimen_ids", []))
+    return ('<aside class="attribution-warning source-conflict"><strong>Unresolved source discrepancy</strong>'
+            + '<p>' + _h(conflict.get("property", "Property")) + ': '
+            + _paragraph(conflict.get("description", "Needs source review")) + '</p>'
+            + ('<p>Reported specimens: ' + _h(specimens) + '</p>' if specimens else '')
+            + _evidence_html(conflict.get("evidence"), document, "Conflicting source reports") + '</aside>')
 
 
 def _attribution_warning_text(warning: Dict) -> str:
@@ -249,6 +262,8 @@ def _card_html(card: Dict, document: Dict, number: int) -> str:
         items = group.get("items", [])
         if items:
             content.append('<ul class="facts">' + "".join(_fact_html(f, document, card, key) for f in items) + "</ul>")
+        for conflict in group.get("conflicts", []):
+            content.append(_conflict_html(conflict, document, card))
         if group.get("invalid_items_count"):
             content.append('<p class="missing">Additional extracted facts need review; see the audit below.</p>')
         content.append("</section>")
@@ -365,6 +380,10 @@ def _fact_md(fact: Dict, document: Dict, card: Dict, group: str = "") -> str:
     lines.append(_evidence_md(fact.get("evidence"), document))
     if "specimen_evidence" in fact:
         lines.append(_evidence_md(fact["specimen_evidence"], document, "Sample-link evidence"))
+    if group == "properties" and not fact.get("conditions") and re.search(r"\d", _display(value)):
+        lines.append("Test conditions: none captured — check the Methods and sample context.")
+    if group == "properties" and fact.get("unit") is None:
+        lines.append("Unit: not specified or dimensionless; inspect the original evidence.")
     for condition in fact.get("conditions", []):
         lines.append("Condition — " + _md(condition.get("name")) + ": " + _md(condition.get("value")))
         lines.append(_evidence_md(condition.get("evidence"), document))
@@ -407,6 +426,12 @@ def render_markdown(results: List[Dict], documents: List[Dict], run_metadata: Di
                 status = group.get("status", "not_found_in_provided_text")
                 lines.extend(["#### " + label, "", STATUS_LABELS.get(status, _md(status)), ""])
                 lines.extend(_fact_md(fact, document, card, key) for fact in group.get("items", []))
+                for conflict in group.get("conflicts", []):
+                    lines.extend(["**Unresolved source discrepancy**", "",
+                                  _md(conflict.get("property", "Property")) + ": " + _md(conflict.get("description", "Needs source review")), ""])
+                    if conflict.get("specimen_ids"):
+                        lines.append("Reported specimens: " + _md(", ".join(_specimen_label(card, sid) for sid in conflict["specimen_ids"])))
+                    lines.append(_evidence_md(conflict.get("evidence"), document, "Conflicting source reports"))
                 if group.get("invalid_items_count"):
                     lines.append("Additional extracted facts need review; see the audit.")
             if card.get("specimens"):

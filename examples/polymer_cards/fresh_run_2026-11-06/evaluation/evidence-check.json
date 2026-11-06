@@ -1,0 +1,10 @@
+{
+  "retained_evidence_reference_occurrences_matched": 413,
+  "repeated_references_count_again": true,
+  "all_recorded_user_request_hashes_reconstructed": true,
+  "raw_provider_json_equals_saved_responses": true,
+  "original_source_snapshot_unchanged": true,
+  "code_and_reference_freeze_hashes_verified": true,
+  "checked_answers_or_prior_records_supplied": false,
+  "note": "Matching source quotation occurrences are not independently verified scientific claims."
+}

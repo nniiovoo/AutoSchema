@@ -88,12 +88,12 @@ def main(argv=None):
     parser.add_argument("--repair-sources", type=Path, help="Matching sources.json snapshot for --repair-records; checked answers are never used for revision.")
     parser.add_argument("--env-file", type=Path, help="Existing local model environment configuration; never copied into outputs.")
     parser.add_argument("--max-papers", type=_bounded_int, default=3, help="Maximum papers to process; default3 keeps the pilot bounded.")
-    parser.add_argument("--max-output-tokens", type=_bounded_int, default=24000, help="Bound each live response; default and maximum24000 for full-paper cards.")
+    parser.add_argument("--max-output-tokens", type=_bounded_int, default=24000, help="Bound each live response; default24000, explicit maximum48000 for evidence-rich full-paper cards.")
     parser.add_argument("--request-timeout", type=_bounded_int, default=300, help="Seconds per live request; default300, maximum900; no automatic retries.")
     args = parser.parse_args(argv)
     try:
-        if args.max_output_tokens > 24000:
-            raise ValueError("Maximum output token limit is24000 per request")
+        if args.max_output_tokens > 48000:
+            raise ValueError("Maximum output token limit is48000 per request")
         if args.request_timeout > 900:
             raise ValueError("Maximum request timeout is900 seconds")
         if bool(args.repair_records) != bool(args.repair_sources):

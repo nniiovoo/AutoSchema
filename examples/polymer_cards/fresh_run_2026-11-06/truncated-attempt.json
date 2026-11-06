@@ -1,0 +1,10 @@
+{
+  "mode": "live_model_extraction",
+  "safe_failure": "Model response reached the output limit; no partial cards accepted",
+  "failed_paper_id": "10.3390/polym13234155",
+  "model_requests_attempted": 2,
+  "model_requests_completed": 1,
+  "response_token_cap": 24000,
+  "returned_usage_for_failed_request": "not persisted by existing error path; excluded from reported successful-call token totals",
+  "automatic_retries": 0
+}

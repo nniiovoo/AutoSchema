@@ -5,6 +5,7 @@ accuracy score. It does not read a reference while producing model records.
 """
 from __future__ import annotations
 
+import json
 import math
 import re
 import unicodedata
@@ -67,21 +68,51 @@ def _reference_cases(reference):
         if claim in seen:
             raise ValueError("Measurement claim_ids must be unique")
         seen.add(claim)
-        labels = item.get("entity_labels", [item["entity_name"]] if "entity_name" in item else [])
-        _strings(labels, "entity_labels", nonempty=True)
-        if "value" not in item or "unit" not in item:
-            raise ValueError("Measurement expectation requires value and unit")
-        _value_and_unit(item["value"], item["unit"])
-        for key in ("specimen_require_any", "specimen_forbid", "evidence_chunk_ids_required", "property_terms"):
-            _strings(item.get(key, []), key)
-        groups = item.get("condition_value_terms", [])
-        if not isinstance(groups, list):
-            raise ValueError("condition_value_terms must be a list of alternative-term lists")
-        for group in groups:
-            _strings(group, "condition_value_terms alternatives", nonempty=True)
+        _measurement_case(item)
+    conflicts = _list(reference, "conflict_expectations")
+    for item in conflicts:
+        claim = _string(item.get("claim_id"), "Conflict claim_id")
+        _string(item.get("paper_id"), "Conflict paper_id")
+        if claim in seen:
+            raise ValueError("Measurement/conflict claim_ids must be unique")
+        seen.add(claim)
+        _strings(item.get("entity_labels", []), "Conflict entity_labels", nonempty=True)
+        _strings(item.get("property_terms", []), "Conflict property_terms", nonempty=True)
+        _strings(item.get("evidence_chunk_ids_required", []), "Conflict evidence_chunk_ids_required", nonempty=True)
+        _strings(item.get("description_require_any", []), "Conflict description_require_any")
+        _strings(item.get("description_forbid", []), "Conflict description_forbid")
+        observations = _list(item, "observations")
+        if len(observations) < 2:
+            raise ValueError("Conflict expectations require at least two source-qualified observations")
+        observation_keys = set()
+        for observation in observations:
+            _measurement_case({**observation, "entity_labels": item["entity_labels"]})
+            _strings(observation.get("evidence_chunk_ids_required", []), "Conflict observation evidence", nonempty=True)
+            key = json.dumps(observation, sort_keys=True, ensure_ascii=False)
+            if key in observation_keys:
+                raise ValueError("Conflict observations must not duplicate one expectation")
+            observation_keys.add(key)
     if "review_expectations" in reference:
         _list(reference, "review_expectations")
-    return identities, measurements
+    return identities, measurements, conflicts
+
+
+def _measurement_case(item):
+    labels = item.get("entity_labels", [item["entity_name"]] if "entity_name" in item else [])
+    _strings(labels, "entity_labels", nonempty=True)
+    if "value" not in item or "unit" not in item:
+        raise ValueError("Measurement expectation requires value and unit")
+    _value_and_unit(item["value"], item["unit"])
+    if "unit_field_required" in item and not isinstance(item["unit_field_required"], bool):
+        raise ValueError("unit_field_required must be a boolean")
+    for key in ("specimen_require_any", "specimen_forbid", "evidence_chunk_ids_required", "property_terms"):
+        _strings(item.get(key, []), key)
+    groups = item.get("condition_value_terms", [])
+    if not isinstance(groups, list):
+        raise ValueError("condition_value_terms must be a list of alternative-term lists")
+    for group in groups:
+        _strings(group, "condition_value_terms alternatives", nonempty=True)
+
 
 
 def _results(run):
@@ -170,6 +201,11 @@ def _associated_refs(prop, specimen):
 def _measurement_reasons(card, prop, case):
     labels = case.get("entity_labels", [case["entity_name"]] if "entity_name" in case else [])
     reasons = _identity_reasons(card, labels)
+    if case.get("unit_field_required") and case["unit"] is not None:
+        if prop.get("unit") is None:
+            reasons.append("required_unit_field_missing")
+        elif _compact(prop["unit"]) != _compact(case["unit"]):
+            reasons.append("required_unit_field_not_exact_reference")
     if prop.get("entity_id") != card.get("entity_id"):
         reasons.append("property_parent_entity_mismatch")
     specimens = {s.get("specimen_id"): s for s in card.get("specimens", []) if isinstance(s, dict)}
@@ -244,6 +280,62 @@ def _identity_review(record):
     ) is not None
 
 
+def _conflict_candidate(card, conflict, case, path):
+    """Check a declared unresolved discrepancy, never infer or resolve one.
+
+    Both source-qualified observations must be retained under the same polymer,
+    and the explicit note must link their specimens and cite both source sites.
+    Source containment is assumed from validation; language/chemical meaning
+    still requires review even when the selected criteria match.
+    """
+    reasons = _identity_reasons(card, case["entity_labels"])
+    group = card.get("properties", {})
+    if group.get("status") != "conflicting":
+        reasons.append("property_group_not_marked_conflicting")
+    if not any(_term(term, str(conflict.get("property", ""))) for term in case["property_terms"]):
+        reasons.append("conflict_property_term_not_matched")
+    description = str(conflict.get("description", ""))
+    uncertainty_terms = case.get("description_require_any", [])
+    if uncertainty_terms and not any(_term(term, description) for term in uncertainty_terms):
+        reasons.append("conflict_uncertainty_not_explicit")
+    reasons += ["conflict_forbidden_description:" + term for term in case.get("description_forbid", [])
+                if _term(term, description)]
+    attached = {r.get("chunk_id") for r in _matched_refs(conflict.get("evidence"))}
+    reasons += ["conflict_evidence_chunk_missing:" + key for key in case["evidence_chunk_ids_required"]
+                if key not in attached]
+    specimen_ids = conflict.get("specimen_ids")
+    known = {s.get("specimen_id") for s in card.get("specimens", []) if isinstance(s, dict)}
+    if (not isinstance(specimen_ids, list) or not specimen_ids
+            or not all(isinstance(s, str) and s in known for s in specimen_ids)):
+        reasons.append("conflict_specimen_ids_invalid")
+        specimen_ids = []
+    observations = []
+    for oi, observation in enumerate(case["observations"]):
+        expected = _value_and_unit(observation["value"], observation["unit"])
+        measurement_case = {**observation, "entity_labels": case["entity_labels"],
+                            "property_terms": observation.get("property_terms", case["property_terms"])}
+        candidates = []
+        for pi, prop in enumerate(group.get("items", [])):
+            if _value_and_unit(prop.get("value"), prop.get("unit")) != expected:
+                continue
+            candidate = _measurement_candidate(card, prop, measurement_case,
+                path.rsplit(".conflicts[", 1)[0] + f".items[{pi}]", exact=True)
+            measurement_sources = {ref.get("chunk_id") for ref in _matched_refs(prop.get("evidence"))}
+            candidate["reasons"] += ["observation_evidence_chunk_missing:" + key
+                for key in observation["evidence_chunk_ids_required"] if key not in measurement_sources]
+            if prop.get("specimen_id") not in specimen_ids:
+                candidate["reasons"].append("observation_specimen_not_in_conflict")
+            candidates.append(candidate)
+        matched = any(not candidate["reasons"] for candidate in candidates)
+        observations.append({"observation_index": oi, "value": observation["value"], "unit": observation["unit"],
+                             "candidates": candidates, "matched": matched})
+        if not matched:
+            reasons.append("conflict_observation_not_matched:" + str(oi))
+    return {"path": path, "entity_id": card.get("entity_id"), "reasons": reasons,
+            "observations": observations}
+
+
+
 def evaluate_run(run, reference):
     """Return selected match/review outcomes, never a universal quality score.
 
@@ -251,7 +343,7 @@ def evaluate_run(run, reference):
     assumed from that run; this function has no original source text to recheck.
     Legacy undeclared scope is not silently reclassified as family or individual.
     """
-    identities, measurements = _reference_cases(reference)
+    identities, measurements, conflicts = _reference_cases(reference)
     papers = _results(run)
     identity_results, measurement_results = [], []
     for case in identities:
@@ -291,10 +383,26 @@ def evaluate_run(run, reference):
         entry["status"] = "matched_focused_expectation" if good else "needs_source_review" if entry["candidates"] or held else "not_retained"
         entry["matching_value_held_for_review"] = held
         measurement_results.append(entry)
+    conflict_results = []
+    for case in conflicts:
+        entry = {"claim_id": case["claim_id"], "paper_id": case["paper_id"], "candidates": []}
+        index, result = papers.get(case["paper_id"], (None, {}))
+        for ci, card in enumerate(result.get("cards", [])):
+            if not _has_label(card, case["entity_labels"]):
+                continue
+            for fi, conflict in enumerate(card.get("properties", {}).get("conflicts", [])):
+                entry["candidates"].append(_conflict_candidate(card, conflict, case,
+                    f"results[{index}].cards[{ci}].properties.conflicts[{fi}]"))
+        good = any(not candidate["reasons"] for candidate in entry["candidates"])
+        entry["status"] = "matched_focused_expectation" if good else "needs_source_review"
+        if not entry["candidates"]:
+            entry["reasons"] = ["explicit_conflict_note_not_retained_for_expected_polymer"]
+        conflict_results.append(entry)
     return {"evaluation_kind": "focused_source_expectation_check", "reference_version": reference.get("reference_version"),
-            "identities": identity_results, "measurements": measurement_results,
+            "identities": identity_results, "measurements": measurement_results, "conflicts": conflict_results,
             "unevaluated_reference_sections": ["review_expectations"] if reference.get("review_expectations") else [],
             "limits": ["Selected expectation matches are not scientific accuracy, precision, recall, or exhaustive paper coverage.",
                        "Source containment and record structure are assumed from the validator run; scientific interpretation still needs source review.",
                        "Exact raw notation is compared with NFC/whitespace handling and nonduplicated units; equivalent numerical conversions are not inferred.",
-                       "Legacy records without identity_kind are reported as undeclared, not assigned a new scope."]}
+                       "Legacy records without identity_kind are reported as undeclared, not assigned a new scope.",
+                       "Conflict checks require selected observations and an explicit source-linked note; they do not resolve discrepancies or prove the note's scientific interpretation."]}

@@ -1,0 +1,104 @@
+{
+  "comparison_kind": "selected_source_reference_comparison",
+  "baseline_mode": "live_model_revision",
+  "fresh_mode": "live_model_extraction",
+  "baseline_metrics": {
+    "cards": 25,
+    "review_queue_records": 17,
+    "validation_flags": 18,
+    "declared_polymer_family": 5,
+    "accepted_property_items": 52,
+    "accepted_conflict_notes": 0,
+    "declared_specific_polymer": 20
+  },
+  "fresh_metrics": {
+    "cards": 21,
+    "review_queue_records": 41,
+    "validation_flags": 50,
+    "declared_polymer_family": 3,
+    "accepted_property_items": 49,
+    "accepted_conflict_notes": 1,
+    "declared_specific_polymer": 18
+  },
+  "baseline_selected_checks": {
+    "identities": {
+      "matched_focused_expectation": 6
+    },
+    "measurements": {
+      "matched_focused_expectation": 3,
+      "needs_source_review": 14
+    },
+    "conflicts": {
+      "needs_source_review": 1
+    }
+  },
+  "fresh_selected_checks": {
+    "identities": {
+      "matched_focused_expectation": 5,
+      "needs_source_review": 1
+    },
+    "measurements": {
+      "needs_source_review": 9,
+      "matched_focused_expectation": 8
+    },
+    "conflicts": {
+      "matched_focused_expectation": 1
+    }
+  },
+  "frozen_baseline_checks": {
+    "focused": {
+      "identities": {
+        "matched_focused_expectation": 6
+      },
+      "measurements": {
+        "matched_focused_expectation": 6,
+        "needs_source_review": 3
+      },
+      "conflicts": {}
+    },
+    "pei": {
+      "identities": {},
+      "measurements": {
+        "needs_source_review": 6
+      },
+      "conflicts": {}
+    }
+  },
+  "frozen_fresh_checks": {
+    "focused": {
+      "identities": {
+        "matched_focused_expectation": 5,
+        "needs_source_review": 1
+      },
+      "measurements": {
+        "needs_source_review": 6,
+        "matched_focused_expectation": 3
+      },
+      "conflicts": {}
+    },
+    "pei": {
+      "identities": {},
+      "measurements": {
+        "matched_focused_expectation": 6
+      },
+      "conflicts": {}
+    }
+  },
+  "reference_sha256": {
+    "conditions": "d1a93b5bddb6ca72fe0f4ec30a1ac1a323e4071ac19f061b4f790c20723c4a89",
+    "focused": "bfdac32f92df0c69451e7e49614df4e451fee4966e95a0a20f4e370a48580f98",
+    "pei": "e34b50f553fe79a51b04f297b89c3fcbcc237a6797bf8d4aab2c1fa7e011e1b9"
+  },
+  "successful_model_requests": 3,
+  "returned_token_usage": {
+    "prompt_tokens": 57498,
+    "completion_tokens": 60910,
+    "total_tokens": 118408
+  },
+  "limits": [
+    "These selected-case checks are not overall scientific accuracy or exhaustive recall.",
+    "The baseline was a revision conditioned on saved proposals; this run is fresh source-only extraction.",
+    "A source-linked unresolved conflict is preserved, not scientifically resolved.",
+    "Counts can change with record granularity and extraction variation."
+  ]
+}
