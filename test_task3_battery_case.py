@@ -36,13 +36,18 @@ class BatteryCaseTests(unittest.TestCase):
                 self.assertEqual(review_digest(observation, bundle["sources"]),
                                  reviews[observation["observation_id"]]["record_digest"])
 
-    def test_actual_replay_retains_the_two_numeric_review_failures(self):
+    def test_actual_replay_decides_scientific_notation_cases(self):
+        """The 2026-11-14 engine parses '2.4 × 10−4 S cm−1' exactly; see evaluation-2026-11-14.json."""
         with tempfile.TemporaryDirectory() as output:
             self.assertEqual(0, main(["--input", str(CASE / "input.json"),
                                      "--profile", str(CASE / "profile.json"),
                                      "--reviews", str(CASE / "reviews.json"), "--out-dir", output]))
             records = json.loads((Path(output) / "selection.json").read_text())
-        checks = {c["candidate_id"]: c for c in read("evaluation.json")["comparisons"]}
+        current = read("evaluation-2026-11-14.json")
+        for filename, key in [("profile.json", "profile_sha256"), ("reference.json", "reference_sha256"),
+                              ("input.json", "input_sha256"), ("reviews.json", "reviews_sha256")]:
+            self.assertEqual(hashlib.sha256((CASE / filename).read_bytes()).hexdigest(), current[key])
+        checks = {c["candidate_id"]: c for c in current["comparisons"]}
         matches = 0
         for record in records:
             checked = checks[record["candidate_id"]]
@@ -50,9 +55,19 @@ class BatteryCaseTests(unittest.TestCase):
             self.assertEqual(checked["reason"], record["criteria"][0]["reason"])
             matches += record["decision"] == checked["reference_decision"]
             self.assertTrue(all(not action["retrieval_executed"] for action in record["followups"]))
-        self.assertEqual(3, matches)
-        self.assertEqual(2, sum(r["decision"] == "manual_review" for r in records))
-        self.assertFalse(any(r["decision"] in {"keep_for_followup", "exclude_for_use"} for r in records))
+        self.assertEqual(5, matches)
+        decisions = {r["candidate_id"]: r["decision"] for r in records}
+        self.assertEqual("keep_for_followup", decisions["Pei2024-BHDS-LiFSI"])
+        self.assertEqual("exclude_for_use", decisions["Pei2024-HDI-LiFSI-control"])
+        self.assertEqual(0, sum(r["decision"] == "manual_review" for r in records))
+
+    def test_historical_record_keeps_the_earlier_parser_outcome(self):
+        """evaluation.json is the unchanged 2026-10-27 run (coefficient-only parser)."""
+        historical = read("evaluation.json")
+        self.assertEqual("2026-10-27", historical["run_date_local"])
+        self.assertEqual({"manual_review": 2, "retrieve_more": 3},
+                         historical["summary"]["selector_counts"])
+        self.assertEqual(3, historical["summary"]["candidate_decision_matches"])
 
     def test_target_gaps_preserve_real_non_target_numbers_without_interpolation(self):
         candidates = read("input.json")["candidates"]

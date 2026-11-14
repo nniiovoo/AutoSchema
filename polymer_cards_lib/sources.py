@@ -33,27 +33,43 @@ _SUBSCRIPT.update({"+": "₊", "-": "₋", "−": "₋", "=": "₌", "(": "₍",
 JATS_TEXT_TRANSFORMATION = "jats_script_notation_v1"
 
 
-def _inline_content(node):
+def _script(text, superscript):
+    mapping = _SUPERSCRIPT if superscript else _SUBSCRIPT
+    if text and all(char in mapping for char in text):
+        return "".join(mapping[char] for char in text)
+    return ("^{" if superscript else "_{") + text + "}"
+
+
+def _inline_content(node, skip=()):
     """Render XML scripts without silently changing 10**5 into the number 105.
 
     Digits and script signs use Unicode positions. Other script content retains
     its boundary as ^{...} or _{...}; unsupported characters are never dropped.
     Plain inline markup keeps its text and tails in their original order.
+    JATS <sup>/<sub> and MathML <msup>/<msub>/<msubsup> follow the same rule
+    (MathML previously fell through and 3×10<msup>…5</msup> became "3×105").
+    Elements whose tag is in ``skip`` contribute only their tail text.
     """
-    text = (node.text or "") + "".join(
-        _inline_content(child) + (child.tail or "") for child in node
-    )
     tag = _tag(node)
+    if tag in {"msup", "msub", "msubsup"}:
+        parts = [_inline_content(child, skip) for child in node]
+        if tag == "msup" and len(parts) == 2:
+            return parts[0] + _script(parts[1], True)
+        if tag == "msub" and len(parts) == 2:
+            return parts[0] + _script(parts[1], False)
+        if tag == "msubsup" and len(parts) == 3:
+            return parts[0] + _script(parts[1], False) + _script(parts[2], True)
+    text = (node.text or "") + "".join(
+        ("" if _tag(child) in skip else _inline_content(child, skip)) + (child.tail or "")
+        for child in node
+    )
     if tag in {"sup", "sub"}:
-        mapping = _SUPERSCRIPT if tag == "sup" else _SUBSCRIPT
-        if text and all(char in mapping for char in text):
-            return "".join(mapping[char] for char in text)
-        return ("^{" if tag == "sup" else "_{") + text + "}"
+        return _script(text, tag == "sup")
     return text
 
 
-def _content(node):
-    return _inline_content(node).strip()
+def _content(node, skip=()):
+    return _inline_content(node, skip).strip()
 
 
 def _jats_chunks(path):
@@ -67,9 +83,15 @@ def _jats_chunks(path):
             heading = _content(title) if title is not None else ("Abstract" if tag == "abstract" else "Untitled section")
             section = section + [heading]
         if tag == "p":
-            text = _content(node)
+            # A table nested in a paragraph is rendered by the table branch
+            # (cells separated by " | "); flattening it into the paragraph
+            # fused adjacent cells into one number ("P1" + "2.4" -> "P12.4").
+            text = _content(node, skip={"table-wrap"})
             if text:
                 result.append({"text": text, "locator": " / ".join(section or ["Article"]) + f", paragraph {len(result) + 1}"})
+            for nested in node.iter():
+                if nested is not node and _tag(nested) == "table-wrap":
+                    visit(nested, section)
             return
         if tag == "table-wrap":
             label = next(iter(_children(node, "label")), None)
@@ -96,6 +118,10 @@ def _jats_chunks(path):
     bodies = [n for n in root.iter() if _tag(n) == "body"]
     for body in bodies:
         visit(body, [])
+    # Publishers often place tables and figures in <floats-group> after the
+    # body; these were silently skipped.
+    for floats in [n for n in root.iter() if _tag(n) == "floats-group"]:
+        visit(floats, ["Floats"])
     if not result:
         raise ValueError("XML source contains no readable article paragraphs")
     return result

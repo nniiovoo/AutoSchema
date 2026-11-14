@@ -170,8 +170,11 @@ def build_context_review_prompt(document, previous, review_focus=None, strict_fo
         payload["validation_feedback"] = {
             "validation_issues": [item for item in validated["validation_issues"]
                                   if item.get("path") in allowed_paths],
+            # Attribution warnings carry entity_id plus a card-relative path
+            # ("properties.items[i]"), not a property_index key.
             "attribution_warnings": [item for item in validated.get("attribution_warnings", [])
-                                     if (item.get("entity_id"), item.get("property_index")) in allowed],
+                                     if (item.get("entity_id"), item.get("path"))
+                                     in {(e, "properties.items[" + str(i) + "]") for e, i in allowed}],
         }
         payload["source_audit_focus_scope"] = (
             "These are the ONLY eligible context-edit targets. Each concern remains an unverified hypothesis, not an answer. "
