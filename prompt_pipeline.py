@@ -15,7 +15,10 @@ except ImportError:
 from prompt_lib.domain import SPEC, DOMAIN
 from prompt_lib.validation import validate_tiers
 from prompt_lib.paper_model import Paper, pdf_to_text
-from prompt_lib.llm_client import llm_chat, get_config
+from prompt_lib.llm_client import LLMCallError, llm_chat, get_config
+from prompt_lib.snapshot import compact_snapshot
+
+DEFAULT_MAX_SEED_PDFS = 5
 
 # ================== arXiv-style category filter ==================
 def inject_arxiv_cats(qb: str) -> str:
@@ -43,7 +46,15 @@ def build_queries_from_seed_pdfs(
     seed_pdfs: List[Path],
     round_dir: Path,
     max_queries: int = 8,
+    max_seed_pdfs: int = DEFAULT_MAX_SEED_PDFS,
 ) -> Path:
+    """Summarize seed PDFs, generate queries, and write ``queries.json``.
+
+    Only the first ``max_seed_pdfs`` seeds (in the order given) are summarized;
+    any others are listed in a warning instead of being dropped silently.
+    Raises ``SystemExit`` if every seed summary fails or no valid query is
+    produced, so the orchestrator stops instead of running an empty round.
+    """
     round_dir.mkdir(parents=True, exist_ok=True)
 
     seeds_dir = round_dir / "seeds"
@@ -57,8 +68,13 @@ def build_queries_from_seed_pdfs(
         seeds_dir.mkdir(parents=True, exist_ok=True)
 
     # 1. Extract structured snapshots from seed PDFs
+    if len(seed_pdfs) > max_seed_pdfs:
+        skipped = [p.name for p in seed_pdfs[max_seed_pdfs:]]
+        print(f"[prompt_pipeline] WARNING: {len(seed_pdfs)} seed PDFs given; summarizing "
+              f"the first {max_seed_pdfs} and skipping {len(skipped)}: {skipped}")
     papers: List[Paper] = []
-    for pdf in seed_pdfs[:5]:
+    failed_seeds: List[str] = []
+    for pdf in seed_pdfs[:max_seed_pdfs]:
         dest = seeds_dir / pdf.name
         if not dest.exists():
             dest.write_bytes(pdf.read_bytes())
@@ -66,20 +82,27 @@ def build_queries_from_seed_pdfs(
         txt_path = pdf_to_text(pdf)
         text = Path(txt_path).read_text(encoding="utf-8")
 
-        extracted_raw = llm_chat(
-            [
-                {"role": "system",
-                 "content": f"You are a {SPEC.system_role} extraction assistant. Return ONLY valid JSON."},
-                {"role": "user",
-                 "content": SPEC.extract_prompt.replace("{paper_text}", text)},
-            ],
-            force_json=True,
-        )
+        try:
+            extracted_raw = llm_chat(
+                [
+                    {"role": "system",
+                     "content": f"You are a {SPEC.system_role} extraction assistant. Return ONLY valid JSON."},
+                    {"role": "user",
+                     "content": SPEC.extract_prompt.replace("{paper_text}", text)},
+                ],
+                force_json=True,
+            )
+        except LLMCallError as e:
+            print(f"[prompt_pipeline] WARNING: seed snapshot failed for {pdf.name}: {e}")
+            failed_seeds.append(pdf.name)
+            continue
         time.sleep(1)
 
         try:
             extracted = json.loads(extracted_raw)
         except Exception:
+            print(f"[prompt_pipeline] WARNING: seed snapshot for {pdf.name} is not valid JSON; "
+                  "keeping the raw text")
             extracted = {"_raw": extracted_raw}
 
         papers.append(Paper(
@@ -94,29 +117,41 @@ def build_queries_from_seed_pdfs(
             extracted=extracted,
         ))
 
+    if not papers:
+        raise SystemExit(
+            f"[prompt_pipeline] every seed snapshot call failed ({failed_seeds}); "
+            "not generating queries from an empty snapshot."
+        )
+
     # Persist papers.jsonl
     with open(round_dir / "papers.jsonl", "w", encoding="utf-8") as f:
         for p in papers:
             f.write(json.dumps(asdict(p), ensure_ascii=False) + "\n")
 
-    snapshot = json.dumps([p.extracted for p in papers])[:8000]
+    snapshot = compact_snapshot([p.extracted for p in papers], budget=8000)
 
     # 2. Domain prompt -> 8 queries; top up with general prompt if needed
-    def run_query_prompt(prompt_text: str):
-        raw = llm_chat(
-            [
-                {"role": "system", "content": "Return ONLY valid JSON."},
-                {"role": "user",
-                 "content": prompt_text + f"\n\nExtracted snapshot:\n{snapshot}"},
-            ],
-            force_json=True,
-        )
+    def run_query_prompt(prompt_text: str, label: str):
+        try:
+            raw = llm_chat(
+                [
+                    {"role": "system", "content": "Return ONLY valid JSON."},
+                    {"role": "user",
+                     "content": prompt_text + f"\n\nExtracted snapshot:\n{snapshot}"},
+                ],
+                force_json=True,
+            )
+        except LLMCallError as e:
+            print(f"[prompt_pipeline] WARNING: {label} query prompt failed: {e}")
+            return []
         time.sleep(1)
         try:
             obj = json.loads(raw)
-            return obj.get("queries", [])
         except Exception:
+            print(f"[prompt_pipeline] WARNING: {label} query prompt returned invalid JSON")
             return []
+        items = obj.get("queries", []) if isinstance(obj, dict) else []
+        return [it for it in items if isinstance(it, dict)]
 
     def _ingest(items, seen, merged):
         for item in items:
@@ -141,16 +176,21 @@ def build_queries_from_seed_pdfs(
         return False
 
     seen, merged = set(), []
-    q_domain = run_query_prompt(SPEC.prompt_gen_domain)
+    q_domain = run_query_prompt(SPEC.prompt_gen_domain, "domain")
     _ingest(q_domain, seen, merged)
 
     if len(merged) < max_queries:
         print(f"[prompt_pipeline] Domain prompt yielded {len(merged)}/{max_queries}; "
               f"falling back to prompt_gen_general.")
-        q_general = run_query_prompt(SPEC.prompt_gen_general)
+        q_general = run_query_prompt(SPEC.prompt_gen_general, "general")
         _ingest(q_general, seen, merged)
 
     merged = merged[:max_queries]
+    if not merged:
+        raise SystemExit(
+            "[prompt_pipeline] no valid queries were produced (see warnings above); "
+            "refusing to write an empty queries.json."
+        )
 
     # 3. Write queries.json
     queries_path = round_dir / "queries.json"
@@ -197,6 +237,13 @@ def main():
         default=8,
         help="Max number of unique search queries to keep in queries.json (paper default = 8).",
     )
+    parser.add_argument(
+        "--max_seed_pdfs",
+        type=int,
+        default=DEFAULT_MAX_SEED_PDFS,
+        help="Max number of seed PDFs to summarize (default 5). Extra seeds are "
+             "skipped with a warning.",
+    )
     args = parser.parse_args()
 
     # Resolve seed dir: explicit --seeds wins, otherwise fall back to SPEC.seeds_dir.
@@ -229,6 +276,7 @@ def main():
         seed_pdfs=seed_pdfs,
         round_dir=round_dir,
         max_queries=args.max_queries,
+        max_seed_pdfs=args.max_seed_pdfs,
     )
 
     print("\n[prompt_pipeline] Wrote:")

@@ -253,12 +253,43 @@ def search_arxiv(qstr: str, max_results: int, arxiv_cats: List[str],
     return dedupe(hits)[:max_results]
 
 # ==================== Search: OpenAlex ====================
+def openalex_abstract(inverted_index) -> str | None:
+    """Rebuild plain text from OpenAlex's ``abstract_inverted_index``.
+
+    OpenAlex ships abstracts as {word: [positions]}. Many works have none
+    (null or empty), in which case this returns None.
+    """
+    if not isinstance(inverted_index, dict) or not inverted_index:
+        return None
+    positions: Dict[int, str] = {}
+    for word, idxs in inverted_index.items():
+        for i in idxs or []:
+            if isinstance(i, int):
+                positions[i] = word
+    if not positions:
+        return None
+    return " ".join(positions[i] for i in sorted(positions))
+
+
+def strip_jats(text: str | None) -> str | None:
+    """Crossref abstracts are JATS XML fragments; keep the plain text."""
+    if not text:
+        return None
+    plain = re.sub(r"<[^>]+>", " ", text)
+    plain = re.sub(r"\s+", " ", plain).strip()
+    return plain or None
+
+
 def search_openalex(qstr: str, max_results: int, mailto: str | None = None,
                     domain_spec=None) -> List[Dict]:
     mailto = (mailto
               or os.getenv("OPENALEX_MAILTO")
               or os.getenv("CROSSREF_MAILTO")
               or "noreply@example.com")
+    # OpenAlex moved to usage-based limits: without a key the daily budget is
+    # small and shared per IP. A free key (OPENALEX_API_KEY) is sent as the
+    # documented ``api_key`` query parameter.
+    api_key = os.getenv("OPENALEX_API_KEY")
     sess = openalex_session(mailto)
     base_q = clean_for_openalex(qstr)
     base_url = "https://api.openalex.org/works"
@@ -277,6 +308,8 @@ def search_openalex(qstr: str, max_results: int, mailto: str | None = None,
             "page": 1,
             "mailto": mailto,
         }
+        if api_key:
+            params["api_key"] = api_key
         if filt:
             params["filter"] = filt
         try:
@@ -289,6 +322,7 @@ def search_openalex(qstr: str, max_results: int, mailto: str | None = None,
         for w in (r.json() or {}).get("results", []):
             doi = (w.get("doi") or "").replace("https://doi.org/", "") if w.get("doi") else None
             title = w.get("title") or ""
+            abstract = openalex_abstract(w.get("abstract_inverted_index"))
             out.append({
                 "source": "openalex",
                 "id": (w.get("ids") or {}).get("openalex") or w.get("id"),
@@ -298,10 +332,10 @@ def search_openalex(qstr: str, max_results: int, mailto: str | None = None,
                             if a.get("author")],
                 "year": w.get("publication_year"),
                 "doi": doi,
-                "abstract": None,
+                "abstract": abstract,
                 "url": w.get("id"),
                 "pdf_url": _pick_openalex_pdf_url(w),
-                "domain_score": score_domain_relevance(title, "", domain_spec),
+                "domain_score": score_domain_relevance(title, abstract or "", domain_spec),
             })
 
         if len(out) >= max_results:
@@ -349,11 +383,12 @@ def _search_crossref_member(qstr: str, max_results: int, member: str,
             if "pdf" in ct:
                 pdf_url = lk.get("URL") or lk.get("url")
                 break
+        abstract = strip_jats(it.get("abstract"))
         out.append({
             "source": "crossref", "id": doi or url, "title": title or "",
             "authors": authors, "year": year, "doi": doi,
-            "abstract": None, "url": url, "pdf_url": pdf_url,
-            "domain_score": score_domain_relevance(title or "", "", domain_spec),
+            "abstract": abstract, "url": url, "pdf_url": pdf_url,
+            "domain_score": score_domain_relevance(title or "", abstract or "", domain_spec),
         })
     return dedupe(out)[:max_results]
 

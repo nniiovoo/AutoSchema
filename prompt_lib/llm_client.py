@@ -179,8 +179,23 @@ def _embedding_model_arg(cfg: LLMConfig) -> str:
     return cfg.embedding_deployment if cfg.provider == "azure_openai" else cfg.embedding_model
 
 # ======================== Public helpers ========================
+class LLMCallError(RuntimeError):
+    """Raised when a chat completion still fails after all retries.
+
+    Callers decide how to degrade (skip one paper, keep an unmerged schema,
+    abort the round). Earlier versions returned the placeholder
+    ``'{"queries": []}'`` instead, which downstream code could not tell apart
+    from a real but empty model answer, so failures silently became empty
+    seed snapshots, empty query lists or empty field proposals.
+    """
+
+
 def llm_chat(messages: List[Dict[str, str]], force_json: bool = False) -> str:
-    """Provider-agnostic chat completion with retries."""
+    """Provider-agnostic chat completion with retries.
+
+    Raises ``LLMCallError`` when the call fails after ``MAX_RETRIES`` attempts
+    or with an unexpected client error.
+    """
     from openai import APIError, RateLimitError, APIConnectionError
     try:                                                        # SDK >= 1.0
         from openai import APITimeoutError as _TimeoutErr
@@ -212,10 +227,13 @@ def llm_chat(messages: List[Dict[str, str]], force_json: bool = False) -> str:
                 time.sleep(wait_time)
             else:
                 print(f"[ERROR] LLM API call failed after {MAX_RETRIES} retries: {e}")
-                return json.dumps({"queries": []})
+                raise LLMCallError(
+                    f"LLM API call failed after {MAX_RETRIES} retries: {e}"
+                ) from e
         except Exception as e:
             print(f"[ERROR] LLM API call failed (unexpected): {e}")
-            return json.dumps({"queries": []})
+            raise LLMCallError(f"LLM API call failed (unexpected): {e}") from e
+    raise LLMCallError("LLM API call made no attempts")  # MAX_RETRIES < 1
 
 def embedding_model_name() -> str:
     """Resolved model / deployment name to pass to ``client.embeddings.create``."""

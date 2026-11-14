@@ -35,8 +35,22 @@ class SchemaField:
                     pool.append(v)
         return pool
 
+def _str_list(value) -> List[str]:
+    return [str(v) for v in (value or []) if isinstance(v, (str, int, float)) and str(v).strip()]
+
+
 def load_schema(schema_path: Path) -> List[SchemaField]:
-    """Read final_schema.json (list of fields OR dict with 'fields' key)."""
+    """Read final_schema.json (list of fields OR dict with 'fields' key).
+
+    Accepts both key conventions:
+      * Phase II style: aliases / member_field_names / evidence_snippets / value_type
+      * Phase I output (schema_lib): evidence_examples / merged_from, no value_type
+    Phase I schemas used to load with no evidence snippets, no member names and
+    value_type "string", so passage retrieval matched on the field name alone
+    and every field was cut to a single value. A field with no ``value_type``
+    key now loads as "array" (multi-valued, as the paper describes); an
+    explicit ``value_type`` is always respected.
+    """
     obj = json.loads(Path(schema_path).read_text(encoding="utf-8"))
     if isinstance(obj, list):
         raw_fields = obj
@@ -49,15 +63,21 @@ def load_schema(schema_path: Path) -> List[SchemaField]:
     for f in raw_fields:
         if not isinstance(f, dict) or "name" not in f:
             continue
+        if "value_type" in f:
+            value_type = str(f.get("value_type") or "string")
+        else:
+            value_type = "array"
         out.append(
             SchemaField(
                 name=str(f["name"]),
                 description=str(f.get("description", "") or ""),
-                value_type=str(f.get("value_type", "string") or "string"),
+                value_type=value_type,
                 scope=str(f.get("scope", "") or ""),
-                aliases=[str(a) for a in (f.get("aliases") or []) if a],
-                member_field_names=[str(m) for m in (f.get("member_field_names") or []) if m],
-                evidence_snippets=[str(s) for s in (f.get("evidence_snippets") or []) if s],
+                aliases=_str_list(f.get("aliases")),
+                member_field_names=_str_list(
+                    f.get("member_field_names") or f.get("merged_from")),
+                evidence_snippets=_str_list(
+                    f.get("evidence_snippets") or f.get("evidence_examples")),
             )
         )
     return out

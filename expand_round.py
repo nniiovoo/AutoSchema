@@ -1,4 +1,4 @@
-import argparse, json, os, re, time
+import argparse, json, math, os, re, time
 from dataclasses import replace
 from datetime import datetime
 from pathlib import Path
@@ -37,23 +37,16 @@ from expand_lib.utils import (
     delete_invalid_pdfs,
     download_pdf,
     fname_with_tag,
+    is_valid_pdf,
+    record_key,
 )
 
 # ==================== Helpers ====================
 def get_record_key(rec: dict) -> str | None:
-    """DOI -> source ID -> normalized title."""
+    """DOI -> source ID -> normalized title (see expand_lib.utils.record_key)."""
     if not rec:
         return None
-    doi = rec.get("doi")
-    if doi:
-        return doi.lower().strip()
-    rid = rec.get("id")
-    if rid:
-        return str(rid).lower().strip()
-    title = rec.get("title") or ""
-    if title:
-        return re.sub(r"\s+", " ", title.strip().lower())
-    return None
+    return record_key(rec)
 
 def _resolve_last_tier(args, spec: DomainSpec, queries: List[Dict]) -> DomainSpec:
     chosen = args.last_tier
@@ -159,36 +152,75 @@ def run_one_round_search_and_download(
 
     domain_keyword = domain_spec.tiers[-1] if domain_spec.tiers else ""
 
-    # Candidate collection 
+    # Candidate collection
+    # Every query gets an equal share of the candidate budget, and each
+    # query's per-source hit lists are interleaved by rank. The earlier loop
+    # stopped as soon as the global budget filled, so usually only the first
+    # ~3 queries in queries.json ever ran (and, within them, the first-listed
+    # sources dominated). Each hit also records which queries/sources/ranks
+    # found it ("found_by"), so per-query yield can be computed afterwards.
+    per_query_cap = max(1, math.ceil(candidate_budget / max(1, len(queries))))
     candidate_map: Dict[str, Dict] = {}
-    for q in queries:
-        if len(candidate_map) >= candidate_budget:
-            break
+    query_stats: List[Dict] = []
+    for qi, q in enumerate(queries):
+        hits_by_source: Dict[str, List[Dict]] = {}
+        errors: Dict[str, str] = {}
         for src in sources:
-            if len(candidate_map) >= candidate_budget:
-                break
-            need = candidate_budget - len(candidate_map)
-            per_source = min(results_per_source, need)
             query = _build_query(src, q, domain_keyword)
-
             try:
-                hits = _run_search(
-                    src, query, per_source,
+                hits_by_source[src] = _run_search(
+                    src, query, results_per_source,
                     core_api_key=core_api_key,
                     openalex_mailto=openalex_mailto,
                     crossref_mailto=crossref_mailto,
                     arxiv_cats=domain_spec.arxiv_cats,
                     domain_spec=domain_spec,
-                )
+                ) or []
             except Exception as e:
                 print(f"[ERROR] {src} search failed for '{query[:50]}...': {e}")
-                continue
+                errors[src] = str(e)[:300]
+                hits_by_source[src] = []
 
-            for h in hits:
-                key = get_record_key(h)
-                if not key or key in exclude_keys or key in candidate_map:
+        added = already_found = excluded = no_key = 0
+        deepest = max((len(v) for v in hits_by_source.values()), default=0)
+        for rank in range(deepest):
+            for src in sources:
+                lst = hits_by_source.get(src) or []
+                if rank >= len(lst):
                     continue
+                h = lst[rank]
+                key = get_record_key(h)
+                if not key:
+                    no_key += 1
+                    continue
+                if key in exclude_keys:
+                    excluded += 1
+                    continue
+                prov = {"query_index": qi, "source": src, "rank": rank + 1}
+                if key in candidate_map:
+                    candidate_map[key].setdefault("found_by", []).append(prov)
+                    already_found += 1
+                    continue
+                if added >= per_query_cap:
+                    continue
+                h["found_by"] = [prov]
                 candidate_map[key] = h
+                added += 1
+
+        query_stats.append({
+            "query_index": qi,
+            "query_nl": q.get("query_nl"),
+            "query_bool": q.get("query_bool"),
+            "hits_per_source": {s: len(v) for s, v in hits_by_source.items()},
+            "new_candidates": added,
+            "already_found_by_earlier_query": already_found,
+            "excluded": excluded,
+            "without_key": no_key,
+            "errors": errors,
+        })
+    print(f"[expand_round] Ran {len(queries)} queries x {len(sources)} sources; "
+          f"{len(candidate_map)} candidates (per-query cap {per_query_cap}, "
+          f"budget {candidate_budget}, excluded {sum(s['excluded'] for s in query_stats)})")
 
     # Rank + select 
     all_hits = sorted(dedupe(list(candidate_map.values())),
@@ -202,6 +234,17 @@ def run_one_round_search_and_download(
         for r in selected_for_metadata:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
 
+    retrieval_stats_path = round_dir / "retrieval_stats.json"
+    retrieval_stats_path.write_text(json.dumps({
+        "queries_run": len(queries),
+        "sources": list(sources),
+        "results_per_source": results_per_source,
+        "candidate_budget": candidate_budget,
+        "per_query_cap": per_query_cap,
+        "candidates": len(candidate_map),
+        "per_query": query_stats,
+    }, indent=2, ensure_ascii=False), encoding="utf-8")
+
     # Download 
     downloaded_paths: List[Path] = []
     downloaded_per_source: Dict[str, int] = {}
@@ -211,37 +254,47 @@ def run_one_round_search_and_download(
         downloaded_paths.append(path)
         downloaded_per_source[src_lower] = downloaded_per_source.get(src_lower, 0) + 1
 
+    def _keep_if_pdf(source: str, path: Path) -> bool:
+        """Count a file only if it is a real PDF. Publisher URLs often return an
+        HTML landing page with HTTP 200; previously any body >1000 bytes counted
+        toward target_per_round and was deleted only after the loop ended, so
+        the round came up short with no replacement download."""
+        if path.exists() and is_valid_pdf(path):
+            if path not in downloaded_paths:
+                _record_success(source, path)
+            return True
+        if path.exists() and path.parent == download_dir:
+            try:
+                path.unlink()
+            except OSError:
+                pass
+        return False
+
     def _try_download(rec: Dict) -> None:
         source = (rec.get("source") or "").lower()
         fname = fname_with_tag(rec)
         dest = download_dir / fname
 
-        if dest.exists() and dest.stat().st_size > 1000:
-            if dest not in downloaded_paths:
-                _record_success(source, dest)
+        if dest.exists() and _keep_if_pdf(source, dest):
             return
 
         if source == "pubmed":
             if download_pubmed_or_pmc_hit(rec, download_dir, fname):
-                if dest.exists() and dest.stat().st_size > 1000:
-                    _record_success(source, dest)
+                _keep_if_pdf(source, dest)
             return
 
         if source == "biorxiv":
             if download_biorxiv_hit(rec, download_dir, fname):
-                if dest.exists() and dest.stat().st_size > 1000:
-                    _record_success(source, dest)
+                _keep_if_pdf(source, dest)
             return
 
         if rec.get("local_path") and os.path.exists(rec["local_path"]):
-            _record_success(source, Path(rec["local_path"]))
-            return
+            if _keep_if_pdf(source, Path(rec["local_path"])):
+                return
 
         pdf_guess = rec.get("pdf_url")
         if pdf_guess and download_pdf(pdf_guess, dest):
-            if dest.exists() and dest.stat().st_size > 1000:
-                _record_success(source, dest)
-                return
+            _keep_if_pdf(source, dest)
 
     def _record_key(rec: Dict) -> str:
         return get_record_key(rec) or f"_obj_{id(rec)}"
@@ -309,6 +362,7 @@ def run_one_round_search_and_download(
         "selected_pdf_paths": final_pdf_paths,
         "search_results_path": search_results_path,
         "downloaded_metadata_path": downloaded_metadata_path,
+        "retrieval_stats_path": retrieval_stats_path,
     }
 
 # ==================== CLI ====================
@@ -353,6 +407,10 @@ def _make_parser() -> argparse.ArgumentParser:
                         help="CORE API key. Falls back to $CORE_API_KEY.")
     parser.add_argument("--refresh_downloads", action="store_true",
                         help="Clear the round's downloads/ folder before fetching.")
+    parser.add_argument("--exclude_keys_file", default=None,
+                        help="JSON list of record keys (see expand_lib.utils.record_key) "
+                             "to skip during candidate collection, e.g. papers already "
+                             "accepted earlier in the round.")
     return parser
 
 def main():
@@ -423,6 +481,12 @@ def main():
     if args.openalex_email:
         contact_emails["OPENALEX_MAILTO"] = args.openalex_email
 
+    exclude_keys: Set[str] = set()
+    if args.exclude_keys_file:
+        raw_keys = json.loads(Path(args.exclude_keys_file).read_text(encoding="utf-8"))
+        exclude_keys = {str(k) for k in raw_keys if k}
+        print(f"[expand_round] excluding {len(exclude_keys)} known record keys")
+
     result = run_one_round_search_and_download(
         queries_path=queries_path,
         round_dir=round_dir,
@@ -431,6 +495,7 @@ def main():
         core_api_key=core_api_key,
         results_per_source=args.results_per_source,
         contact_emails=contact_emails or None,
+        exclude_keys=exclude_keys,
     )
 
     pdfs = list(result["selected_pdf_paths"])
