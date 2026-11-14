@@ -4,6 +4,8 @@
 
 The baseline is the preserved **previous fresh run**, `examples/polymer_cards/fresh_run_2026-11-06`, rather than the earlier proposal-conditioned revision. `baseline-reference-freeze.json` preserves the pre-change baseline/reference hashes. No reference case or threshold is changed by this helper.
 
+**Code version.** Each helper refuses to run if code recorded in a capture's freeze has since changed. Run `verify_context_composition.py` from a checkout of `af8ee44` (`git worktree add ../autoschema-af8ee44 af8ee44`), passing the `outputs/...` directories of the original checkout. The two `verify_span_run.py` checks cannot be reproduced from any commit: their captures were made with uncommitted code between `1e97bb1` and `6422983`, which is not in the repository.
+
 ## Fresh extraction
 
 Use a new evaluation directory:

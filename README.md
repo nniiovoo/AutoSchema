@@ -349,10 +349,10 @@ The model route reuses AutoSchema's local OpenAI/Azure configuration, also accep
 
 The [first actual three-paper model run](docs/polymer-cards-live-report-2026-10-28.md) produced 18 draft card records and exposed missing ratio labels, identity/specimen problems and source-text limitations. Original responses and source-review notes are saved separately from the curated replay; no scientific accuracy score is claimed.
 
-Run the focused checks:
+Run all polymer-card and Task 3 checks (offline, no API calls):
 
 ```bash
-python3 -m unittest -v test_polymer_cards_validation test_polymer_cards_render test_polymer_cards_workflow test_polymer_cards_real_papers test_task3_selection test_task3_dpal_case test_task3_battery_case
+python3 -m unittest discover -p 'test_*.py'
 ```
 
 ## Historical Task 3: application-specific candidate selection

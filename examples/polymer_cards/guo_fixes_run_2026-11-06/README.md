@@ -17,7 +17,7 @@ There were nine successful model requests in this task: three new fresh extracti
 
 ## Reproduce the final saved comparison — zero API calls
 
-From the repository root, choose a new output directory:
+The helper refuses code that changed after the recorded freeze. Later commits fixed the validator, evaluator, renderer and source loader, so run it from a checkout of `af8ee44` (`git worktree add ../autoschema-af8ee44 af8ee44`). From that checkout's root, choose a new output directory:
 
 ```sh
 python3 examples/polymer_cards/span_reference_checks_2026-11-06/verify_context_composition.py \

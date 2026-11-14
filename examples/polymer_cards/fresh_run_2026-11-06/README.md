@@ -33,6 +33,8 @@ python3 examples/polymer_cards/condition_reference_2026-11-06/compare_run.py \
   --out-dir /tmp/polymer-fresh-comparison-new
 ```
 
+The freeze check pins this run's exact prompt, schema and code, so it passes only at `1e97bb1`, the commit that recorded the run. Run it from a checkout of that commit (`git worktree add ../autoschema-1e97bb1 1e97bb1`).
+
 Choose a new output directory; the helper refuses to overwrite an earlier comparison. It verifies source/request hashes, the prompt/schema and code/reference freeze, raw JSON preservation, and unchanged source snapshots. It then evaluates the three frozen reference sets. The `baseline/` copies are unchanged from the earlier saved revision; their original hashes are in `baseline/provenance.json`.
 
 Rechecking the original XML hashes needs the local original-paper manifest, as described in [the evaluation reference](../condition_reference_2026-11-06/README.md). No key is needed for saved-data comparison. A new live extraction is separate and uses the existing ignored local configuration; do not add credentials to this directory.

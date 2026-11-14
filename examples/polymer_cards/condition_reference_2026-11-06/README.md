@@ -32,6 +32,8 @@ To recheck the frozen files, original hashes, 19 derivative chunks and 30 explic
 python3 examples/polymer_cards/condition_reference_2026-11-06/verify_reference.py --paper-manifest '/Volumes/Seagate/research /polymer-screening/sources/polymer-cards-2026-10-28/full-papers.json'
 ```
 
+This check compares the frozen excerpts with a fresh load of the original XML, so it needs the loader that made them (`jats_script_notation_v1`). Commit `b0380dd` changed the JATS loader, so run it from a checkout of `af8ee44` (`git worktree add ../autoschema-af8ee44 af8ee44`). The reference cases themselves are unchanged; every chunk ID they cite still exists under the current loader.
+
 `baseline-evaluation.json` applies these new selected checks to the unchanged 30 October revision output: six identity cases match, three of 17 measurement cases meet every selected condition, 14 need source review, and the Chen context conflict is absent. That stricter baseline is separate from the original nine-case/six-Pei results. In particular, P4's supported “nearly 140 times” phrase differs from the frozen percentage representation; a ratio-style phrase is not by itself proof a percent unit was dropped.
 
 ## Saved-run comparison helpers
