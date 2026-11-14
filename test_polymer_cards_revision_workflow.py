@@ -78,6 +78,18 @@ class PolymerCardRevisionWorkflowTests(unittest.TestCase):
                 self.assertEqual(2, code)
                 self.assertFalse((root / "out" / "cards.json").exists())
 
+    def test_revision_rejects_an_invalid_prior_proposal_before_any_paid_request(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            manifest, records, sources, response = self.setup_files(root)
+            response["entities"] = "not a list"
+            dump(records, {"responses": [response]})
+            with patch("polymer_cards_lib.llm.create_client", side_effect=AssertionError("Reject invalid proposals before client access")):
+                code, _, _ = self.invoke(["--papers", str(manifest), "--repair-records", str(records),
+                                          "--repair-sources", str(sources), "--out-dir", str(root / "out")])
+            self.assertEqual(2, code)
+            self.assertFalse((root / "out").exists())
+
     def test_revision_cannot_overwrite_its_prior_records_or_source_snapshot(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

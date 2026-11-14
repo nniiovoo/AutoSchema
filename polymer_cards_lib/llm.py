@@ -21,7 +21,7 @@ class ModelRequestError(RuntimeError):
 
 def create_client(env_file=None, request_timeout=300):
     if not isinstance(request_timeout, (int, float)) or isinstance(request_timeout, bool) or not 0 < request_timeout <= 900:
-        raise ModelSetupError("Request timeout must be positive and at most900 seconds")
+        raise ModelSetupError("Request timeout must be positive and at most 900 seconds")
     root = Path(__file__).resolve().parents[1]
     paths = [Path(env_file)] if env_file else [root / ".env.local", root / ".env"]
     if env_file and not paths[0].is_file():
@@ -70,7 +70,7 @@ def create_client(env_file=None, request_timeout=300):
     return client, model, provider
 
 
-def extract_document(client, model, document, max_output_tokens=10000):
+def extract_document(client, model, document, max_output_tokens=24000):
     """One bounded request; no hidden model retries or raw provider errors in logs."""
     return _request(client, model, build_user_prompt(document), max_output_tokens)
 

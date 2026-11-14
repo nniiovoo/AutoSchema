@@ -87,15 +87,15 @@ def main(argv=None):
     mode.add_argument("--repair-records", type=Path, help="Use saved responses as untrusted proposals for a new, source-grounded model revision.")
     parser.add_argument("--repair-sources", type=Path, help="Matching sources.json snapshot for --repair-records; checked answers are never used for revision.")
     parser.add_argument("--env-file", type=Path, help="Existing local model environment configuration; never copied into outputs.")
-    parser.add_argument("--max-papers", type=_bounded_int, default=3, help="Maximum papers to process; default3 keeps the pilot bounded.")
-    parser.add_argument("--max-output-tokens", type=_bounded_int, default=24000, help="Bound each live response; default24000, explicit maximum48000 for evidence-rich full-paper cards.")
-    parser.add_argument("--request-timeout", type=_bounded_int, default=300, help="Seconds per live request; default300, maximum900; no automatic retries.")
+    parser.add_argument("--max-papers", type=_bounded_int, default=3, help="Maximum papers to process; default 3 keeps the pilot bounded.")
+    parser.add_argument("--max-output-tokens", type=_bounded_int, default=24000, help="Bound each live response; default 24000, explicit maximum 48000 for evidence-rich full-paper cards.")
+    parser.add_argument("--request-timeout", type=_bounded_int, default=300, help="Seconds per live request; default 300, maximum 900; no automatic retries.")
     args = parser.parse_args(argv)
     try:
         if args.max_output_tokens > 48000:
-            raise ValueError("Maximum output token limit is48000 per request")
+            raise ValueError("Maximum output token limit is 48000 per request")
         if args.request_timeout > 900:
-            raise ValueError("Maximum request timeout is900 seconds")
+            raise ValueError("Maximum request timeout is 900 seconds")
         if bool(args.repair_records) != bool(args.repair_sources):
             raise ValueError("Source-grounded revision requires both --repair-records and --repair-sources")
         documents = load_documents(args.papers)
@@ -106,6 +106,11 @@ def main(argv=None):
         if args.repair_records:
             _verify_repair_sources(args.repair_sources, documents)
             prior_responses = _ordered_responses(args.repair_records, documents)
+            # Reject every invalid prior proposal before the first paid request,
+            # not after earlier papers have already been revised.
+            from polymer_cards_lib.repair import build_revision_user_prompt
+            for document, prior in zip(documents, prior_responses):
+                build_revision_user_prompt(document, prior)
         from polymer_cards_lib.validation import build_cards
         from polymer_cards_lib.render import write_outputs
         metadata = {"contract_version": "polymer-cards-v1", "created_at_utc": datetime.now(timezone.utc).isoformat(),
