@@ -110,14 +110,17 @@ class PolymerCardRenderTests(unittest.TestCase):
         self.assertIn("P/LiFSI 2:1 film", page)
 
     def test_script_conversion_is_declared_beside_the_evidence_in_both_views(self):
-        document, result, _ = example()
-        document["chunks"][0]["text_transformations"] = ["jats_script_notation_v1"]
-        page = render_html([result], [document], {})
-        markdown = render_markdown([result], [document], {})
-        for view in (page, markdown):
-            self.assertIn("preserved superscripts/subscripts", view)
-            self.assertIn("converted source text", view)
-        self.assertNotIn("Original quote matched to source", page)
+        for version in ("jats_script_notation_v1", "jats_script_notation_v2"):
+            with self.subTest(version=version):
+                document, result, _ = example()
+                document["chunks"][0]["text_transformations"] = [version]
+                page = render_html([result], [document], {})
+                markdown = render_markdown([result], [document], {})
+                for view in (page, markdown):
+                    self.assertIn("preserved superscripts/subscripts", view)
+                    self.assertIn("converted source text", view)
+                    self.assertNotIn("Declared source-text transformations", view)
+                self.assertNotIn("Original quote matched to source", page)
 
     def test_transformation_labels_come_from_source_chunks_not_model_claims(self):
         document, result, _ = example()
@@ -172,6 +175,25 @@ class PolymerCardRenderTests(unittest.TestCase):
             self.assertNotIn("<img ", view)
             self.assertNotIn("<script>", view)
         self.assertIn("specimen label matches other material", page)
+
+    def test_attribution_warning_names_its_measurement_and_related_forms(self):
+        document, result, _ = example()
+        result["cards"][0]["attribution_warnings"] = [{
+            "reason": "specimen_form_ambiguous", "entity_id": "P", "path": "properties.items[0]",
+            "property": "ionic conductivity", "value": "2.4 × 10⁻⁴", "specimen_label": "P film",
+            "related_specimen_labels": ["P/LiTFSI film"],
+        }]
+        page, markdown = render_html([result], [document], {}), render_markdown([result], [document], {})
+        self.assertIn("ionic conductivity = 2.4 × 10⁻⁴", page)
+        self.assertIn("ionic conductivity = 2\\.4 × 10⁻⁴", markdown)  # Markdown escapes "."
+        for view in (page, markdown):
+            self.assertIn("P/LiTFSI film", view)
+
+    def test_held_conflict_note_is_flagged_on_the_card(self):
+        document, result, _ = example()
+        result["cards"][0]["properties"] = {"status": "needs_review", "items": [], "invalid_conflicts_count": 1}
+        for view in (render_html([result], [document], {}), render_markdown([result], [document], {})):
+            self.assertIn("source-discrepancy note needs review", view)
 
     def test_output_files_preserve_machine_records_and_separate_audit(self):
         document, result, evidence = example()
@@ -279,7 +301,7 @@ class PolymerCardRenderTests(unittest.TestCase):
             raw = {"responses": [{"paper_id": "paper-a", "entities": []}]}
             paths = write_outputs([result], [document], out, {}, {"raw-responses.json": raw})
             self.assertEqual(raw, json.loads(Path(paths["raw-responses.json"]).read_text()))
-        for bad_name in ("../elsewhere.json", "/tmp/elsewhere.json", "subdir/result.json", "subdir\\result.json", "cards.json", ".."):
+        for bad_name in ("../elsewhere.json", "/tmp/elsewhere.json", "subdir/result.json", "subdir\\result.json", "cards.json", "CARDS.JSON", "Sources.json", ".."):
             with self.subTest(name=bad_name), tempfile.TemporaryDirectory() as temporary:
                 out = Path(temporary) / "result"
                 with self.assertRaises(ValueError):

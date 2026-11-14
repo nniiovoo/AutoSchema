@@ -113,9 +113,13 @@ def _transformation_note(reference: Dict) -> str:
     if not isinstance(transformations, list) or not transformations:
         return ""
     notes = []
-    if "jats_script_notation_v1" in transformations:
-        notes.append("Source XML converted with preserved superscripts/subscripts (jats_script_notation_v1).")
-    other = [str(item) for item in transformations if item != "jats_script_notation_v1"]
+    known = {
+        "jats_script_notation_v1": "Source XML converted with preserved superscripts/subscripts (jats_script_notation_v1).",
+        "jats_script_notation_v2": ("Source XML converted with preserved superscripts/subscripts, including MathML, "
+                                    "with figure, table and formula blocks kept on separate lines (jats_script_notation_v2)."),
+    }
+    notes.extend(known[item] for item in known if item in transformations)
+    other = [str(item) for item in transformations if item not in known]
     if other:
         notes.append("Declared source-text transformations: " + ", ".join(other) + ".")
     return " ".join(notes)
@@ -227,8 +231,15 @@ def _attribution_warning_text(warning: Dict) -> str:
     parts = []
     if warning.get("reason"):
         parts.append(str(warning["reason"]).replace("_", " "))
+    if warning.get("property"):
+        measurement = _display(warning["property"])
+        if warning.get("value") is not None:
+            measurement += " = " + _display(warning["value"])
+        parts.append("Measurement: " + measurement)
     if warning.get("specimen_label") or warning.get("specimen_id"):
         parts.append("Sample: " + _display(warning.get("specimen_label") or warning["specimen_id"]))
+    if warning.get("related_specimen_labels"):
+        parts.append("Related forms: " + _display(warning["related_specimen_labels"]))
     if warning.get("related_entity_ids"):
         parts.append("Related material records: " + _display(warning["related_entity_ids"]))
     for key in ("detail", "details"):
@@ -282,6 +293,8 @@ def _card_html(card: Dict, document: Dict, number: int) -> str:
             content.append(_conflict_html(conflict, document, card))
         if group.get("invalid_items_count"):
             content.append('<p class="missing">Additional extracted facts need review; see the audit below.</p>')
+        if group.get("invalid_conflicts_count"):
+            content.append('<p class="missing">A source-discrepancy note needs review; see the audit below.</p>')
         content.append("</section>")
     specimens = card.get("specimens", [])
     if specimens:
@@ -453,6 +466,8 @@ def render_markdown(results: List[Dict], documents: List[Dict], run_metadata: Di
                     lines.append(_evidence_md(conflict.get("evidence"), document, "Conflicting source reports"))
                 if group.get("invalid_items_count"):
                     lines.append("Additional extracted facts need review; see the audit.")
+                if group.get("invalid_conflicts_count"):
+                    lines.append("A source-discrepancy note needs review; see the audit.")
             if card.get("specimens"):
                 lines.extend(["#### Linked formulations and specimens", ""])
                 for specimen in card["specimens"]:
@@ -583,8 +598,9 @@ def write_outputs(results: List[Dict], documents: List[Dict], out_dir: Path | st
         if not isinstance(additional_outputs, dict):
             raise ValueError("Additional outputs must be a filename-to-JSON mapping.")
         for filename, value in additional_outputs.items():
+            # Compare case-insensitively: on default macOS volumes CARDS.JSON is cards.json.
             if (not isinstance(filename, str) or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*", filename)
-                    or filename in outputs):
+                    or filename.casefold() in {name.casefold() for name in outputs}):
                 raise ValueError("Additional output names must be distinct plain filenames.")
             outputs[filename] = encode(value)
     destination = Path(out_dir)
