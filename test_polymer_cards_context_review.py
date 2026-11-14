@@ -28,6 +28,50 @@ def fixture():
     return document, previous, edit
 
 
+ANNEALED_60 = "After annealing at approx. 60°C, the P1 film had breaking strength 15 MPa."
+ANNEALED_80 = "After annealing at 80°C, it had breaking strength 18 MPa."
+# The catalogue splits ANNEALED_60 after "approx."; this sentence span holds the 15 MPa value.
+VALUE_15 = "60°C, the P1 film had breaking strength 15 MPa."
+
+
+def span(document, chunk_id, text=None):
+    """Select one exact catalogue span; the complete chunk when text is omitted."""
+    if text is None:
+        text = next(c["text"] for c in document["chunks"] if c["chunk_id"] == chunk_id)
+    return [{"chunk_id": chunk_id, "span_id": next(s["span_id"] for s in build_span_catalog(document)
+                                                   if s["chunk_id"] == chunk_id and s["text"] == text)}]
+
+
+def annealed_fixture():
+    """The worked example plus two annealed strengths of the same P1 film (items 2 and 3)."""
+    document, previous, _ = fixture()
+    chunk = deepcopy(next(c for c in document["chunks"] if c["chunk_id"] == "example-film"))
+    chunk.update(chunk_id="example-annealed", locator="example-annealed", text=ANNEALED_60 + " " + ANNEALED_80)
+    document["chunks"].append(chunk)
+    quote = lambda chunk_id, text: [{"chunk_id": chunk_id, "quote": text}]
+    for value, temperature, sentence in (("15", "approx. 60°C", ANNEALED_60), ("18", "80°C", ANNEALED_80)):
+        previous["entities"][0]["properties"]["items"].append({
+            "entity_id": "p1", "value": value, "property": "breaking strength", "unit": "MPa",
+            "specimen_id": "p1-film",
+            "specimen_evidence": quote("example-film", "A P1 film was cast after solvent evaporation."),
+            "conditions": [{"name": "annealing temperature", "value": temperature,
+                            "evidence": quote("example-annealed", sentence)}],
+            "evidence": quote("example-annealed", sentence)})
+    return document, previous
+
+
+def as_cast_conditions_edit(document, previous, index, sentence):
+    """Give an annealed value the as-cast item 0 stated conditions, each with valid evidence."""
+    prop = previous["entities"][0]["properties"]["items"][index]
+    return {"entity_id": "p1", "property_index": index,
+            "anchor_sha256": property_anchor_sha256("p1", index, prop),
+            "specimen_id": "p1-film", "specimen_evidence": span(document, "example-film"),
+            "conditions": [{"name": "temperature", "value": "25°C", "evidence": span(document, "example-film")},
+                           {"name": "crosshead speed", "value": "7 mm min−1",
+                            "evidence": span(document, "example-testing-methods")}],
+            "evidence": span(document, "example-annealed", sentence), "reason": "Use the tensile protocol."}
+
+
 class PolymerContextReviewTests(unittest.TestCase):
     def test_valid_context_edit_preserves_values_units_names_order_and_inputs(self):
         document, previous, edit = fixture()
@@ -87,6 +131,116 @@ class PolymerContextReviewTests(unittest.TestCase):
         self.assertEqual(1, audit["applied_edits"])
         self.assertEqual("applied_with_validation_review", audit["edit_results"][0]["status"])
         self.assertIn("property_value_not_in_original_evidence", audit["edit_results"][0]["validation_reasons"])
+
+    def test_held_fact_cannot_gain_unsupported_context_hidden_behind_its_first_issue(self):
+        # Validation stops at a fact's first failed check, so the value and
+        # condition checks of an unlinked measurement never reach its reasons.
+        expected = {"value": ["property_unit_not_in_original_evidence", "property_value_not_in_original_evidence"],
+                    "condition": ["condition_value_not_in_original_evidence"]}
+        for kind in ("value", "condition", "supported"):
+            with self.subTest(kind=kind):
+                document, previous, edit = fixture()
+                prop = previous["entities"][0]["properties"]["items"][0]
+                prop["specimen_id"], prop["specimen_evidence"] = None, []
+                edit.update(specimen_id=None, specimen_evidence=[])
+                if kind == "value":
+                    edit["evidence"] = span(document, "example-method")
+                elif kind == "condition":
+                    edit["conditions"][0]["value"] = "999 °C"
+                composed, audit = apply_context_proposals(document, previous,
+                    {"paper_id": document["paper_id"], "edits": [edit]})
+                if kind == "supported":
+                    self.assertEqual(1, audit["applied_edits"])
+                    self.assertEqual(["fact_specimen_not_linked_to_polymer"],
+                                     audit["edit_results"][0]["validation_reasons"])
+                    continue
+                self.assertEqual(previous, composed)
+                self.assertEqual(0, audit["applied_edits"])
+                self.assertEqual("context_edit_introduces_new_validation_issue", audit["held_edits"][0]["reason"])
+                self.assertEqual(expected[kind], audit["held_edits"][0]["new_validation_reasons"])
+
+    def test_family_held_measurement_cannot_gain_link_evidence_naming_another_form(self):
+        for kind in ("alternate", "supported"):
+            with self.subTest(kind=kind):
+                document, previous, edit = fixture()
+                previous["entities"][0]["identity_kind"] = "polymer_family"
+                if kind == "alternate":
+                    edit["specimen_evidence"] = span(document, "example-salt")
+                composed, audit = apply_context_proposals(document, previous,
+                    {"paper_id": document["paper_id"], "edits": [edit]})
+                if kind == "supported":
+                    self.assertEqual(1, audit["applied_edits"])
+                    self.assertEqual(["family_measurement_requires_specific_polymer"],
+                                     audit["edit_results"][0]["validation_reasons"])
+                    continue
+                self.assertEqual(previous, composed)
+                self.assertEqual(["property_sample_evidence_names_alternate_form"],
+                                 audit["held_edits"][0]["new_validation_reasons"])
+
+    def test_held_fact_condition_may_rely_on_adjacent_selected_spans_but_not_on_one_alone(self):
+        for kind in ("adjacent", "one_span"):
+            with self.subTest(kind=kind):
+                document, previous = annealed_fixture()
+                prop = previous["entities"][0]["properties"]["items"][2]
+                prop["specimen_id"], prop["specimen_evidence"] = None, []
+                second = span(document, "example-annealed", VALUE_15)
+                condition_evidence = second if kind == "one_span" else (
+                    span(document, "example-annealed", "After annealing at approx.") + second)
+                edit = {"entity_id": "p1", "property_index": 2,
+                        "anchor_sha256": property_anchor_sha256("p1", 2, prop),
+                        "specimen_id": None, "specimen_evidence": [],
+                        "conditions": [{"name": "annealing temperature", "value": "approx. 60°C",
+                                        "evidence": condition_evidence}],
+                        "evidence": deepcopy(second), "reason": "Select the annealing passage."}
+                composed, audit = apply_context_proposals(document, previous,
+                    {"paper_id": document["paper_id"], "edits": [edit]})
+                if kind == "adjacent":
+                    self.assertEqual(1, audit["applied_edits"])
+                    self.assertEqual(["fact_specimen_not_linked_to_polymer"],
+                                     audit["edit_results"][0]["validation_reasons"])
+                else:
+                    self.assertEqual(previous, composed)
+                    self.assertEqual(["condition_value_not_in_original_evidence"],
+                                     audit["held_edits"][0]["new_validation_reasons"])
+
+    def test_edit_giving_two_values_the_same_stated_conditions_is_held(self):
+        for base in ("reported", "conflict_note", "existing_pair"):
+            with self.subTest(base=base):
+                document, previous = annealed_fixture()
+                group = previous["entities"][0]["properties"]
+                index, sentence = 2, VALUE_15
+                if base == "conflict_note":
+                    group["conflicts"] = [{"property": "breaking strength", "specimen_ids": ["p1-film"],
+                                           "description": "Annealed and as-cast strengths differ.",
+                                           "evidence": [{"chunk_id": "example-annealed", "quote": ANNEALED_60}]}]
+                elif base == "existing_pair":
+                    group["items"][2]["conditions"] = deepcopy(group["items"][0]["conditions"])
+                    index, sentence = 3, ANNEALED_80
+                edit = as_cast_conditions_edit(document, previous, index, sentence)
+                composed, audit = apply_context_proposals(document, previous,
+                    {"paper_id": document["paper_id"], "edits": [edit]})
+                self.assertEqual(previous, composed)
+                self.assertEqual(0, audit["applied_edits"])
+                held = audit["held_edits"][0]
+                self.assertEqual("context_edit_introduces_new_validation_issue", held["reason"])
+                self.assertIn("multiple_property_values_for_same_stated_conditions", held["new_validation_reasons"])
+                if base == "reported":
+                    self.assertIn("properties_group_status_changed_to_conflicting", held["new_validation_reasons"])
+
+    def test_edit_separating_values_with_supported_conditions_is_applied(self):
+        document, previous = annealed_fixture()
+        items = previous["entities"][0]["properties"]["items"]
+        items[2]["conditions"] = deepcopy(items[0]["conditions"])
+        edit = as_cast_conditions_edit(document, previous, 2, VALUE_15)
+        edit["conditions"] = [{"name": "annealing temperature", "value": "approx. 60°C",
+                               "evidence": span(document, "example-annealed")}]
+        composed, audit = apply_context_proposals(document, previous,
+            {"paper_id": document["paper_id"], "edits": [edit]})
+        self.assertEqual(1, audit["applied_edits"])
+        self.assertEqual("applied_context_source_linked", audit["edit_results"][0]["status"])
+        self.assertIn("multiple_property_values_for_same_stated_conditions",
+                      {issue["reason"] for issue in audit["base_validation_issues"]})
+        self.assertEqual([], audit["validation_issues"])
 
     def test_wrong_paper_and_nonfinite_json_do_not_change_the_base(self):
         document, previous, edit = fixture()

@@ -225,6 +225,51 @@ def build_context_review_prompt(document, previous, review_focus=None, strict_fo
             + "\nUNTRUSTED CONTEXT-REVIEW TARGETS\n" + json.dumps(payload, ensure_ascii=False, allow_nan=False))
 
 
+def _context_support_issues(document, catalog, record, edit, specimens):
+    """Validation reasons for the proposed context, each checked on its own.
+
+    ``build_cards`` stops at a fact's first failure, so an already-held fact
+    (for example, one with no linked specimen) would never reach the value,
+    unit, condition or sample-form checks. These use validation's own source
+    resolution and literal-matching helpers and reason codes; they do not
+    interpret the science. Invalid immutable values or units are not
+    reassessed here.
+    """
+    from polymer_cards_lib.evidence_spans import combine_adjacent_spans, resolve_span
+    from polymer_cards_lib.validation import (
+        _alternate_specimen_form_in_link_evidence, _literal, _scalar, _text, _unit_literal)
+    issues = set()
+
+    def resolved(refs):
+        # As validation does: the selected spans plus exact unions of adjacent ones.
+        selected = [{"chunk_id": ref["chunk_id"],
+                     **resolve_span(document, ref["chunk_id"], ref["span_id"], catalog=catalog)} for ref in refs]
+        try:
+            return selected + combine_adjacent_spans(document, selected, catalog=catalog)
+        except ValueError:
+            issues.add("invalid_adjacent_source_span_support")
+            return selected
+
+    evidence = resolved(edit["evidence"])
+    value, unit = record.get("value"), record.get("unit")
+    if _scalar(value) and not any(_literal(value, item["quote"]) for item in evidence):
+        issues.add("property_value_not_in_original_evidence")
+    if _text(unit) and not any(_unit_literal(unit, item["quote"]) for item in evidence):
+        issues.add("property_unit_not_in_original_evidence")
+    for condition in edit["conditions"]:
+        if not any(_literal(condition["value"], item["quote"]) for item in resolved(condition["evidence"])):
+            issues.add("condition_value_not_in_original_evidence")
+    if edit["specimen_id"] is not None:
+        link = {"specimen_id": edit["specimen_id"], "unit": unit,
+                "specimen_evidence": resolved(edit["specimen_evidence"])}
+        if _alternate_specimen_form_in_link_evidence(link, specimens):
+            issues.add("property_sample_evidence_names_alternate_form")
+    return issues
+
+
+_GROUP_STATUS_SEVERITY = {"reported": 0, "not_found_in_provided_text": 0, "needs_review": 1, "conflicting": 2}
+
+
 def _immutable_view(response):
     result = deepcopy(response)
     for entity in result["entities"]:
@@ -254,6 +299,8 @@ def apply_context_proposals(document, previous, proposals, review_focus=None, st
     composed = deepcopy(previous)
     baseline = build_cards(document, previous)
     supported = {card["entity_id"]: {s["specimen_id"] for s in card["specimens"]} for card in baseline["cards"]}
+    specimen_records = {card["entity_id"]: card["specimens"] for card in baseline["cards"]}
+    current = baseline  # validation of ``composed`` before the edit under test
     audit = {"mode": "model_proposed_context_revision", "paper_id": previous["paper_id"],
              "base_response_sha256": _sha(previous), "applied_edits": 0, "held_edits": [], "edit_results": [],
              "base_validation_issues": deepcopy(baseline["validation_issues"]),
@@ -279,6 +326,24 @@ def apply_context_proposals(document, previous, proposals, review_focus=None, st
         if entity_id not in {card["entity_id"] for card in validation["cards"]}:
             reasons.add("parent_not_retained_by_validation")
         return reasons
+
+    def group_state(validation, entity_id, group_path):
+        # Same-stated-condition conflicts are reported at the group path, not
+        # at either item, and can turn the validated group 'conflicting'.
+        reasons = Counter(issue["reason"] for issue in validation["validation_issues"]
+                          if issue.get("entity_id") == entity_id and issue.get("path") == group_path)
+        status = next((card["properties"]["status"] for card in validation["cards"]
+                       if card["entity_id"] == entity_id), None)
+        return reasons, status
+
+    def group_regressions(before, after, entity_id, group_path):
+        old_reasons, old_status = group_state(before, entity_id, group_path)
+        new_reasons, new_status = group_state(after, entity_id, group_path)
+        regressions = {reason for reason, count in new_reasons.items() if count > old_reasons[reason]}
+        if (old_status is not None and new_status is not None
+                and _GROUP_STATUS_SEVERITY.get(new_status, 2) > _GROUP_STATUS_SEVERITY.get(old_status, 2)):
+            regressions.add("properties_group_status_changed_to_" + new_status)
+        return regressions
 
     def refs(values, *, required=False):
         if not isinstance(values, list) or required and not values:
@@ -328,13 +393,19 @@ def apply_context_proposals(document, previous, proposals, review_focus=None, st
             changed = [field for field in _CONTEXT_FIELDS if target.get(field) != edit[field]]
             for field in _CONTEXT_FIELDS:
                 target[field] = deepcopy(edit[field])
-            path = "entities[" + str(entity_index) + "].properties.items[" + str(index) + "]"
+            group_path = "entities[" + str(entity_index) + "].properties"
+            path = group_path + ".items[" + str(index) + "]"
             proposed_validation = build_cards(document, candidate)
-            introduced = sorted(target_reasons(proposed_validation, entity_id, path)
-                                - target_reasons(baseline, entity_id, path))
+            existing = target_reasons(baseline, entity_id, path)
+            # An already-held fact keeps its existing reasons, but the context it
+            # gains must be supported: its later checks are tested independently.
+            support = _context_support_issues(document, catalog, items[index], edit,
+                                              specimen_records.get(entity_id, []))
+            introduced = (target_reasons(proposed_validation, entity_id, path) | support) - existing
+            introduced = sorted(introduced | group_regressions(current, proposed_validation, entity_id, group_path))
             if introduced:
                 raise ValueError("context_edit_introduces_new_validation_issue")
-            composed = candidate
+            composed, current = candidate, proposed_validation
             audit["applied_edits"] += 1
             audit["edit_results"].append({"proposal_index": proposal_index, "entity_id": entity_id,
                 "property_index": index, "anchor_sha256": edit["anchor_sha256"], "changed_context_fields": changed,
