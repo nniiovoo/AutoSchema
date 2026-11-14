@@ -50,19 +50,13 @@ def _resolve_domain(args) -> Tuple[str, str]:
 
 # Small helpers
 def _record_key(rec: Dict[str, Any]) -> Optional[str]:
-    """Same priority as the paper: DOI -> source ID -> normalized title."""
-    if not isinstance(rec, dict):
-        return None
-    doi = rec.get("doi")
-    if doi:
-        return str(doi).lower().strip()
-    rid = rec.get("id")
-    if rid:
-        return str(rid).lower().strip()
-    title = rec.get("title") or ""
-    if title:
-        return re.sub(r"\s+", " ", title.strip().lower())
-    return None
+    """Same priority as the paper: DOI -> source ID -> normalized title.
+
+    Delegates to expand_lib.utils.record_key so the orchestrator and the
+    retrieval subprocess (expand_round.py) always compute identical keys.
+    """
+    from expand_lib.utils import record_key
+    return record_key(rec)
 
 def _read_jsonl(path: Path) -> List[Dict[str, Any]]:
     out: List[Dict[str, Any]] = []
@@ -267,6 +261,7 @@ def _pick_next_seeds(
 def _do_query_gen(
     *, domain: str, last_tier_key: str,
     seeds_input: Path, round_dir: Path, max_queries: int,
+    max_seed_snapshots: int = 5,
 ) -> Path:
     work = round_dir / "_qgen_work"
     work.mkdir(parents=True, exist_ok=True)
@@ -277,6 +272,7 @@ def _do_query_gen(
         "--seeds", str(seeds_input),
         "--output", str(work),
         "--max_queries", str(max_queries),
+        "--max_seed_pdfs", str(max_seed_snapshots),
     ])
     queries_path = work / "queries.json"
     if not queries_path.exists():
@@ -419,6 +415,12 @@ def _do_topoff_attempt(
 
     per_source = _topoff_budget_per_source(topoff_need, source_count, base_depth)
     work_dir.mkdir(parents=True, exist_ok=True)
+    # Papers already accepted this round can never be accepted again, but the
+    # top-off re-runs the same queries, so without exclusion they refill the
+    # candidate budget and get re-downloaded only to be rejected as duplicates.
+    # History keys are NOT excluded: they still feed the overlap fallback.
+    exclude_path = work_dir / "exclude_keys.json"
+    exclude_path.write_text(json.dumps(sorted(round_accepted_keys)), encoding="utf-8")
     cmd = [
         "expand_round.py",
         "--domain", domain,
@@ -426,6 +428,7 @@ def _do_topoff_attempt(
         "--queries", str(queries_path),
         "--output", str(work_dir),
         "--results_per_source", str(per_source),
+        "--exclude_keys_file", str(exclude_path),
     ]
     if sources_override:
         cmd += ["--sources", sources_override]
@@ -516,10 +519,14 @@ def run_one_round(
     print(f"[orch] staged {len(seeds)} seed PDFs -> {seeds_input}")
 
     # ---- 2. Query generation ----
+    # Summarize every seed chosen for later rounds; previously prompt_pipeline
+    # kept only the first 5 alphabetically, so with --seeds_per_next_round 8
+    # three score-selected seeds were silently ignored.
     queries_path = _do_query_gen(
         domain=args.domain, last_tier_key=last_tier_key,
         seeds_input=seeds_input, round_dir=round_dir,
         max_queries=args.max_queries,
+        max_seed_snapshots=max(5, args.seeds_per_next_round),
     )
 
     # ---- 3. Retrieval (depth ramps up each round) ----

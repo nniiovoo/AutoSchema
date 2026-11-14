@@ -125,6 +125,7 @@ Retrieval variables:
 | `CORE_API_KEY` | CORE | if missing and CORE is requested, CORE is skipped with a warning |
 | `CROSSREF_MAILTO` | Nature/Crossref | recommended polite-pool email |
 | `OPENALEX_MAILTO` | OpenAlex | falls back to `CROSSREF_MAILTO` |
+| `OPENALEX_API_KEY` | OpenAlex | free key; without it the daily budget is small and shared per IP |
 | `NCBI_EMAIL` | PubMed | recommended to reduce NCBI rate-limit issues |
 | `NCBI_API_KEY` | PubMed | optional NCBI API key |
 
@@ -324,6 +325,22 @@ extractions.jsonl
 schema_values.csv
 paper_ranking.csv   # only when --top_n is used
 ```
+
+## Bench pipeline fixes (differs from the KDD artifact)
+
+This bench branch fixes several pipeline bugs found in an audit of the released code. Runs are therefore not byte-comparable with the paper's; use the upstream `main` branch to reproduce paper behavior.
+
+- **Every query runs.** `expand_round.py` used to stop collecting candidates once a global budget filled, so usually only the first ~3 queries in `queries.json` ran. Each query now gets an equal share of the budget, with sources interleaved by rank. This issues more search calls per round (queries x sources).
+- **Query provenance.** Each candidate carries `found_by` (query index, source, rank), and each round writes `retrieval_stats.json` with per-query hits, new candidates, duplicates, exclusions and errors.
+- **Downloads must be real PDFs.** HTML landing pages returned with HTTP 200 no longer count toward `target_per_round`; they are removed immediately so another paper can take the slot.
+- **Top-off skips papers already accepted in the round** (`--exclude_keys_file`), instead of re-downloading them only to reject them as duplicates.
+- **LLM failures are explicit.** `llm_chat` raises `LLMCallError` instead of returning `{"queries": []}`. A failed seed summary is skipped with a warning; a run with no valid queries stops; a failed field proposal is marked with `error` in the proposals; if every proposal fails the round stops.
+- **Seeds are not silently dropped.** `prompt_pipeline.py --max_seed_pdfs` (the orchestrator passes `max(5, --seeds_per_next_round)`), and the seed snapshot gives every seed an equal share of the 8,000-character budget instead of cutting the JSON at the end.
+- **Phase I schemas load fully in Phase II.** `extract_lib/schema_loader.py` reads `evidence_examples` and `merged_from`, and a field with no `value_type` loads as multi-valued ("array"). Before, passage retrieval matched field names only and every field was cut to one value.
+- **Abstracts before download.** OpenAlex abstracts are rebuilt from `abstract_inverted_index` where present (often empty) and Crossref JATS abstracts are used, so relevance ranking is no longer title-only. Set `OPENALEX_API_KEY` for a usable OpenAlex budget.
+- **One record key everywhere.** `expand_lib.utils.record_key` is shared by retrieval and the orchestrator; arXiv versions (v1/v2) count as one paper.
+
+Checks: `python3 -m unittest -v test_pipeline_fixes`.
 
 ## Task 3: polymer identification and evidence-linked cards
 

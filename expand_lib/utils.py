@@ -6,12 +6,51 @@ from datetime import datetime
 
 from expand_lib.preprocessing import norm_title
 
+# arXiv identifiers, optionally as abs/pdf URLs, with an optional version suffix:
+# "2401.12345v2", "cond-mat/0101001v1", "http://arxiv.org/abs/2401.12345v2".
+_ARXIV_ID_RE = re.compile(
+    r"^(?:https?://(?:export\.)?arxiv\.org/(?:abs|pdf)/)?"
+    r"(?P<id>\d{4}\.\d{4,5}|[a-z][a-z\-]*(?:\.[a-z]{2})?/\d{7})"
+    r"(?:v\d+)?(?:\.pdf)?$",
+    re.IGNORECASE,
+)
+
+
+def _normalize_record_id(rid: str) -> str:
+    rid = str(rid).strip().lower()
+    m = _ARXIV_ID_RE.match(rid)
+    if m:
+        return f"arxiv:{m.group('id').lower()}"
+    return rid
+
+
+def record_key(rec: Dict) -> str | None:
+    """Cross-source / cross-round identity: DOI -> source ID -> normalized title.
+
+    arXiv IDs are version-insensitive ("2401.12345v1" == "2401.12345v2") so a
+    revised preprint is not counted as a new paper in a later round.
+    Shared by expand_round.py and iterative_expand.py so both stages agree.
+    """
+    if not isinstance(rec, dict):
+        return None
+    doi = rec.get("doi")
+    if doi:
+        return str(doi).lower().strip()
+    rid = rec.get("id")
+    if rid:
+        return _normalize_record_id(rid)
+    title = rec.get("title") or ""
+    if title:
+        return re.sub(r"\s+", " ", title.strip().lower())
+    return None
+
+
 # Remove duplicate records based on DOI, ID, or normalized title
 def dedupe(records: List[Dict]) -> List[Dict]:
     seen: Set[str] = set()
     out: List[Dict] = []
     for r in records:
-        key = r.get("doi") or r.get("id") or norm_title(r.get("title", ""))
+        key = record_key(r) or norm_title(r.get("title", ""))
         if key and key not in seen:
             seen.add(key)
             out.append(r)
@@ -82,6 +121,11 @@ def delete_empty_folders(path: Path):
     if not any(path.iterdir()):
         path.rmdir()
         print(f"Deleted empty folder: {path}")
+
+def is_valid_pdf(p: Path) -> bool:
+    """True if the file starts with %PDF- and has %%EOF near the end."""
+    return _is_valid_pdf(Path(p))
+
 
 def _is_valid_pdf(p: Path) -> bool:
     try:

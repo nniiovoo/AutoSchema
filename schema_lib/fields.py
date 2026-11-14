@@ -4,7 +4,7 @@ import json, re
 from collections import defaultdict
 from typing import Any, Dict, List, Tuple
 
-from prompt_lib.llm_client import llm_chat
+from prompt_lib.llm_client import LLMCallError, llm_chat
 from .domain import SchemaDomainSpec
 
 # Per-paper LLM proposal
@@ -64,8 +64,15 @@ def propose_candidate_fields_per_paper(
     last_tier_text: str,
     max_fields_per_paper: int,
 ) -> List[Dict[str, Any]]:
-    """papers items use 'text_for_proposal' (the larger excerpt)."""
+    """papers items use 'text_for_proposal' (the larger excerpt).
+
+    A paper whose LLM call fails, or whose reply is not valid JSON, gets
+    ``fields: []`` plus an ``error`` entry instead of silently looking like a
+    paper with no schema-relevant content. If every paper fails, raises
+    ``LLMCallError`` so the round stops rather than freezing an empty schema.
+    """
     proposals: List[Dict[str, Any]] = []
+    n_failed = 0
     for paper in papers:
         text = paper.get("text_for_proposal") or paper.get("text") or ""
         prompt = _per_paper_prompt(
@@ -74,18 +81,27 @@ def propose_candidate_fields_per_paper(
             paper_text=text,
             max_fields=max_fields_per_paper,
         )
-        raw = llm_chat(
-            [
-                {"role": "system", "content": _PER_PAPER_SYSTEM},
-                {"role": "user",   "content": prompt},
-            ],
-            force_json=True,
-        )
+        error = None
+        fields: List[Any] = []
         try:
-            obj = json.loads(raw)
-            fields = obj.get("fields", []) if isinstance(obj, dict) else []
-        except Exception:
-            fields = []
+            raw = llm_chat(
+                [
+                    {"role": "system", "content": _PER_PAPER_SYSTEM},
+                    {"role": "user",   "content": prompt},
+                ],
+                force_json=True,
+            )
+        except LLMCallError as e:
+            error = f"llm_call_failed: {e}"
+        else:
+            try:
+                obj = json.loads(raw)
+                fields = obj.get("fields", []) if isinstance(obj, dict) else []
+            except Exception:
+                error = "invalid_json_response"
+        if error:
+            n_failed += 1
+            print(f"  [paper] WARNING {paper['source_file'][:60]}: {error[:160]}")
 
         cleaned: List[Dict[str, Any]] = []
         for f in fields:
@@ -104,11 +120,22 @@ def propose_candidate_fields_per_paper(
                 "evidence_quote": (f.get("evidence_quote") or "").strip(),
             })
 
-        proposals.append({
+        proposal: Dict[str, Any] = {
             "source_file": paper["source_file"],
             "fields":      cleaned,
-        })
+        }
+        if error:
+            proposal["error"] = error
+        proposals.append(proposal)
         print(f"  [paper] {paper['source_file'][:60]:<60}  -> {len(cleaned)} fields")
+    if papers and n_failed == len(papers):
+        raise LLMCallError(
+            f"field proposal failed for all {n_failed} papers; not inducing a schema "
+            "from empty proposals"
+        )
+    if n_failed:
+        print(f"  [paper] WARNING: {n_failed}/{len(papers)} papers produced no proposal "
+              "because of LLM errors (see 'error' in the proposals file)")
     return proposals
 
 # Canonicalization + merge
