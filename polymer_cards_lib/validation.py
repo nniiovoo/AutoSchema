@@ -37,36 +37,113 @@ def _scalar(value: Any) -> bool:
         return False
 
 
-def _literal(value: Any, quote: str) -> bool:
+_SUPERSCRIPTS = "⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻"
+# Signs and range dashes as they occur in JATS/PDF text: hyphen-minus, minus,
+# hyphen, non-breaking hyphen, figure dash, small and fullwidth hyphen-minus;
+# en/em dash and horizontal bar are range dashes only.
+_MINUS_SIGNS = "-−‐‑‒﹣－"
+_DASHES = _MINUS_SIGNS + "–—―"
+_TILDES = "~∼〜～"
+_SIGN = "[+" + re.escape(_MINUS_SIGNS) + "]"
+# Bounds and approximations are part of the reported value (contract:
+# "Preserve original numeric notation and bounds/approximation").
+_QUALIFIER_BEFORE = re.compile(
+    r"(?:[<>≤≥≈≃≅≦≧≪≫⩽⩾≲≳" + re.escape(_TILDES) + r"]|\b(?:beyond|above|below|exceed(?:s|ing)?"
+    r"|approximately|approx\.?|about|around|roughly|nearly|almost|circa|ca\.|at\s+least|at\s+most"
+    r"|(?:no\s+)?(?:less|greater|more|higher|lower|larger|smaller)\s+than|up\s+to))\s*$", re.I)
+# 'over 100 cycles' is a bound, but 'measured over 2 Hz to 100 kHz' names the
+# swept range itself, so 'over' qualifies only a single value. 'under' is not
+# a bound here: sources use it for test conditions ('139 mAh·g⁻¹ under 1 C
+# rate', 'after 2 h under 80 °C' in the Chen source).
+_PREPOSITION_BOUND = re.compile(r"\bover\s*$", re.I)
+_RANGE_VALUE = re.compile(r"\b(?:to|through|and)\b|[–—―" + re.escape(_TILDES) + r"]|\d\s+[-−]\s+\d")
+_QUALIFIER_AFTER = re.compile(
+    r"\+(?!\s*/)|(?:\s*[^\s\d.,;:()][^\s,;:()]*){0,3}?\s+or\s+"
+    r"(?:higher|greater|more|above|over|less|lower|below|under|fewer|larger|smaller)\b")
+# Bounded context around a candidate; every guard is anchored at the value.
+_CONTEXT_WINDOW = 160
+
+
+def _occurrences(part: str, whole: str) -> List[tuple]:
+    spans, start = [], whole.find(part) if part else -1
+    while start != -1:
+        spans.append((start, start + len(part)))
+        start = whole.find(part, start + 1)
+    return spans
+
+
+def _quote_scope(quote: str, context: Any):
+    """Return the searched text and the ranges a value may occupy.
+
+    Without context the quote is judged alone (source-span selections and
+    external callers). With context, a legacy quotation is located in its
+    original chunk and judged with the chunk's real neighbouring characters, so
+    a quote boundary cannot cut a sign, digit, exponent, range or qualifier off
+    a number. A value must still lie entirely inside the quoted range.
+    """
+    haystack = _text(quote)
+    if context is None:
+        return haystack, [(0, len(haystack))]
+    whole = _text(context)
+    return whole, _occurrences(haystack, whole)
+
+
+def _literal(value: Any, quote: str, context: Any = None) -> bool:
     needle = _text(str(value))
     if not needle:
         return False
-    haystack = _text(quote)
-    numeric_start = needle[0].isdigit() or needle[0] in "+-−."
+    haystack, scopes = _quote_scope(quote, context)
+    numeric_start = needle[0].isdigit() or needle[0] in "+.±∓" + _MINUS_SIGNS
     numeric_end = needle[-1].isdigit()
+    # A bare number, not a label such as P1 that merely ends in a digit.
+    number = numeric_start and numeric_end
+
+    def candidates(pattern):
+        compiled = re.compile(pattern)
+        for start, end in scopes:
+            for match in compiled.finditer(haystack, start):
+                if match.end() > end:
+                    break
+                yield match
+
     if not numeric_start and not numeric_end:
-        return re.search(r"(?<!\w)" + re.escape(needle) + r"(?!\w)", haystack) is not None
-    superscripts = "⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻"
+        return any(True for _ in candidates(r"(?<!\w)" + re.escape(needle) + r"(?!\w)"))
     # A complete number may touch its unit.  Numeric continuation must not
     # turn a decimal, thousands group, exponent, fraction or ratio into a new
     # scalar.  Complete raw ranges/uncertainties are still allowed as values.
     # A decimal point continues a number only when followed by another digit.
     # A sentence-ending full stop must not reject a complete value (1.77.).
-    suffix = (r"(?![\d" + superscripts + r"]|\.\d|[eE][+−-]?\d|[:/]\s*\d)"
+    suffix = (r"(?![\d" + _SUPERSCRIPTS + r"]|\.\d|[eE][+−-]?\d|[:/]\s*\d)"
               if numeric_end else r"(?!\w)")
-    pattern = r"(?<![\w.+−–—⁺⁻-])" + re.escape(needle) + suffix
-    operator = r"(?:[-−–—]|±|\+\s*/\s*[-−]|\bto\b|\bthrough\b)"
+    pattern = r"(?<![\w.+⁺⁻±∓" + re.escape(_DASHES + _TILDES) + r"])" + re.escape(needle) + suffix
+    operator = (r"(?:[" + re.escape(_DASHES + _TILDES) + r"]|[±∓]|\+\s*/\s*[-−]"
+                r"|\bto\b|\bthrough\b)")
     # Cover the common '30°C–60°C' form as well as '30–60°C'.  Unit text is
     # contextual only; it is checked separately against the supplied unit.
     unit_text = r"[A-Za-zµμ°%/]+"
     previous_endpoint = re.compile(r"\d(?:\s*" + unit_text + r")?\s*" + operator + r"\s*$")
-    next_endpoint = re.compile(r"\s*(?:" + unit_text + r"\s*)?" + operator + r"\s*[+−-]?(?:\d|\.\d)")
+    next_endpoint = re.compile(r"\s*(?:" + unit_text + r"\s*)?" + operator + r"\s*" + _SIGN + r"?(?:\d|\.\d)")
     next_scale = re.compile(r"\s*[×xX*·⋅∙]\s*10|\s*\^\s*(?:\{|[+−-]?\d)")
-    for match in re.finditer(pattern, haystack):
-        before, after = haystack[:match.start()], haystack[match.end():]
-        if numeric_start and re.search(r"(?:[<>≤≥≈~]|\b(?:beyond|above|below|approximately|about|at least|at most|less than|greater than|more than|up to))\s*$", before, flags=re.I):
+    # 'between 1.0 and 3.0 V' is one range; either endpoint alone is partial.
+    between_first = re.compile(r"\s*(?:" + unit_text + r"\s*)?(?:and|&)\s*" + _SIGN + r"?(?:\d|\.\d)")
+    between_second = re.compile(r"\bbetween\s+" + _SIGN + r"?\s*\d[\d.,]*(?:\s*" + unit_text
+                                + r")?\s*(?:and|&)\s*$", re.I)
+    # A sign separated from its digits by (thin) whitespace still belongs to them.
+    detached_sign = re.compile(r"(?:^|[\s(\[{=:;,<>])[" + re.escape(_MINUS_SIGNS) + r"]\s+$")
+    for match in candidates(pattern):
+        before = haystack[max(0, match.start() - _CONTEXT_WINDOW):match.start()]
+        after = haystack[match.end():match.end() + _CONTEXT_WINDOW]
+        if numeric_start and (_QUALIFIER_BEFORE.search(before) or (
+                _PREPOSITION_BOUND.search(before) and not _RANGE_VALUE.search(needle))):
+            continue
+        if number and _QUALIFIER_AFTER.match(after):
             continue
         if re.search(r"\d,$", before) or (numeric_end and re.match(r",\d", after)):
+            continue
+        # SI digit groups use a thin/no-break space, which _text makes a space.
+        if numeric_end and re.search(r"(?<![\d.,])\d{1,3}$", needle) and re.match(r" \d{3}(?!\d)", after):
+            continue
+        if re.match(r"\d{3}(?!\d)", needle) and re.search(r"(?<![\d.,])\d{1,3} $", before):
             continue
         if re.search(r"\d\s*[:/]\s*$", before):
             continue
@@ -78,7 +155,13 @@ def _literal(value: Any, quote: str) -> bool:
             continue
         if previous_endpoint.search(before) or next_endpoint.match(after):
             continue
+        if re.search(r"\bbetween\s*$", before, flags=re.I) and between_first.match(after):
+            continue
+        if between_second.search(before) or (numeric_start and detached_sign.search(before)):
+            continue
         if numeric_end and (next_scale.match(after) or re.match(r"\(\d+(?:\.\d+)?\)", after)):
+            continue
+        if re.match(r"\s*(?:" + unit_text + r"\s*)?\(\s*[±∓]", after):
             continue
         if re.search(r"\d\($", before):
             continue
@@ -86,19 +169,23 @@ def _literal(value: Any, quote: str) -> bool:
     return False
 
 
-def _unit_literal(value: str, quote: str) -> bool:
+def _unit_literal(value: str, quote: str, context: Any = None) -> bool:
     # Units can immediately follow numbers (95%, 30°C, 12MPa).  Still avoid
     # accepting S/cm as the suffix of mS/cm or m as the prefix of mAh.
     needle = _text(value)
-    haystack = _text(quote)
+    haystack, scopes = _quote_scope(quote, context)
     suffix = r"(?!\w)" if needle[-1].isalnum() else ""
-    for match in re.finditer(re.escape(needle) + suffix, haystack):
-        previous = haystack[match.start() - 1] if match.start() else ""
-        # isalpha distinguishes actual unit prefixes from superscript digits,
-        # which Python's broader \w-but-not-\d class also contains.
-        if needle[0].isalpha() and (previous.isalpha() or previous == "_"):
-            continue
-        return True
+    compiled = re.compile(re.escape(needle) + suffix)
+    for start, end in scopes:
+        for match in compiled.finditer(haystack, start):
+            if match.end() > end:
+                break
+            previous = haystack[match.start() - 1] if match.start() else ""
+            # isalpha distinguishes actual unit prefixes from superscript digits,
+            # which Python's broader \w-but-not-\d class also contains.
+            if needle[0].isalpha() and (previous.isalpha() or previous == "_"):
+                continue
+            return True
     return False
 
 
@@ -123,12 +210,25 @@ def _explicit_neat_context(text: str, stem: str) -> bool:
     return re.search(before + "|" + after, text) is not None
 
 
+def _additive_form_of(base: str, stem: str) -> bool:
+    """True when a specimen stem explicitly continues a bare stem (A/B, A + B, A with B)."""
+    return bool(base) and re.match(re.escape(base) + r"(?:\s*/\s*|\s*\+\s*|\s+with\s+)\S", stem) is not None
+
+
+# Characterization symbols describe the polymer itself ('P1 with Mw of ...'),
+# not an added component.
+_PROPERTY_SYMBOLS = {"Mw", "Mn", "Mv", "Mz", "Mp", "Tg", "Tm", "Tc", "Td", "PDI", "Đ", "Ð", "DP"}
+
+
 def _source_names_more_specific_form(text: str, stem: str, unit: Any) -> bool:
     """Notice a source-named continuation even if no sibling was generated.
 
     The complete selected label is the anchor: A/B is never split into A and B.
     This is a conservative textual ambiguity check, not ingredient recognition.
     Unit tokens and ordinary lower-case prose are insufficient to infer a form.
+    A property symbol, or a component assigned a value ('with Ea of', 'with
+    X = ...'), is a characterization, not an additive. A species ratio such as
+    'EO:Li' is still a form signal.
     """
     token = r"(?:\[[^\]\s]+\])+|[^\W\d_][\w⁺⁻−.-]*"
     pattern = (r"(?<!\w)" + re.escape(stem) + r"(?:\s*/\s*|\s*\+\s*|\s+with\s+)"
@@ -138,6 +238,9 @@ def _source_names_more_specific_form(text: str, stem: str, unit: Any) -> bool:
         component = match["component"]
         words = re.findall(r"[^\W\d_]+", component)
         if words and all(word in unit_tokens for word in words):
+            continue
+        if (component in _PROPERTY_SYMBOLS or component.startswith(("M_", "T_"))
+                or re.match(r"\s*(?:of\b|=|:(?![^\W\d_]))", text[match.end():])):
             continue
         form_context = re.match(r"\s+(?i:film|membrane|electrolyte|solution|mixture|composite|sample)\b", text[match.end():])
         if component[0].isupper() or component.startswith("[") or form_context:
@@ -156,7 +259,7 @@ def _without_explicit_cell_stacks(text: str, stem: str) -> str:
     electrode = r"(?:stainless\s+steel(?:\s*\(SS\))?|SS|Li|lithium|Cu|copper|Al|aluminium|aluminum|Pt|platinum|Au|gold|Ni|nickel)"
     stack = re.compile(r"(?<!\w)" + electrode + r"\s*/\s*" + re.escape(stem)
                        + r"\s*/\s*" + electrode + r"(?![\w⁺⁻+−/–—-]|\.\w)")
-    context = r"(?:asymmetric|symmetric|electrochemical|blocking)\s+cell"
+    context = r"(?:asymmetric|symmetric|electrochemical|blocking)\s+cells?"
     def replace(match):
         before, after = text[:match.start()], text[match.end():]
         introduced = re.search(r"\b" + context + r"\b[^.!?;\n]{0,80}$", before, flags=re.I)
@@ -180,7 +283,8 @@ def _alternate_specimen_form_in_link_evidence(prop: Dict, specimens: List[Dict])
     base = _specimen_stem(chosen["label"])
     if not base:
         return False
-    quoted = " ".join(e["quote"] for e in prop.get("specimen_evidence", []))
+    # Labels are whitespace-normalized; so must be the raw source slices.
+    quoted = " ".join(_text(e["quote"]) for e in prop.get("specimen_evidence", []))
     if _explicit_neat_context(quoted, base):
         return False
     quoted = _without_explicit_cell_stacks(quoted, base)
@@ -189,7 +293,7 @@ def _alternate_specimen_form_in_link_evidence(prop: Dict, specimens: List[Dict])
         if sid == prop["specimen_id"]:
             continue
         label = _specimen_stem(specimen["label"])
-        if re.match(re.escape(base) + r"(?:\s*/\s*|\s*\+\s*|\s+with\s+)\S", label) is None:
+        if not _additive_form_of(base, label):
             continue
         if re.search(r"(?<!\w)" + re.escape(label) + r"(?!\w)", quoted):
             alternatives.append(label)
@@ -205,6 +309,20 @@ def _contains_numeric_observation(value: Any) -> bool:
     # Ignore digits inside member names such as P3; catch scalar values,
     # uncertainties and qualified numerical statements such as ~14,000%.
     return re.search(r"(?<!\w)\d", _text(value)) is not None
+
+
+_EVIDENCE_KEYS = {"quote", "chunk_id", "span_id", "span_ids", "source_start", "source_end",
+                  "evidence_origin", "conditions", "conditions_review_status"}
+
+
+def _carries_evidence(key: Any, value: Any) -> bool:
+    if isinstance(key, str) and ("evidence" in key or key in _EVIDENCE_KEYS):
+        return True
+    if isinstance(value, dict):
+        return any(_carries_evidence(k, v) for k, v in value.items())
+    if isinstance(value, list):
+        return any(_carries_evidence(None, v) for v in value)
+    return False
 
 
 class _Invalid(ValueError):
@@ -325,6 +443,12 @@ def build_cards(document: Dict, response: Dict) -> Dict:
                 raise _Invalid("invalid_adjacent_source_span_support") from None
         return resolved
 
+    def supports(value, ref, check=_literal):
+        # Source-span selections (V4) are exact source ranges and are judged
+        # as selected. A legacy {chunk_id, quote} is judged in its chunk.
+        context = None if "evidence_origin" in ref else chunks[ref["chunk_id"]]["text"]
+        return check(value, ref["quote"], context)
+
     def fact(raw, entity, path, field=None, specimen_ids=None, specimens=None):
         if not isinstance(raw, dict) or not _scalar(raw.get("value")):
             raise _Invalid("fact_value_missing_or_invalid")
@@ -336,6 +460,13 @@ def build_cards(document: Dict, response: Dict) -> Dict:
             raise _Invalid("fact_paper_mismatch")
         ev = evidence(raw.get("evidence"))
         result = deepcopy(raw)
+        # Only evidence resolved here may reach a card. Evidence-shaped keys a
+        # field does not define (e.g. replayed specimen_evidence/conditions on
+        # composition) and model-supplied validator metadata would otherwise
+        # be rendered as matched source text. The raw response keeps them.
+        validated = {"evidence"} | ({"specimen_evidence", "conditions"} if field == "properties" else set())
+        for key in [k for k in result if k not in validated and _carries_evidence(k, result[k])]:
+            del result[key]
         result["evidence"] = ev
         result["evidence_status"] = "quote_matched"
         result["semantic_review_status"] = "not_performed_by_validator"
@@ -347,13 +478,14 @@ def build_cards(document: Dict, response: Dict) -> Dict:
             raise _Invalid("fact_specimen_not_linked_to_polymer")
         if field in {"synthesis_text", "description", "aliases", "role"} and not _text(raw["value"]):
             raise _Invalid("text_fact_requires_text")
-        if field == "aliases" and not any(_literal(raw["value"], e["quote"]) for e in ev):
+        if field == "aliases" and not any(supports(raw["value"], e) for e in ev):
             raise _Invalid("alias_not_in_original_evidence")
         if field == "composition" and not _text(raw.get("basis")):
             raise _Invalid("composition_basis_missing")
-        mw_only = (r"(?:M(?:_?\{?[wn]\}?|[wn])|molecular\s+weight)\s*(?:=|:)\s*"
-                   r"[+−~≈<>-]?\s*[\d,.]+(?:\s*[×xX*]\s*10[\d⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻^{}+−-]+)?"
-                   r"(?:\s*(?:g\s*(?:/\s*mol|mol(?:⁻¹|−1|-1|\^\{[−-]1\}))|[kM]?Da))?\.?")
+        mw_only = (r"(?:M(?:_?\{?[wn]\}?|[wn])|(?:(?:number|weight)[- ]average\s+)?molecular\s+weight)"
+                   r"\s*(?:[=:≈≃≅∼~]|of\b|is\b|was\b)\s*"
+                   r"[+−~∼≈<>≤≥-]?\s*[\d,.]+(?: \d{3})*(?:\s*[×xX*·⋅∙]\s*10[\d⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻^{}+−-]+)?"
+                   r"(?:\s*(?:[kM]?g\s*(?:/\s*mol|[·⋅∙]?\s*mol(?:⁻¹|−1|-1|\^\{?[−-]1\}?))|[kM]?Da))?\.?")
         if field == "composition" and re.fullmatch(mw_only, _text(raw["value"]), flags=re.I):
             # A stand-alone Mw/Mn observation is not an ingredient quantity.
             # Hold it; do not relocate it without a supported measurement sample.
@@ -385,9 +517,9 @@ def build_cards(document: Dict, response: Dict) -> Dict:
                     raise _Invalid("property_sample_evidence_names_alternate_form")
             if "unit" not in raw or (raw["unit"] is not None and not _text(raw["unit"])):
                 raise _Invalid("property_unit_missing_or_invalid")
-            if not any(_literal(raw["value"], e["quote"]) for e in ev):
+            if not any(supports(raw["value"], e) for e in ev):
                 raise _Invalid("property_value_not_in_original_evidence")
-            if raw["unit"] is not None and not any(_unit_literal(raw["unit"], e["quote"]) for e in ev):
+            if raw["unit"] is not None and not any(supports(raw["unit"], e, _unit_literal) for e in ev):
                 raise _Invalid("property_unit_not_in_original_evidence")
             if (raw["unit"] is None and _contains_numeric_observation(raw["value"])
                     and re.search(r"\d\s*%", _text(raw["value"]))):
@@ -410,7 +542,7 @@ def build_cards(document: Dict, response: Dict) -> Dict:
                 if "paper_id" in condition and condition["paper_id"] != paper_id:
                     raise _Invalid("condition_paper_mismatch")
                 cev = evidence(condition.get("evidence"))
-                if not any(_literal(condition["value"], e["quote"]) for e in cev):
+                if not any(supports(condition["value"], e) for e in cev):
                     raise _Invalid("condition_value_not_in_original_evidence")
                 checked_conditions.append({**deepcopy(condition), "evidence": cev,
                                            "evidence_status": "quote_matched"})
@@ -459,7 +591,7 @@ def build_cards(document: Dict, response: Dict) -> Dict:
             continue
         try:
             ident_ev = evidence(entity.get("identity_evidence"))
-            if not any(_literal(entity["name"], e["quote"]) for e in ident_ev):
+            if not any(supports(entity["name"], e) for e in ident_ev):
                 raise _Invalid("entity_name_not_in_original_evidence")
             kind = entity.get("identity_kind")
             if kind is not None and (not isinstance(kind, str) or kind not in IDENTITY_KINDS):
@@ -652,17 +784,15 @@ def _attribution_warnings(cards: List[Dict]) -> List[Dict]:
         for index, prop in enumerate(card["properties"]["items"]):
             chosen = specimens[prop["specimen_id"]]
             # Identify an explicitly additive-containing sibling, using the
-            # paper's labels. This is a caution, not a chemical name parser.
-            base = re.sub(r"\s+(?:film|membrane|solution|sample|specimen)$", "", _text(chosen["label"]), flags=re.I)
+            # paper's labels and the same stem/separator rule as the sample-link
+            # guard. This is a caution, not a chemical name parser.
+            base = _specimen_stem(chosen["label"])
             siblings = [s["label"] for sid, s in specimens.items() if sid != prop["specimen_id"]
-                        and re.match(re.escape(base) + r"(?:/|\s*\+|\s+with\b)", _text(s["label"]))]
+                        and _additive_form_of(base, _specimen_stem(s["label"]))]
             if not siblings:
                 continue
-            quotes = " ".join(e["quote"] for e in prop["evidence"] + prop.get("specimen_evidence", []))
-            explicit_neat = (r"(?<!\w)(?:neat|salt[ -]free|pure(?:\s+polymer)?)\s+" + re.escape(base)
-                             + r"(?!\w)|(?<!\w)" + re.escape(base)
-                             + r"(?:\s+(?:film|membrane|polymer|sample))?\s+(?:without|with\s+no)\s+(?:any\s+)?(?:salt|additives)\b")
-            if re.search(explicit_neat, quotes, flags=re.I):
+            quotes = " ".join(_text(e["quote"]) for e in prop["evidence"] + prop.get("specimen_evidence", []))
+            if _explicit_neat_context(quotes, base):
                 continue
             warning = {"reason": "specimen_form_ambiguous", "entity_id": card["entity_id"],
                        "path": "properties.items[" + str(index) + "]", "property": prop["property"],
