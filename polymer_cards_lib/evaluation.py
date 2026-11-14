@@ -169,23 +169,27 @@ def _identity_reasons(card, labels):
 
 
 def _term(term, text, *, positive=False):
-    needle, haystack = _compact(term).casefold(), _compact(text).casefold()
-    for match in re.finditer(r"(?<!\w)" + re.escape(needle) + r"(?!\w)", haystack):
-        if positive:
-            before, after = haystack[:match.start()], haystack[match.end():]
-            if re.search(r"(?:without(?:any)?|freeof|notcontaining|no)$", before) or re.match(r"[-−–]?free\b", after):
-                continue
+    """Match whole term tokens on the unjoined text (NFC, casefold, any whitespace).
+
+    Whitespace between tokens may vary or be absent ('2 h' finds '2h'); it is
+    never removed from the text, so neighbouring words cannot be glued onto a
+    term.  A numeric term cannot be the tail of a signed/decimal/longer number.
+    Plurals and dash variants are not merged.  With positive=True a negated
+    occurrence ('without LiFSI', 'LiFSI-free') does not count.
+    """
+    tokens = _text(term).casefold().split()
+    if not tokens:
+        return False
+    haystack = _text(text).casefold()
+    head, tail = tokens[0][0], tokens[-1][-1]
+    left = r"(?<![\w.+−–—⁺⁻-])(?<!\d,)" if head.isdigit() or head in "+-−." else r"(?<!\w)"
+    right = r"(?!\w|[.,]\d)" if tail.isdigit() else r"(?!\w)"
+    for match in re.finditer(left + r"\s*".join(map(re.escape, tokens)) + right, haystack):
+        if positive and (
+                re.search(r"\b(?:without\s+(?:any\s+)?|free\s+of\s+|not\s+containing\s+|no\s+)$", haystack[:match.start()])
+                or re.match(r"\s*[-‐‑‒–—−]?\s*free\b", haystack[match.end():])):
+            continue
         return True
-    # Removing spaces makes labels such as 'P1 LiFSI electrolyte' one word.
-    # Match a non-numeric physical-state term on the unjoined source spelling.
-    if not any(c.isdigit() for c in term):
-        needle = r"\s*".join(re.escape(p) for p in _text(term).casefold().split())
-        for match in re.finditer(r"(?<!\w)" + needle + r"(?!\w)", _text(text).casefold()):
-            before, after = _text(text).casefold()[:match.start()], _text(text).casefold()[match.end():]
-            if positive and (re.search(r"(?:without\s+(?:any\s+)?|free\s+of\s+|not\s+containing\s+|no\s+)$", before)
-                             or re.match(r"[-−– ]?free\b", after)):
-                continue
-            return True
     return False
 
 
@@ -265,8 +269,11 @@ def _source_related(card, prop, case):
 def _held_value(record, expected):
     if isinstance(record, dict):
         if "property" in record and "value" in record and "unit" in record:
-            if _value_and_unit(record["value"], record["unit"]) == expected:
-                return True
+            try:
+                if _value_and_unit(record["value"], record["unit"]) == expected:
+                    return True
+            except ValueError:
+                pass  # Held records may be malformed (blank unit/value); they cannot hold the value.
         return any(_held_value(v, expected) for v in record.values())
     return isinstance(record, list) and any(_held_value(v, expected) for v in record)
 
@@ -309,12 +316,13 @@ def _conflict_candidate(card, conflict, case, path):
             or not all(isinstance(s, str) and s in known for s in specimen_ids)):
         reasons.append("conflict_specimen_ids_invalid")
         specimen_ids = []
-    observations = []
+    observations, options = [], []
     for oi, observation in enumerate(case["observations"]):
         expected = _value_and_unit(observation["value"], observation["unit"])
         measurement_case = {**observation, "entity_labels": case["entity_labels"],
                             "property_terms": observation.get("property_terms", case["property_terms"])}
         candidates = []
+        options.append([])
         for pi, prop in enumerate(group.get("items", [])):
             if _value_and_unit(prop.get("value"), prop.get("unit")) != expected:
                 continue
@@ -326,13 +334,39 @@ def _conflict_candidate(card, conflict, case, path):
             if prop.get("specimen_id") not in specimen_ids:
                 candidate["reasons"].append("observation_specimen_not_in_conflict")
             candidates.append(candidate)
-        matched = any(not candidate["reasons"] for candidate in candidates)
+            if not candidate["reasons"]:
+                options[oi].append(pi)
         observations.append({"observation_index": oi, "value": observation["value"], "unit": observation["unit"],
-                             "candidates": candidates, "matched": matched})
-        if not matched:
+                             "candidates": candidates})
+    # Each observation needs its own retained item; one item cannot stand for two.
+    assigned = _distinct_items(options)
+    for oi, entry in enumerate(observations):
+        entry["matched"] = assigned[oi] is not None
+        if not options[oi]:
             reasons.append("conflict_observation_not_matched:" + str(oi))
+        elif not entry["matched"]:
+            reasons.append("conflict_observation_item_already_used:" + str(oi))
     return {"path": path, "entity_id": card.get("entity_id"), "reasons": reasons,
             "observations": observations}
+
+
+def _distinct_items(options):
+    """Assign observations to distinct item indices (maximum bipartite matching)."""
+    owner = {}
+
+    def place(oi, seen):
+        for pi in options[oi]:
+            if pi not in seen:
+                seen.add(pi)
+                if pi not in owner or place(owner[pi], seen):
+                    owner[pi] = oi
+                    return True
+        return False
+
+    for oi in range(len(options)):
+        place(oi, set())
+    by_observation = {oi: pi for pi, oi in owner.items()}
+    return [by_observation.get(oi) for oi in range(len(options))]
 
 
 

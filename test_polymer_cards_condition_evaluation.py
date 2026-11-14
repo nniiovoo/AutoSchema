@@ -96,6 +96,78 @@ class PolymerCardConditionEvaluationTests(unittest.TestCase):
         reference['conflict_expectations'][0]['observations'][1] = deepcopy(reference['conflict_expectations'][0]['observations'][0])
         with self.assertRaises(ValueError): evaluate_run(run, reference)
 
+    def test_one_retained_item_cannot_satisfy_two_conflict_observations(self):
+        run, reference = conflict_fixture()
+        card = run['results'][0]['cards'][0]
+        both = card['properties']['items'][0]
+        both['evidence'] = [evidence('method'), evidence('result')]
+        card['properties']['items'] = [both]
+        for observation in reference['conflict_expectations'][0]['observations']:
+            observation.update(value='12', specimen_require_any=['film'])
+        result = evaluate_run(run, reference)['conflicts'][0]
+        self.assertEqual('needs_source_review', result['status'])
+        self.assertEqual([True, False], [o['matched'] for o in result['candidates'][0]['observations']])
+        # A second, distinct item that fits only the first observation forces reassignment.
+        method_only = deepcopy(both)
+        method_only.update(specimen_id='result-film', evidence=[evidence('method')])
+        card['properties']['items'].append(method_only)
+        result = evaluate_run(run, reference)['conflicts'][0]
+        self.assertEqual('matched_focused_expectation', result['status'])
+        self.assertEqual([True, True], [o['matched'] for o in result['candidates'][0]['observations']])
+
+    def test_negated_additive_label_fails_in_any_position_or_dash_spelling(self):
+        for label, status in [('LiFSI-free P1 film', 'needs_source_review'), ('LiFSI-free film', 'needs_source_review'),
+                              ('LiFSI–free film', 'needs_source_review'), ('P1 film, LiFSI‐free', 'needs_source_review'),
+                              ('P1 film, LiFSI‑free', 'needs_source_review'), ('P1 with no LiFSI', 'needs_source_review'),
+                              ('P1/amino LiFSI electrolyte', 'matched_focused_expectation')]:
+            with self.subTest(label=label):
+                run, reference = fixture()
+                run['results'][0]['cards'][0]['specimens'][0]['label'] = label
+                self.assertEqual(status, evaluate_run(run, reference)['measurements'][0]['status'])
+
+    def test_numeric_terms_match_whole_numbers_inside_values_but_not_other_numbers(self):
+        for value, term, status in [('about 2 h', '2 h', 'matched_focused_expectation'),
+                                    ('2 h at 80 °C', '2 h', 'matched_focused_expectation'),
+                                    ('at 30 °C', '30 °C', 'matched_focused_expectation'),
+                                    ('30°C', '30 °C', 'matched_focused_expectation'),
+                                    ('−30 °C', '30 °C', 'needs_source_review'), ('-30 °C', '30 °C', 'needs_source_review'),
+                                    ('0.2 h', '2 h', 'needs_source_review'), ('12 h', '2 h', 'needs_source_review'),
+                                    ('2.5 h', '2', 'needs_source_review'),
+                                    # Documented non-matches stay: no plural/word-form or dash merging.
+                                    ('2 hours', '2 h', 'needs_source_review'), ('0-6 V', '0–6 V', 'needs_source_review')]:
+            with self.subTest(value=value, term=term):
+                run, reference = fixture()
+                run['results'][0]['cards'][0]['properties']['items'][0]['conditions'][0]['value'] = value
+                reference['measurement_expectations'][0]['condition_value_terms'] = [[term]]
+                self.assertEqual(status, evaluate_run(run, reference)['measurements'][0]['status'])
+        for label, key, term, reason in [('P3 film', 'specimen_forbid', 'P3', 'specimen_forbidden_term_present:P3'),
+                                         ('P1 with 10 μL liquid electrolyte', 'specimen_forbid', '10 μL',
+                                          'specimen_forbidden_term_present:10 μL'),
+                                         ('P1 with 10 μL liquid electrolyte', 'specimen_require_any', '10 μL', None)]:
+            with self.subTest(label=label, key=key):
+                run, reference = fixture()
+                run['results'][0]['cards'][0]['specimens'][0]['label'] = label
+                case = reference['measurement_expectations'][0]
+                case.update(specimen_require_any=['film', 'electrolyte'], specimen_forbid=[])
+                case[key] = [term]
+                reasons = evaluate_run(run, reference)['measurements'][0]['candidates'][0]['reasons']
+                self.assertEqual([reason] if reason else [], reasons)
+
+    def test_malformed_held_value_records_do_not_crash_or_count_as_held_values(self):
+        for bad in ({'unit': ''}, {'value': None}, {'value': ''}, {'value': float('nan')}):
+            with self.subTest(bad=bad):
+                run, reference = fixture()
+                queue = run['results'][0]['review_queue']
+                record = {'entity_id': 'p1', 'property': 'voltage', 'value': '3.8', 'unit': 'V', **bad}
+                queue.append({'entity_id': 'p1', 'name': 'P1', 'path': 'entities[0].properties.items[1]',
+                              'reason': 'fact_value_missing_or_invalid', 'record': record})
+                item = evaluate_run(run, reference)['measurements'][0]
+                self.assertEqual('matched_focused_expectation', item['status'])
+                self.assertFalse(item['matching_value_held_for_review'])
+                queue.append({'entity_id': 'p1', 'name': 'P1', 'path': 'entities[0].properties.items[2]',
+                              'reason': 'specimen_link_needs_review', 'record': {**record, 'value': '3.8', 'unit': 'V'}})
+                self.assertTrue(evaluate_run(run, reference)['measurements'][0]['matching_value_held_for_review'])
+
     def test_bad_reference_types_fail_before_evaluation(self):
         for kind in ('unit-flag', 'observations', 'source-ids', 'description-terms'):
             with self.subTest(kind=kind):
