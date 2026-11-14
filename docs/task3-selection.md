@@ -56,7 +56,7 @@ After adjudicating an observation, compute its digest using `selection_lib.scree
 
 ## 4. Compare only usable observations
 
-The selector checks identity, evidence, review binding, claim type, unit and conditions before comparing numeric bounds. Units must match exactly; this version performs no automatic conversion. A different metric or incompatible protocol cannot substitute for the required measurement.
+The selector checks identity, evidence, review binding, claim type, unit and conditions before comparing numeric bounds. Units must match exactly; this version performs no automatic conversion. For a ratio or fraction reported as a bare number (`0.45`), set both the observation and criterion unit to `dimensionless`; a bare number with an empty or other unit still goes to review. A different metric or incompatible protocol cannot substitute for the required measurement.
 
 Raw values must contain a decimal or e-notation number followed by the unchanged unit, for example `95%`, `0.40 MPa`, or `1.34e-5 %/s`, and occur literally in the evidence quote. The numeric value must agree with that raw number. A reported mean ± deviation, such as `90 ± 3%` (also `+/-`), additionally requires finite `uncertainty.lower` and `uncertainty.upper` bounds equal to the raw mean minus/plus the nonnegative deviation, with the same unit. Preserve the reported uncertainty kind; SD is not a confidence interval. Other notation, table-header unit linkage or converted units require a reviewed normalization extension; they are sent to review rather than guessed.
 

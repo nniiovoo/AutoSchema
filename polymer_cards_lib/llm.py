@@ -16,7 +16,16 @@ class ModelSetupError(ValueError):
 
 
 class ModelRequestError(RuntimeError):
-    pass
+    """A live request produced no accepted output.
+
+    ``failed_output`` keeps what the model itself returned (its text, finish
+    reason, refusal) so the caller can save it for diagnosis. It never holds
+    provider error text and is None when no completion came back.
+    """
+
+    def __init__(self, message, failed_output=None):
+        super().__init__(message)
+        self.failed_output = failed_output
 
 
 def create_client(env_file=None, request_timeout=300):
@@ -132,17 +141,22 @@ def _request(client, model, user_prompt, max_output_tokens, *, system_prompt=Non
     if not getattr(response, "choices", None):
         raise ModelRequestError("Model returned no completion; no cards accepted")
     choice = response.choices[0]
+    returned = {"raw_response_text": getattr(choice.message, "content", None),
+                "finish_reason": getattr(choice, "finish_reason", None),
+                "refusal": getattr(choice.message, "refusal", None),
+                "request_prompt_sha256": hashlib.sha256(user_prompt.encode("utf-8")).hexdigest()}
     if getattr(choice, "finish_reason", None) == "length":
-        raise ModelRequestError("Model response reached the output limit; no partial cards accepted")
+        raise ModelRequestError("Model response reached the output limit; no partial cards accepted", returned)
     if getattr(choice, "finish_reason", None) != "stop":
-        raise ModelRequestError("Model response did not finish normally; no partial cards accepted")
+        raise ModelRequestError("Model response did not finish normally; no partial cards accepted", returned)
     if getattr(choice.message, "refusal", None):
-        raise ModelRequestError("Model declined the extraction request; no cards accepted")
+        raise ModelRequestError("Model declined the extraction request; no cards accepted", returned)
     raw_text = choice.message.content or ""
     try:
         parsed = parse_json(raw_text)
     except (ValueError, TypeError):
-        raise ModelRequestError("Model returned invalid strict JSON; no fabricated or partial records accepted") from None
+        raise ModelRequestError("Model returned invalid strict JSON; no fabricated or partial records accepted",
+                                returned) from None
     usage = getattr(response, "usage", None)
     safe_usage = {name: getattr(usage, name, None) for name in ("prompt_tokens", "completion_tokens", "total_tokens")}
     schema_bytes = json.dumps(actual_format["json_schema"]["schema"], sort_keys=True,

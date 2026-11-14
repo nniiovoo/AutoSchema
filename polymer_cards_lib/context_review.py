@@ -402,7 +402,16 @@ def apply_context_proposals(document, previous, proposals, review_focus=None, st
             support = _context_support_issues(document, catalog, items[index], edit,
                                               specimen_records.get(entity_id, []))
             introduced = (target_reasons(proposed_validation, entity_id, path) | support) - existing
-            introduced = sorted(introduced | group_regressions(current, proposed_validation, entity_id, group_path))
+            introduced = introduced | group_regressions(current, proposed_validation, entity_id, group_path)
+            if edit["specimen_id"] is None and items[index].get("specimen_id") is not None:
+                # The system prompt tells the model to leave an unsupported link
+                # unresolved (specimen_id:null). The resulting "not linked" flag
+                # and needs_review group status are the declared outcome, not a
+                # new problem; holding them made a correct un-linking impossible.
+                # The applied fact still carries them as validation reasons.
+                introduced -= {"fact_specimen_not_linked_to_polymer",
+                               "properties_group_status_changed_to_needs_review"}
+            introduced = sorted(introduced)
             if introduced:
                 raise ValueError("context_edit_introduces_new_validation_issue")
             composed, current = candidate, proposed_validation

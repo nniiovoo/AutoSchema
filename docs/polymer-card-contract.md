@@ -6,6 +6,8 @@ This additive workflow identifies polymer entities and describes them. It does n
 
 `{paper_id, title, domains, source_files, chunks}`. Each chunk has `chunk_id`, `text`, `source_part`, `locator`, optional `page`, and `document_sha256`. IDs and source locations are supplied by source preparation, never invented by the model. Domains are discovery metadata, not evidence of polymer identity.
 
+In JATS locators, `paragraph N` is an article-wide reading-order count of paragraph and table blocks (abstract first), not a position within the named section: `Methods / Polymer synthesis, paragraph 29` may be the first paragraph of that subsection. A figure-caption paragraph carries its enclosing section's name, so a locator can point at a caption rather than body text. Find a passage by its quote and `chunk_id`; the number only orders chunks. It is kept because frozen references cite these locators and revision runs compare them with a fresh load.
+
 JATS-derived text declares `text_transformations:["jats_script_notation_v1"]` in source/chunk metadata and resolved evidence. Numeric superscripts/subscripts retain Unicode position, such as `10⁵`, `cm⁻¹` and `Li₂`; unsupported script characters retain explicit `^{...}` or `_{...}` boundaries. The XML bytes and their SHA256 are unchanged. Quotes match this declared derived text, not the publisher's typeset appearance. Keep earlier run snapshots intact when comparing extraction versions.
 
 ## Model response

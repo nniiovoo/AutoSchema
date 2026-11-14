@@ -709,10 +709,13 @@ def build_cards(document: Dict, response: Dict) -> Dict:
                 status = "conflicting"
             if field == "properties":
                 seen = {}
+                # Compare whitespace-normalized text (as quote matching does):
+                # "7 mm min−1" and "7\u00a0mm min−1" state the same condition.
+                same = lambda v: None if v is None else _text(str(v))
                 for item in items:
-                    conditions = tuple(sorted((_text(c["name"]), str(c["value"])) for c in item["conditions"]))
-                    key = (_text(item["property"]), item["specimen_id"], item["unit"], conditions)
-                    value = str(item["value"])
+                    conditions = tuple(sorted((_text(c["name"]), same(c["value"])) for c in item["conditions"]))
+                    key = (_text(item["property"]), item["specimen_id"], same(item["unit"]), conditions)
+                    value = same(item["value"])
                     if key in seen and seen[key] != value:
                         issue(entity, group_path, "multiple_property_values_for_same_stated_conditions",
                               raw_group, review=False)

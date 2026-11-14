@@ -200,6 +200,25 @@ class Task3SelectionTests(unittest.TestCase):
         self.observation["value_raw"] = "95 MPa"
         self.assertDecision("manual_review", self.screen())
 
+    def use_bare_ratio(self, observation_unit, criterion_unit="dimensionless"):
+        text = "Sample P-A recovered a strength ratio of 0.95 after a partial cut, surface contact, and 60 minutes at 25 C."
+        self.sources["source-strength"]["text"] = text
+        self.observation.update(value=0.95, value_raw="0.95", unit=observation_unit,
+                                evidence=[{"source_id": "source-strength", "quote": text}])
+        self.profile["criteria"][0].update(unit=criterion_unit, minimum=0.9)
+
+    def test_declared_dimensionless_ratio_is_comparable(self):
+        self.use_bare_ratio("dimensionless")
+        self.assertDecision("keep_for_followup", self.screen())
+
+    def test_bare_number_without_declared_unit_still_needs_review(self):
+        for observation_unit, criterion_unit in [("", "dimensionless"), ("%", "%"),
+                                                 ("dimensionless", "%")]:
+            with self.subTest(observation_unit=observation_unit, criterion_unit=criterion_unit):
+                self.setUp()
+                self.use_bare_ratio(observation_unit, criterion_unit)
+                self.assertDecision("manual_review", self.screen())
+
     def test_missing_si_preserves_precise_followup_reason(self):
         self.candidate["observations"] = []
         self.candidate["missing"] = [{

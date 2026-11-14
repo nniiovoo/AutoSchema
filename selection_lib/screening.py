@@ -47,6 +47,17 @@ def _unit_key(unit: str) -> str:
     return _UNIT_ALIASES.get(unit, unit)
 
 
+# Explicit unit for ratios, transference numbers, efficiencies as fractions, etc.
+# A bare reported number ("0.45") may carry it; the criterion must also say
+# "dimensionless", so a value that merely lost its unit still goes to review.
+DIMENSIONLESS = "dimensionless"
+
+
+def _raw_unit_matches(raw_unit: str, unit: str) -> bool:
+    raw, unit = _unit_key(raw_unit), _unit_key(unit or "")
+    return raw == unit or (raw == "" and unit == DIMENSIONLESS)
+
+
 def _parse_raw_value(raw: str):
     """Exact (mean, deviation, unit) from a reported value, or None if review is needed.
 
@@ -132,7 +143,7 @@ def _check_evidence(observation: Dict, candidate: Dict, sources: Dict, reviews: 
             mean, deviation, raw_unit = parsed
             if mean != Decimal(str(observation["value"])):
                 return fail("numeric_and_raw_value_mismatch")
-            if _unit_key(raw_unit) != _unit_key(observation.get("unit") or ""):
+            if not _raw_unit_matches(raw_unit, observation.get("unit")):
                 return fail("raw_unit_mismatch")
             if deviation is not None:
                 interval = observation.get("uncertainty")

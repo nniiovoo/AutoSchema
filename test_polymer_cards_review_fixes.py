@@ -4,6 +4,7 @@ MathML scripts and strict-focus warnings were fixed independently on the
 branch; these tests keep them covered alongside the floats-group and
 whole-name evaluation fixes.
 """
+from copy import deepcopy
 import json
 import tempfile
 import unittest
@@ -92,6 +93,39 @@ class StrictFocusWarningTests(unittest.TestCase):
         kept = payload["validation_feedback"]["attribution_warnings"]
         self.assertEqual([(w["entity_id"], w["path"]) for w in warnings[:1]],
                          [(w["entity_id"], w["path"]) for w in kept])
+
+
+class SameConditionValueTests(unittest.TestCase):
+    """The conflict key compares whitespace-normalized text, like quote matching."""
+
+    def properties(self, document, response):
+        result = build_cards(document, response)
+        return (result["cards"][0]["properties"]["status"],
+                {issue["reason"] for issue in result["validation_issues"]})
+
+    def test_value_restated_with_other_spacing_is_not_a_conflict(self):
+        document, response = worked_example()
+        items = response["entities"][0]["properties"]["items"]
+        restated = deepcopy(items[1])
+        restated["value"] = "1.0  \u00d7\u00a010\u22124"
+        items.append(restated)
+        status, reasons = self.properties(document, response)
+        self.assertEqual("reported", status)
+        self.assertNotIn("multiple_property_values_for_same_stated_conditions", reasons)
+
+    def test_condition_spacing_does_not_hide_a_real_conflict(self):
+        document, response = worked_example()
+        second = " A second P1 film had breaking strength 14 MPa at 25\u00b0C."
+        next(c for c in document["chunks"] if c["chunk_id"] == "example-film")["text"] += second
+        items = response["entities"][0]["properties"]["items"]
+        other = deepcopy(items[0])
+        other["value"] = "14"
+        other["evidence"] = [{"chunk_id": "example-film", "quote": second.strip()}]
+        other["conditions"][1]["value"] = "7  mm\u00a0min\u22121"
+        items.append(other)
+        status, reasons = self.properties(document, response)
+        self.assertEqual("conflicting", status)
+        self.assertIn("multiple_property_values_for_same_stated_conditions", reasons)
 
 
 if __name__ == "__main__":

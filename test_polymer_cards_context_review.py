@@ -120,6 +120,29 @@ class PolymerContextReviewTests(unittest.TestCase):
         self.assertEqual(0, audit["applied_edits"])
         self.assertIn("condition_value_not_in_original_evidence", audit["held_edits"][0]["new_validation_reasons"])
 
+    def test_unsupported_specimen_link_can_be_removed_as_the_prompt_instructs(self):
+        document, previous, edit = fixture()
+        self.assertEqual("p1-film", previous["entities"][0]["properties"]["items"][0]["specimen_id"])
+        edit.update(specimen_id=None, specimen_evidence=[],
+                    reason="The source does not establish which form was tested.")
+        composed, audit = apply_context_proposals(document, previous,
+            {"paper_id": document["paper_id"], "edits": [edit]})
+        self.assertEqual(1, audit["applied_edits"])
+        self.assertEqual("applied_with_validation_review", audit["edit_results"][0]["status"])
+        self.assertIsNone(composed["entities"][0]["properties"]["items"][0]["specimen_id"])
+        self.assertIn("fact_specimen_not_linked_to_polymer",
+                      {issue["reason"] for issue in audit["validation_issues"]})
+
+    def test_unlinking_does_not_excuse_other_new_problems(self):
+        document, previous, edit = fixture()
+        edit.update(specimen_id=None, specimen_evidence=[])
+        edit["conditions"][0]["value"] = "999 °C"
+        composed, audit = apply_context_proposals(document, previous,
+            {"paper_id": document["paper_id"], "edits": [edit]})
+        self.assertEqual(previous, composed)
+        self.assertEqual(0, audit["applied_edits"])
+        self.assertIn("condition_value_not_in_original_evidence", audit["held_edits"][0]["new_validation_reasons"])
+
     def test_existing_held_fact_can_gain_context_without_changing_its_bad_claim(self):
         document, previous, edit = fixture()
         prop = previous["entities"][0]["properties"]["items"][0]

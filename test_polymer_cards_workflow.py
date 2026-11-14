@@ -227,6 +227,47 @@ class PolymerWorkflowTests(unittest.TestCase):
             self.assertEqual(["paper1"], [r["paper_id"] for r in saved["results"]])
             self.assertEqual([response], json.loads((out / "raw-responses.json").read_text())["responses"])
 
+    def test_first_request_failure_saves_model_output_and_marks_run_failed(self):
+        bad_text = '{"paper_id": "paper1", "entities": ['
+        completion = SimpleNamespace(choices=[SimpleNamespace(
+            finish_reason="stop", message=SimpleNamespace(content=bad_text, refusal=None))])
+        client = SimpleNamespace(chat=SimpleNamespace(completions=SimpleNamespace(create=lambda **kwargs: completion)))
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            manifest, _, _, _ = example(root)
+            out = root / "failed"
+            out.mkdir()
+            dump(out / "cards.json", {"run_metadata": {"run_complete": True}, "results": ["from an earlier run"]})
+            with patch("polymer_cards_lib.llm.create_client", return_value=(client, "configured-model", "openai")):
+                code, _, err = self.invoke(["--papers", str(manifest), "--out-dir", str(out)])
+            self.assertEqual(3, code, err)
+            self.assertIn("raw-responses.json", err)
+            saved = json.loads((out / "cards.json").read_text())
+            self.assertIs(False, saved["run_metadata"]["run_complete"])
+            self.assertEqual("paper1", saved["run_metadata"]["failed_paper_id"])
+            self.assertEqual(0, saved["run_metadata"]["model_calls"])
+            self.assertEqual([], saved["results"])
+            raw = json.loads((out / "raw-responses.json").read_text())
+            self.assertEqual([], raw["responses"])
+            self.assertEqual(bad_text, raw["failed_attempt"]["raw_response_text"])
+            self.assertEqual("stop", raw["failed_attempt"]["finish_reason"])
+            self.assertIn("invalid strict JSON", raw["failed_attempt"]["error"])
+
+    def test_response_rejected_by_validation_is_saved_not_built(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            manifest, _, _, response = example(root)
+            response["paper_id"] = "wrong"
+            out = root / "rejected"
+            with patch("polymer_cards_lib.llm.create_client", return_value=(object(), "configured-model", "openai")), \
+                    patch("polymer_cards_lib.llm.extract_document", return_value=(response, {"usage": {}})):
+                code, _, _ = self.invoke(["--papers", str(manifest), "--out-dir", str(out)])
+            self.assertEqual(2, code)
+            self.assertEqual([], json.loads((out / "cards.json").read_text())["results"])
+            failed = json.loads((out / "raw-responses.json").read_text())["failed_attempt"]
+            self.assertEqual(response, failed["response"])
+            self.assertEqual("paper1", failed["paper_id"])
+
     def test_timeout_diagnostic_is_useful_without_provider_error_text(self):
         class APITimeoutError(Exception):
             pass

@@ -142,17 +142,34 @@ def main(argv=None):
                 action = "Revising" if prior_responses is not None else "Extracting"
                 print(f"{action} paper {index}/{len(documents)}: {document['paper_id']}", file=sys.stderr, flush=True)
                 metadata["model_calls_attempted"] += 1
+                response = trace = None
                 try:
                     if prior_responses is not None:
                         response, trace = revise_document(client, model, document, prior_responses[index - 1], args.max_output_tokens)
                     else:
                         response, trace = extract_document(client, model, document, args.max_output_tokens)
                     result = build_cards(document, response)
-                except (ModelRequestError, ValueError):
+                except (ModelRequestError, ValueError) as exc:
+                    # Save what this paid request returned and mark the run
+                    # failed even when no paper finished, so a failure is
+                    # diagnosable and an earlier run in --out-dir is not
+                    # mistaken for this one. No cards are built from it.
                     metadata["failed_paper_id"] = document["paper_id"]
-                    if results:
+                    failed = {"paper_id": document["paper_id"], "error": str(exc)}
+                    if isinstance(exc, ModelRequestError):
+                        failed.update(exc.failed_output or {})
+                    elif response is not None:
+                        failed.update({"response": response, **(trace or {})})
+                    try:
                         write_outputs(results, documents[:len(results)], args.out_dir, metadata,
-                                      additional_outputs={"raw-responses.json": {"mode": metadata["mode"], "responses": responses, "traces": traces}})
+                                      additional_outputs={"raw-responses.json": {
+                                          "mode": metadata["mode"], "responses": responses,
+                                          "traces": traces, "failed_attempt": failed}})
+                        print(f"Saved the failed request for {document['paper_id']} as failed_attempt in "
+                              f"{Path(args.out_dir) / 'raw-responses.json'} (run_complete: false)",
+                              file=sys.stderr)
+                    except (OSError, ValueError):
+                        print("Could not save the failed-run record", file=sys.stderr)
                     raise
                 responses.append(response)
                 traces.append({"paper_id": document["paper_id"], **trace})
