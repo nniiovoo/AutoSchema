@@ -274,7 +274,14 @@ def _method_cross_reference_index(chunks):
     methods = re.compile(r"\b(?:methods?|experimental|characteri[sz]ation|measurements?)\b", re.I)
 
     def section(chunk):
-        return re.sub(r",\s*paragraph\s+\d+.*$", "", chunk.get("locator", ""), flags=re.I).strip()
+        # "Methods, paragraph 3", "Methods, text paragraph 3" and a block
+        # labelled within the section ("Methods / Table 1") share "Methods".
+        locator = chunk.get("locator", "").strip()
+        name = re.sub(r",\s*(?:text\s+)?paragraph\s+\d+$", "", locator, flags=re.I).strip()
+        return name.rsplit(" / ", 1)[0].strip() if name == locator and " / " in name else name
+
+    def same_file(a, b):
+        return all(a.get(key) == b.get(key) for key in ("source_part", "document_sha256"))
 
     result = []
     for index, chunk in enumerate(chunks):
@@ -283,7 +290,7 @@ def _method_cross_reference_index(chunks):
         if not matches or not methods.search(locator):
             continue
         neighbors = [other["chunk_id"] for other in chunks[max(0, index - 2):index + 3]
-                     if other is not chunk and section(other) == section(chunk)]
+                     if other is not chunk and same_file(other, chunk) and section(other) == section(chunk)]
         result.append({"chunk_id": chunk["chunk_id"], "locator": locator,
                        "reference_cues": list(dict.fromkeys(matches)),
                        "adjacent_method_chunk_ids": neighbors})

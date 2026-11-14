@@ -37,6 +37,26 @@ class PolymerSpanPromptTests(unittest.TestCase):
         self.assertNotIn("previous_response", payload)
         self.assertNotIn("reference_answers", payload)
 
+    def test_method_neighbors_cover_text_and_table_locators_but_stay_within_one_source_file(self):
+        def chunk(chunk_id, text, locator, part="main", digest="a"):
+            return {"chunk_id": chunk_id, "text": text, "locator": locator,
+                    "source_part": part, "document_sha256": digest * 64}
+        chunks = [
+            chunk("t-tensile", "Tensile tests used 50 mm/min.", "Methods, text paragraph 1", digest="b"),
+            chunk("t-healed", "Healed films were tested by the same procedure.", "Methods, text paragraph 2", digest="b"),
+            chunk("t-gpc", "GPC used THF.", "Methods, text paragraph 3", digest="b"),
+            chunk("x-table", "Speed | 50 mm/min", "Methods / Table 1"),
+            chunk("x-healed", "Healed films were tested by the same procedure.", "Methods, paragraph 1"),
+            chunk("x-other", "Stirred.", "Methods / Synthesis, paragraph 2"),
+            chunk("s-gpc", "SI: GPC used THF.", "Methods, paragraph 1", part="supplement", digest="c"),
+        ]
+        index = {entry["chunk_id"]: entry["adjacent_method_chunk_ids"]
+                 for entry in prompt._method_cross_reference_index(chunks)}
+        self.assertEqual(["t-tensile", "t-gpc"], index["t-healed"])
+        # Same section in the same file: a table is a neighbour; a subsection,
+        # another source part, or another document revision is not.
+        self.assertEqual(["x-table"], index["x-healed"])
+
     def test_system_example_selects_synthetic_catalog_spans_and_keeps_legacy_fixture(self):
         text = prompt.build_system_prompt()
         example = json.loads(text.rsplit("\n", 1)[1])
