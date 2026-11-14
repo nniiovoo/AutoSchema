@@ -8,6 +8,8 @@ This is the current small Task 3 demonstration for Nina's **battery-polymer scop
 
 The source-reviewed decisions are **one keep, one exclusion and three evidence gaps** across four papers and five formulations, including one performance control. The actual selector produces **two manual reviews and three evidence gaps**. This difference exposes a scientific-notation limitation; it is retained in the results.
 
+> **Update 14 November 2026.** `selection_lib/screening.py` now parses multiplication/exponent notation exactly ("2.4 × 10−4 S cm−1" = 0.00024 S/cm, via an explicit reviewed unit-alias table) and uses the polymer-card complete-value rule for the quote check. The same inputs, profile, reference and review receipts now give **one keep, one exclusion and three evidence gaps**, matching the source-reviewed decisions ([evaluation-2026-11-14.json](../examples/task3/battery_electrolytes/evaluation-2026-11-14.json)). The report below describes the 27 October run and is unchanged.
+
 ## Step 1 — Choose one specific use
 
 We want a first-stage shortlist of **nonaqueous polymer electrolytes for lithium-metal cells operated at 30°C**. An electrolyte lets ions move between electrodes. This example first checks how well it conducts ions; complete battery suitability needs additional evidence.

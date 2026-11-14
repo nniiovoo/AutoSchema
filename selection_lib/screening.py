@@ -8,9 +8,64 @@ import unicodedata
 from decimal import Decimal, DecimalException, Inexact, localcontext
 from typing import Any, Dict, List
 
+from polymer_cards_lib.validation import _literal
+
 
 def _text(value: Any) -> str:
     return " ".join(unicodedata.normalize("NFC", value).split()) if isinstance(value, str) else ""
+
+
+_SUPERSCRIPTS = str.maketrans("⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻", "0123456789+-")
+# Unit spellings reviewed as the same unit. Deliberately an explicit table, not
+# unit algebra: anything not listed must match exactly or goes to review.
+_UNIT_ALIASES = {
+    "S cm-1": "S/cm", "S·cm-1": "S/cm", "S⋅cm-1": "S/cm",
+    "mS cm-1": "mS/cm", "mS·cm-1": "mS/cm", "mS⋅cm-1": "mS/cm",
+}
+_NUMBER = r"(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?"
+# mean, optional "× 10^n" / "× 10-n" scale (the exponent needs a caret or an
+# explicit sign, so "2 × 10 mm" is not read as a scale), optional deviation, unit.
+_RAW_VALUE = re.compile(
+    r"([+-]?" + _NUMBER + r")"
+    r"(?:\s*[×xX·⋅]\s*10(?:\^\s*([+-]?\d+)|([+-]\d+)))?"
+    r"\s*(?:(?:±|\+/-)\s*(" + _NUMBER + r"))?\s*((?!.*(?:±|\+/-)).*)")
+
+
+def _ascii_notation(text: str) -> str:
+    """Parsing copy only: '10⁻⁴' -> '10^-4' and U+2212 minus -> '-'.
+
+    The original value_raw is still what must appear verbatim in the quote and
+    what the review digest covers; this copy is never written back.
+    """
+    text = re.sub(r"10([⁺⁻]?[⁰¹²³⁴⁵⁶⁷⁸⁹]+)",
+                  lambda m: "10^" + m[1].translate(_SUPERSCRIPTS), text)
+    return text.replace("−", "-")
+
+
+def _unit_key(unit: str) -> str:
+    unit = " ".join(_ascii_notation(unit or "").translate(_SUPERSCRIPTS).split())
+    return _UNIT_ALIASES.get(unit, unit)
+
+
+def _parse_raw_value(raw: str):
+    """Exact (mean, deviation, unit) from a reported value, or None if review is needed.
+
+    Supports plain decimals, e-notation and multiplication/exponent notation
+    such as '2.4 × 10−4 S cm−1'. A scaled value that also carries a deviation
+    ('2.4 × 10−4 ± 0.3') stays in review because the scope of the scale is
+    ambiguous.
+    """
+    m = _RAW_VALUE.fullmatch(_ascii_notation(raw))
+    if not m:
+        return None
+    exponent = m[2] if m[2] is not None else m[3]
+    if exponent is None:
+        mean = Decimal(m[1])
+    else:
+        if m[4] is not None or abs(int(exponent)) > 99:
+            return None
+        mean = Decimal(m[1]).scaleb(int(exponent))
+    return mean, (Decimal(m[4]) if m[4] is not None else None), m[5]
 
 
 def _number(value: Any) -> bool:
@@ -65,22 +120,21 @@ def _check_evidence(observation: Dict, candidate: Dict, sources: Dict, reviews: 
         raw = _text(observation.get("value_raw"))
         if not raw:
             return fail("raw_value_missing")
-        pattern = r"(?<![\w.+−-])" + re.escape(raw) + r"(?![\w.])"
-        if not any(re.search(pattern, _text(e["quote"])) for e in evidence):
+        # Same complete-value rule as the polymer-card validator: accepts a value
+        # that ends a sentence ("...95%.") and rejects fragments of a larger
+        # number ("400 MPa" in "1,400 MPa", "3%" in "90 ± 3%", "95%" in ">95%").
+        if not any(_literal(raw, e["quote"]) for e in evidence):
             return fail("raw_value_not_in_quote")
-        # shortcut: decimal/e mean and optional deviation with unchanged units; review other notation.
-        number = r"(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?"
-        numeric = re.fullmatch(r"([+-]?" + number + r")\s*(?:(?:±|\+/-)\s*(" + number
-                               + r"))?\s*((?!.*(?:±|\+/-)).*)", raw)
-        if not numeric:
-            return fail("raw_value_format_requires_reviewed_normalization")
         try:
-            mean = Decimal(numeric[1])
+            parsed = _parse_raw_value(raw)
+            if parsed is None:
+                return fail("raw_value_format_requires_reviewed_normalization")
+            mean, deviation, raw_unit = parsed
             if mean != Decimal(str(observation["value"])):
                 return fail("numeric_and_raw_value_mismatch")
-            if numeric[3] != observation.get("unit"):
+            if _unit_key(raw_unit) != _unit_key(observation.get("unit") or ""):
                 return fail("raw_unit_mismatch")
-            if numeric[2] is not None:
+            if deviation is not None:
                 interval = observation.get("uncertainty")
                 if (not isinstance(interval, dict)
                         or not _number(interval.get("lower")) or not _number(interval.get("upper"))
@@ -88,7 +142,6 @@ def _check_evidence(observation: Dict, candidate: Dict, sources: Dict, reviews: 
                     return fail("raw_deviation_requires_matching_uncertainty")
                 with localcontext() as context:
                     context.traps[Inexact] = True
-                    deviation = Decimal(numeric[2])
                     if (Decimal(str(interval["lower"])) != mean - deviation
                             or Decimal(str(interval["upper"])) != mean + deviation):
                         return fail("raw_deviation_requires_matching_uncertainty")

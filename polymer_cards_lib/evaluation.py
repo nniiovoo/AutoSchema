@@ -142,8 +142,32 @@ def _labels(card):
     return [n for n in names if isinstance(n, str)]
 
 
+_DASHES = re.compile(r"[‐‑‒–—−]")
+
+
+def _same_label(label, name):
+    """Whole-name match. Containment let 'PTMG-HDI' match a card named
+    'PTMG-HDI-BHDS' (the hyphen counted as a word boundary), attaching one
+    polymer's results and identity to another."""
+    a, b = _DASHES.sub("-", _text(str(label))), _DASHES.sub("-", _text(str(name)))
+    return bool(a) and a == b
+
+
+def _label_in_quote(label, quote):
+    """The label appears as a complete name, not as the start or end of a longer
+    hyphenated name ('PTMG-HDI' inside 'PTMG-HDI-BHDS')."""
+    if not _literal(label, quote):
+        return False
+    needle, haystack = _DASHES.sub("-", _text(str(label))), _DASHES.sub("-", _text(quote))
+    for match in re.finditer(re.escape(needle), haystack):
+        before, after = haystack[:match.start()], haystack[match.end():]
+        if not re.search(r"\w-$", before) and not re.match(r"-\w", after):
+            return True
+    return False
+
+
 def _has_label(card, labels):
-    return any(_literal(label, name) for label in labels for name in _labels(card))
+    return any(_same_label(label, name) for label in labels for name in _labels(card))
 
 
 def _matched_refs(refs):
@@ -161,9 +185,9 @@ def _identity_reasons(card, labels):
         reasons.append("parent_identity_does_not_match")
     refs = _matched_refs(card.get("identity_evidence"))
     for alias in card.get("aliases", []):
-        if isinstance(alias, dict) and any(_literal(label, str(alias.get("value", ""))) for label in labels):
+        if isinstance(alias, dict) and any(_same_label(label, alias.get("value", "")) for label in labels):
             refs += _matched_refs(alias.get("evidence"))
-    if not any(_literal(label, ref["quote"]) for label in labels for ref in refs):
+    if not any(_label_in_quote(label, ref["quote"]) for label in labels for ref in refs):
         reasons.append("explicit_source_label_not_attached")
     return reasons
 

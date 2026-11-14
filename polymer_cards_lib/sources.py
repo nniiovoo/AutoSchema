@@ -256,6 +256,11 @@ def _jats_chunks(path):
     bodies = [n for n in root.iter() if _tag(n) == "body"]
     for body in bodies:
         visit(body, [])
+    # Publishers often put tables and figures in <floats-group> after the body;
+    # they were silently skipped. Visited last, so earlier chunk IDs and
+    # paragraph locators are unchanged.
+    for floats in [n for n in root.iter() if _tag(n) == "floats-group"]:
+        visit(floats, ["Floats"])
     if not result:
         raise ValueError("XML source contains no readable article paragraphs")
     return result
