@@ -10,6 +10,7 @@ from copy import deepcopy
 import hashlib
 import json
 import math
+import re
 
 
 CONTEXT_REVIEW_SYSTEM_PROMPT = """Review measurement CONTEXT ONLY against original scientific sources.
@@ -131,6 +132,39 @@ def _validated_focus(entities, review_focus):
     return focus
 
 
+def _focused_attribution_warnings(validated, entities, allowed):
+    """Keep the advisory warnings that concern a strict-focus target.
+
+    A property warning's path counts positions on the validated card, which
+    leaves out quarantined items, while focus targets count positions in the
+    original response. Each kept property warning is copied with its original
+    ``property_index``. A shared-label warning is kept when it names a focused
+    record.
+    """
+    focused_entities = {entity_id for entity_id, _ in allowed}
+    issue_paths = {item.get("path") for item in validated["validation_issues"]}
+    kept = []
+    for warning in validated.get("attribution_warnings", []):
+        entity_id = warning.get("entity_id")
+        if entity_id is None:
+            related = warning.get("related_entity_ids")
+            if isinstance(related, list) and any(
+                    isinstance(owner, str) and owner in focused_entities for owner in related):
+                kept.append(warning)
+            continue
+        match = re.fullmatch(r"properties\.items\[(\d+)\]", str(warning.get("path", "")))
+        if not match or entity_id not in entities:
+            continue
+        position, _, items = entities[entity_id]
+        prefix = "entities[" + str(position) + "].properties.items["
+        # Only a quarantined item gets an issue at its exact item path.
+        retained = [index for index in range(len(items)) if prefix + str(index) + "]" not in issue_paths]
+        card_index = int(match.group(1))
+        if card_index < len(retained) and (entity_id, retained[card_index]) in allowed:
+            kept.append({**warning, "property_index": retained[card_index]})
+    return kept
+
+
 def build_context_review_prompt(document, previous, review_focus=None, strict_focus=False):
     from polymer_cards_lib.prompt import build_user_prompt
     from polymer_cards_lib.validation import build_cards
@@ -170,8 +204,7 @@ def build_context_review_prompt(document, previous, review_focus=None, strict_fo
         payload["validation_feedback"] = {
             "validation_issues": [item for item in validated["validation_issues"]
                                   if item.get("path") in allowed_paths],
-            "attribution_warnings": [item for item in validated.get("attribution_warnings", [])
-                                     if (item.get("entity_id"), item.get("property_index")) in allowed],
+            "attribution_warnings": _focused_attribution_warnings(validated, entities, allowed),
         }
         payload["source_audit_focus_scope"] = (
             "These are the ONLY eligible context-edit targets. Each concern remains an unverified hypothesis, not an answer. "

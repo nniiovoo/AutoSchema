@@ -30,13 +30,14 @@ python3 examples/polymer_cards/span_reference_checks_2026-11-06/verify_context_c
   --historical-code-dirs \
     examples/polymer_cards/guo_fixes_run_2026-11-06/historical-code/first-context-code \
     examples/polymer_cards/guo_fixes_run_2026-11-06/historical-code/second-context-code \
+    examples/polymer_cards/guo_fixes_run_2026-11-06/historical-code/third-context-code \
   --baseline-dir examples/polymer_cards/fresh_run_2026-11-06 \
   --out-dir /tmp/autoschema-guo-final-comparison-new
 ```
 
 This verifies actual request/profile/focus hashes, raw JSON, anchors, deterministic edits, original source slices and adjacent unions, then revalidates all three papers and compares the unchanged three reference sets. It rejects output overwrite. No API key or model call is needed. Derived run timestamps can differ; scientific records and evaluation JSON should reproduce.
 
-The strict final stage must pass `strict_focus=True` to both request construction and proposal application. The frozen stage supplies that flag to the verifier. The optional library stage is documented in [the guide](../../../docs/polymer-cards.md); it is separate from default fresh extraction.
+The strict final stage must pass `strict_focus=True` to both request construction and proposal application. The frozen stage supplies that flag to the verifier. `third-context-code` preserves the `context_review.py` that built this strict request. The current library later fixed strict focus, which had been dropping every attribution warning; the Guo targets in this capture had no attribution warnings, so the recorded request is unaffected. The optional library stage is documented in [the guide](../../../docs/polymer-cards.md); it is separate from default fresh extraction.
 
 ## Source and interpretation limits
 

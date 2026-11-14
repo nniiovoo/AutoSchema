@@ -60,14 +60,14 @@ python3 examples/polymer_cards/span_reference_checks_2026-11-06/verify_context_c
   --context-dirs outputs/polymer_cards_context_2026-11-06_guo \
                  outputs/polymer_cards_context_focused_2026-11-06_guo \
                  outputs/polymer_cards_context_scoped_2026-11-06_guo \
-  --historical-code-dirs PATH_TO_FIRST_CONTEXT_CODE PATH_TO_SECOND_CONTEXT_CODE \
+  --historical-code-dirs PATH_TO_FIRST_CONTEXT_CODE PATH_TO_SECOND_CONTEXT_CODE PATH_TO_THIRD_CONTEXT_CODE \
   --fresh-run-dir outputs/polymer_cards_spans_2026-11-06_capture \
   --out-dir /tmp/polymer-context-composition-new
 ```
 
 The first context request predates the optional focus feature. Its frozen `context_review.py` and `llm.py` source must match the original pre-request hashes; the helper reproduces the old request and confirms old/current pure application produce the same captured result. The focused request uses an explicitly unverified source-audit hypothesis file. Preserve that original `source-audit-focus.json` with the capture so its file hash, canonical trace hash and actual request can be checked. This source-audit-assisted review is not blind independent extraction.
 
-The third request uses frozen `strict_focus:true`: both its request builder and its applicator restrict changes to the declared existing targets. The verifier obtains this flag from the original freeze, checks its trace and passes it to both operations. Earlier false-default requests keep their exact historical behavior. The second capture also needs its verified pre-strict historical code. No numerical expected answer is supplied by this helper, and the checked references are used only after composition for evaluation.
+The third request uses frozen `strict_focus:true`: both its request builder and its applicator restrict changes to the declared existing targets. The verifier obtains this flag from the original freeze, checks its trace and passes it to both operations. Earlier false-default requests keep their exact historical behavior. The second capture also needs its verified pre-strict historical code. The third capture needs the strict-focus code that built it, preserved as `guo_fixes_run_2026-11-06/historical-code/third-context-code`; the current library later fixed strict focus so that it keeps attribution warnings for the focused targets instead of dropping them all. No numerical expected answer is supplied by this helper, and the checked references are used only after composition for evaluation.
 
 The helper verifies the deterministic application and immutable anchors of every step. An adjacent-source union must use IDs already selected within that same evidence array, retain exact Unicode source offsets and bridge only touching/overlapping ranges or whitespace. It cannot insert unselected words, punctuation, quantities or chemistry. Such unions remain labeled derived support and do not replace original selections.
 

@@ -199,6 +199,41 @@ class PolymerContextReviewTests(unittest.TestCase):
         self.assertEqual(plain_audit, legacy_audit)
         self.assertNotIn("strict_context_scope", plain_audit)
 
+    def test_strict_focus_keeps_attribution_warnings_for_focused_properties_only(self):
+        document, previous, _ = fixture()
+
+        def warnings(records, index):
+            focus = [{"entity_id": "p1", "property_index": index, "reason": "Check the sample form."}]
+            text = build_context_review_prompt(document, records, review_focus=focus, strict_focus=True)
+            payload = json.loads(text.split("\nUNTRUSTED CONTEXT-REVIEW TARGETS\n", 1)[1])
+            return payload["validation_feedback"]["attribution_warnings"]
+
+        focused = warnings(previous, 0)
+        self.assertEqual(["specimen_form_ambiguous"], [w["reason"] for w in focused])
+        self.assertEqual(0, focused[0]["property_index"])
+        self.assertEqual([], warnings(previous, 1))
+        # A quarantined item is left out of the validated card, so warning paths
+        # count card positions while focus targets count original response positions.
+        shifted = deepcopy(previous)
+        shifted["entities"][0]["properties"]["items"].insert(0, {"value": None})
+        self.assertEqual([], warnings(shifted, 0))
+        moved = warnings(shifted, 1)
+        self.assertEqual(["breaking strength"], [w["property"] for w in moved])
+        self.assertEqual(1, moved[0]["property_index"])
+        self.assertEqual([], warnings(shifted, 2))
+
+    def test_strict_focus_keeps_shared_label_warnings_that_name_a_focused_record(self):
+        document, previous, _ = fixture()
+        twin = json.loads(json.dumps(previous["entities"][0]).replace('"p1"', '"p2"'))
+        previous["entities"].append(twin)
+        focus = [{"entity_id": "p1", "property_index": 1, "reason": "Check the sample identity."}]
+        text = build_context_review_prompt(document, previous, review_focus=focus, strict_focus=True)
+        kept = json.loads(text.split("\nUNTRUSTED CONTEXT-REVIEW TARGETS\n", 1)[1])[
+            "validation_feedback"]["attribution_warnings"]
+        self.assertTrue(kept)
+        self.assertEqual({"specimen_label_shared_between_polymer_records"}, {w["reason"] for w in kept})
+        self.assertTrue(all("p1" in w["related_entity_ids"] for w in kept))
+
 
 if __name__ == "__main__":
     unittest.main()
