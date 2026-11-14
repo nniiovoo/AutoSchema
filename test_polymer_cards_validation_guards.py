@@ -234,6 +234,40 @@ def span_ref(doc, text):
     return [{"chunk_id": entry["chunk_id"], "span_id": entry["span_id"]}]
 
 
+class SpanBoundaryContextTests(unittest.TestCase):
+    """The span catalogue can split after 'ca.'; the qualifier must not be lost."""
+
+    def check(self, sentences, value, unit, *span_texts):
+        doc = document(" ".join([IDENTITY] + list(sentences)))
+        p = prop(value, "unused", unit=unit)
+        p["evidence"] = [ref for text in span_texts for ref in span_ref(doc, text)]
+        record = entity(properties=[p])
+        record["identity_evidence"] = record["classification"]["evidence"] = span_ref(doc, IDENTITY)
+        record["specimens"][0]["evidence"] = span_ref(doc, IDENTITY)
+        return run(doc, record)
+
+    def test_bare_value_after_a_qualifier_in_the_preceding_span_is_held(self):
+        for sentences, value, unit, span_text in [
+                # Guo P5 and Pei capacity wording, split by the catalogue after 'ca.'.
+                (["The strain at break of the P1 film was ca.", "2,000%, higher than that of P2."],
+                 "2,000", "%", "2,000%, higher than that of P2."),
+                (["A capacity of 812 mAh g⁻¹ (ca.", "1.6 mAh cm⁻²) was retained by the P1 film."],
+                 "1.6", "mAh cm⁻²", "1.6 mAh cm⁻²) was retained by the P1 film.")]:
+            with self.subTest(value=value):
+                result = self.check(sentences, value, unit, span_text)
+                self.assertEqual([], accepted(result))
+                self.assertEqual(["property_value_not_in_original_evidence"], reasons(result))
+
+    def test_unqualified_span_start_and_selected_qualifier_remain_valid(self):
+        control = self.check(["The P1 film was stretched.", "2,000%, higher than that of P2."],
+                             "2,000", "%", "2,000%, higher than that of P2.")
+        self.assertEqual([("2,000", "%")], accepted(control))
+        both = self.check(["The strain at break of the P1 film was ca.", "2,000%, higher than that of P2."],
+                          "ca. 2,000%", "%", "The strain at break of the P1 film was ca.",
+                          "2,000%, higher than that of P2.")
+        self.assertEqual([("ca. 2,000%", "%")], accepted(both))
+
+
 class SampleLinkGuardTests(unittest.TestCase):
     def link_case(self, link, label="P1 film", sibling=None, unit="mS cm⁻¹"):
         result_sentence = "The P1 film showed a conductivity of 1.2 mS cm⁻¹."

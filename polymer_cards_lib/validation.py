@@ -72,27 +72,34 @@ def _occurrences(part: str, whole: str) -> List[tuple]:
     return spans
 
 
-def _quote_scope(quote: str, context: Any):
+def _quote_scope(quote: str, context: Any, start: Any = None):
     """Return the searched text and the ranges a value may occupy.
 
-    Without context the quote is judged alone (source-span selections and
-    external callers). With context, a legacy quotation is located in its
-    original chunk and judged with the chunk's real neighbouring characters, so
-    a quote boundary cannot cut a sign, digit, exponent, range or qualifier off
-    a number. A value must still lie entirely inside the quoted range.
+    Without context the quote is judged alone (external callers). With
+    context, the quotation is located in its original chunk and judged with the
+    chunk's real neighbouring characters, so an evidence boundary cannot cut a
+    sign, digit, exponent, range or qualifier off a number (a source span can
+    start just after 'ca.'). A value must still lie entirely inside the quoted
+    range. A known raw offset (source span) pins the one selected occurrence;
+    a legacy quotation may match any occurrence in its chunk.
     """
     haystack = _text(quote)
     if context is None:
         return haystack, [(0, len(haystack))]
     whole = _text(context)
+    if isinstance(start, int) and not isinstance(start, bool) and 0 <= start <= len(context):
+        prefix = _text(context[:start])
+        offset = len(prefix) + (1 if prefix and context[:start][-1:].isspace() else 0)
+        if whole[offset:offset + len(haystack)] == haystack:
+            return whole, [(offset, offset + len(haystack))]
     return whole, _occurrences(haystack, whole)
 
 
-def _literal(value: Any, quote: str, context: Any = None) -> bool:
+def _literal(value: Any, quote: str, context: Any = None, start: Any = None) -> bool:
     needle = _text(str(value))
     if not needle:
         return False
-    haystack, scopes = _quote_scope(quote, context)
+    haystack, scopes = _quote_scope(quote, context, start)
     numeric_start = needle[0].isdigit() or needle[0] in "+.±∓" + _MINUS_SIGNS
     numeric_end = needle[-1].isdigit()
     # A bare number, not a label such as P1 that merely ends in a digit.
@@ -169,11 +176,11 @@ def _literal(value: Any, quote: str, context: Any = None) -> bool:
     return False
 
 
-def _unit_literal(value: str, quote: str, context: Any = None) -> bool:
+def _unit_literal(value: str, quote: str, context: Any = None, start: Any = None) -> bool:
     # Units can immediately follow numbers (95%, 30°C, 12MPa).  Still avoid
     # accepting S/cm as the suffix of mS/cm or m as the prefix of mAh.
     needle = _text(value)
-    haystack, scopes = _quote_scope(quote, context)
+    haystack, scopes = _quote_scope(quote, context, start)
     suffix = r"(?!\w)" if needle[-1].isalnum() else ""
     compiled = re.compile(re.escape(needle) + suffix)
     for start, end in scopes:
@@ -444,10 +451,9 @@ def build_cards(document: Dict, response: Dict) -> Dict:
         return resolved
 
     def supports(value, ref, check=_literal):
-        # Source-span selections (V4) are exact source ranges and are judged
-        # as selected. A legacy {chunk_id, quote} is judged in its chunk.
-        context = None if "evidence_origin" in ref else chunks[ref["chunk_id"]]["text"]
-        return check(value, ref["quote"], context)
+        # Judge every value in its chunk: a legacy {chunk_id, quote} anywhere it
+        # occurs, a V4 span selection/union at its resolved source offset.
+        return check(value, ref["quote"], chunks[ref["chunk_id"]]["text"], ref.get("source_start"))
 
     def fact(raw, entity, path, field=None, specimen_ids=None, specimens=None):
         if not isinstance(raw, dict) or not _scalar(raw.get("value")):
